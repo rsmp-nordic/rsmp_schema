@@ -1,0 +1,51 @@
+{
+  "allOf" : [
+    {
+      "$ref": "base.json"
+    },
+    {
+      "title" :  "CommandRequest",
+      "description" :  "Command request",
+      "type" :  "object",
+      "properties" : {
+        "type" : {
+          "description" : "Type of RMSP message",
+          "type" : "string",
+          "pattern" : "^CommandRequest$"
+        },
+        "cId" : {
+          "description" : "Compoment id",
+          "type" : "string"
+        },
+        "arg" : {
+          "description" : "Command arguments",
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "cCI" : {
+                "description" : "Command code id",
+                "type" : "string"
+              },
+              "n" : {
+                "description" : "Unique reference of the value",
+                "type" : "string"
+              },
+              "cO" : {
+                "description" : "Command",
+                "type" : "string"
+              },
+              "v" : {
+                "description" : "value",
+                "type" : "string"
+              }          
+            },
+            "required" : [ "cCI", "n", "cO", "v" ],
+            "additionalProperties" : false
+          }
+        }
+      },
+      "required" : [ "cId", "arg" ]
+    }
+  ]
+}
