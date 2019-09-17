@@ -1,51 +1,34 @@
 {
-  "allOf" : [
-    {
-      "$ref": "base.json"
+  "title" :  "CommandRequest",
+  "description" :  "Command request",
+  "type" :  "object",
+  "properties" : {
+    "cId" : {
+      "description" : "Compoment id",
+      "type" : "string"
     },
-    {
-      "title" :  "CommandRequest",
-      "description" :  "Command request",
-      "type" :  "object",
-      "properties" : {
-        "type" : {
-          "description" : "Type of RMSP message",
-          "type" : "string",
-          "pattern" : "^CommandRequest$"
-        },
-        "cId" : {
-          "description" : "Compoment id",
-          "type" : "string"
-        },
-        "arg" : {
-          "description" : "Command arguments",
-          "type" : "array",
-          "items" : {
+    "arg" : {
+      "description" : "Command arguments",
+      "type" : "array",
+      "items" : {
+        "allOf" : [
+          {
             "type" : "object",
-            "properties" : {
+            "properties": {
               "cCI" : {
                 "description" : "Command code id",
-                "type" : "string"
-              },
-              "n" : {
-                "description" : "Unique reference of the value",
-                "type" : "string"
-              },
-              "cO" : {
-                "description" : "Command",
-                "type" : "string"
-              },
-              "v" : {
-                "description" : "value",
-                "type" : "string"
-              }          
+                "type" : "string",
+                "pattern" : "^M[0-9]{4}$"
+              }
             },
-            "required" : [ "cCI", "n", "cO", "v" ],
-            "additionalProperties" : false
+            "required" : [ "cCI", "n", "cO", "v" ]
+          },
+          {
+            "$ref": "sxl_commands.json"
           }
-        }
-      },
-      "required" : [ "cId", "arg" ]
+        ]
+      }
     }
-  ]
+  },
+  "required" : ["cId", "arg"]
 }

@@ -1,0 +1,31 @@
+{
+  "allOf": [
+    {
+      "$ref": "base.json"
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "MessageAck" } }
+      },
+      "then": {
+        "$ref": "message_ack.json"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "CommandRequest" } }
+      },
+      "then": {
+        "$ref": "command_request.json"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "StatusRequest" } }
+      },
+      "then": {
+        "$ref": "status_request.json"
+      }
+    }
+  ]
+}

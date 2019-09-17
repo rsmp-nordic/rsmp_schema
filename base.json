@@ -1,32 +1,15 @@
 {
   "$schema" : "http://json-schema.org/draft-07/schema#",
-  "title" :  "RSMP message",
-  "description" :  "Common RSMP message properties",
   "type" :  "object",
   "properties" : {
     "mType" : {
       "description" : "Supported RSMP versions",
       "type" : "string",
-      "pattern" : "^rSMsg$"
+      "const" : "rSMsg"
     },
     "type" : {
       "description" : "Type of RMSP message",
-      "type" : "string",
-      "enum": [
-        "MessageAck",
-        "MessageNotAck",
-        "Version",
-        "AggregatedStatus",
-        "Watchdog",
-        "Alarm",
-        "CommandRequest",
-        "CommandResponse",
-        "StatusRequest",
-        "StatusResponse",
-        "StatusSubscribe",
-        "StatusUnsubscribe",
-        "StatusUpdate"
-      ]
+      "type" : "string"
     },
     "siteId" : {
       "description" : "Site ids",
@@ -36,7 +19,7 @@
         "properties" : {
           "sId" : {
             "type" : "string",
-            "pattern" : ".+"
+            "minLength": 1
           }
         },
         "required" : [ "sId" ]

@@ -1,0 +1,99 @@
+ {
+  "allOf" : [
+    {
+      "if": {
+        "properties": { "cCI": { "const": "M0001" } }
+      },
+      "then": {
+        "allOf": [
+          {
+            "properties": {
+              "cO": { 
+                "const": "setValue"
+              },
+              "n": {
+                "enum": [
+                  "status",
+                  "securityCode",
+                  "timeout",
+                  "intersection"
+                ]
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": { "n": { "const": "status" } }
+            },
+            "then": {
+              "properties": {
+                "v": {
+                  "enum": [
+                    "YellowFlash",
+                    "Green"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": { "n": { "const": "securityCode" } }
+            },
+            "then": {
+              "properties": {
+                "v": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": { "n": { "const": "timeout" } }
+            },
+            "then": {
+              "properties": {
+                "v": {
+                  "pattern" : "^[0-9]{1,4}$"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": { "n": { "const": "intersection" } }
+            },
+            "then": {
+              "properties": {
+                "v": {
+                  "pattern" : "^[0-9]{1,3}$"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": { "cCI": { "const": "M0002" } }
+      },
+      "then": {
+        "if": {
+          "properties": { "n": { "const": "status" } }
+        },
+        "then": {
+          "properties": {
+            "v": {
+              "enum": [
+                "YellowFlash",
+                "Green"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}
