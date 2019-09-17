@@ -1,0 +1,11 @@
+{
+  "allOf" : [
+    {
+      "$ref": "../rsmp.json"
+    },
+    {
+      "if" : { "properties" : { "type" : { "const" : "CommandRequest" }}},
+      "then" : { "$ref" : "commands.json" }
+    }
+  ]
+}

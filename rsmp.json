@@ -13,7 +13,55 @@
     },
     {
       "if": {
+        "properties": { "type": { "const": "MessageNotAck" } }
+      },
+      "then": {
+        "$ref": "message_not_ack.json"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "Version" } }
+      },
+      "then": {
+        "$ref": "version.json"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "AggregatedStatus" } }
+      },
+      "then": {
+        "$ref": "aggregated_status.json"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "Watchdog" } }
+      },
+      "then": {
+        "$ref": "watchdog.json"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "Alarm" } }
+      },
+      "then": {
+        "$ref": "alarm.json"
+      }
+    },
+    {
+      "if": {
         "properties": { "type": { "const": "CommandRequest" } }
+      },
+      "then": {
+        "$ref": "command_request.json"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "CommandResponse" } }
       },
       "then": {
         "$ref": "command_request.json"
@@ -25,6 +73,38 @@
       },
       "then": {
         "$ref": "status_request.json"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "StatusResponse" } }
+      },
+      "then": {
+        "$ref": "status_response.json"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "StatusSubscribe" } }
+      },
+      "then": {
+        "$ref": "status_subscribe.json"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "StatusUnsubscribe" } }
+      },
+      "then": {
+        "$ref": "status_unsubscribe.json"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "StatusUpdate" } }
+      },
+      "then": {
+        "$ref": "status_update.json"
       }
     }
   ]

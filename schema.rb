@@ -24,14 +24,14 @@ rsmp
     if watchdog
       ref watchdog
     if command
-      command base
-      ref sxl_command
+      ref command base
+      ref command sxl
     if status
-      status base
-      ref sxl_status
+      ref status base
+      ref status sxl
     if alarm
-      alarm base
-      ref sxl_alarm
+      ref alarm base
+      ref alarm sxl
 
 sxl
   definitions
@@ -98,15 +98,15 @@ command = {
   "arg" => [
     {
       "cCI" => "M0001",
-      "n" => "timeout",
+      "n" => "status",
       "cO" => "setValue",
-      "v" => "9.1"
+      "v" => "YellowFlash"
     }
   ]
 }
 
 # try validating a message against our schema
-schema = Pathname.new('rsmp.json')
+schema = Pathname.new('tlc/sxl.json')
 schemer = JSONSchemer.schema(schema)
 message = command
 if schemer.valid? message

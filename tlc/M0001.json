@@ -1,0 +1,40 @@
+{ "properties" : {
+  "allOf" : [
+    {
+      "n" : { "enum" : [
+        "status",
+        "securityCode",
+        "timeout",
+        "intersection"
+      ]},
+      "cO" : { "const" : "setValue" }
+    },
+    {
+      "if" : { "n" : { "const" : "status" }},
+      "then" : {
+        "v" : { "enum" : [
+          "YellowFlash",
+          "Green"
+        ]}
+      }
+    },
+    {
+      "if" : { "n" : { "const" : "securityCode" }},
+      "then" : {
+        "v" : { "type" : "string" }
+      }
+    },
+    {
+      "if" : { "n" : { "const" : "timeout" }},
+      "then" : {
+        "v" : { "pattern" : "^[0-9]{1,4}$" }
+      }
+    },
+    {
+      "if" : { "n" : { "const" : "intersection" }},
+      "then" : {
+        "v" : { "pattern" : "^[0-9]{1,3}$" }
+      }
+    }
+  ]
+}}

@@ -9,7 +9,22 @@
     },
     "type" : {
       "description" : "Type of RMSP message",
-      "type" : "string"
+      "type" : "string",
+      "enum" : [
+        "MessageAck",
+        "MessageNotAck",
+        "Version",
+        "AggregatedStatus",
+        "Watchdog",
+        "Alarm",
+        "CommandRequest",
+        "CommandResponse",
+        "StatusRequest",
+        "StatusResponse",
+        "StatusSubscribe",
+        "StatusUnsubscribe",
+        "StatusUpdate"
+      ]
     },
     "siteId" : {
       "description" : "Site ids",

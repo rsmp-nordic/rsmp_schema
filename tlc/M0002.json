@@ -1,0 +1,13 @@
+"if": {
+  "properties": { "n": { "const": "status" } }
+},
+"then": {
+  "properties": {
+    "v": {
+      "enum": [
+        "YellowFlash",
+        "Green"
+      ]
+    }
+  }
+}

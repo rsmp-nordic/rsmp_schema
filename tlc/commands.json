@@ -1,0 +1,11 @@
+{ "properties": { "arg": { "items" : {
+  "allOf" : [
+  	{ "properties" : { "cCI": { "enum": [
+  		"M0001" 
+  	]}}},
+    {
+      "if": { "properties" : { "cCI": { "const": "M0001" }}},
+      "then" : { "$ref" : "M0001.json" }
+    }
+  ]
+}}}}
