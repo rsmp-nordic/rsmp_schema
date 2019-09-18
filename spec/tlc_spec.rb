@@ -75,7 +75,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  expect( validate(command) ).to be_nil
   end
 
-  it 'catches missing cId' do
+  it 'catches missing command code' do
 		invalid = command.dup
 		invalid.delete 'cId'
 	  expect( validate(invalid) ).to eq([
@@ -83,6 +83,13 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  ])
   end
 
+  it 'catches bad command code' do
+		invalid = command.dup
+		invalid['cCI'] = 'bad'
+	  expect( validate(invalid) ).to eq([
+	  	["/cCI", "enum"]
+	  ])
+  end
   it 'catches missing arg' do
 		invalid = command.dup
 		invalid.delete 'arg'
@@ -99,7 +106,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  ])
   end
 
-  it 'catches bad arg typr' do
+  it 'catches bad arg type' do
 		invalid = command.dup
 		invalid["arg"] = {}
 	  expect( validate(invalid) ).to eq([
@@ -138,4 +145,13 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  	["/arg/0", "required", {"missing_keys"=>["v"]}]
 	  ])
   end
+
+  it 'catches bad name' do
+		invalid = command.dup
+		invalid["arg"].first['n'] = 'bad'
+	  expect( validate(invalid) ).to eq([
+	  	["/arg/0/n", "enum"]
+	  ])
+  end
+
 end
