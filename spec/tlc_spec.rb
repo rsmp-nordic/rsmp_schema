@@ -146,11 +146,28 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  ])
   end
 
+  it 'catches bad value' do
+		invalid = command.dup
+		invalid["arg"].first['v'] = 'bad'
+	  expect( validate(invalid) ).to eq([
+	  	["/arg/0/v", "enum"]
+	  ])
+  end
+
   it 'catches bad name' do
 		invalid = command.dup
 		invalid["arg"].first['n'] = 'bad'
 	  expect( validate(invalid) ).to eq([
 	  	["/arg/0/n", "enum"]
+	  ])
+  end
+
+  it 'catches bad status values' do
+		invalid = command.dup
+		invalid["arg"].first['n'] = 'status'
+		invalid["arg"].first['n'] = 'bad'
+	  expect( validate(invalid) ).to eq([
+	  	["/arg/0/v", "enum"]
 	  ])
   end
 

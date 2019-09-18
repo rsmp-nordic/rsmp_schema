@@ -11,12 +11,12 @@
     }},
     {
       "if" : { "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
+      "then" : { "properties" : { 
         "v" : { "enum" : [
           "YellowFlash",
           "Green"
-        ]}
-      }}
+        ]}}
+      }
     },
     {
       "if" : { "properties" : { "n" : { "const" : "securityCode" }}},
