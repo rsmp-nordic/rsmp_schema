@@ -98,7 +98,7 @@ command = {
   "arg" => [
     {
       "cCI" => "M0001",
-      "n" => "status",
+      "n" => "statusx",
       "cO" => "setValue",
       "v" => "YellowFlash"
     }

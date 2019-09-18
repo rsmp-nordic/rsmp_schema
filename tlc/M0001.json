@@ -1,6 +1,6 @@
-{ "properties" : {
+{
   "allOf" : [
-    {
+    { "properties" : { 
       "n" : { "enum" : [
         "status",
         "securityCode",
@@ -8,33 +8,33 @@
         "intersection"
       ]},
       "cO" : { "const" : "setValue" }
-    },
+    }},
     {
-      "if" : { "n" : { "const" : "status" }},
-      "then" : {
+      "if" : { "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
         "v" : { "enum" : [
           "YellowFlash",
           "Green"
         ]}
-      }
+      }}
     },
     {
-      "if" : { "n" : { "const" : "securityCode" }},
-      "then" : {
+      "if" : { "properties" : { "n" : { "const" : "securityCode" }}},
+      "then" : { "properties" : {
         "v" : { "type" : "string" }
-      }
+      }}
     },
     {
-      "if" : { "n" : { "const" : "timeout" }},
-      "then" : {
+      "if" : { "properties" : { "n" : { "const" : "timeout" }}},
+      "then" : { "properties" : {
         "v" : { "pattern" : "^[0-9]{1,4}$" }
-      }
+      }}
     },
     {
-      "if" : { "n" : { "const" : "intersection" }},
-      "then" : {
+      "if" : { "properties" : { "n" : { "const" : "intersection" }}},
+      "then" : { "properties" : {
         "v" : { "pattern" : "^[0-9]{1,3}$" }
-      }
+      }}
     }
   ]
-}}
+}
