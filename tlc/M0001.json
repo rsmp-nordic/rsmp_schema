@@ -7,7 +7,7 @@
         "timeout",
         "intersection"
       ]},
-      "cO" : { "const" : "setValue" }
+      "cO" : { "const" : "xsetValue" }
     }},
     {
       "if" : { "properties" : { "n" : { "const" : "status" }}},

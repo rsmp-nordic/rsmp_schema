@@ -1,4 +1,5 @@
 require 'json_schemer'
+require 'pp'
 
 schema = Pathname.new('tlc/sxl.json')
 $schemer = JSONSchemer.schema(schema)
@@ -8,9 +9,12 @@ def validate json
 		nil
 	else
 	  errors = []
-	  $schemer.validate(json).each do |item|
-	  	errors ||= []
-	    errors << [item['data_pointer'],item['type'],item['details']].compact
+	  begin
+	  	$schemer.validate(json).each do |item|
+		  	errors ||= []
+		    errors << [item['data_pointer'],item['type'],item['details']].compact
+		  end
+	  rescue
 	  end
 	  errors
 	end
@@ -165,9 +169,27 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'catches bad status values' do
 		invalid = command.dup
 		invalid["arg"].first['n'] = 'status'
-		invalid["arg"].first['n'] = 'bad'
+		invalid["arg"].first['v'] = 'bad'
 	  expect( validate(invalid) ).to eq([
 	  	["/arg/0/v", "enum"]
+	  ])
+  end
+
+  it 'catches bad timeout values' do
+		invalid = command.dup
+		invalid["arg"].first['n'] = 'timeout'
+		invalid["arg"].first['v'] = 'bad'
+	  expect( validate(invalid) ).to eq([
+	  	["/arg/0/v", "pattern"]
+	  ])
+  end
+
+  it 'catches bad intersection values' do
+		invalid = command.dup
+		invalid["arg"].first['n'] = 'intersection'
+		invalid["arg"].first['v'] = 'bad'
+	  expect( validate(invalid) ).to eq([
+	  	["/arg/0/v", "pattern"]
 	  ])
   end
 
