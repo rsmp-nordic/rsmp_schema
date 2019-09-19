@@ -1,11 +1,15 @@
 {
   "allOf" : [
-    {
-      "$ref": "../rsmp.json"
-    },
-    {
-      "if" : { "properties" : { "type" : { "const" : "CommandRequest" }}},
-      "then" : { "$ref" : "commands.json" }
-    }
+  	{
+  		"$ref": "../rsmp.json"
+		},
+  	{
+		  "anyOf" : [
+		    {
+		      "if" : { "properties" : { "type" : { "const" : "CommandRequest" }}},
+		      "then" : { "$ref" : "commands.json" }
+		    }
+		  ]
+  	}
   ]
 }

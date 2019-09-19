@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "base.json"
+      "$ref": "core.json"
     },
     {
       "if": {

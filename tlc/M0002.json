@@ -1,13 +1,33 @@
-"if": {
-  "properties": { "n": { "const": "status" } }
-},
-"then": {
-  "properties": {
-    "v": {
-      "enum": [
-        "YellowFlash",
-        "Green"
-      ]
+{
+  "allOf" : [
+    { "properties" : { 
+      "n" : { "enum" : [
+        "status",
+        "securityCode",
+        "timeplan"
+      ]},
+      "cO" : { "const" : "setPlan" }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : { 
+      	"v" : { "type" : "boolean" }
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
+      "then" : { "properties" : {
+        "v" : { "type" : "string" }
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "timeplan" }}},
+      "then" : { "properties" : {
+        "v" : { 
+          "type": "string",
+          "pattern" : "^[0-9]{1,3}$"
+        }
+      }}
     }
-  }
+  ]
 }

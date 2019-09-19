@@ -28,8 +28,7 @@
             "type" : "string"
           },
           "v" : {
-            "description" : "Value",
-            "type" : "string"
+            "description" : "Value"
           }
         },
         "required" : [ "cCI", "n", "cO", "v" ]

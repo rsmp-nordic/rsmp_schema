@@ -1,4 +1,13 @@
 {
+  "$comment" : "json_schemer gem bug? If n is missing, it seems the 'if' section is evalued as true",
+  "$comment" : "causing the 'then' section to became false.",
+  "$comment" : "This causes validation errors on n, even when it's left out.",
+  "$comment" : "A workaround is to require n (again) in the if section.",
+
+  "$comment" : "RSMP requires numbers to be send as strings. Unfortunately this means we cannot validate the range.",
+  "$comment" : "A patchy workaround is to match integers against a regex patterne,",
+  "$comment" : "so we at least check that only digits are present.",
+
   "allOf" : [
     { "properties" : { 
       "n" : { "enum" : [
@@ -7,33 +16,33 @@
         "timeout",
         "intersection"
       ]},
-      "cO" : { "const" : "xsetValue" }
+      "cO" : { "const" : "setValue" }
     }},
     {
-      "if" : { "properties" : { "n" : { "const" : "status" }}},
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
       "then" : { "properties" : { 
-        "v" : { "enum" : [
+        "v" : { "type" : "string", "enum" : [
           "YellowFlash",
           "Green"
         ]}}
       }
     },
     {
-      "if" : { "properties" : { "n" : { "const" : "securityCode" }}},
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
       "then" : { "properties" : {
         "v" : { "type" : "string" }
       }}
     },
     {
-      "if" : { "properties" : { "n" : { "const" : "timeout" }}},
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "timeout" }}},
       "then" : { "properties" : {
-        "v" : { "pattern" : "^[0-9]{1,4}$" }
+        "v" : { "type" : "string", "pattern" : "^[0-9]{1,4}$" }
       }}
     },
     {
-      "if" : { "properties" : { "n" : { "const" : "intersection" }}},
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "intersection" }}},
       "then" : { "properties" : {
-        "v" : { "pattern" : "^[0-9]{1,3}$" }
+        "v" : { "type" : "string", "pattern" : "^[0-9]{1,3}$" }
       }}
     }
   ]
