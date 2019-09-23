@@ -18,7 +18,7 @@ To validate a message against a particular SXL, use the sxl.json file in the rel
 For example, to validate agaisnt the SXL for Trafic Light Controllers (TLCs), include 'tcl/sxl.json'
 
 This main sxl.json file includes the core.json part, which contains validations for the RSMP core elements.
-Depending on the message type, commands.json, alarms.json, etc will be included. This file in turn looks at command/status/alarm code and includes the file describing the detailed parameters, arguments, etc.
+Depending on the message type, commands.json, alarms.json, etc. will be included. That file in turn looks at the command/status/alarm code and includes the file describing the detailed parameters, arguments, etc.
 
 For example, validating a CommandRequest M0001 message will include these parts:
 
@@ -59,6 +59,9 @@ puts schemer.valid? message     # => true
 
 ## RSpec tests
 The reposity includes RSpec test that checks the schema, by testing the result validating a set of valid and invalid RSMP messages using the json_schemer gem.
+
+This is useful when developing the schema, to ensure it validates correctly.
+
 
 ```
 $ bundle              # install gems
