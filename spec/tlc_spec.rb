@@ -89,9 +89,9 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 
   it 'catches bad command code' do
 		invalid = command.dup
-		invalid['cCI'] = 'bad'
+		invalid['arg'].first['cCI'] = 'M0099'
 	  expect( validate(invalid) ).to eq([
-	  	["/cCI", "enum"]
+	  	["/arg/0/cCI", "enum"]
 	  ])
   end
   it 'catches missing arg' do

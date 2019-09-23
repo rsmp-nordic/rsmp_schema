@@ -23,10 +23,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "timeplan" }}},
       "then" : { "properties" : {
-        "v" : { 
-          "type": "string",
-          "pattern" : "^[0-9]{1,3}$"
-        }
+        "v" : { "type": "string", "pattern" : "^[0-9]{1,3}$" }
       }}
     }
   ]
