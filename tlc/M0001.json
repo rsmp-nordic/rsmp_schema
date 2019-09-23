@@ -1,13 +1,13 @@
 {
-  "$comment" : "json_schemer gem bug? If n is missing, it seems the 'if' section is evalued as true",
-  "$comment" : "causing the 'then' section to became false.",
-  "$comment" : "This causes validation errors on n, even when it's left out.",
-  "$comment" : "A workaround is to require n (again) in the if section.",
-
-  "$comment" : "RSMP requires numbers to be send as strings. Unfortunately this means we cannot validate the range.",
-  "$comment" : "A patchy workaround is to match integers against a regex patterne,",
-  "$comment" : "so we at least check that only digits are present.",
-
+  "$comment" : [
+    "json_schemer gem bug? If n is missing, it seems the 'if' section is evalued as true",
+    "causing the 'then' section to became false.",
+    "This causes validation errors on n, even when it's left out.",
+    "A workaround is to require n (again) in the if section.",
+    "RSMP requires numbers to be send as strings. Unfortunately this means we cannot validate the range.",
+    "A patchy workaround is to match integers against a regex patterne,",
+    "so we at least check that only digits are present."
+  ],
   "allOf" : [
     { "properties" : { 
       "n" : { "enum" : [

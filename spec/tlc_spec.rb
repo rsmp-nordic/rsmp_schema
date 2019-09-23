@@ -75,7 +75,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  ]
 	}}
 
-  it 'accepts valid command' do
+	it 'accepts valid command' do
 	  expect( validate(command) ).to be_nil
   end
 

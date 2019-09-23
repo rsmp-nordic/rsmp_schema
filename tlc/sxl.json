@@ -1,4 +1,5 @@
 {
+	"description": "A schema validatating message against the RSMP SXL for Traffic Light Controllers",
   "allOf" : [
   	{
   		"$ref": "../rsmp.json"
