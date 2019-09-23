@@ -8,11 +8,12 @@
         ]}}
       },
       {
-        "if": { "properties" : { "cCI": { "const": "M0001" }}},
+        "$comment" : "Bug? unless we require cCI, M0001.json is included even when cCI is not present",
+        "if": { "required" : ["cCI"], "properties" : { "cCI": { "const": "M0001" }}},
         "then" : { "$ref" : "M0001.json" }
       },
       {
-        "if": { "properties" : { "cCI": { "const": "M0002" }}},
+        "if": { "required" : ["cCI"], "properties" : { "cCI": { "const": "M0002" }}},
         "then" : { "$ref" : "M0002.json" }
       }
     ]
