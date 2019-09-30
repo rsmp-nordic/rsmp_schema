@@ -2,7 +2,7 @@
 	"description": "A schema validatating message against the RSMP SXL for Traffic Light Controllers",
   "allOf" : [
   	{
-  		"$ref": "../rsmp.json"
+  		"$ref": "../core/rsmp.json"
 		},
 	  {
 	    "if" : { "required" : ["type"], "properties" : { "type" : { "const" : "CommandRequest" }}},

@@ -1,7 +1,7 @@
 require 'json_schemer'
 require 'pp'
 
-schema = Pathname.new('tlc/sxl.json')
+schema = Pathname.new('schema/tlc/sxl.json')
 $schemer = JSONSchemer.schema(schema)
 
 def validate json

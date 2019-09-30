@@ -1,5 +1,4 @@
 {
-  "$ref": "base.json",
   "title" :  "Version",
   "description" :  "Version message",
   "type" :  "object",
