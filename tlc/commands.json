@@ -1,5 +1,8 @@
 {
-  "properties" : { "arg" : { "items" : {
+  "$comment" : "This part is used for both command requesta and command responses",
+  "$comment" : "A request has arg/c0, while a response has rsv/age, but the validation",
+  "$comment" : "of these attributes happens only if they are present.",
+  "items" : {
     "allOf" : [
       {
         "properties": { "cCI" : { "enum": [
@@ -17,5 +20,5 @@
         "then" : { "$ref" : "M0002.json" }
       }
     ]
-  }}}
+  }
 }

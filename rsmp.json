@@ -64,7 +64,7 @@
         "properties": { "type": { "const": "CommandResponse" } }
       },
       "then": {
-        "$ref": "command_request.json"
+        "$ref": "command_response.json"
       }
     },
     {

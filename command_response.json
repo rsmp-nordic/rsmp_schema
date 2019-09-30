@@ -1,0 +1,46 @@
+{
+  "title" :  "CommandRequest",
+  "description" :  "Command request",
+  "type" :  "object",
+  "properties" : {
+    "cId" : {
+      "description" : "Compoment id",
+      "type" : "string"
+    },
+    "cTS" : {
+      "description" : "Timestamp",
+      "type" : "string",
+      "$comment" : "Example: 2015-06-08T11:49:03.293Z",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$"
+    },
+    "rvs" : {
+      "description" : "Command arguments",
+      "type" : "array",
+      "minItems": 1,
+      "items" : {
+        "type" : "object",
+        "properties": {
+          "cCI" : {
+            "description" : "Command code id",
+            "type" : "string",
+            "pattern" : "^M[0-9]{4}$"
+          },
+          "n" : {
+            "description" : "Unique reference of the value",
+            "type" : "string"
+          },
+          "v" : {
+            "description" : "Value"
+          },
+          "age" : {
+            "description" : "Age of the value",
+            "type" : "string",
+            "enum" : [ "recent", "old", "undefined", "unknown" ]
+          }
+        },
+        "required" : [ "cCI", "n", "v", "age" ]
+      }
+    }
+  },
+  "required" : ["cId", "cTS", "rvs"]
+}

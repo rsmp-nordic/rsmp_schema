@@ -23,14 +23,14 @@ Depending on the message type, commands.json, alarms.json, etc. will be included
 For example, validating a CommandRequest M0001 message will include these parts:
 
 sxl.json
-	core.json
-	commands.json
-	  M0001.json
+  core.json
+  commands.json
+    M0001.json
 
 ## Example usage
 To validate a JSON message with Ruby using the json_schemer gem:
 
-```Ruby
+```ruby
 require 'json_schemer'
 
 message = {
@@ -66,5 +66,4 @@ This is useful when developing the schema, to ensure it validates correctly.
 ```
 $ bundle              # install gems
 $ bundle exec rspec   # run rspec tests
-```
-
+``

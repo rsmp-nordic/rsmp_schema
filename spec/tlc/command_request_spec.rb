@@ -94,6 +94,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  	["/arg/0/cCI", "enum"]
 	  ])
   end
+
   it 'catches missing arg' do
 		invalid = command.dup
 		invalid.delete 'arg'
