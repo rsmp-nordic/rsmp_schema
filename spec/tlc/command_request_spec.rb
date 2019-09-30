@@ -1,30 +1,4 @@
 RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
-	let(:version) {{
-	  "mType" => "rSMsg",
-	  "mId" => "a28e94b9-05c7-41bb-8f8b-54693adc9698",
-	  "siteId" => [
-	    { "sId" => "RN+SI0001" }
-	  ],
-	  "type" => "Version",
-	  "RSMP" => [
-	    { "vers" => "3.1.1" },
-	    { "vers" => "3.1.2" },
-	    { "vers" => "3.1.3" },
-	    { "vers" => "3.1.4" }
-	  ],
-	  "SXL" => "1.1"
-	}}
-
-	let(:ack) {{
-	  "mType" => "rSMsg",
-	  "mId" => "4173c2c8-a933-43cb-9425-66d4613731ed",
-	  "siteId" => [
-	    { "sId" => "RN+SI0001" }
-	  ],
-	  "type" => "MessageAck",
-	  "oMId" => "92b9706d-0466-4518-8663-00b9690e9c41"
-	}}
-
 	let(:status) {{
 	  "mType" => "rSMsg",
 	  "mId" => "4173c2c8-a933-43cb-9425-66d4613731ed",
