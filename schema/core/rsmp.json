@@ -5,6 +5,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "MessageAck" } }
       },
       "then": {
@@ -13,6 +14,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "MessageNotAck" } }
       },
       "then": {
@@ -21,6 +23,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "Version" } }
       },
       "then": {
@@ -29,6 +32,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "AggregatedStatus" } }
       },
       "then": {
@@ -37,6 +41,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "Watchdog" } }
       },
       "then": {
@@ -45,6 +50,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "Alarm" } }
       },
       "then": {
@@ -53,6 +59,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "CommandRequest" } }
       },
       "then": {
@@ -61,6 +68,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "CommandResponse" } }
       },
       "then": {
@@ -69,6 +77,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "StatusRequest" } }
       },
       "then": {
@@ -77,6 +86,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "StatusResponse" } }
       },
       "then": {
@@ -85,7 +95,8 @@
     },
     {
       "if": {
-        "properties": { "type": { "const": "StatusSubscribe" } }
+         "required" : ["type"],
+       "properties": { "type": { "const": "StatusSubscribe" } }
       },
       "then": {
         "$ref": "status_subscribe.json"
@@ -93,6 +104,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "StatusUnsubscribe" } }
       },
       "then": {
@@ -101,6 +113,7 @@
     },
     {
       "if": {
+        "required" : ["type"],
         "properties": { "type": { "const": "StatusUpdate" } }
       },
       "then": {

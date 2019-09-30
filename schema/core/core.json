@@ -1,53 +1,66 @@
 {
   "$schema" : "http://json-schema.org/draft-07/schema#",
   "type" :  "object",
-  "properties" : {
-    "mType" : {
-      "description" : "Supported RSMP versions",
-      "type" : "string",
-      "const" : "rSMsg"
+  "allOf" : [
+    {
+      "properties" : {
+        "mType" : {
+          "description" : "Supported RSMP versions",
+          "type" : "string",
+          "const" : "rSMsg"
+        },
+        "type" : {
+          "description" : "Type of RMSP message",
+          "type" : "string",
+          "enum" : [
+            "MessageAck",
+            "MessageNotAck",
+            "Version",
+            "AggregatedStatus",
+            "Watchdog",
+            "Alarm",
+            "CommandRequest",
+            "CommandResponse",
+            "StatusRequest",
+            "StatusResponse",
+            "StatusSubscribe",
+            "StatusUnsubscribe",
+            "StatusUpdate"
+          ]
+        },
+        "mId" : {
+          "description" : "Message id",
+          "type" : "string",
+          "pattern" : "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-4[a-fA-F0-9]{3}-[89abAB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$"
+        }
+      },
+      "required" : [ "mType", "type", "mId" ]
     },
-    "type" : {
-      "description" : "Type of RMSP message",
-      "type" : "string",
-      "enum" : [
-        "MessageAck",
-        "MessageNotAck",
-        "Version",
-        "AggregatedStatus",
-        "Watchdog",
-        "Alarm",
-        "CommandRequest",
-        "CommandResponse",
-        "StatusRequest",
-        "StatusResponse",
-        "StatusSubscribe",
-        "StatusUnsubscribe",
-        "StatusUpdate"
-      ]
-    },
-    "siteId" : {
-      "description" : "Site ids",
-      "type" : "array",
-      "items" : {
-        "type" : "object",
+    {
+      "if" : { "required": ["type"], "properties" : { "type" : { "const" : "Watchdog" }}},
+      "then" : {},
+      "else" : {
         "properties" : {
-          "sId" : {
-            "type" : "string",
-            "minLength": 1
+          "siteId" : {
+            "description" : "Site ids",
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "sId" : {
+                  "type" : "string",
+                  "minLength": 1
+                }
+              },
+              "required" : [ "sId" ]
+            },
+            "minItems" : 1,
+            "uniqueItems" : true,
+            "additionalProperties" : false
           }
         },
-        "required" : [ "sId" ]
-      },
-      "minItems" : 1,
-      "uniqueItems" : true,
-      "additionalProperties" : false
-    },
-    "mId" : {
-      "description" : "Message id",
-      "type" : "string",
-      "pattern" : "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-4[a-fA-F0-9]{3}-[89abAB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$"
+        "required" : [ "siteId" ]
+      }
     }
-  },
-  "required" : [ "mType", "type", "siteId", "mId" ]
+  ]
 }
