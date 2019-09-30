@@ -1,7 +1,6 @@
 {
   "title" :  "CommandRequest",
   "description" :  "Command request",
-  "type" :  "object",
   "properties" : {
     "cId" : {
       "description" : "Compoment id",

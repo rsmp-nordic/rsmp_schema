@@ -1,13 +1,7 @@
 {
   "title" :  "Version",
   "description" :  "Version message",
-  "type" :  "object",
   "properties" : {
-    "type" : {
-      "description" : "Type of RMSP message",
-      "type" : "string",
-      "pattern" : "^Version$"
-    },
     "RSMP" : {
       "description" : "Supported RSMP versions",
       "type" : "array",
@@ -18,11 +12,12 @@
             "type" : "string",
             "pattern" : "^[0-9]{1,2}\\.[0-9]{1,2}(\\.[0-9]{1,2})?$"
           }
-        }
+        },
+        "required" : ["vers"],
+        "additionalProperties" : false
       },
       "minItems" : 1,
-      "uniqueItems" : true,
-      "additionalProperties" : false
+      "uniqueItems" : true
     },
     "SXL" : {
       "description" : "SXL version",
@@ -30,6 +25,5 @@
       "pattern" : "^[0-9]{1,2}\\.[0-9]{1,2}(\\.[0-9]{1,2})?$"
     }
   },
-  "required" : [ "type", "RSMP", "SXL" ],
-  "additionalProperties" : false
+  "required" : [ "RSMP", "SXL" ]
 }
