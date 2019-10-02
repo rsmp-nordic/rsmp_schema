@@ -1,9 +1,11 @@
 {
-  "title" :  "CommandRequest",
-  "description" :  "Command request",
+  "title" :  "Alarm",
+  "description" :  "Alarm message",
   "properties" : {
-    "mId" : { "$ref": "definitions.json#/message_id" },
-    "cId" : { "$ref": "definitions.json#/component_id" },
+    "cId" : {
+      "description" : "Compoment id",
+      "type" : "string"
+    },
     "arg" : {
       "description" : "Command arguments",
       "type" : "array",
@@ -20,5 +22,5 @@
       }
     }
   },
-  "required" : [ "mId", "cId", "arg"]
+  "required" : ["cId", "arg"]
 }

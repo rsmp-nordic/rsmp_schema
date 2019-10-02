@@ -2,9 +2,8 @@
   "title" :  "Watchdog",
   "description" :  "Watchdog message",
   "properties" : {
-    "wTs" : {
-      "$ref": "definitions.json#/timestamp"
-    }
+  	"mId" : { "$ref": "definitions.json#/message_id" },
+    "wTs" : { "$ref": "definitions.json#/timestamp" }
   },
-  "required" : [ "wTs" ]
+  "required" : [ "mId", "wTs" ]
 }

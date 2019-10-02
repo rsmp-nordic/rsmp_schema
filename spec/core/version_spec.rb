@@ -19,6 +19,62 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  expect( validate(message) ).to be_nil
   end
 
+  it 'catches missing mId' do
+		invalid = message.dup
+		invalid.delete 'mId'
+	  expect( validate(invalid) ).to eq([
+	  	["", "required", {"missing_keys"=>["mId"]}]
+	  ])
+  end
+
+  it 'catches missing siteId' do
+		invalid = message.dup
+		invalid.delete 'siteId'
+	  expect( validate(invalid) ).to eq([
+	  	["", "required", {"missing_keys"=>["siteId"]}]
+	  ])
+  end
+
+  it 'catches bad siteId format, must be array' do
+		invalid = message.dup
+		invalid['siteId'] = '1.0'
+	  expect( validate(invalid) ).to eq([
+	  	["/siteId", "array"]
+	  ])
+  end
+
+  it 'catches bad siteId format, array cannot be empty' do
+		invalid = message.dup
+		invalid['siteId'] = []
+	  expect( validate(invalid) ).to eq([
+	  	["/siteId", "minItems"]
+	  ])
+  end
+
+  it 'catches bad siteId format, item must be hash' do
+		invalid = message.dup
+		invalid['siteId'] = ['1.0']
+	  expect( validate(invalid) ).to eq([
+	  	["/siteId/0", "object"]
+	  ])
+  end
+
+  it 'catches bad siteId format, item must have version' do
+		invalid = message.dup
+		invalid['siteId'] = [{}]
+	  expect( validate(invalid) ).to eq([
+	  	["/siteId/0", "required", {"missing_keys"=>["sId"]}]
+	  ])
+  end
+
+  it 'catches bad siteId format, item cannot have extra attributes' do
+		invalid = message.dup
+		invalid['siteId'] = [{'sId'=>'RN+SI0001','extra'=>'123'}]
+	  expect( validate(invalid) ).to eq([
+	  	["/siteId/0/extra", "schema"]
+	  ])
+  end
+
   it 'catches missing RSMP version' do
 		invalid = message.dup
 		invalid.delete 'RSMP'

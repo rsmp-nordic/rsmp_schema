@@ -10,6 +10,14 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  expect( validate(message) ).to be_nil
   end
 
+  it 'catches missing mId' do
+		invalid = message.dup
+		invalid.delete 'mId'
+	  expect( validate(invalid) ).to eq([
+	  	["", "required", {"missing_keys"=>["mId"]}]
+	  ])
+  end
+
   it 'catches missing timestamp' do
 		invalid = message.dup
 		invalid.delete 'wTs'

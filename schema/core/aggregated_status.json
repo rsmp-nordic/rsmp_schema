@@ -2,9 +2,8 @@
   "title" :  "Aggregated Status",
   "description" :  "Aggregated status message",
   "properties" : {
-    "aSTS" : {
-      "$ref": "definitions.json#/timestamp"
-    },
+    "mId" : { "$ref": "definitions.json#/message_id" },
+    "aSTS" : { "$ref": "definitions.json#/timestamp" },
     "fP" : {
       "description" : "Functional position",
       "type" : "string, null"
@@ -22,5 +21,5 @@
       }
     }
   },
-  "required" : [ "aSTS", "fP", "fS", "se" ]
+  "required" : [ "mId", "aSTS", "fP", "fS", "se" ]
 }

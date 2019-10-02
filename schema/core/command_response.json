@@ -2,13 +2,9 @@
   "title" :  "CommandRequest",
   "description" :  "Command request",
   "properties" : {
-    "cId" : {
-      "description" : "Compoment id",
-      "type" : "string"
-    },
-    "cTS" : {
-      "$ref": "definitions.json#/timestamp"
-    },
+    "mId" : { "$ref": "definitions.json#/message_id" },
+    "cId" : { "$ref": "definitions.json#/component_id" },
+    "cTS" : { "$ref": "definitions.json#/timestamp" },
     "rvs" : {
       "description" : "Command arguments",
       "type" : "array",
@@ -16,9 +12,7 @@
       "items" : {
         "type" : "object",
         "properties": {
-          "cCI" : {
-            "$ref": "definitions.json#/command_code"
-          },
+          "cCI" : { "$ref": "definitions.json#/command_code" },
           "n" : {
             "description" : "Unique reference of the value",
             "type" : "string"
@@ -36,5 +30,5 @@
       }
     }
   },
-  "required" : ["cId", "cTS", "rvs"]
+  "required" : [ "mId", "cId", "cTS", "rvs" ]
 }

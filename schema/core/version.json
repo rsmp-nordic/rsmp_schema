@@ -2,6 +2,9 @@
   "title" :  "Version",
   "description" :  "Version message",
   "properties" : {
+    "mId" : {
+      "$ref": "definitions.json#/message_id"
+    },
     "RSMP" : {
       "description" : "Supported RSMP versions",
       "type" : "array",
@@ -34,12 +37,13 @@
             "minLength": 1
           }
         },
-        "required" : [ "sId" ]
+        "required" : [ "sId" ],
+        "additionalProperties" : false
       },
       "minItems" : 1,
       "uniqueItems" : true,
       "additionalProperties" : false
     }
   },
-  "required" : [ "RSMP", "SXL", "siteId" ]
+  "required" : [ "mId", "RSMP", "SXL", "siteId" ]
 }

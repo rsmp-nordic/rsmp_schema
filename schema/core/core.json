@@ -30,18 +30,6 @@
         }
       },
       "required" : [ "mType", "type" ]
-    },
-    {
-      "if" : { "required": ["type"], "properties" : { "type" : { "enum" : [ "MessageAck", "MessageNotAck" ] }}},
-      "then" : {},
-      "else" : {
-        "properties" : {
-          "mId" : {
-            "$ref": "definitions.json#/message_id"
-          }
-        },
-        "required" : [ "mId" ]
-      }
     }
   ]
 }

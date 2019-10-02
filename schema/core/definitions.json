@@ -27,6 +27,10 @@
     "description" : "Command code id",
     "type" : "string",
     "pattern" : "^M[0-9]{4}$"
+  },
+  "component_id": {
+    "description" : "Compoment id",
+    "type" : "string"
   }
 }
 
