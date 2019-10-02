@@ -1,6 +1,6 @@
 {
-  "title" :  "StatusSubscribe",
-  "description" :  "Status subscribe",
+  "title" :  "StatusUnsubscribe",
+  "description" :  "Status unsubscribe",
   "properties" : {
     "mId" : { "$ref": "definitions.json#/message_id" },
     "cId" : { "$ref": "definitions.json#/component_id" },
@@ -12,13 +12,9 @@
         "type" : "object",
         "properties": {
           "sCI" : { "$ref": "definitions.json#/status_code" },
-          "n" : { "description" : "Unique reference of the value", "type" : "string" },
-          "uRt" : {
-            "$ref": "definitions.json#/integer",
-            "description" : "Update interval in seconds, 0 means send when value changes"
-          }
+          "n" : { "description" : "Unique reference of the value", "type" : "string" }
         },
-        "required" : [ "sCI", "n", "uRt" ],
+        "required" : [ "sCI", "n" ],
         "additionalProperties": false
       }
     }
