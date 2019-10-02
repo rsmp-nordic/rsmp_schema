@@ -26,7 +26,8 @@
             "enum" : [ "recent", "old", "undefined", "unknown" ]
           }
         },
-        "required" : [ "cCI", "n", "v", "age" ]
+        "required" : [ "cCI", "n", "v", "age" ],
+        "additionProperties": false
       }
     }
   },

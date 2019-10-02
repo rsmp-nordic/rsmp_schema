@@ -66,4 +66,4 @@ This is useful when developing the schema, to ensure it validates correctly.
 ```
 $ bundle              # install gems
 $ bundle exec rspec   # run rspec tests
-``
+```

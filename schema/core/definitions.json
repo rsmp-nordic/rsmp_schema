@@ -28,6 +28,11 @@
     "type" : "string",
     "pattern" : "^M[0-9]{4}$"
   },
+  "status_code": {
+    "description" : "Status code id",
+    "type" : "string",
+    "pattern" : "^S[0-9]{4}$"
+  },
   "component_id": {
     "description" : "Compoment id",
     "type" : "string"
