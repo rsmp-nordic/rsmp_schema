@@ -16,12 +16,57 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  expect( validate(message) ).to be_nil
   end
 
-  it 'catches missing mType' do
+  it 'catches missing aSTS' do
 		invalid = message.dup
-		invalid.delete 'mType'
+		invalid.delete 'aSTS'
 	  expect( validate(invalid) ).to eq([
-	  	["", "required", {"missing_keys"=>["mType"]}]
+	  	["", "required", {"missing_keys"=>["aSTS"]}]
 	  ])
   end
+
+  it 'catches bad aSTS' do
+		invalid = message.dup
+		invalid['aSTS'] = "2015-06-08T08:05:06.5843Z"
+	  expect( validate(invalid) ).to eq([
+	  	["/aSTS", "pattern"]
+	  ])
+  end
+
+  it 'catches missing se' do
+		invalid = message.dup
+		invalid.delete 'se'
+	  expect( validate(invalid) ).to eq([
+	  	["", "required", {"missing_keys"=>["se"]}]
+	  ])
+  end
+
+  it 'catches bad se' do
+		invalid = message.dup
+		invalid['se'] = 123
+	  expect( validate(invalid) ).to eq([
+	  	["/se", "array"]
+	  ])
+
+		invalid = message.dup
+		invalid['se'] = [true,false,false,false,false,false,false]
+	  expect( validate(invalid) ).to eq([
+	  	["/se", "minItems"]
+	  ])
+
+		invalid = message.dup
+		invalid['se'] = [true,false,false,false,false,false,false,true,true]
+	  expect( validate(invalid) ).to eq([
+	  	["/se", "maxItems"]
+	  ])
+
+		invalid = message.dup
+		invalid['se'] = [false,false,false,1,nil,"",false,false]
+	  expect( validate(invalid) ).to eq([
+	  	["/se/3", "boolean"],
+	  	["/se/4", "boolean"],
+	  	["/se/5", "boolean"]
+	  ])
+
+	end
 
 end
