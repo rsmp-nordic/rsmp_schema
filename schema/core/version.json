@@ -9,8 +9,8 @@
         "type" : "object",
         "properties" : {
           "vers" : {
-            "type" : "string",
-            "pattern" : "^[0-9]{1,2}\\.[0-9]{1,2}(\\.[0-9]{1,2})?$"
+            "$ref": "definitions.json#/version",
+            "description" : "RSMP version"
           }
         },
         "required" : ["vers"],
@@ -20,10 +20,26 @@
       "uniqueItems" : true
     },
     "SXL" : {
-      "description" : "SXL version",
-      "type" : "string",
-      "pattern" : "^[0-9]{1,2}\\.[0-9]{1,2}(\\.[0-9]{1,2})?$"
+      "$ref": "definitions.json#/version",
+      "description" : "SXL version"
+    },
+    "siteId" : {
+      "description" : "Site ids",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "sId" : {
+            "type" : "string",
+            "minLength": 1
+          }
+        },
+        "required" : [ "sId" ]
+      },
+      "minItems" : 1,
+      "uniqueItems" : true,
+      "additionalProperties" : false
     }
   },
-  "required" : [ "RSMP", "SXL" ]
+  "required" : [ "RSMP", "SXL", "siteId" ]
 }

@@ -5,8 +5,9 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  "siteId" => [
 	    { "sId" => "RN+SI0001" }
 	  ],
-	  "type" => "MessageAck",
-	  "oMId" => "92b9706d-0466-4518-8663-00b9690e9c41"
+	  "type" => "MessageNotAck",
+	  "oMId" => "92b9706d-0466-4518-8663-00b9690e9c41",
+	  "rea" => "Unknown packet type: Watchdddog"
 	}}
 
 	it 'accepts valid message' do
@@ -37,4 +38,18 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  ])
   end
 
+  it 'allows reason to be omitted' do
+		invalid = message.dup
+		invalid.delete 'rea'
+	  expect( validate(invalid) ).to be_nil
+  end
+
+  it 'catches bad reason, must be string' do
+		invalid = message.dup
+		invalid['rea'] = 123
+	  expect( validate(invalid) ).to eq([
+	  	["/rea", "string"]
+	  ])
+  end
+ 
 end

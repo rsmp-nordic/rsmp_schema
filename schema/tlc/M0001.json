@@ -6,7 +6,7 @@
     "A workaround is to require n (again) in the if section.",
     "RSMP requires numbers to be send as strings. Unfortunately this means we cannot validate the range.",
     "A patchy workaround is to match integers against a regex patterne,",
-    "so we at least check that only digits are present."
+    "so we at least check that only a certain number of digits are present."
   ],
   "allOf" : [
     { "properties" : { 

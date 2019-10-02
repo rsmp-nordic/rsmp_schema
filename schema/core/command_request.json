@@ -13,22 +13,10 @@
       "items" : {
         "type" : "object",
         "properties": {
-          "cCI" : {
-            "description" : "Command code id",
-            "type" : "string",
-            "pattern" : "^M[0-9]{4}$"
-          },
-          "n" : {
-            "description" : "Unique reference of the value",
-            "type" : "string"
-          },
-          "cO" : {
-            "description" : "Command",
-            "type" : "string"
-          },
-          "v" : {
-            "description" : "Value"
-          }
+          "cCI" : { "$ref": "definitions.json#/command_code" },
+          "n" : { "description" : "Unique reference of the value", "type" : "string" },
+          "cO" : { "description" : "Command", "type" : "string" },
+          "v" : { "description" : "Value" }
         },
         "required" : [ "cCI", "n", "cO", "v" ]
       }

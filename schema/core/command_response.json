@@ -7,10 +7,7 @@
       "type" : "string"
     },
     "cTS" : {
-      "description" : "Timestamp",
-      "type" : "string",
-      "$comment" : "Example: 2015-06-08T11:49:03.293Z",
-      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$"
+      "$ref": "definitions.json#/timestamp"
     },
     "rvs" : {
       "description" : "Command arguments",
@@ -20,9 +17,7 @@
         "type" : "object",
         "properties": {
           "cCI" : {
-            "description" : "Command code id",
-            "type" : "string",
-            "pattern" : "^M[0-9]{4}$"
+            "$ref": "definitions.json#/command_code"
           },
           "n" : {
             "description" : "Unique reference of the value",

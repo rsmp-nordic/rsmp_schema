@@ -2,11 +2,19 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	let(:message) {{
 	  "mType" => "rSMsg",
 	  "mId" => "4173c2c8-a933-43cb-9425-66d4613731ed",
+	  "type" => "CommandRequest",
 	  "siteId" => [
 	    { "sId" => "RN+SI0001" }
 	  ],
-	  "type" => "MessageAck",
-	  "oMId" => "92b9706d-0466-4518-8663-00b9690e9c41"
+	  "cId" => "O+14439=481WA001",
+	  "arg" => [
+	    {
+	      "cCI" => "M0001",
+	      "n" => "status",
+	      "cO" => "setValue",
+	      "v" => "YellowFlash"
+	    }
+	  ]
 	}}
 
 	it 'accepts valid message' do
