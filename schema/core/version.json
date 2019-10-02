@@ -2,9 +2,7 @@
   "title" :  "Version",
   "description" :  "Version message",
   "properties" : {
-    "mId" : {
-      "$ref": "definitions.json#/message_id"
-    },
+    "mId" : { "$ref": "definitions.json#/message_id" },
     "RSMP" : {
       "description" : "Supported RSMP versions",
       "type" : "array",
