@@ -33,7 +33,11 @@
     "type" : "string",
     "pattern" : "^S[0-9]{4}$"
   },
-  "component_id": {
+  "alarm_code": {
+    "description" : "Alarm code id",
+    "type" : "string",
+    "pattern" : "^A[0-9]{4}$"
+  },  "component_id": {
     "description" : "Compoment id",
     "type" : "string"
   }

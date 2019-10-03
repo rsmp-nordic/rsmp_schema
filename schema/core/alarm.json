@@ -1,26 +1,56 @@
 {
   "title" :  "Alarm",
-  "description" :  "Alarm message",
+  "description" :  "Alarm messsage",
   "properties" : {
-    "cId" : {
-      "description" : "Compoment id",
-      "type" : "string"
+    "mId" : { "$ref": "definitions.json#/message_id" },
+    "cId" : { "$ref": "definitions.json#/component_id" },
+    "aCId" : { "$ref": "definitions.json#/alarm_code" },
+    "xACId" : { "description" : "External alarm code id", "type" : "string" },
+    "aSp" : {
+      "description" : "Alarm message variant",
+      "type" : "string",
+      "enum" : [ "Issue", "Acknowledge", "Suspend", "Resume" ]  
     },
-    "arg" : {
-      "description" : "Command arguments",
+    "ack" : {
+      "description" : "Acknowledgement",
+      "type" : "string",
+      "enum" : [ "Acknowledged", "notAcknowledged" ]  
+    },
+    "aS" : {
+      "description" : "Status",
+      "type" : "string",
+      "enum" : [ "inActive", "Active" ]  
+    },
+    "sS" : {
+      "description" : "Suspended",
+      "type" : "string",
+      "enum" : [ "suspended", "notSuspended" ]  
+    },
+    "aTs" : { "$ref": "definitions.json#/timestamp" },
+    "cat" : {
+      "description" : "Category",
+      "type" : "string",
+      "enum" : [ "T", "D" ]  
+    },
+    "pri" : {
+      "description" : "Priority",
+      "type" : "string",
+      "enum" : [ "1", "2", "3" ]  
+    },
+    "rvs" : {
+      "description" : "Return values",
       "type" : "array",
       "minItems": 1,
       "items" : {
         "type" : "object",
         "properties": {
-          "cCI" : { "$ref": "definitions.json#/command_code" },
           "n" : { "description" : "Unique reference of the value", "type" : "string" },
-          "cO" : { "description" : "Command", "type" : "string" },
-          "v" : { "description" : "Value" }
+          "v" : { "description" : "Value", "type" : "string" }
         },
-        "required" : [ "cCI", "n", "cO", "v" ]
+        "required" : [ "n", "v" ],
+        "additionProperties": false
       }
     }
   },
-  "required" : ["cId", "arg"]
+  "required" : [ "mId", "cId", "aCId", "xACId", "aSp", "ack", "aS", "aTs", "sS", "cat", "pri", "rvs" ]
 }
