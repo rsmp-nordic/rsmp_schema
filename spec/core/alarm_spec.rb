@@ -255,14 +255,6 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  ])
   end
 
-  it 'catches empty rvs array' do
-		invalid = message.dup
-		invalid["rvs"].clear
-	  expect( validate(invalid) ).to eq([
-	  	["/rvs", "minItems"]
-	  ])
-  end
-
   it 'catches bad rvs type' do
 		invalid = message.dup
 		invalid["rvs"] = {}

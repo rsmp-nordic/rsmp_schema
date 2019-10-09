@@ -40,7 +40,6 @@
     "rvs" : {
       "description" : "Return values",
       "type" : "array",
-      "minItems": 1,
       "items" : {
         "type" : "object",
         "properties": {
