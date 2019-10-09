@@ -26,17 +26,17 @@
   "command_code": {
     "description" : "Command code id",
     "type" : "string",
-    "pattern" : "^M[0-9]{4}$"
+    "pattern" : "^M"
   },
   "status_code": {
     "description" : "Status code id",
     "type" : "string",
-    "pattern" : "^S[0-9]{4}$"
+    "pattern" : "^S"
   },
   "alarm_code": {
     "description" : "Alarm code id",
     "type" : "string",
-    "pattern" : "^A[0-9]{4}$"
+    "pattern" : "^A"
   },  "component_id": {
     "description" : "Compoment id",
     "type" : "string"
