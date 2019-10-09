@@ -89,7 +89,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  ])
 	end
 
-  it 'catches wrong astate type' do
+  it 'catches wrong state type' do
 		invalid = message.dup
 		invalid['aSp'] = 123
 	  expect( validate(invalid) ).to eq([
@@ -244,6 +244,62 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 		invalid['aTs'] = 123
 	  expect( validate(invalid) ).to eq([
 	  	["/aTs", "string"]
+	  ])
+  end
+
+  it 'catches missing rvs' do
+		invalid = message.dup
+		invalid.delete 'rvs'
+	  expect( validate(invalid) ).to eq([
+	  	["", "required", {"missing_keys"=>["rvs"]}]
+	  ])
+  end
+
+  it 'catches empty rvs array' do
+		invalid = message.dup
+		invalid["rvs"].clear
+	  expect( validate(invalid) ).to eq([
+	  	["/rvs", "minItems"]
+	  ])
+  end
+
+  it 'catches bad rvs type' do
+		invalid = message.dup
+		invalid["rvs"] = {}
+	  expect( validate(invalid) ).to eq([
+	  	["/rvs", "array"]
+	  ])
+  end
+
+  it 'catches missing alarm name' do
+		invalid = message.dup
+		invalid["rvs"].first.delete 'n'
+	  expect( validate(invalid) ).to eq([
+	  	["/rvs/0", "required", {"missing_keys"=>["n"]}]
+	  ])
+  end
+
+  it 'catches bad alarm name' do
+		invalid = message.dup
+		invalid["rvs"].first['n'] = 3
+	  expect( validate(invalid) ).to eq([
+	  	["/rvs/0/n", "string"]
+	  ])
+  end
+
+  it 'catches missing alarm value' do
+		invalid = message.dup
+		invalid["rvs"].first.delete 'v'
+	  expect( validate(invalid) ).to eq([
+	  	["/rvs/0", "required", {"missing_keys"=>["v"]}]
+	  ])
+  end
+
+  it 'catches bad alarm value' do
+		invalid = message.dup
+		invalid["rvs"].first['v'] = 3
+	  expect( validate(invalid) ).to eq([
+	  	["/rvs/0/v", "string"]
 	  ])
   end
 
