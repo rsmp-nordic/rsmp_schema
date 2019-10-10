@@ -1,10 +1,9 @@
 # About
 JSON Schema for RSMP messages. The schema can be used to automatically validate RSMP messages.
 
-The schema is still experimental, and only covers a few select messages within in the SXL for Trafic Light Controllers:
+The schema so far covers the core specifiation and the SXL for Trafic Light Controllers:
+https://github.com/rsmp-nordic/rsmp_core
 https://github.com/rsmp-nordic/rsmp_sxl_traffic_lights
-
-However, the structure is setup to allow more message to be easilty added to the schema.
 
 More about JSON Schema:
 https://json-schema.org/
@@ -15,7 +14,7 @@ The schema is split into multiple files to enable reuse.
 An SXL defines massages specific to a particular type of equipment, but they all rely on the core part of the RSMP specification.
 
 To validate a message against a particular SXL, use the sxl.json file in the relevant folder.
-For example, to validate agaisnt the SXL for Trafic Light Controllers (TLCs), include 'tcl/sxl.json'
+For example, to validate against the SXL for Trafic Light Controllers (TLCs), include 'tcl/sxl.json'
 
 This main sxl.json file includes the core.json part, which contains validations for the RSMP core elements.
 Depending on the message type, commands.json, alarms.json, etc. will be included. That file in turn looks at the command/status/alarm code and includes the file describing the detailed parameters, arguments, etc.
@@ -58,7 +57,7 @@ puts schemer.valid? message     # => true
 ```
 
 ## RSpec tests
-The reposity includes RSpec test that checks the schema, by testing the result validating a set of valid and invalid RSMP messages using the json_schemer gem.
+The reposity includes RSpec test that checks the schema, by testing the result of validating a set of valid and invalid RSMP messages using the json_schemer gem.
 
 This is useful when developing the schema, to ensure it validates correctly.
 
