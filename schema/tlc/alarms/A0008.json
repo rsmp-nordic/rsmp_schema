@@ -1,0 +1,19 @@
+{
+  "allOf" : [
+    {
+      "description": "Dead lock error",
+      "properties" : { 
+        "n" : { "enum" : ["timeplan"] }
+      }
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "timeplan" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Current time plan",
+          "$ref": "../../core/definitions.json#/integer"
+				}
+      }}
+    }
+  ]
+}

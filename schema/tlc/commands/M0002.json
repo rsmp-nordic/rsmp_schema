@@ -1,0 +1,38 @@
+{
+  "allOf" : [
+    {
+      "properties" : { 
+        "description": "Sets current time plan<br>Requires security code 2",
+        "n" : { "enum" : ["status", "securityCode", "timeplan"] },
+        "cO" : { "const" : "setPlan" }
+      }
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "False: Controller uses time plan according to programming<br>True: Contoller uses time plan according to command",
+          "type" : "boolean"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Security code 2",
+          "type" : "string"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "timeplan" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "designation på time plan",
+          "$ref": "../../core/definitions.json#/integer"
+				}
+      }}
+    }
+  ]
+}

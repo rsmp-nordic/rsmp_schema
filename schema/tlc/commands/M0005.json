@@ -1,0 +1,38 @@
+{
+  "allOf" : [
+    {
+      "properties" : { 
+        "description": "Activate emergency route<br>Requires security code 2",
+        "n" : { "enum" : ["status", "securityCode", "emergencyroute"] },
+        "cO" : { "const" : "setEmergency" }
+      }
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "False: Activate emergency route<br>True: Deactivate emergency route",
+          "type" : "boolean"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Security code 2",
+          "type" : "string"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "emergencyroute" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Number of emergency route",
+          "$ref": "../../core/definitions.json#/integer"
+				}
+      }}
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "allOf" : [
+    {
+      "description": "Serious configuration error",
+    }
+  ]
+}

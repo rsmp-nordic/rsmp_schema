@@ -1,0 +1,17 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Traffic Controller starting",
+      "n" : { "enum" : ["status"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "False: Controller is not in start up mode<br>True: Controller is currently in start up mode",
+          "type" : "boolean"
+				}
+      }}
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Number of signal groups",
+      "n" : { "enum" : ["number"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "number" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Number of signal groups",
+          "$ref": "../../core/definitions.json#/integer"
+				}
+      }}
+    }
+  ]
+}

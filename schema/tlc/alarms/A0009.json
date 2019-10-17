@@ -1,0 +1,7 @@
+{
+  "allOf" : [
+    {
+      "description": "Other error",
+    }
+  ]
+}

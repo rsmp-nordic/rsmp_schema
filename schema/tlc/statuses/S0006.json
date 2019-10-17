@@ -1,0 +1,26 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Emergency stage",
+      "n" : { "enum" : ["status", "emergencystage"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "False: Emergency stage inactive<br>True: Emergency stage active",
+          "type" : "boolean"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "emergencystage" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Number of emergency stage",
+          "$ref": "../../core/definitions.json#/integer"
+				}
+      }}
+    }
+  ]
+}

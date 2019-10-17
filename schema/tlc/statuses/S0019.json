@@ -1,0 +1,17 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Number of traffic situations",
+      "n" : { "enum" : ["number"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "number" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Number of traffic situations",
+          "$ref": "../../core/definitions.json#/integer"
+				}
+      }}
+    }
+  ]
+}

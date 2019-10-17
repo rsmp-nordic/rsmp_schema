@@ -1,0 +1,28 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Operator logged in/out OP-panel",
+      "n" : { "enum" : ["user", "status"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "user" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "username: User currently logged in<br>nobody: No one logged in",
+          "type" : "string",
+          "enum" : ["[username]", "[nobody]"]
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "login: Somebody currently logged in<br>logout: Nobody currently logged in",
+          "type" : "string",
+          "enum" : ["login", "logout"]
+				}
+      }}
+    }
+  ]
+}

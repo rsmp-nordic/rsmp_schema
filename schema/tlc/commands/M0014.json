@@ -1,0 +1,38 @@
+{
+  "allOf" : [
+    {
+      "properties" : { 
+        "description": "Set command table",
+        "n" : { "enum" : ["plan", "status", "securityCode"] },
+        "cO" : { "const" : "setCommands" }
+      }
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "plan" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Plan to be changed",
+          "$ref": "../../core/definitions.json#/integer"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Command table. Defines command, <br>Each command are written as dd-ee where:<br>dd=Dynamic band number (from 1-10)<br>ee=Extension in seconds in this band<br><br>Each command is separated with a comma.<br><br>E.g. <br>dd-ee,dd-ee",
+          "type" : "string"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Security code 2",
+          "type" : "string"
+				}
+      }}
+    }
+  ]
+}

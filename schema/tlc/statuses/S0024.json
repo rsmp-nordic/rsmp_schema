@@ -1,0 +1,17 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Offset time",
+      "n" : { "enum" : ["status"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Offset table<br>Each offset time is written as pp-tt where:<br>pp=time plan<br>tt=offset time in seconds<br><br>Each offset time is separated with a comma<br><br><br>E.g.<br>pp-tt,pp-tt",
+          "type" : "string"
+				}
+      }}
+    }
+  ]
+}

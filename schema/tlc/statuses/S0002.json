@@ -1,0 +1,17 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Detector logic status",
+      "n" : { "enum" : ["detectorlogicstatus"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "detectorlogicstatus" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Detector logic status as text field",
+          "type" : "string"
+				}
+      }}
+    }
+  ]
+}

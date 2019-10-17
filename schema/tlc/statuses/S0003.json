@@ -1,0 +1,26 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Input status",
+      "n" : { "enum" : ["inputstatus", "extendedinputstatus"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "inputstatus" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Input status as text field",
+          "type" : "string"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "extendedinputstatus" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Extended input status as text field",
+          "type" : "string"
+				}
+      }}
+    }
+  ]
+}

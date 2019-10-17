@@ -1,0 +1,26 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Output status",
+      "n" : { "enum" : ["outputstatus", "extendedoutputstatus"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "outputstatus" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Output status as text field",
+          "type" : "string"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "extendedoutputstatus" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Extended output status as text field",
+          "type" : "string"
+				}
+      }}
+    }
+  ]
+}

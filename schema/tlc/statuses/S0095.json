@@ -1,0 +1,17 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Version av Traffic Controller",
+      "n" : { "enum" : ["status"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Manufacturer, product name and version of traffic controller",
+          "type" : "string"
+				}
+      }}
+    }
+  ]
+}

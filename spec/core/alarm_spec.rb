@@ -45,7 +45,8 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 		invalid = message.dup
 		invalid['aCId'] = "001"
 	  expect( validate(invalid) ).to eq([
-	  	["/aCId", "pattern"]
+	  	["/aCId", "pattern"],
+	  	["/aCId", "enum"]
 	  ])
 	end
 
@@ -53,7 +54,8 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 		invalid = message.dup
 		invalid['aCId'] = 123
 	  expect( validate(invalid) ).to eq([
-	  	["/aCId", "string"]
+	  	["/aCId", "string"],
+	  	["/aCId", "enum"]
 	  ])
   end
 

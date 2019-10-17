@@ -1,0 +1,39 @@
+{
+  "allOf" : [
+    {
+      "properties" : { 
+        "description": "Set security code",
+        "n" : { "enum" : ["status", "oldSecurityCode", "newSecurityCode"] },
+        "cO" : { "const" : "setSecurityCode" }
+      }
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Level1: Change security code 1<br>Level2: Change security code 2",
+          "type" : "string",
+          "enum" : ["Level1", "Level2"]
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "oldSecurityCode" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Previous security code",
+          "type" : "string"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "newSecurityCode" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "New security code",
+          "type" : "string"
+				}
+      }}
+    }
+  ]
+}

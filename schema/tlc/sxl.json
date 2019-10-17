@@ -6,11 +6,19 @@
 		},
 	  {
 	    "if" : { "required" : ["type"], "properties" : { "type" : { "const" : "CommandRequest" }}},
-	    "then" : { "properties" : { "arg" : { "$ref" : "commands.json" }}}
+	    "then" : { "$ref" : "commands/command_requests.json" }
 	  },
 	  {
 	    "if" : { "required" : ["type"], "properties" : { "type" : { "const" : "CommandResponse" }}},
-	    "then" : {   "properties" : { "rvs" : { "$ref" : "commands.json" }}}
+	    "then" : { "$ref" : "commands/command_responses.json" }
+	  },
+	  {
+	    "if" : { "required" : ["type"], "properties" : { "type" : { "enum" : ["StatusRequest","StatusResponse","StatusSubscribe","StatusUnsubscribe","StatusUpdate"] }}},
+	    "then" : { "$ref" : "statuses/statuses.json" }
+	  },
+	  {
+	    "if" : { "required" : ["type"], "properties" : { "type" : { "const" : "Alarm" }}},
+	    "then" : { "$ref" : "alarms/alarms.json" }
 	  }
   ]
 }

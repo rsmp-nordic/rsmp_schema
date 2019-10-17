@@ -1,0 +1,48 @@
+{
+  "allOf" : [
+    {
+      "description": "Detector error (hardware)",
+      "properties" : { 
+        "n" : { "enum" : ["detector", "type", "errormode", "manual"] }
+      }
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "detector" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Designation of the detector",
+          "$ref": "../../core/definitions.json#/integer"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "type" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Type of detector.<br>loop: Inductive detector loop<br>input: External input",
+          "type" : "string",
+          "enum" : ["loop", "input"]
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "errormode" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Dectector forced on/off while detector error",
+          "type" : "string",
+          "enum" : ["on", "off"]
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "manual" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Manually controlled detector logic (True/False)",
+          "type" : "boolean"
+				}
+      }}
+    }
+  ]
+}

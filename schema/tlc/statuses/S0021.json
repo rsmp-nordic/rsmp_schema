@@ -1,0 +1,17 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Manually set detector logic",
+      "n" : { "enum" : ["detectorlogics"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "detectorlogics" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Manually set detector logics (1/0) as text field",
+          "type" : "string"
+				}
+      }}
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Fixed time control",
+      "n" : { "enum" : ["intersection", "status"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "intersection" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic controller)<br>Other value: Intersection number",
+          "$ref": "../../core/definitions.json#/integer"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "False:  Fixed time control inactive<br>True:  Fixed time control active",
+          "type" : "boolean"
+				}
+      }}
+    }
+  ]
+}

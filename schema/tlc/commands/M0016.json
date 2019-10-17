@@ -1,0 +1,29 @@
+{
+  "allOf" : [
+    {
+      "properties" : { 
+        "description": "Set week time table",
+        "n" : { "enum" : ["status", "securityCode"] },
+        "cO" : { "const" : "setWeekTable" }
+      }
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Week time table. Defines time table to use for each week day<br>Each segment is written as d-t where:<br>d=day of week<br>t=time table nr<br><br>Day of week legend:<br>0=Monday<br>1=Tuesday<br>2=Wednesday<br>3=Thursday<br>4=Friday<br>5=Saturday<br>6=Sunday<br><br>Each segment is separated with a comma<br><br>E.g.<br>d-t,d-t",
+          "type" : "string"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Security code 2",
+          "type" : "string"
+				}
+      }}
+    }
+  ]
+}

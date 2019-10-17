@@ -1,0 +1,26 @@
+{
+  "allOf" : [
+    { "properties" : { 
+      "description": "Controller switched on",
+      "n" : { "enum" : ["intersection", "status"] }
+    }},
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "intersection" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic controller)<br>Other value: Intersection number",
+          "$ref": "../../core/definitions.json#/integer"
+				}
+      }}
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "False: Traffic Controller in dark mode<br>True: Traffic Controller not in dark mode",
+          "type" : "boolean"
+				}
+      }}
+    }
+  ]
+}

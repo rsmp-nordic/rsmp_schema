@@ -1,0 +1,20 @@
+{
+  "allOf" : [
+    {
+      "description": "Serious lamp error",
+      "properties" : { 
+        "n" : { "enum" : ["color"] }
+      }
+    },
+    {
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "color" }}},
+      "then" : { "properties" : {
+        "v" : {
+          "$description": "Color of lamp",
+          "type" : "string",
+          "enum" : ["red", "yellow", "green"]
+				}
+      }}
+    }
+  ]
+}
