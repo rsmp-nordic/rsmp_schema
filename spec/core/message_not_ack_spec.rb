@@ -7,7 +7,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  ],
 	  "type" => "MessageNotAck",
 	  "oMId" => "92b9706d-0466-4518-8663-00b9690e9c41",
-	  "rea" => "Unknown packet type: Watchdddog"
+	  "rea" => "Unknown json type: Watchdog"
 	}}
 
 	it 'accepts valid message' do
