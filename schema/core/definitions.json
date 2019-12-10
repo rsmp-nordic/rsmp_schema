@@ -21,7 +21,7 @@
     "description" : "Version",
     "type": "string",
     "$comment" : "Example: 1.2.3 or 1.2",
-    "pattern" : "^[0-9]{1,2}\\.[0-9]{1,2}(\\.[0-9]{1,2})?$"
+    "pattern" : "^[0-9]{1,2}\\.[0-9]{1,2}(\\.[0-9]{1,2})?"
   },
   "command_code": {
     "description" : "Command code id",
