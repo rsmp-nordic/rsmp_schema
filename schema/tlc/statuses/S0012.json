@@ -18,7 +18,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: All red disabled<br>True: All red enabled",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     }

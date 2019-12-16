@@ -12,7 +12,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: Deactivate manual control of detector logic<br>True: Activate manual control of detector logic",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     },
@@ -30,7 +31,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: Deactivate detector logic<br>True: Activate detector logic",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     }

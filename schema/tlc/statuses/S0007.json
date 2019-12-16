@@ -18,7 +18,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: Traffic Controller in dark mode<br>True: Traffic Controller not in dark mode",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     }

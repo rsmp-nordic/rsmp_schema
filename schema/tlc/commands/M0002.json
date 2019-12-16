@@ -12,7 +12,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: Controller uses time plan according to programming<br>True: Contoller uses time plan according to command",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     },

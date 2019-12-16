@@ -18,7 +18,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: Manual control inactive<br>True: Manual control active",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     }

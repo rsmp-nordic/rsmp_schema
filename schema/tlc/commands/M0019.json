@@ -12,7 +12,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: Force input<br>True: Release input",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     },
@@ -39,7 +40,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: input forced to False<br>True: input forced to True",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     }

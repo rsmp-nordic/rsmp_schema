@@ -12,7 +12,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: Activate emergency route<br>True: Deactivate emergency route",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     },

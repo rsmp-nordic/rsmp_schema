@@ -12,7 +12,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "True: Restart controller",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     },

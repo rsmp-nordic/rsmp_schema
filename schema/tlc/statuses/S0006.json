@@ -9,7 +9,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: Emergency stage inactive<br>True: Emergency stage active",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     },

@@ -12,7 +12,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: Deactivate fixed time control<br>True: Activate fixed time control",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     },

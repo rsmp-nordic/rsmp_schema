@@ -18,7 +18,8 @@
       "then" : { "properties" : {
         "v" : {
           "$description": "False: Isolated control disabled<br>True: Isolated control enabled (Vehicle actuated control or Fixed time control)",
-          "type" : "boolean"
+          "type" : "string",
+          "enum" : [ "True", "False" ]
 				}
       }}
     }
