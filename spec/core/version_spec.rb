@@ -141,7 +141,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 
   it 'catches bad SXL version' do
 		invalid = message.dup
-		invalid['SXL'] = '1.0.1-preview'
+		invalid['SXL'] = 'Release 1.0.1'
 	  expect( validate(invalid) ).to eq([
 	  	["/SXL", "pattern"]
 	  ])
