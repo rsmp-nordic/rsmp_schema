@@ -6,9 +6,9 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 		"cId" => "AB+84001=860SG001",
 		"aCId" => "A0001",
 		"xACId" => "Serious lamp error",
-		"aSp" => "Issue",
+		"aSp" => "issue",
 		"ack" => "notAcknowledged",
-		"aS" => "Active",
+		"aS" => "active",
 		"sS" => "notSuspended",
 		"aTs" => "2009-10-01T11:59:31.571Z",
 		"cat" => "D",
@@ -21,7 +21,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 		]
 	}}
 
-	it 'accepts valid status request' do
+	it 'accepts valid alarm request' do
 	  expect( validate(message) ).to be_nil
   end
 
