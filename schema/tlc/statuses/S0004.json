@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "outputstatus" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Output status as text field",
           "type" : "string"
 				}
@@ -16,7 +16,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "extendedoutputstatus" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Extended output status as text field",
           "type" : "string"
 				}

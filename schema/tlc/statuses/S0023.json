@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Command table. Defines command, <br>Each command are written as pp-dd-ee where:<br>pp=Time plan<br>dd=Dynamic band number (from 1-10)<br>ee=Extension in seconds in this band<br><br>Each command is separated with a comma.<br><br>E.g. <br>pp-dd-ee,pp-dd-ee",
           "type" : "string"
 				}

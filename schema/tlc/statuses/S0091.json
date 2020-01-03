@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "user" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "username: User currently logged in<br>nobody: No one logged in",
           "type" : "string",
           "enum" : ["[username]", "[nobody]"]
@@ -17,7 +17,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "login: Somebody currently logged in<br>logout: Nobody currently logged in",
           "type" : "string",
           "enum" : ["login", "logout"]

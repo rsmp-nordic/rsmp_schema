@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Current traffic situation",
           "$ref": "../../core/definitions.json#/integer"
 				}

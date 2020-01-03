@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "intersection" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic controller)<br>Other value: Intersection number",
           "$ref": "../../core/definitions.json#/integer"
 				}
@@ -16,7 +16,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "controlmode" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Startup mode<br>Normal control<br>Standby mode<br>Failure mode<br>Test mode",
           "type" : "string",
           "enum" : ["startup", "control", "standby", "failure", "test"]

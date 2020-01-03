@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "signalgroupstatus" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Signal group status as text field",
           "type" : "string"
 				}
@@ -16,7 +16,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "cyclecounter" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Cycle counter",
           "$ref": "../../core/definitions.json#/integer"
 				}
@@ -25,7 +25,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "basecyclecounter" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Base cycle counter",
           "$ref": "../../core/definitions.json#/integer"
 				}
@@ -34,7 +34,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "stage" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Current stage (isolated)",
           "$ref": "../../core/definitions.json#/integer"
 				}

@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "start" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
           "type" : "string"
 				}
@@ -16,7 +16,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "occupancy" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Occupancy in percent (%) (0-100)<br> Value expressed as an integer with a range of 0-100.<br> Contains data from all detector logics. Each detector logic is separated with a colon. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
           "type" : "string"
 				}

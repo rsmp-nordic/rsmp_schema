@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "starttime" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
           "type" : "string"
 				}
@@ -16,7 +16,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "vehicles" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of vehicles on a given detector logic (since last update)",
           "$ref": "../../core/definitions.json#/integer"
 				}

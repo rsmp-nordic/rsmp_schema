@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "start" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
           "type" : "string"
 				}
@@ -16,7 +16,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "P" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of cars<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a colon. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
           "type" : "string"
 				}
@@ -25,7 +25,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "PS" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of cars with trailers<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a colon. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
           "type" : "string"
 				}
@@ -34,7 +34,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "L" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of trucks<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a colon. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
           "type" : "string"
 				}
@@ -43,7 +43,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "LS" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of trucks with trailers<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a colon. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
           "type" : "string"
 				}
@@ -52,7 +52,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "B" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of busses<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a colon. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
           "type" : "string"
 				}
@@ -61,7 +61,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "SP" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of trams<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a colon. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
           "type" : "string"
 				}
@@ -70,7 +70,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "MC" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of motor cycles<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a colon. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
           "type" : "string"
 				}
@@ -79,7 +79,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "C" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of bicycles<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a colon. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
           "type" : "string"
 				}
@@ -88,7 +88,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "F" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of pedestrians<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a colon. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
           "type" : "string"
 				}

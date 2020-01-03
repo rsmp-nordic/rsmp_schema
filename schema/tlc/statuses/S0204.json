@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "starttime" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
           "type" : "string"
 				}
@@ -16,7 +16,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "P" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of cars",
           "$ref": "../../core/definitions.json#/integer"
 				}
@@ -25,7 +25,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "PS" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of cars with trailers",
           "$ref": "../../core/definitions.json#/integer"
 				}
@@ -34,7 +34,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "L" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of trucks",
           "$ref": "../../core/definitions.json#/integer"
 				}
@@ -43,7 +43,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "LS" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of trucks with trailers",
           "$ref": "../../core/definitions.json#/integer"
 				}
@@ -52,7 +52,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "B" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of busses",
           "$ref": "../../core/definitions.json#/integer"
 				}
@@ -61,7 +61,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "SP" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of trams",
           "$ref": "../../core/definitions.json#/integer"
 				}
@@ -70,7 +70,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "MC" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of motor cycles",
           "$ref": "../../core/definitions.json#/integer"
 				}
@@ -79,7 +79,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "C" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of bicycles",
           "$ref": "../../core/definitions.json#/integer"
 				}
@@ -88,7 +88,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "F" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of pedestrians",
           "$ref": "../../core/definitions.json#/integer"
 				}

@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "False: Emergency stage inactive<br>True: Emergency stage active",
           "type" : "string",
           "enum" : [ "True", "False" ]
@@ -17,7 +17,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "emergencystage" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Number of emergency stage",
           "$ref": "../../core/definitions.json#/integer"
 				}

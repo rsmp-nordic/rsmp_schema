@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "inputstatus" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Input status as text field",
           "type" : "string"
 				}
@@ -16,7 +16,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "extendedinputstatus" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Extended input status as text field",
           "type" : "string"
 				}

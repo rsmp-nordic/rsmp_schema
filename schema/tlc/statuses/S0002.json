@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "detectorlogicstatus" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Detector logic status as text field",
           "type" : "string"
 				}

@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "Cycle time table<br>Each cycle time is written as pp-tt where:<br>pp=time plan<br>tt=cycle time in seconds<br><br>Each cycle time is separated with a comma<br><br><br>E.g.<br>pp-tt,pp-tt",
           "type" : "string"
 				}

@@ -7,7 +7,7 @@
     {
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
       "then" : { "properties" : {
-        "v" : {
+        "s" : {
           "$description": "False: Controller is not in start up mode<br>True: Controller is currently in start up mode",
           "type" : "string",
           "enum" : [ "True", "False" ]
