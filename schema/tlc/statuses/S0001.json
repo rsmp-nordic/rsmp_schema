@@ -9,7 +9,8 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Signal group status as text field",
-          "type" : "string"
+          "type" : "string",
+          "pattern" : "^[a-hA-G0-9N-P]+$"
 				}
       }}
     },
