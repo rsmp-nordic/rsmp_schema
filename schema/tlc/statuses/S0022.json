@@ -8,7 +8,7 @@
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
       "then" : { "properties" : {
         "s" : {
-          "$description": "Comma separated list of configured time plans. E.g. "1,2,3,5"",
+          "$description": "Comma separated list of configured time plans. E.g. '1,2,3,5'",
           "type" : "string"
 				}
       }}
