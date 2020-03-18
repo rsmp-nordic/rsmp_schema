@@ -10,7 +10,7 @@
         "s" : {
           "$description": "Offset table<br>Each offset time is written as pp-tt where:<br>pp=time plan<br>tt=offset time in seconds<br><br>Each offset time is separated with a comma<br><br><br>E.g.<br>pp-tt,pp-tt",
           "type" : "string",
-          "pattern" : "^(\\d{1,2}\\-\\d{1,2})(?:,(\\d{1,2}\\-\\d{1,2}))$"
+          "pattern" : "^(\\d{1,2}\\-\\d{1,2})(?:,(\\d{1,2}\\-\\d{1,2}))*$"
 				}
       }}
     }
