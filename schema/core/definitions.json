@@ -14,8 +14,8 @@
   "integer" : {
     "description" : "Integer as string",
     "type": "string",
-    "$comment" : "Example: 123",
-    "pattern": "^[0-9]+$"
+    "$comment" : "Example: 123 or -123",
+    "pattern": "^\\-?[0-9]+$"
   },
   "version": {
     "description" : "Version",
@@ -50,7 +50,7 @@
   "integer_list": {
     "description" : "Comma-separated list of integers as strings",
     "type" : "string",
-    "pattern" : "^(\\d+)(?:,(\\d+))*$"
+    "pattern" : "^(\\-?\\d+)(?:,(\\-?\\d+))*$"
   },
   "boolean_list": {
     "description" : "Comma-separated list of booleans as strings",
