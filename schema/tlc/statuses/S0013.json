@@ -9,7 +9,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic controller)<br>Other value: Intersection number",
-          "$ref": "../../core/definitions.json#/integer"
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     },
@@ -17,8 +17,8 @@
       "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
       "then" : { "properties" : {
         "s" : {
-          "$description": "0: disabled<br>1: dark mode<br>2: yellow flash",
-          "$ref": "../../core/definitions.json#/integer"
+          "$description": "Comma-separted list of integeres. 0: disabled<br>1: dark mode<br>2: yellow flash",
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     }
