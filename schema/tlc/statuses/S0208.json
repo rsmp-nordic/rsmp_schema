@@ -18,7 +18,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Number of cars<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a comma. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
-          "$ref": "../../core/definitions.json#/integer-list"
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     },
@@ -27,7 +27,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Number of cars with trailers<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a comma. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
-          "$ref": "../../core/definitions.json#/integer-list"
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     },
@@ -36,7 +36,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Number of trucks<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a comma. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
-          "$ref": "../../core/definitions.json#/integer-list"
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     },
@@ -45,7 +45,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Number of trucks with trailers<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a comma. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
-          "$ref": "../../core/definitions.json#/integer-list"
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     },
@@ -54,7 +54,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Number of busses<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a comma. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
-          "$ref": "../../core/definitions.json#/integer-list"
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     },
@@ -63,7 +63,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Number of trams<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a comma. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
-          "$ref": "../../core/definitions.json#/integer-list"
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     },
@@ -72,7 +72,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Number of motor cycles<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a comma. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
-          "$ref": "../../core/definitions.json#/integer-list"
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     },
@@ -81,7 +81,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Number of bicycles<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a comma. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
-          "$ref": "../../core/definitions.json#/integer-list"
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     },
@@ -90,7 +90,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Number of pedestrians<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a comma. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
-          "$ref": "../../core/definitions.json#/integer-list"
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     }
