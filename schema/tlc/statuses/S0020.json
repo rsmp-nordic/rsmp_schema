@@ -9,7 +9,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic controller)<br>Other value: Intersection number",
-          "$ref": "../../core/definitions.json#/integer"
+          "$ref": "../../core/definitions.json#/integer_list"
 				}
       }}
     },
