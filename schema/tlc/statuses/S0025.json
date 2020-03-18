@@ -9,7 +9,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Time stamp for the minimum time for the signal group to go to green. If the signal group is green, it is the minimum time for the next green.<br>Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
-          "type" : "string"
+          "$ref": "../../core/definitions.json#/timestamp"
 				}
       }}
     },
@@ -18,7 +18,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Time stamp for the maximum time for the signal group to go to green. If the signal group is green, it is the maximum time for the next green.<br>Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
-          "type" : "string"
+          "$ref": "../../core/definitions.json#/timestamp"
 				}
       }}
     },
@@ -27,7 +27,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Time stamp for the most likely time for the signal group to go to green. If the signal group is green, it is the most likely time for the next green.<br>Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
-          "type" : "string"
+          "$ref": "../../core/definitions.json#/timestamp"
 				}
       }}
     },
@@ -45,7 +45,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Time stamp for the minimum time for the signal group to go to red. If the signal group is red, it is the minimum time for the next red.<br>Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
-          "type" : "string"
+          "$ref": "../../core/definitions.json#/timestamp"
 				}
       }}
     },
@@ -54,7 +54,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Time stamp for the maximum time for the signal group to go to red. If the signal group is red, it is the maximum time for the next red.<br>Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
-          "type" : "string"
+          "$ref": "../../core/definitions.json#/timestamp"
 				}
       }}
     },
@@ -63,7 +63,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Time stamp for the most likely time for the signal group to go to red. If the signal group is red, it is the most likely time for the next red.<br>Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
-          "type" : "string"
+          "$ref": "../../core/definitions.json#/timestamp"
 				}
       }}
     },
