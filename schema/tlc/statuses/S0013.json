@@ -18,7 +18,8 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "Comma-separted list of integeres. 0: disabled<br>1: dark mode<br>2: yellow flash",
-          "$ref": "../../core/definitions.json#/integer_list"
+          "type" : "string",
+          "pattern" : "^([0-2])(?:,([0-2]))*$"
 				}
       }}
     }
