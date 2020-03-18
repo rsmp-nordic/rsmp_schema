@@ -2,10 +2,10 @@
   "allOf" : [
     { "properties" : { 
       "description": "Time-of-Green / Time-of-Red",
-      "n" : { "enum" : ["minToGEstimate   ", "maxToGEstimate   ", "likelyToGEstimate   ", "ToGConfidence", "minToREstimate   ", "maxToREstimate", "likelyToREstimate   ", "ToRConfidence"] }
+      "n" : { "enum" : ["minToGEstimate", "maxToGEstimate", "likelyToGEstimate", "ToGConfidence", "minToREstimate", "maxToREstimate", "likelyToREstimate", "ToRConfidence"] }
     }},
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "minToGEstimate   " }}},
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "minToGEstimate" }}},
       "then" : { "properties" : {
         "s" : {
           "$description": "Time stamp for the minimum time for the signal group to go to green. If the signal group is green, it is the minimum time for the next green.<br>Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
@@ -14,7 +14,7 @@
       }}
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "maxToGEstimate   " }}},
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "maxToGEstimate" }}},
       "then" : { "properties" : {
         "s" : {
           "$description": "Time stamp for the maximum time for the signal group to go to green. If the signal group is green, it is the maximum time for the next green.<br>Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
@@ -23,7 +23,7 @@
       }}
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "likelyToGEstimate   " }}},
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "likelyToGEstimate" }}},
       "then" : { "properties" : {
         "s" : {
           "$description": "Time stamp for the most likely time for the signal group to go to green. If the signal group is green, it is the most likely time for the next green.<br>Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
@@ -41,7 +41,7 @@
       }}
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "minToREstimate   " }}},
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "minToREstimate" }}},
       "then" : { "properties" : {
         "s" : {
           "$description": "Time stamp for the minimum time for the signal group to go to red. If the signal group is red, it is the minimum time for the next red.<br>Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
@@ -59,7 +59,7 @@
       }}
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "likelyToREstimate   " }}},
+      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "likelyToREstimate" }}},
       "then" : { "properties" : {
         "s" : {
           "$description": "Time stamp for the most likely time for the signal group to go to red. If the signal group is red, it is the most likely time for the next red.<br>Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
