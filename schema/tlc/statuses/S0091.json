@@ -9,8 +9,7 @@
       "then" : { "properties" : {
         "s" : {
           "$description": "username: User currently logged in<br>nobody: No one logged in",
-          "type" : "string",
-          "enum" : ["[username]", "[nobody]"]
+          "type" : "string"
 				}
       }}
     },
