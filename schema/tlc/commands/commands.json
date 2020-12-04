@@ -2,7 +2,7 @@
   "items" : {
     "allOf" : [
       {
-      	"properties" : { "cCI" : { "enum": ["M0001", "M0002", "M0003", "M0004", "M0005", "M0006", "M0007", "M0008", "M0010", "M0011", "M0012", "M0013", "M0014", "M0015", "M0016", "M0017", "M0018", "M0019", "M0103"] }}
+        "properties" : { "cCI" : { "enum": ["M0001", "M0002", "M0003", "M0004", "M0005", "M0006", "M0007", "M0008", "M0010", "M0011", "M0012", "M0013", "M0014", "M0015", "M0016", "M0017", "M0018", "M0019", "M0020", "M0021", "M0103", "M0104"] }}
 			},
       {
         "if": { "required" : ["cCI"], "properties" : { "cCI": { "const": "M0001" }}},
@@ -77,8 +77,20 @@
         "then" : { "$ref" : "M0019.json" }
       },
       {
+        "if": { "required" : ["cCI"], "properties" : { "cCI": { "const": "M0020" }}},
+        "then" : { "$ref" : "M0020.json" }
+      },
+      {
+        "if": { "required" : ["cCI"], "properties" : { "cCI": { "const": "M0021" }}},
+        "then" : { "$ref" : "M0021.json" }
+      },
+      {
         "if": { "required" : ["cCI"], "properties" : { "cCI": { "const": "M0103" }}},
         "then" : { "$ref" : "M0103.json" }
+      },
+      {
+        "if": { "required" : ["cCI"], "properties" : { "cCI": { "const": "M0104" }}},
+        "then" : { "$ref" : "M0104.json" }
       }
     ]
   }
