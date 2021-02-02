@@ -9,17 +9,17 @@
     "aSp" : {
       "description" : "Alarm message variant",
       "type" : "string",
-      "enum" : [ "issue", "acknowledge", "suspend", "resume" ]
+      "enum" : [ "Issue", "Acknowledge", "Suspend", "Resume" ]
     },
     "ack" : {
       "description" : "Acknowledgement",
       "type" : "string",
-      "enum" : [ "acknowledged", "notAcknowledged" ]
+      "enum" : [ "Acknowledged", "notAcknowledged" ]
     },
     "aS" : {
       "description" : "Status",
       "type" : "string",
-      "enum" : [ "inactive", "active" ]
+      "enum" : [ "inActive", "Active" ]
     },
     "sS" : {
       "description" : "Suspended",
