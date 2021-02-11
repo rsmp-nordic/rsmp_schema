@@ -17,6 +17,7 @@
             "MessageNotAck",
             "Version",
             "AggregatedStatus",
+            "AggregatedStatusRequest",
             "Watchdog",
             "Alarm",
             "CommandRequest",
