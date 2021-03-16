@@ -1,40 +1,79 @@
 {
   "allOf" : [
     {
-      "properties" : { 
-        "description": "Sets manual activation of detector logic.<br>Requires security code 2",
-        "n" : { "enum" : ["status", "securityCode", "mode"] },
-        "cO" : { "const" : "setForceDetectorLogic" }
+      "description" : "Sets manual activation of detector logic\n\nSet given detector logic (1-255) to either true or false.\n\nCan e.g. be used to connect RSMP compatible detection equipment to the traffic light controller. Can also be used for prioritization.\n\nRequires security code 2",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status",
+            "securityCode",
+            "mode"
+          ]
+        },
+        "cO" : {
+          "const" : "setForceDetectorLogic"
+        }
       }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "False: Deactivate manual control of detector logic<br>True: Activate manual control of detector logic",
-          "type" : "string",
-          "enum" : [ "True", "False" ]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "False: Deactivate manual control of detector logic\nTrue: Activate manual control of detector logic",
+            "type" : "boolean"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Security code 2",
-          "type" : "string"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "mode" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "False: Deactivate detector logic<br>True: Activate detector logic",
-          "type" : "string",
-          "enum" : [ "True", "False" ]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "mode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "False: Deactivate detector logic\nTrue: Activate detector logic",
+            "type" : "boolean"
+          }
+        }
+      }
     }
   ]
 }

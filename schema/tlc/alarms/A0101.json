@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description": "Pushbutton error",
+      "description" : "Pushbutton error\n\nUsed for push buttons"
     }
   ]
 }

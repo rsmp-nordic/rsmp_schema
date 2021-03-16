@@ -1,20 +1,39 @@
 {
   "allOf" : [
     {
-      "description": "Serious lamp error",
-      "properties" : { 
-        "n" : { "enum" : ["color"] }
+      "description" : "Serious lamp error\n\nUsed for lamp errors\n\nIs a \"major fault\" defined according to 3.8 in EN12675 which causes the controller to switch to a \"failure mode\" according to 3.6 in EN12675.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "color"
+          ]
+        }
       }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "color" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Color of lamp",
-          "type" : "string",
-          "enum" : ["red", "yellow", "green"]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "color"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Color of lamp",
+            "type" : "string",
+            "enum" : [
+              "red",
+              "yellow",
+              "green"
+            ]
+          }
+        }
+      }
     }
   ]
 }

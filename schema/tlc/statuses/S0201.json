@@ -1,26 +1,55 @@
 {
   "allOf" : [
-    { "properties" : { 
-      "description": "Traffic Counting: Number of vehicles",
-      "n" : { "enum" : ["starttime", "vehicles"] }
-    }},
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "starttime" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
-          "$ref": "../../core/definitions.json#/timestamp"
-				}
-      }}
+      "description" : "Traffic Counting: Number of vehicles\n\nUsed for Traffic counting.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "starttime",
+            "vehicles"
+          ]
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "vehicles" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "Number of vehicles on a given detector logic (since last update)",
-          "$ref": "../../core/definitions.json#/integer"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "starttime"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
+            "type" : "string"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "vehicles"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Number of vehicles on a given detector logic (since last update)",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
     }
   ]
 }

@@ -1,27 +1,61 @@
 {
   "allOf" : [
-    { "properties" : { 
-      "description": "Operator logged in/out OP-panel",
-      "n" : { "enum" : ["user", "status"] }
-    }},
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "user" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "username: User currently logged in<br>nobody: No one logged in",
-          "type" : "string"
-				}
-      }}
+      "description" : "Operator logged in/out OP-panel\n\nProvides information if maintenance personnel is currently working on site.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "user",
+            "status"
+          ]
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "login: Somebody currently logged in<br>logout: Nobody currently logged in",
-          "type" : "string",
-          "enum" : ["login", "logout"]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "user"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "type" : "string",
+            "enum" : [
+              "[username]",
+              "[nobody]"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "type" : "string",
+            "enum" : [
+              "login",
+              "logout"
+            ]
+          }
+        }
+      }
     }
   ]
 }

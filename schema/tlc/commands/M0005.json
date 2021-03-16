@@ -1,39 +1,79 @@
 {
   "allOf" : [
     {
-      "properties" : { 
-        "description": "Activate emergency route<br>Requires security code 2",
-        "n" : { "enum" : ["status", "securityCode", "emergencyroute"] },
-        "cO" : { "const" : "setEmergency" }
+      "description" : "Activate emergency route\n\nThe function is made for emergency prioritization. Works in the same way as the M0006 and M0008 where the traffic light controller responds to an input.\n\nShould be used in situations where full priority is given in the emergency vehicle program.\n\nRequires security code 2.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status",
+            "securityCode",
+            "emergencyroute"
+          ]
+        },
+        "cO" : {
+          "const" : "setEmergency"
+        }
       }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "False: Activate emergency route<br>True: Deactivate emergency route",
-          "type" : "string",
-          "enum" : [ "True", "False" ]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "False: Activate emergency route\nTrue: Deactivate emergency route",
+            "type" : "boolean"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Security code 2",
-          "type" : "string"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "emergencyroute" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Number of emergency route",
-          "$ref": "../../core/definitions.json#/integer"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "emergencyroute"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Number of emergency route",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
     }
   ]
 }

@@ -1,24 +1,74 @@
 {
-	"description": "A schema validatating message against the RSMP SXL for Traffic Light Controllers",
+  "description" : "A schema validatating message against the RSMP SXL for Traffic Light Controllers",
   "allOf" : [
-  	{
-  		"$ref": "../core/rsmp.json"
-		},
-	  {
-	    "if" : { "required" : ["type"], "properties" : { "type" : { "const" : "CommandRequest" }}},
-	    "then" : { "$ref" : "commands/command_requests.json" }
-	  },
-	  {
-	    "if" : { "required" : ["type"], "properties" : { "type" : { "const" : "CommandResponse" }}},
-	    "then" : { "$ref" : "commands/command_responses.json" }
-	  },
-	  {
-	    "if" : { "required" : ["type"], "properties" : { "type" : { "enum" : ["StatusRequest","StatusResponse","StatusSubscribe","StatusUnsubscribe","StatusUpdate"] }}},
-	    "then" : { "$ref" : "statuses/statuses.json" }
-	  },
-	  {
-	    "if" : { "required" : ["type"], "properties" : { "type" : { "const" : "Alarm" }}},
-	    "then" : { "$ref" : "alarms/alarms.json" }
-	  }
+    {
+      "$ref" : "../core/rsmp.json"
+    },
+    {
+      "if" : {
+        "required" : [
+          "type"
+        ],
+        "properties" : {
+          "type" : {
+            "const" : "CommandRequest"
+          }
+        }
+      },
+      "then" : {
+        "$ref" : "commands/command_requests.json"
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "type"
+        ],
+        "properties" : {
+          "type" : {
+            "const" : "CommandResponse"
+          }
+        }
+      },
+      "then" : {
+        "$ref" : "commands/command_responses.json"
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "type"
+        ],
+        "properties" : {
+          "type" : {
+            "enum" : [
+              "StatusRequest",
+              "StatusResponse",
+              "StatusSubscribe",
+              "StatusUnsubscribe",
+              "StatusUpdate"
+            ]
+          }
+        }
+      },
+      "then" : {
+        "$ref" : "statuses/statuses.json"
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "type"
+        ],
+        "properties" : {
+          "type" : {
+            "const" : "Alarm"
+          }
+        }
+      },
+      "then" : {
+        "$ref" : "alarms/alarms.json"
+      }
+    }
   ]
 }

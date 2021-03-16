@@ -1,18 +1,34 @@
 {
   "allOf" : [
-    { "properties" : { 
-      "description": "Offset time",
-      "n" : { "enum" : ["status"] }
-    }},
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "Offset table<br>Each offset time is written as pp-tt where:<br>pp=time plan<br>tt=offset time in seconds<br><br>Each offset time is separated with a comma<br><br><br>E.g.<br>pp-tt,pp-tt",
-          "type" : "string",
-          "pattern" : "^(\\d{1,2}\\-\\d{1,2})(?:,(\\d{1,2}\\-\\d{1,2}))*$"
-				}
-      }}
+      "description" : "Offset time\n\nOffset time is used to define an offset between intersections in coordinated control. It is based on the expected travel time between intersections.\n\nCan be used by the management system to check to fine tune the coordination for optimal traffic flow.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Offset table\nEach offset time is written as pp-tt where:\npp=time plan\ntt=offset time in seconds\n\nEach offset time is separated with a comma\n\nE.g.\npp-tt,pp-tt",
+            "type" : "string"
+          }
+        }
+      }
     }
   ]
 }

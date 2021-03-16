@@ -1,38 +1,79 @@
 {
   "allOf" : [
     {
-      "properties" : { 
-        "description": "Set Offset time",
-        "n" : { "enum" : ["status", "plan", "securityCode"] },
-        "cO" : { "const" : "setOffset" }
+      "description" : "Set Offset time\n\nOffset time is used to define an offset between intersections in coordinated control. It is based on the expected travel time between intersections.\n\nThis command can be used to fine tune the coordination for optimal traffic flow.\n\nRequires security code 2.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status",
+            "plan",
+            "securityCode"
+          ]
+        },
+        "cO" : {
+          "const" : "setOffset"
+        }
       }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Set offset time in seconds",
-          "$ref": "../../core/definitions.json#/integer"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Set offset time in seconds",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "plan" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Time plan nr",
-          "$ref": "../../core/definitions.json#/integer"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "plan"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Time plan nr",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Security code 2",
-          "type" : "string"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
     }
   ]
 }

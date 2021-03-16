@@ -1,39 +1,79 @@
 {
   "allOf" : [
     {
-      "properties" : { 
-        "description": "Sets current time plan<br>Requires security code 2",
-        "n" : { "enum" : ["status", "securityCode", "timeplan"] },
-        "cO" : { "const" : "setPlan" }
+      "description" : "Sets current time plan\n\nChange of traffic program of the traffic light controller.\n\nTypical usages is scenario based control where change of program is used to change signal timings etc.\n\nThis command changes the signal timings for optimal traffic flow.\n\nRequires security code 2",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status",
+            "securityCode",
+            "timeplan"
+          ]
+        },
+        "cO" : {
+          "const" : "setPlan"
+        }
       }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "False: Controller uses time plan according to programming<br>True: Contoller uses time plan according to command",
-          "type" : "string",
-          "enum" : [ "True", "False" ]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "False: Controller uses time plan according to programming\nTrue: Controller uses time plan according to command",
+            "type" : "boolean"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Security code 2",
-          "type" : "string"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "timeplan" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "designation på time plan",
-          "$ref": "../../core/definitions.json#/integer"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "timeplan"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "designation of time plan",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
     }
   ]
 }

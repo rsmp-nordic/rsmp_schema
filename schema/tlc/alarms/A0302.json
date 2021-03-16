@@ -1,59 +1,131 @@
 {
   "allOf" : [
     {
-      "description": "Detector error (logic error)",
-      "properties" : { 
-        "n" : { "enum" : ["detector", "type", "errormode", "manual", "logicerror"] }
+      "description" : "Detector error (logic error)\n\nFor instance; detector continuously on or off during an extended time.\n\nIs a \"minor fault\" defined according to 3.11 in EN12675.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "detector",
+            "type",
+            "errormode",
+            "manual",
+            "logicerror"
+          ]
+        }
       }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "detector" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Designation of the detector",
-          "$ref": "../../core/definitions.json#/integer"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "detector"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Designation of the detector (hardware)",
+            "type" : "string"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "type" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Type of detector.<br>loop: Inductive detector loop<br>input: External input",
-          "type" : "string",
-          "enum" : ["loop", "input"]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "type"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Type of detector.",
+            "type" : "string",
+            "enum" : [
+              "loop",
+              "input"
+            ]
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "errormode" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Dectector forced on/off while detector error",
-          "type" : "string",
-          "enum" : ["on", "off"]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "errormode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Detector forced on/off while detector error",
+            "type" : "string",
+            "enum" : [
+              "on",
+              "off"
+            ]
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "manual" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Manually controlled detector logic (True/False)",
-          "type" : "string",
-          "enum" : [ "True", "False" ]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "manual"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Manually controlled detector logic (True/False)",
+            "type" : "boolean"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "logicerror" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Type of logic error<br>always_off: no detection during prefined max time<br>always on: detection constantly on during predefined max time<br>intermittent: intermittent logic fault (flutter)",
-          "type" : "string",
-          "enum" : ["always_off", "always_on", "intermittent"]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "logicerror"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Type of logic error",
+            "type" : "string",
+            "enum" : [
+              "always_off",
+              "always_on",
+              "intermittent"
+            ]
+          }
+        }
+      }
     }
   ]
 }

@@ -1,27 +1,61 @@
 {
   "allOf" : [
-    { "properties" : { 
-      "description": "Control mode",
-      "n" : { "enum" : ["intersection", "controlmode"] }
-    }},
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "intersection" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic controller)<br>Other value: Intersection number",
-          "$ref": "../../core/definitions.json#/integer_list"
-				}
-      }}
+      "description" : "Control mode\n\nCan be used for the management system to check the current control mode (startup, normal, standby, failure, test).",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "intersection",
+            "controlmode"
+          ]
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "controlmode" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "Startup mode<br>Normal control<br>Standby mode<br>Failure mode<br>Test mode",
-          "type" : "string",
-          "enum" : ["startup", "control", "standby", "failure", "test"]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "intersection"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "controlmode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "type" : "string",
+            "enum" : [
+              "startup",
+              "control",
+              "standby",
+              "failure",
+              "test"
+            ]
+          }
+        }
+      }
     }
   ]
 }

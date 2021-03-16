@@ -1,18 +1,34 @@
 {
   "allOf" : [
-    { "properties" : { 
-      "description": "Traffic Controller starting",
-      "n" : { "enum" : ["status"] }
-    }},
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "False: Controller is not in start up mode<br>True: Controller is currently in start up mode",
-          "type" : "string",
-          "enum" : [ "True", "False" ]
-				}
-      }}
+      "description" : "Traffic Light Controller starting\n\nThe traffic signal is starting, e.g. it is in startup mode and has not begun working normally yet.\n\nDuring startup mode the traffic controller shows dark, red, yellow flash or using the predetermined start cycle (minimum times).",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "False: Controller is not in start up mode\nTrue: Controller is currently in start up mode",
+            "type" : "boolean"
+          }
+        }
+      }
     }
   ]
 }

@@ -1,27 +1,59 @@
 {
   "allOf" : [
-    { "properties" : { 
-      "description": "Police key",
-      "n" : { "enum" : ["intersection", "status"] }
-    }},
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "intersection" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic controller)<br>Other value: Intersection number",
-          "$ref": "../../core/definitions.json#/integer_list"
-				}
-      }}
+      "description" : "Police key\n\nThe controller is forced to dark mode or yellow flash.\n\nThe \"police key\" is a external control switch present in some controllers that manually switches the controller to either dark mode or yellow flash.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "intersection",
+            "status"
+          ]
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "Comma-separted list of integeres. 0: disabled<br>1: dark mode<br>2: yellow flash",
-          "type" : "string",
-          "pattern" : "^([0-2])(?:,([0-2]))*$"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "intersection"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "$ref" : "../../core/definitions.json#/integer",
+            "enum" : [
+              0,
+              1,
+              2
+            ]
+          }
+        }
+      }
     }
   ]
 }

@@ -1,38 +1,79 @@
 {
   "allOf" : [
     {
-      "properties" : { 
-        "description": "Set command table",
-        "n" : { "enum" : ["plan", "status", "securityCode"] },
-        "cO" : { "const" : "setCommands" }
+      "description" : "Set dynamic bands\n\nCan be used to change between predefined signal timings. Moves the start of signal groups in the cycle.\n\nThis command can be used to change the split of green time during the cycle. A typical usage is scenario based control where changing of signal timings is used for optimal traffic flow.\n\nRequires security code 2",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "plan",
+            "status",
+            "securityCode"
+          ]
+        },
+        "cO" : {
+          "const" : "setCommands"
+        }
       }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "plan" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Plan to be changed",
-          "$ref": "../../core/definitions.json#/integer"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "plan"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Plan to be changed",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Command table. Defines command, <br>Each command are written as dd-ee where:<br>dd=Dynamic band number (from 1-10)<br>ee=Extension in seconds in this band<br><br>Each command is separated with a comma.<br><br>E.g. <br>dd-ee,dd-ee",
-          "type" : "string"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Dynamic bands.\nEach dynamic band are written as dd-ee where:\ndd=Dynamic band number (from 1-10)\nee=Extension in seconds in this band\n\nEach dynamic band is separated with a comma.\n\nE.g.\ndd-ee,dd-ee",
+            "type" : "string"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Security code 2",
-          "type" : "string"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
     }
   ]
 }

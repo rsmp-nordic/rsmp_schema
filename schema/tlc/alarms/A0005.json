@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description": "Communication error between traffic controllers / synchronisation error",
+      "description" : "Communication error between traffic light controllers / synchronisation error\n\nIs a \"minor fault\" defined according to 3.11 in EN12675."
     }
   ]
 }

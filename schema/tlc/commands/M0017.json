@@ -1,29 +1,58 @@
 {
   "allOf" : [
     {
-      "properties" : { 
-        "description": "Set time tables",
-        "n" : { "enum" : ["status", "securityCode"] },
-        "cO" : { "const" : "setTimeTable" }
+      "description" : "Set time tables\n\nSet time of day for when to automatically switch signal program (time plan).\n\nThis command changes the signal timings according to time of day for optimal traffic flow.\n\nRequires security code 2.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status",
+            "securityCode"
+          ]
+        },
+        "cO" : {
+          "const" : "setTimeTable"
+        }
       }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Time Table. Defines time tables.<br>Each time definition is written as t-o-h-m where:<br>t=time table nr (1-12)<br>o=function<br>h=hour - switching time<br>m=minute - switching minute<br><br>Function legend:<br>0=no plan is selected by time table<br>1=set plan 1<br>…<br>16= set plan 16<br><br>hour and minute is using local time (not UTC)<br><br>Each time definition is separated with a comma.<br><br>E.g.<br>t-o-h-m,t-o-h-m<br>",
-          "type" : "string"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Time Table. Defines time tables.\nEach time definition is written as t-o-h-m where:\nt=time table nr (1-12)\no=function\nh=hour - switching time\nm=minute - switching minute\n\nFunction legend:\n0=no plan is selected by time table\n1=set plan 1\n…\n16= set plan 16\n\nhour and minute is using local time (not UTC)\n\nEach time definition is separated with a comma.\n\nE.g.\nt-o-h-m,t-o-h-m\n",
+            "type" : "string"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Security code 2",
-          "type" : "string"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
     }
   ]
 }

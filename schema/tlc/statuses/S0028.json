@@ -1,18 +1,34 @@
 {
   "allOf" : [
-    { "properties" : { 
-      "description": "Cycle time",
-      "n" : { "enum" : ["status"] }
-    }},
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "Cycle time table<br>Each cycle time is written as pp-tt where:<br>pp=time plan<br>tt=cycle time in seconds<br><br>Each cycle time is separated with a comma<br><br><br>E.g.<br>pp-tt,pp-tt",
-          "type" : "string",
-          "pattern" : "^(\\d{1,2}\\-\\d+)(?:,(\\d{1,2}\\-\\d+))*$"
-				}
-      }}
+      "description" : "Cycle time\n\nCycle time (or cycle length) is the sum of all phases in a time plan (traffic program). This time is fixed when using fixed time control or coordination (except \"local coordination\"). When the cycle counter reaches this length it is reset back to zero.\n\nChanging the cycle time can be used as part of scenario based control.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Cycle time table\nEach cycle time is written as pp-tt where:\npp=time plan\ntt=cycle time in seconds\n\nEach cycle time is separated with a comma\n\n\nE.g.\npp-tt,pp-tt",
+            "type" : "string"
+          }
+        }
+      }
     }
   ]
 }

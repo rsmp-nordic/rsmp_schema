@@ -1,26 +1,55 @@
 {
   "allOf" : [
-    { "properties" : { 
-      "description": "Traffic Counting: Vehicle speed",
-      "n" : { "enum" : ["start", "speed"] }
-    }},
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "start" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
-          "$ref": "../../core/definitions.json#/timestamp"
-				}
-      }}
+      "description" : "Traffic Counting: Vehicle speed\n\nThis status was introduced to improve performance in case traffic counting is done on all all detectors.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "start",
+            "speed"
+          ]
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "speed" }}},
-      "then" : { "properties" : {
-        "s" : {
-          "$description": "Average speed in km/h (integer)<br> Value expressed as an integer with a range of 0-65535.<br> Contains data from all detector logics. Each detector logic is separated with a comma. <br> The value is set to “-1” if no data could be measured (e.g. detector fault)<br>",
-          "$ref": "../../core/definitions.json#/integer_list"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "start"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
+            "type" : "string"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "speed"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Average speed in km/h (integer)\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)\n",
+            "type" : "string"
+          }
+        }
+      }
     }
   ]
 }

@@ -1,29 +1,58 @@
 {
   "allOf" : [
     {
-      "properties" : { 
-        "description": "Set week time table",
-        "n" : { "enum" : ["status", "securityCode"] },
-        "cO" : { "const" : "setWeekTable" }
+      "description" : "Set week time table\n\nSet which time table for signal programs to use for each day during a week.\n\nThis command changes the signal timings during the week for optimal traffic flow.\n\nRequires security code 2.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status",
+            "securityCode"
+          ]
+        },
+        "cO" : {
+          "const" : "setWeekTable"
+        }
       }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Week time table. Defines time table to use for each week day<br>Each segment is written as d-t where:<br>d=day of week<br>t=time table nr<br><br>Day of week legend:<br>0=Monday<br>1=Tuesday<br>2=Wednesday<br>3=Thursday<br>4=Friday<br>5=Saturday<br>6=Sunday<br><br>Each segment is separated with a comma<br><br>E.g.<br>d-t,d-t",
-          "type" : "string"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Week time table. Defines time table to use for each week day\nEach segment is written as d-t where:\nd=day of week\nt=time table nr\n\nDay of week legend:\n0=Monday\n1=Tuesday\n2=Wednesday\n3=Thursday\n4=Friday\n5=Saturday\n6=Sunday\n\nEach segment is separated with a comma\n\nE.g.\nd-t,d-t",
+            "type" : "string"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Security code 2",
-          "type" : "string"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
     }
   ]
 }

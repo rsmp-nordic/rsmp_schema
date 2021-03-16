@@ -1,30 +1,58 @@
 {
   "allOf" : [
     {
-      "properties" : { 
-        "description": "Restarts Traffic Controller<br>Requires security code 2",
-        "n" : { "enum" : ["status", "securityCode"] },
-        "cO" : { "const" : "setRestart" }
+      "description" : "Restarts Traffic Light Controller\n\nUsed in the event of serious faults in the device where a restart is considered to be able to remedy a problem.\n\nRequires security code 2",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status",
+            "securityCode"
+          ]
+        },
+        "cO" : {
+          "const" : "setRestart"
+        }
       }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "status" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "True: Restart controller",
-          "type" : "string",
-          "enum" : [ "True", "False" ]
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "True: Restart controller",
+            "type" : "boolean"
+          }
+        }
+      }
     },
     {
-      "if" : { "required" : ["n"], "properties" : { "n" : { "const" : "securityCode" }}},
-      "then" : { "properties" : {
-        "v" : {
-          "$description": "Security code 2",
-          "type" : "string"
-				}
-      }}
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
     }
   ]
 }
