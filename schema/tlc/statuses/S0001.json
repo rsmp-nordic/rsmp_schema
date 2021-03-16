@@ -26,9 +26,10 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Signal group status as text field",
-            "type" : "string"
+            "type" : "string",
+            "pattern" : "^[a-hA-G0-9N-P]+$"
           }
         }
       }
@@ -46,7 +47,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Cycle counter",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -66,7 +67,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Base cycle counter",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -86,7 +87,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Current stage (isolated)",
             "$ref" : "../../core/definitions.json#/integer"
           }

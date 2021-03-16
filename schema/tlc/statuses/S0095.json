@@ -23,7 +23,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Manufacturer, product name and version of traffic light controller",
             "type" : "string"
           }

@@ -23,9 +23,10 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Dynamic bands.\nEach dynamic band are written as pp-dd-ee where:\npp=Time plan\ndd=Dynamic band number (from 1-10)\nee=Extension in seconds in this band\n\nEach dynamic band is separated with a comma.\n\nE.g.\npp-dd-ee,pp-dd-ee",
-            "type" : "string"
+            "type" : "string",
+            "pattern" : "^(\\d{1,2}\\-\\d{1,2}-\\d{1,2})(?:,(\\d{1,2}\\-\\d{1,2}-\\d{1,2}))*$"
           }
         }
       }

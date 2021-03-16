@@ -23,7 +23,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of time plans (depreciated)",
             "$ref" : "../../core/definitions.json#/integer"
           }

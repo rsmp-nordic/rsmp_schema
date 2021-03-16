@@ -24,7 +24,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Output status as text field",
             "type" : "string"
           }
@@ -44,7 +44,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Extended output status as text field",
             "type" : "string"
           }

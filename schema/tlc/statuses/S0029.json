@@ -23,7 +23,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Forced input status as text field",
             "type" : "string"
           }

@@ -23,7 +23,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of detector logics",
             "$ref" : "../../core/definitions.json#/integer"
           }

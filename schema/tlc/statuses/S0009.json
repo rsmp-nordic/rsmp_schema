@@ -24,9 +24,9 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../core/definitions.json#/integer_list"
           }
         }
       }
@@ -44,9 +44,9 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "False:  Fixed time control inactive\nTrue:  Fixed time control active",
-            "type" : "boolean"
+            "$ref" : "../../core/definitions.json#/boolean_list"
           }
         }
       }

@@ -28,7 +28,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Year according to format YYYY. NOTE: UTC is used",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -48,7 +48,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Month (01-12) according to format MM. Note: UTC is used",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -68,7 +68,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Day of month (01-31) according to format DD.  Note: UTC is used",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -88,7 +88,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Hour of day (00-23) according to format DD. Note: UTC is used",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -108,7 +108,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Minute (00-59) according to format MM. Note: UTC is used",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -128,7 +128,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Second (00-59) according to format SS. Note: UTC is used",
             "$ref" : "../../core/definitions.json#/integer"
           }

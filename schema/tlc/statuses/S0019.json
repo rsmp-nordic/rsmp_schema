@@ -23,7 +23,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of traffic situations",
             "$ref" : "../../core/definitions.json#/integer"
           }

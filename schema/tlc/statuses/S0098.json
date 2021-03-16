@@ -25,7 +25,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Traffic parameters\nIncludes\n- all signal programs, including program versions\n- signal group settings\n- time plans\n- safety matrix\n- intergreen times\n- detector setting\n\nIt should NOT include:\n- network settings\n- log files\n- software\n- other device settings that are not part of the signal program\n\nNote:\n- There is no way to upload this binary file to the TLC using RSMP\n- The format of the binary file is not specified and is not expected to be compatible between suppliers",
             "type" : "string"
           }
@@ -45,7 +45,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Time stamp of the config. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
             "type" : "string"
           }
@@ -65,7 +65,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Version information of the configuration. Contains basic information such as controller id, changes to config and other information. The format is not specified in detail",
             "type" : "string"
           }

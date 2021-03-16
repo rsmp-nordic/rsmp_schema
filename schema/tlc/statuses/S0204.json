@@ -32,7 +32,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
             "type" : "string"
           }
@@ -52,7 +52,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of cars",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -72,7 +72,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of cars with trailers",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -92,7 +92,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of trucks",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -112,7 +112,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of trucks with trailers",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -132,7 +132,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of busses",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -152,7 +152,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of trams",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -172,7 +172,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of motor cycles",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -192,7 +192,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of bicycles",
             "$ref" : "../../core/definitions.json#/integer"
           }
@@ -212,7 +212,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of pedestrians",
             "$ref" : "../../core/definitions.json#/integer"
           }

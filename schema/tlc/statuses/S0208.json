@@ -32,7 +32,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
             "type" : "string"
           }
@@ -52,7 +52,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of cars\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)\n",
             "type" : "string"
           }
@@ -72,7 +72,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of cars with trailers\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)\n",
             "type" : "string"
           }
@@ -92,7 +92,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of trucks\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)\n",
             "type" : "string"
           }
@@ -112,7 +112,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of trucks with trailers\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)\n",
             "type" : "string"
           }
@@ -132,7 +132,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of busses\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)\n",
             "type" : "string"
           }
@@ -152,7 +152,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of trams\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)\n",
             "type" : "string"
           }
@@ -172,7 +172,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of motor cycles\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)\n",
             "type" : "string"
           }
@@ -192,7 +192,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of bicycles\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)\n",
             "type" : "string"
           }
@@ -212,7 +212,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of pedestrians\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)\n",
             "type" : "string"
           }

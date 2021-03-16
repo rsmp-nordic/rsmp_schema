@@ -24,7 +24,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "False: Emergency stage inactive\nTrue: Emergency stage active",
             "type" : "boolean"
           }
@@ -44,7 +44,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of emergency stage",
             "$ref" : "../../core/definitions.json#/integer"
           }

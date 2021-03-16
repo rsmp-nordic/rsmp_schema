@@ -23,9 +23,10 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Offset table\nEach offset time is written as pp-tt where:\npp=time plan\ntt=offset time in seconds\n\nEach offset time is separated with a comma\n\nE.g.\npp-tt,pp-tt",
-            "type" : "string"
+            "type" : "string",
+            "pattern" : "^(\\d{1,2}\\-\\d{1,2})(?:,(\\d{1,2}\\-\\d{1,2}))*$"
           }
         }
       }

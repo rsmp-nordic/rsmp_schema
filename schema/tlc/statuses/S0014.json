@@ -23,7 +23,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Current time plan",
             "$ref" : "../../core/definitions.json#/integer"
           }

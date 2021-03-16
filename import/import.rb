@@ -41,24 +41,31 @@ class SXLImporter
 			out["$ref"] = "../../core/definitions.json#/timestamp"
 		when "integer", "ordinal", "unit", "scale", "long"
 			out["$ref"] = "../../core/definitions.json#/integer"
+		when "integer_list"
+			out["$ref"] = "../../core/definitions.json#/integer_list"
+		when "boolean_list"
+			out["$ref"] = "../../core/definitions.json#/boolean_list"
 		else
 			out["type"] = "string"
 		end
 
-		if item["values"]
+		if item["pattern"]
+			out["pattern"] = item["pattern"]
+		elsif item["values"]		# ignore values if there's a pattern
 			out["enum"] = item["values"].keys
 		end
+
 		out
 	end
 
-	def build_item item
+	def build_item item, field='v'
 		json = { "allOf" => [ { "description" => item['description'] } ] }
 		if item['arguments']
 			json["allOf"].first["properties"] = { "n" => { "enum" => item['arguments'].keys } }
 			item['arguments'].each_pair do |key,argument|
 				json["allOf"] << {
 					"if" => { "required" => ["n"], "properties" => { "n" => { "const" => key }}},
-			    "then" => { "properties" => { "v" => build_value(argument) } }
+			    "then" => { "properties" => { field => build_value(argument) } }
 				}
 			end
 		end
@@ -103,7 +110,7 @@ class SXLImporter
 	end
 
 	def write_status key, item
-		json = build_item item
+		json = build_item item, 's'
 		write_json json, "statuses/#{key}.json"
 	end
 

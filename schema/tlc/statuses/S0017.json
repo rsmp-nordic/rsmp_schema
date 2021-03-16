@@ -23,7 +23,7 @@
       },
       "then" : {
         "properties" : {
-          "v" : {
+          "s" : {
             "description" : "Number of signal groups",
             "$ref" : "../../core/definitions.json#/integer"
           }
