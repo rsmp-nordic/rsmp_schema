@@ -50,8 +50,8 @@
             "description" : "Type of detector",
             "type" : "string",
             "enum" : [
-              "loop",
-              "input"
+              "input",
+              "loop"
             ]
           }
         }
@@ -74,8 +74,8 @@
             "description" : "Detector forced on/off while detector error",
             "type" : "string",
             "enum" : [
-              "on",
-              "off"
+              "off",
+              "on"
             ]
           }
         }

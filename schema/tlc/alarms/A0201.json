@@ -27,9 +27,9 @@
             "description" : "Color of lamp",
             "type" : "string",
             "enum" : [
+              "green",
               "red",
-              "yellow",
-              "green"
+              "yellow"
             ]
           }
         }

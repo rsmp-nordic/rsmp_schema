@@ -46,7 +46,7 @@
         "properties" : {
           "s" : {
             "$ref" : "../../core/definitions.json#/integer_list",
-            "pattern" : "^([0-2])(?:,([0-2]))*$"
+            "pattern" : "(?-mix:^(0|1|2)(?:,(0|1|2))*$)"
           }
         }
       }

@@ -33,9 +33,9 @@
             "description" : "Set operating mode",
             "type" : "string",
             "enum" : [
+              "Dark",
               "NormalControl",
-              "YellowFlash",
-              "Dark"
+              "YellowFlash"
             ]
           }
         }

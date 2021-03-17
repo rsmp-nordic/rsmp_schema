@@ -47,10 +47,10 @@
           "s" : {
             "type" : "string",
             "enum" : [
-              "startup",
               "control",
-              "standby",
               "failure",
+              "standby",
+              "startup",
               "test"
             ]
           }

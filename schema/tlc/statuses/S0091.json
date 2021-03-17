@@ -27,8 +27,8 @@
           "s" : {
             "type" : "string",
             "enum" : [
-              "[username]",
-              "[nobody]"
+              "[nobody]",
+              "[username]"
             ]
           }
         }
