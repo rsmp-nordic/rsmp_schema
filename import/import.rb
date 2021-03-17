@@ -32,27 +32,51 @@ class SXLImporter
 			out["description"] = item['description']
 		end
 
-		case item['type']
-		when "string", "base64"
-			out["type"] = "string"
-		when "boolean"
-			out["type"] = "boolean"
-		when "timestamp"
-			out["$ref"] = "../../core/definitions.json#/timestamp"
-		when "integer", "ordinal", "unit", "scale", "long"
-			out["$ref"] = "../../core/definitions.json#/integer"
-		when "integer_list"
-			out["$ref"] = "../../core/definitions.json#/integer_list"
-		when "boolean_list"
-			out["$ref"] = "../../core/definitions.json#/boolean_list"
-		else
-			out["type"] = "string"
-		end
+		if item['list'] == true
+			# rsmp currently requires lists to be encoded as string, eg. "1,2,3,4",
+			# rather than normal json elements like [1,2,3,4].
+			# this means we can't use normal json schema validation
+			# for lists of integers and booleans, we use a regex pattern to validate
+			# but for other types we don't validate
+			case item['type']
+			when "string", "base64"
+				out["type"] = "string"
+			when "integer", "ordinal", "unit", "scale", "long"
+				out["$ref"] = "../../core/definitions.json#/integer_list"
+			when "boolean"
+				out["$ref"] = "../../core/definitions.json#/boolean_list"
+			else
+				out["type"] = "string"
+			end
 
-		if item["pattern"]
-			out["pattern"] = item["pattern"]
-		elsif item["values"]		# ignore values if there's a pattern
-			out["enum"] = item["values"].keys.sort
+
+			# construct a new regex that is the pattern or value list repeated
+			# one or more times, separated by comma
+			if item["pattern"]
+				out["pattern"] = /^(#{item["pattern"]})(?:,(#{item["pattern"]}))*$/
+			elsif item["values"]
+				list = item["values"].keys.join('|')
+				out["pattern"] = /^(#{list})(?:,(#{list}))*$/
+			end
+		else
+			case item['type']
+			when "string", "base64"
+				out["type"] = "string"
+			when "boolean"
+				out["type"] = "boolean"
+			when "timestamp"
+				out["$ref"] = "../../core/definitions.json#/timestamp"
+			when "integer", "ordinal", "unit", "scale", "long"
+				out["$ref"] = "../../core/definitions.json#/integer"
+			else
+				out["type"] = "string"
+			end
+
+			if item["pattern"]
+				out["pattern"] = item["pattern"]
+			elsif item["values"]
+				out["enum"] = item["values"].keys.sort
+			end
 		end
 
 		out
