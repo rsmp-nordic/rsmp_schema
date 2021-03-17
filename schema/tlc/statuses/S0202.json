@@ -5,8 +5,8 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "starttime",
-            "speed"
+            "speed",
+            "starttime"
           ]
         }
       }

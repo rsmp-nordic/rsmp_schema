@@ -5,8 +5,8 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "start",
-            "occupancy"
+            "occupancy",
+            "start"
           ]
         }
       }

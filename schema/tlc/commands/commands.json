@@ -12,6 +12,9 @@
               "M0005",
               "M0006",
               "M0007",
+              "M0008",
+              "M0010",
+              "M0011",
               "M0012",
               "M0013",
               "M0014",
@@ -23,10 +26,7 @@
               "M0020",
               "M0021",
               "M0103",
-              "M0104",
-              "M0010",
-              "M0011",
-              "M0008"
+              "M0104"
             ]
           }
         }
@@ -134,6 +134,51 @@
         },
         "then" : {
           "$ref" : "M0007.json"
+        }
+      },
+      {
+        "if" : {
+          "required" : [
+            "cCI"
+          ],
+          "properties" : {
+            "cCI" : {
+              "const" : "M0008"
+            }
+          }
+        },
+        "then" : {
+          "$ref" : "M0008.json"
+        }
+      },
+      {
+        "if" : {
+          "required" : [
+            "cCI"
+          ],
+          "properties" : {
+            "cCI" : {
+              "const" : "M0010"
+            }
+          }
+        },
+        "then" : {
+          "$ref" : "M0010.json"
+        }
+      },
+      {
+        "if" : {
+          "required" : [
+            "cCI"
+          ],
+          "properties" : {
+            "cCI" : {
+              "const" : "M0011"
+            }
+          }
+        },
+        "then" : {
+          "$ref" : "M0011.json"
         }
       },
       {
@@ -314,51 +359,6 @@
         },
         "then" : {
           "$ref" : "M0104.json"
-        }
-      },
-      {
-        "if" : {
-          "required" : [
-            "cCI"
-          ],
-          "properties" : {
-            "cCI" : {
-              "const" : "M0010"
-            }
-          }
-        },
-        "then" : {
-          "$ref" : "M0010.json"
-        }
-      },
-      {
-        "if" : {
-          "required" : [
-            "cCI"
-          ],
-          "properties" : {
-            "cCI" : {
-              "const" : "M0011"
-            }
-          }
-        },
-        "then" : {
-          "$ref" : "M0011.json"
-        }
-      },
-      {
-        "if" : {
-          "required" : [
-            "cCI"
-          ],
-          "properties" : {
-            "cCI" : {
-              "const" : "M0008"
-            }
-          }
-        },
-        "then" : {
-          "$ref" : "M0008.json"
         }
       }
     ]

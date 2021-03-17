@@ -5,9 +5,9 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "signalgroupstatus",
-            "cyclecounter",
             "basecyclecounter",
+            "cyclecounter",
+            "signalgroupstatus",
             "stage"
           ]
         }

@@ -5,8 +5,8 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "intersection",
-            "controlmode"
+            "controlmode",
+            "intersection"
           ]
         }
       }

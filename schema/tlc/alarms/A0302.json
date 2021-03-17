@@ -6,10 +6,10 @@
         "n" : {
           "enum" : [
             "detector",
-            "type",
             "errormode",
+            "logicerror",
             "manual",
-            "logicerror"
+            "type"
           ]
         }
       }

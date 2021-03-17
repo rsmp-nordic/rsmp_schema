@@ -31,6 +31,7 @@
                   "S0022",
                   "S0023",
                   "S0024",
+                  "S0025",
                   "S0026",
                   "S0027",
                   "S0028",
@@ -43,15 +44,14 @@
                   "S0096",
                   "S0097",
                   "S0098",
-                  "S0205",
-                  "S0206",
-                  "S0207",
-                  "S0208",
-                  "S0025",
                   "S0201",
                   "S0202",
                   "S0203",
-                  "S0204"
+                  "S0204",
+                  "S0205",
+                  "S0206",
+                  "S0207",
+                  "S0208"
                 ]
               }
             }
@@ -423,6 +423,21 @@
               ],
               "properties" : {
                 "sCI" : {
+                  "const" : "S0025"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "S0025.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "sCI"
+              ],
+              "properties" : {
+                "sCI" : {
                   "const" : "S0026"
                 }
               }
@@ -603,81 +618,6 @@
               ],
               "properties" : {
                 "sCI" : {
-                  "const" : "S0205"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "S0205.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "sCI"
-              ],
-              "properties" : {
-                "sCI" : {
-                  "const" : "S0206"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "S0206.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "sCI"
-              ],
-              "properties" : {
-                "sCI" : {
-                  "const" : "S0207"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "S0207.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "sCI"
-              ],
-              "properties" : {
-                "sCI" : {
-                  "const" : "S0208"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "S0208.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "sCI"
-              ],
-              "properties" : {
-                "sCI" : {
-                  "const" : "S0025"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "S0025.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "sCI"
-              ],
-              "properties" : {
-                "sCI" : {
                   "const" : "S0201"
                 }
               }
@@ -729,6 +669,66 @@
             },
             "then" : {
               "$ref" : "S0204.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "sCI"
+              ],
+              "properties" : {
+                "sCI" : {
+                  "const" : "S0205"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "S0205.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "sCI"
+              ],
+              "properties" : {
+                "sCI" : {
+                  "const" : "S0206"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "S0206.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "sCI"
+              ],
+              "properties" : {
+                "sCI" : {
+                  "const" : "S0207"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "S0207.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "sCI"
+              ],
+              "properties" : {
+                "sCI" : {
+                  "const" : "S0208"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "S0208.json"
             }
           }
         ]

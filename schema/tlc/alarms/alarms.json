@@ -9,9 +9,9 @@
         "A0005",
         "A0006",
         "A0007",
+        "A0008",
         "A0009",
         "A0010",
-        "A0008",
         "A0101",
         "A0201",
         "A0202",
@@ -134,6 +134,21 @@
               ],
               "properties" : {
                 "aCId" : {
+                  "const" : "A0008"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "A0008.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "aCId"
+              ],
+              "properties" : {
+                "aCId" : {
                   "const" : "A0009"
                 }
               }
@@ -155,21 +170,6 @@
             },
             "then" : {
               "$ref" : "A0010.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "aCId"
-              ],
-              "properties" : {
-                "aCId" : {
-                  "const" : "A0008"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "A0008.json"
             }
           },
           {

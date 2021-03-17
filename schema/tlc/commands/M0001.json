@@ -5,10 +5,10 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "status",
+            "intersection",
             "securityCode",
-            "timeout",
-            "intersection"
+            "status",
+            "timeout"
           ]
         },
         "cO" : {

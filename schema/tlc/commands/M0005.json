@@ -5,9 +5,9 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "status",
+            "emergencyroute",
             "securityCode",
-            "emergencyroute"
+            "status"
           ]
         },
         "cO" : {

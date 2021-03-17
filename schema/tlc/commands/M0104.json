@@ -5,13 +5,13 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "securityCode",
-            "year",
-            "month",
             "day",
             "hour",
             "minute",
-            "second"
+            "month",
+            "second",
+            "securityCode",
+            "year"
           ]
         },
         "cO" : {

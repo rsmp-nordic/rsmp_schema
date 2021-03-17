@@ -5,10 +5,10 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "status",
-            "securityCode",
             "output",
-            "outputValue"
+            "outputValue",
+            "securityCode",
+            "status"
           ]
         },
         "cO" : {

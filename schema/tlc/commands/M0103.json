@@ -5,9 +5,9 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "status",
+            "newSecurityCode",
             "oldSecurityCode",
-            "newSecurityCode"
+            "status"
           ]
         },
         "cO" : {

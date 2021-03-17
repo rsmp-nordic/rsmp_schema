@@ -5,16 +5,16 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "start",
-            "P",
-            "PS",
+            "B",
+            "C",
+            "F",
             "L",
             "LS",
-            "B",
-            "SP",
             "MC",
-            "C",
-            "F"
+            "P",
+            "PS",
+            "SP",
+            "start"
           ]
         }
       }

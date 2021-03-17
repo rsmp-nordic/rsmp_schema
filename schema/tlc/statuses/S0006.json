@@ -5,8 +5,8 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "status",
-            "emergencystage"
+            "emergencystage",
+            "status"
           ]
         }
       }

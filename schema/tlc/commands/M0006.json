@@ -5,9 +5,9 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "status",
+            "input",
             "securityCode",
-            "input"
+            "status"
           ]
         },
         "cO" : {

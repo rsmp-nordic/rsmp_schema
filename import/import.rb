@@ -52,7 +52,7 @@ class SXLImporter
 		if item["pattern"]
 			out["pattern"] = item["pattern"]
 		elsif item["values"]		# ignore values if there's a pattern
-			out["enum"] = item["values"].keys
+			out["enum"] = item["values"].keys.sort
 		end
 
 		out
@@ -61,7 +61,7 @@ class SXLImporter
 	def build_item item, field='v'
 		json = { "allOf" => [ { "description" => item['description'] } ] }
 		if item['arguments']
-			json["allOf"].first["properties"] = { "n" => { "enum" => item['arguments'].keys } }
+			json["allOf"].first["properties"] = { "n" => { "enum" => item['arguments'].keys.sort } }
 			item['arguments'].each_pair do |key,argument|
 				json["allOf"] << {
 					"if" => { "required" => ["n"], "properties" => { "n" => { "const" => key }}},
@@ -74,7 +74,7 @@ class SXLImporter
 
 	def write_alarms
 		items = @alarms
-		list = items.keys.map do |key|
+		list = items.keys.sort.map do |key|
       {
         "if" => { "required" => ["aCId"], "properties" => { "aCId" => { "const" => key }}},
         "then" => { "$ref" => "#{key}.json" }
@@ -82,7 +82,7 @@ class SXLImporter
     end
 		json = {
 		  "properties" => { 
-		    "aCId" => { "enum" => items.keys },
+		    "aCId" => { "enum" => items.keys.sort },
 		    "rvs" => { "items" => { "allOf" => list } }
 		  }
 		}
@@ -97,8 +97,8 @@ class SXLImporter
 
 	def write_statuses
 		items = @statuses
-		list = [ { "properties" => { "sCI" => { "enum"=> items.keys }}} ]
-		items.keys.each do |key|
+		list = [ { "properties" => { "sCI" => { "enum"=> items.keys.sort }}} ]
+		items.keys.sort.each do |key|
 	    list << {
 	      "if"=> { "required" => ["sCI"], "properties" => { "sCI"=> { "const"=> key }}},
 	      "then" => { "$ref" => "#{key}.json" }
@@ -116,8 +116,8 @@ class SXLImporter
 
 	def write_commands
 		items = @commands
-		list = [ { "properties" => { "cCI" => { "enum"=> items.keys }}} ]
-		items.keys.each do |key|
+		list = [ { "properties" => { "cCI" => { "enum"=> items.keys.sort }}} ]
+		items.keys.sort.each do |key|
 			list << {
 	      "if" => { "required" => ["cCI"], "properties" => { "cCI"=> { "const"=> key }}},
 	      "then" => { "$ref" => "#{key}.json" }

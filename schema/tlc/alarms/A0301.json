@@ -6,9 +6,9 @@
         "n" : {
           "enum" : [
             "detector",
-            "type",
             "errormode",
-            "manual"
+            "manual",
+            "type"
           ]
         }
       }

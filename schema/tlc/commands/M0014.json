@@ -6,8 +6,8 @@
         "n" : {
           "enum" : [
             "plan",
-            "status",
-            "securityCode"
+            "securityCode",
+            "status"
           ]
         },
         "cO" : {

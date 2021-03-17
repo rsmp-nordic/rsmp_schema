@@ -5,12 +5,12 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "year",
-            "month",
             "day",
             "hour",
             "minute",
-            "second"
+            "month",
+            "second",
+            "year"
           ]
         }
       }

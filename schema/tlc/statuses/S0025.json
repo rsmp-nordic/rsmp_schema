@@ -5,14 +5,14 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "minToGEstimate",
-            "maxToGEstimate",
-            "likelyToGEstimate",
             "ToGConfidence",
-            "minToREstimate",
-            "maxToREstimate",
+            "ToRConfidence",
+            "likelyToGEstimate",
             "likelyToREstimate",
-            "ToRConfidence"
+            "maxToGEstimate",
+            "maxToREstimate",
+            "minToGEstimate",
+            "minToREstimate"
           ]
         }
       }

@@ -5,8 +5,8 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "outputstatus",
-            "extendedoutputstatus"
+            "extendedoutputstatus",
+            "outputstatus"
           ]
         }
       }
