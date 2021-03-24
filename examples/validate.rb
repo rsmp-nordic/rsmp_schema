@@ -10,7 +10,6 @@ message = {
   "cId" => "O+14439=481WA001",
   "arg" => [
     {
-      "cCI" => "M0002",
       "n" => "timeplan",
       "cO" => "setPlan",
       "v" => "1"
@@ -19,14 +18,18 @@ message = {
 }
 
 # try validating a message against our schema
-schema = Pathname.new('schema/tlc/sxl.json')
-schemer = JSONSchemer.schema(schema)
-if schemer.valid? message
-  puts 'ok'
-else
-  schemer.validate(message).each do |item|
-    puts [item['data_pointer'],item['type'],item['details']].compact.join(' ')
+schema_core = Pathname.new('schema/core/rsmp.json')
+schemer_core = JSONSchemer.schema(schema_core)
+
+def validate message, schemer
+  if schemer.valid? message
+    'ok'
+  else
+    schemer.validate(message).map do |item|
+      [item['data_pointer'],item['type'],item['details']].compact.join(' ')
+    end
   end
 end
 
+puts "core: #{validate message, schemer_core}"
 
