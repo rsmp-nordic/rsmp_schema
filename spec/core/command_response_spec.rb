@@ -90,54 +90,12 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  	["/rvs/0/age", "enum"]
 	  ])
   end
+
   it 'catches missing value' do
 		invalid = message.dup
 		invalid["rvs"].first.delete 'v'
 	  expect( validate(invalid) ).to eq([
 	  	["/rvs/0", "required", {"missing_keys"=>["v"]}]
-	  ])
-  end
-
-  it 'catches bad value' do
-		invalid = message.dup
-		invalid["rvs"].first['v'] = 'bad'
-	  expect( validate(invalid) ).to eq([
-	  	["/rvs/0/v", "enum"]
-	  ])
-  end
-
-  it 'catches bad name' do
-		invalid = message.dup
-		invalid["rvs"].first['n'] = 'bad'
-	  expect( validate(invalid) ).to eq([
-	  	["/rvs/0/n", "enum"]
-	  ])
-  end
-
-  it 'catches bad status values' do
-		invalid = message.dup
-		invalid["rvs"].first['n'] = 'status'
-		invalid["rvs"].first['v'] = 'bad'
-	  expect( validate(invalid) ).to eq([
-	  	["/rvs/0/v", "enum"]
-	  ])
-  end
-
-  it 'catches bad timeout values' do
-		invalid = message.dup
-		invalid["rvs"].first['n'] = 'timeout'
-		invalid["rvs"].first['v'] = 'bad'
-	  expect( validate(invalid) ).to eq([
-	  	["/rvs/0/v", "pattern"]
-	  ])
-  end
-
-  it 'catches bad intersection values' do
-		invalid = message.dup
-		invalid["rvs"].first['n'] = 'intersection'
-		invalid["rvs"].first['v'] = 'bad'
-	  expect( validate(invalid) ).to eq([
-	  	["/rvs/0/v", "pattern"]
 	  ])
   end
 

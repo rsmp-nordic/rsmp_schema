@@ -6,9 +6,9 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 		"cId" => "AB+84001=860SG001",
 		"aCId" => "A0001",
 		"xACId" => "Serious lamp error",
-		"aSp" => "issue",
+		"aSp" => "Issue",
 		"ack" => "notAcknowledged",
-		"aS" => "active",
+		"aS" => "Active",
 		"sS" => "notSuspended",
 		"aTs" => "2009-10-01T11:59:31.571Z",
 		"cat" => "D",
@@ -45,8 +45,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 		invalid = message.dup
 		invalid['aCId'] = "001"
 	  expect( validate(invalid) ).to eq([
-	  	["/aCId", "pattern"],
-	  	["/aCId", "enum"]
+	  	["/aCId", "pattern"]
 	  ])
 	end
 
@@ -54,8 +53,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 		invalid = message.dup
 		invalid['aCId'] = 123
 	  expect( validate(invalid) ).to eq([
-	  	["/aCId", "string"],
-	  	["/aCId", "enum"]
+	  	["/aCId", "string"]
 	  ])
   end
 
