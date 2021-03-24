@@ -9,7 +9,7 @@
     "aSp" : {
       "description" : "Alarm message variant",
       "type" : "string",
-      "enum" : [ "Issue", "Acknowledge", "Suspend", "Resume" ]
+      "enum" : [ "Issue", "Acknowledge", "Suspend", "Resume", "Request" ]
     },
     "ack" : {
       "description" : "Acknowledgement",
