@@ -183,9 +183,6 @@ class SXLImporter
       "description"=> "A schema validatating message against the RSMP SXL for Traffic Light Controllers",
       "allOf" => [
         {
-          "$ref"=> "../core/rsmp.json"
-        },
-        {
           "if" => { "required" => ["type"], "properties" => { "type" => { "const" => "CommandRequest" }}},
           "then" => { "$ref" => "commands/command_requests.json" }
         },
