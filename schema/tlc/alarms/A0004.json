@@ -1,7 +1,0 @@
-{
-  "allOf" : [
-    {
-      "description": "Less serious configuration error",
-    }
-  ]
-}

@@ -1,7 +1,0 @@
-{
-  "allOf" : [
-    {
-      "description": "Communication error between one or multiple traffic controllers and central control system",
-    }
-  ]
-}
