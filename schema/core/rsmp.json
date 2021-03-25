@@ -42,15 +42,6 @@
     {
       "if": {
         "required" : ["type"],
-        "properties": { "type": { "const": "AggregatedStatusRequest" } }
-      },
-      "then": {
-        "$ref": "aggregated_status_request.json"
-      }
-    },
-    {
-      "if": {
-        "required" : ["type"],
         "properties": { "type": { "const": "Watchdog" } }
       },
       "then": {
