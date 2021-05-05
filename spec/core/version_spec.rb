@@ -10,9 +10,10 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	    { "vers" => "3.1.1" },
 	    { "vers" => "3.1.2" },
 	    { "vers" => "3.1.3" },
-	    { "vers" => "3.1.4" }
+	    { "vers" => "3.1.4" },
+	    { "vers" => "3.1.5" }
 	  ],
-	  "SXL" => "1.1"
+	  "SXL" => "1.0.15"
 	}}
 
 	it 'accepts valid message' do
