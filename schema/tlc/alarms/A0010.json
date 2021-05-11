@@ -1,7 +1,0 @@
-{
-  "allOf" : [
-    {
-      "description" : "Door open\n\nUsed for open door (room or cabinet)."
-    }
-  ]
-}
