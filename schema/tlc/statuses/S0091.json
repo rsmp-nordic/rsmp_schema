@@ -25,11 +25,8 @@
       "then" : {
         "properties" : {
           "s" : {
-            "type" : "string",
-            "enum" : [
-              "[nobody]",
-              "[username]"
-            ]
+            "description" : "nobody: No one logged in\n<username>: User currently logged in",
+            "type" : "string"
           }
         }
       }
