@@ -31,7 +31,7 @@
         "properties" : {
           "v" : {
             "description" : "False: Force output\nTrue: Release output",
-            "type" : "boolean"
+            "$ref" : "../../core/definitions.json#/boolean"
           }
         }
       }
@@ -91,7 +91,7 @@
         "properties" : {
           "v" : {
             "description" : "False: output forced to False\nTrue: output forced to True",
-            "type" : "boolean"
+            "$ref" : "../../core/definitions.json#/boolean"
           }
         }
       }
