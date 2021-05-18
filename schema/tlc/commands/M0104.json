@@ -133,7 +133,7 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "Changes internal clock. Note: UTC is used\nMinute according to MM (00-23)",
+            "description" : "Changes internal clock. Note: UTC is used\nMinute according to MM (00-59)",
             "$ref" : "../../core/definitions.json#/integer"
           }
         }
