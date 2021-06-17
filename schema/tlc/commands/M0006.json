@@ -30,7 +30,7 @@
         "properties" : {
           "v" : {
             "description" : "False: Deactivate input\nTrue: Activate input",
-            "type" : "boolean"
+            "$ref" : "../../core/definitions.json#/boolean"
           }
         }
       }
