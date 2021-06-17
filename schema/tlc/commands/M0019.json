@@ -31,7 +31,7 @@
         "properties" : {
           "v" : {
             "description" : "False: Force input\nTrue: Release input",
-            "type" : "boolean"
+            "$ref" : "../../core/definitions.json#/boolean"
           }
         }
       }
@@ -91,7 +91,7 @@
         "properties" : {
           "v" : {
             "description" : "False: input forced to False\nTrue: input forced to True",
-            "type" : "boolean"
+            "$ref" : "../../core/definitions.json#/boolean"
           }
         }
       }
