@@ -30,7 +30,7 @@
         "properties" : {
           "v" : {
             "description" : "False: Activate emergency route\nTrue: Deactivate emergency route",
-            "type" : "boolean"
+            "$ref" : "../../core/definitions.json#/boolean"
           }
         }
       }

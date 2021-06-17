@@ -29,7 +29,7 @@
         "properties" : {
           "v" : {
             "description" : "False: Deactivate fixed time control\nTrue: Activate fixed time control",
-            "type" : "boolean"
+            "$ref" : "../../core/definitions.json#/boolean"
           }
         }
       }
