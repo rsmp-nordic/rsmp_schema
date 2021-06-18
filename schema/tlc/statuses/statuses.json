@@ -36,8 +36,6 @@
                   "S0027",
                   "S0028",
                   "S0029",
-                  "S0030",
-                  "S0031",
                   "S0091",
                   "S0092",
                   "S0095",
@@ -489,36 +487,6 @@
             },
             "then" : {
               "$ref" : "S0029.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "sCI"
-              ],
-              "properties" : {
-                "sCI" : {
-                  "const" : "S0030"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "S0030.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "sCI"
-              ],
-              "properties" : {
-                "sCI" : {
-                  "const" : "S0031"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "S0031.json"
             }
           },
           {
