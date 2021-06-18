@@ -47,11 +47,7 @@
                   "S0201",
                   "S0202",
                   "S0203",
-                  "S0204",
-                  "S0205",
-                  "S0206",
-                  "S0207",
-                  "S0208"
+                  "S0204"
                 ]
               }
             }
@@ -669,66 +665,6 @@
             },
             "then" : {
               "$ref" : "S0204.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "sCI"
-              ],
-              "properties" : {
-                "sCI" : {
-                  "const" : "S0205"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "S0205.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "sCI"
-              ],
-              "properties" : {
-                "sCI" : {
-                  "const" : "S0206"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "S0206.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "sCI"
-              ],
-              "properties" : {
-                "sCI" : {
-                  "const" : "S0207"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "S0207.json"
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "sCI"
-              ],
-              "properties" : {
-                "sCI" : {
-                  "const" : "S0208"
-                }
-              }
-            },
-            "then" : {
-              "$ref" : "S0208.json"
             }
           }
         ]
