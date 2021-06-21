@@ -29,7 +29,7 @@
           "s" : {
             "description" : "Signal group status as text field",
             "type" : "string",
-            "pattern" : "^[a-hA-G0-9N-P]+$"
+            "pattern" : "^[a-hA-G0-9N-P]*$"
           }
         }
       }
