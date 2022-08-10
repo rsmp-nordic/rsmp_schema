@@ -1,0 +1,55 @@
+{
+  "title" :  "Alarm",
+  "description" :  "Alarm messsage",
+  "properties" : {
+    "mId" : { "$ref": "definitions.json#/message_id" },
+    "cId" : { "$ref": "definitions.json#/component_id" },
+    "aCId" : { "$ref": "definitions.json#/alarm_code" },
+    "xACId" : { "description" : "External alarm code id", "type" : "string" },
+    "aSp" : {
+      "description" : "Alarm message variant",
+      "type" : "string",
+      "enum" : [ "Issue", "Acknowledge", "Suspend", "Resume" ]
+    },
+    "ack" : {
+      "description" : "Acknowledgement",
+      "type" : "string",
+      "enum" : [ "Acknowledged", "notAcknowledged" ]
+    },
+    "aS" : {
+      "description" : "Status",
+      "type" : "string",
+      "enum" : [ "inActive", "Active" ]
+    },
+    "sS" : {
+      "description" : "Suspended",
+      "type" : "string",
+      "enum" : [ "suspended", "notSuspended" ]
+    },
+    "aTs" : { "$ref": "definitions.json#/timestamp" },
+    "cat" : {
+      "description" : "Category",
+      "type" : "string",
+      "enum" : [ "T", "D" ]
+    },
+    "pri" : {
+      "description" : "Priority",
+      "type" : "string",
+      "enum" : [ "1", "2", "3" ]
+    },
+    "rvs" : {
+      "description" : "Return values",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties": {
+          "n" : { "description" : "Unique reference of the value", "type" : "string" },
+          "v" : { "description" : "Value", "type" : "string" }
+        },
+        "required" : [ "n", "v" ],
+        "additionProperties": false
+      }
+    }
+  },
+  "required" : [ "mId", "cId", "aCId", "xACId", "aSp", "ack", "aS", "aTs", "sS", "cat", "pri", "rvs" ]
+}
