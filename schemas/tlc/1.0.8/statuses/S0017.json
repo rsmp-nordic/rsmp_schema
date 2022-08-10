@@ -1,0 +1,34 @@
+{
+  "allOf" : [
+    {
+      "description" : "Number of signal groups\n\nCan be used for the management system to check the number of signal groups configured in the controller.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "number"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "number"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "Number of signal groups",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
+    }
+  ]
+}

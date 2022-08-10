@@ -1,0 +1,55 @@
+{
+  "allOf" : [
+    {
+      "description" : "Controller switched on\n\nThe controller is active and is not in dark mode.\n\nUsed to determine if the controller is operating, e.g. it shows red, green or yellow to the vehicles.\n\nDuring maintenance work the controller might be using dark mode (no output to the signal heads).\n",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "intersection",
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "intersection"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
+            "$ref" : "../../core/definitions.json#/integer_list"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "False: Traffic Light Controller in dark mode\nTrue: Traffic Light Controller not in dark mode",
+            "$ref" : "../../core/definitions.json#/boolean_list"
+          }
+        }
+      }
+    }
+  ]
+}

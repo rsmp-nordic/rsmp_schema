@@ -1,0 +1,55 @@
+{
+  "allOf" : [
+    {
+      "description" : "Traffic Counting: Occupancy\n\nUsed for Traffic counting.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "occupancy",
+            "starttime"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "starttime"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
+            "type" : "string"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "occupancy"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "Occupancy in percent (0-100%)",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
+    }
+  ]
+}

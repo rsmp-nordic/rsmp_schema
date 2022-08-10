@@ -1,0 +1,55 @@
+{
+  "allOf" : [
+    {
+      "description" : "Isolated control\n\nIsolated control mode indicates that the controller operates independently of any other traffic light controllers. This may different depending on traffic program (time plan).\n\nUsed to determine if the controller is operating independently or operating with other controllers (coordination).",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "intersection",
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "intersection"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
+            "$ref" : "../../core/definitions.json#/integer_list"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "False: Isolated control disabled\nTrue: Isolated control enabled (Vehicle actuated control or Fixed time control)",
+            "$ref" : "../../core/definitions.json#/boolean_list"
+          }
+        }
+      }
+    }
+  ]
+}

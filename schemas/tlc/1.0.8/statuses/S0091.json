@@ -1,0 +1,61 @@
+{
+  "allOf" : [
+    {
+      "description" : "Operator logged in/out OP-panel\n\nProvides information if maintenance personnel is currently working on site.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "user"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "type" : "string",
+            "enum" : [
+              "[nobody]",
+              "[username]"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "type" : "string",
+            "enum" : [
+              "login",
+              "logout"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "allOf" : [
+    {
+      "description" : "Number of traffic situations.\nCan be used for the management system to check the number of traffic situations configured in the controller.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "number"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "number"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "Number of traffic situations",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
+    }
+  ]
+}

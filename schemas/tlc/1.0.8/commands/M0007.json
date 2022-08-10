@@ -1,0 +1,58 @@
+{
+  "allOf" : [
+    {
+      "description" : "Activate fixed time control\n\nDeactivates the traffic actuated control using detectors and activates pre-timed control.\n\nCan be used in case normal detectors can't be used, e.g. during maintenance work.\n\nRequires security code 2.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "securityCode",
+            "status"
+          ]
+        },
+        "cO" : {
+          "const" : "setFixedTime"
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "False: Deactivate fixed time control\nTrue: Activate fixed time control",
+            "$ref" : "../../core/definitions.json#/boolean"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
+    }
+  ]
+}

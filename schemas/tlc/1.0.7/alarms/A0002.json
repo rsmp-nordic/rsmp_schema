@@ -1,0 +1,7 @@
+{
+  "allOf" : [
+    {
+      "description" : "Less serious hardware error.\nIs a \"minor fault\" defined according to 3.11 in EN12675."
+    }
+  ]
+}

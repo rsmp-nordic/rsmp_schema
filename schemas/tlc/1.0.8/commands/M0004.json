@@ -1,0 +1,58 @@
+{
+  "allOf" : [
+    {
+      "description" : "Restarts Traffic Light Controller\n\nUsed in the event of serious faults in the device where a restart is considered to be able to remedy a problem.\n\nRequires security code 2",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "securityCode",
+            "status"
+          ]
+        },
+        "cO" : {
+          "const" : "setRestart"
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "True: Restart controller",
+            "$ref" : "../../core/definitions.json#/boolean"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "allOf" : [
+    {
+      "description" : "Control mode.\nCan be used for the management system to check the current control mode (startup, normal, standby, failure, test).",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "controlmode",
+            "intersection"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "intersection"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
+            "$ref" : "../../core/definitions.json#/integer"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "controlmode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "type" : "string",
+            "enum" : [
+              "control",
+              "failure",
+              "standby",
+              "startup",
+              "test"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

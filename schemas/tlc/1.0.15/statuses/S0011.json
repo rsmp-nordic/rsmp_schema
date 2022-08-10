@@ -1,0 +1,55 @@
+{
+  "allOf" : [
+    {
+      "description" : "Yellow flash.\nThe controller shows yellow flash.\nYellow flash may be used during a serious fault (depending on configuration) or maintenance work. It can also be manually set using M0001.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "intersection",
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "intersection"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
+            "$ref" : "../../core/definitions.json#/integer_list"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "False: Yellow flash disabled\nTrue: Yellow flash enabled",
+            "$ref" : "../../core/definitions.json#/boolean_list"
+          }
+        }
+      }
+    }
+  ]
+}

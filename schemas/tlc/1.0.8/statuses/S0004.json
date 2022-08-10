@@ -1,0 +1,55 @@
+{
+  "allOf" : [
+    {
+      "description" : "Output status\n\nOutput (1-255) of the controllers general purpose I/O.\n\nCan be used for all types of output where the traffic light controller needs to control other equipment. Can be used for bus priority, coordination between traffic controllers, external control systems, and much more.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "extendedoutputstatus",
+            "outputstatus"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "outputstatus"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "Output status as text field",
+            "type" : "string"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "extendedoutputstatus"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "Extended output status as text field",
+            "type" : "string"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "allOf" : [
+    {
+      "description" : "Version of Traffic Light Controller\n\nProvides diagnostic version information.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "Manufacturer, product name and version of traffic light controller",
+            "type" : "string"
+          }
+        }
+      }
+    }
+  ]
+}
