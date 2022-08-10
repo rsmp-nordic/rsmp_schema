@@ -68,3 +68,6 @@ This is useful when developing the schema, to ensure it validates correctly.
 $ bundle              # install gems
 $ bundle exec rspec   # run rspec tests
 ```
+
+## Schema generation
+Note that the SXL JSON schemas are generated automatically from an authoritative YAML file, and should therefore not be edited by hand. Instead, edit the YAML source and regenerate the schema files.
