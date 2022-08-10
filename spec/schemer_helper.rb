@@ -11,7 +11,7 @@ def validate json
 	  errors = []
 	  begin
 	  	$schemer.validate(json).each do |item|
-		  	errors ||= []
+		  	errors ||= []
 		    errors << [item['data_pointer'],item['type'],item['details']].compact
 		  end
 	  rescue
