@@ -18,55 +18,55 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	}}
 
 	it 'accepts valid message' do
-	  expect( validate(message) ).to be_nil
+	  expect( validate(message, 'core', :all) ).to eq(nil)
   end
 
   it 'catches missing mType' do
 		invalid = message.dup
 		invalid.delete 'mType'
-	  expect( validate(invalid) ).to eq([
+	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
 	  	["", "required", {"missing_keys"=>["mType"]}]
-	  ])
+	  ]})
   end
 
   it 'catches missing mId' do
 		invalid = message.dup
 		invalid.delete 'mId'
-	  expect( validate(invalid) ).to eq([
+	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
 	  	["", "required", {"missing_keys"=>["mId"]}]
-	  ])
+	  ]})
   end
 
   it 'catches missing type' do
 		invalid = message.dup
 		invalid.delete 'type'
-	  expect( validate(invalid) ).to eq([
+	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
 	  	["", "required", {"missing_keys"=>["type"]}]
-	  ])
+	  ]})
   end
 
   it 'catches bad mType' do
 		invalid = message.dup
 		invalid['mType'] = 'ohno'
-	  expect( validate(invalid) ).to eq([
+	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
 	  	["/mType", "const"]
-	  ])
+	  ]})
   end
 
   it 'catches bad mId' do
 		invalid = message.dup
 		invalid['mId'] = '4173c2c8a93343cb942566d4613731ed'		# missing dashes
-	  expect( validate(invalid) ).to eq([
+	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
 	  	["/mId", "pattern"]
-	  ])
+	  ]})
   end
 
   it 'catches bad type' do
 		invalid = message.dup
 		invalid['type'] = 'MyMessage'
-	  expect( validate(invalid) ).to eq([
+	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
 	  	["/type", "enum"]
-	  ])
+	  ]})
   end
 
 end
