@@ -9,22 +9,26 @@
     "aSp" : {
       "description" : "Alarm message variant",
       "type" : "string",
-      "enum" : [ "Issue", "Acknowledge", "Suspend", "Resume" ]
+      "enum" : [ "Issue", "Acknowledge", "Suspend", "Resume",
+                 "issue", "acknowledge", "suspend", "resume" ]
     },
     "ack" : {
       "description" : "Acknowledgement",
       "type" : "string",
-      "enum" : [ "Acknowledged", "notAcknowledged" ]
+      "enum" : [ "Acknowledged", "notAcknowledged",
+                 "acknowledged", "NotAcknowledged" ]
     },
     "aS" : {
       "description" : "Status",
       "type" : "string",
-      "enum" : [ "inActive", "Active" ]
+      "enum" : [ "inActive", "Active",
+                 "InActive", "active" ]
     },
     "sS" : {
       "description" : "Suspended",
       "type" : "string",
-      "enum" : [ "suspended", "notSuspended" ]
+      "enum" : [ "suspended", "notSuspended",
+                 "Suspended", "NotSuspended" ]
     },
     "aTs" : { "$ref": "definitions.json#/timestamp" },
     "cat" : {
