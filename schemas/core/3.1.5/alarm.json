@@ -18,7 +18,10 @@
     {
       "if": {
         "required" : [ "aSp" ],
-        "properties" : { "aSp" : { "const" : "Issue" } }
+        "properties" : {
+          "aSp" : { "enum" : [ "Issue",
+                               "issue"] }
+        }
       },
       "then": { "$ref": "../3.1.1/alarm_issue.json" }
     },
@@ -50,6 +53,16 @@
         }
       },
       "then": { "$ref": "../3.1.1/alarm_suspended_resumed.json" }
+    },
+    {
+      "if": {
+        "required" : [ "aSp" ],
+        "properties" : {
+          "aSp" : { "enum" : [ "Request",
+                               "request"] }
+        }
+      },
+      "then": { "$ref": "alarm_request.json" }
     }
-  ]
+   ]
 }

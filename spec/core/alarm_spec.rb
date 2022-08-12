@@ -21,7 +21,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 		]
 	}}
 
-	it 'accepts valid alarm request' do
+	it 'accepts valid alarm issue' do
 	  expect( validate(message, 'core', :all) ).to be_nil
   end
 
