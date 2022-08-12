@@ -13,67 +13,59 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	}}
 
 	it 'accepts valid message' do
-	  expect( validate(message, 'core', :all) ).to eq(nil)
+	  expect( validate(message, 'core', :all) ).to be_nil
   end
 
   it 'catches missing mId' do
-		invalid = message.dup
-		invalid.delete 'mId'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>["mId"]}]
-	  ]})
+		message.delete 'mId'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["", "required", {"missing_keys"=>["mId"]}]]
+	  )
   end
 
   it 'catches missing aSTS' do
-		invalid = message.dup
-		invalid.delete 'aSTS'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>["aSTS"]}]
-	  ]})
+		message.delete 'aSTS'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["", "required", {"missing_keys"=>["aSTS"]}]]
+	  )
   end
 
   it 'catches bad aSTS' do
-		invalid = message.dup
-		invalid['aSTS'] = "2015-06-08T08:05:06.5843Z"
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/aSTS", "pattern"]
-	  ]})
+		message['aSTS'] = "2015-06-08T08:05:06.5843Z"
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/aSTS", "pattern"]]
+	  )
   end
 
   it 'catches missing se' do
-		invalid = message.dup
-		invalid.delete 'se'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>["se"]}]
-	  ]})
+		message.delete 'se'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["", "required", {"missing_keys"=>["se"]}]]
+	  )
   end
 
   it 'catches bad se' do
-		invalid = message.dup
-		invalid['se'] = 123
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/se", "array"]
-	  ]})
+		message['se'] = 123
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/se", "array"]]
+	  )
 
-		invalid = message.dup
-		invalid['se'] = [true,false,false,false,false,false,false]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/se", "minItems"]
-	  ]})
+		message['se'] = [true,false,false,false,false,false,false]
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/se", "minItems"]]
+	  )
 
-		invalid = message.dup
-		invalid['se'] = [true,false,false,false,false,false,false,true,true]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/se", "maxItems"]
-	  ]})
+		message['se'] = [true,false,false,false,false,false,false,true,true]
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/se", "maxItems"]]
+	  )
 
-		invalid = message.dup
-		invalid['se'] = [false,false,false,1,nil,"",false,false]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/se/3", "boolean"],
+		message['se'] = [false,false,false,1,nil,"",false,false]
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/se/3", "boolean"],
 	  	["/se/4", "boolean"],
-	  	["/se/5", "boolean"]
-	  ]})
+	  	["/se/5", "boolean"]]
+	  )
 
 	end
 

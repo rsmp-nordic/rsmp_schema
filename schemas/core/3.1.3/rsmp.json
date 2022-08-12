@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "core.json"
+      "$ref": "../3.1.1/core.json"
     },
     {
       "if": {
@@ -9,7 +9,7 @@
         "properties": { "type": { "const": "MessageAck" } }
       },
       "then": {
-        "$ref": "message_ack.json"
+        "$ref": "../3.1.1/message_ack.json"
       }
     },
     {
@@ -18,7 +18,7 @@
         "properties": { "type": { "const": "MessageNotAck" } }
       },
       "then": {
-        "$ref": "message_not_ack.json"
+        "$ref": "../3.1.1/message_not_ack.json"
       }
     },
     {
@@ -27,7 +27,7 @@
         "properties": { "type": { "const": "Version" } }
       },
       "then": {
-        "$ref": "version.json"
+        "$ref": "../3.1.1/version.json"
       }
     },
     {
@@ -36,7 +36,7 @@
         "properties": { "type": { "const": "AggregatedStatus" } }
       },
       "then": {
-        "$ref": "aggregated_status.json"
+        "$ref": "../3.1.1/aggregated_status.json"
       }
     },
     {
@@ -45,7 +45,7 @@
         "properties": { "type": { "const": "Watchdog" } }
       },
       "then": {
-        "$ref": "watchdog.json"
+        "$ref": "../3.1.1/watchdog.json"
       }
     },
     {
@@ -54,7 +54,7 @@
         "properties": { "type": { "const": "Alarm" } }
       },
       "then": {
-        "$ref": "alarm.json"
+        "$ref": "../3.1.1/alarm.json"
       }
     },
     {
@@ -63,7 +63,7 @@
         "properties": { "type": { "const": "CommandRequest" } }
       },
       "then": {
-        "$ref": "command_request.json"
+        "$ref": "../3.1.1/command_request.json"
       }
     },
     {
@@ -72,7 +72,7 @@
         "properties": { "type": { "const": "CommandResponse" } }
       },
       "then": {
-        "$ref": "command_response.json"
+        "$ref": "../3.1.1/command_response.json"
       }
     },
     {
@@ -81,7 +81,7 @@
         "properties": { "type": { "const": "StatusRequest" } }
       },
       "then": {
-        "$ref": "status_request.json"
+        "$ref": "../3.1.1/status_request.json"
       }
     },
     {
@@ -99,7 +99,7 @@
        "properties": { "type": { "const": "StatusSubscribe" } }
       },
       "then": {
-        "$ref": "status_subscribe.json"
+        "$ref": "../3.1.1/status_subscribe.json"
       }
     },
     {
@@ -108,7 +108,7 @@
         "properties": { "type": { "const": "StatusUnsubscribe" } }
       },
       "then": {
-        "$ref": "status_unsubscribe.json"
+        "$ref": "../3.1.1/status_unsubscribe.json"
       }
     },
     {

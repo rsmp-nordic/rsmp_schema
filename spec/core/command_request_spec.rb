@@ -15,92 +15,82 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	}}
 
 	it 'accepts valid command' do
-	  expect( validate(message, 'core', :all) ).to eq(nil)
+	  expect( validate(message, 'core', :all) ).to be_nil
   end
 
   it 'catches missing component id' do
-		invalid = message.dup
-		invalid.delete 'cId'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>["cId"]}]
-	  ]})
+		message.delete 'cId'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["", "required", {"missing_keys"=>["cId"]}]]
+	  )
   end
 
   it 'catches bad command code' do
-		invalid = message.dup
-		invalid['arg'].first['cCI'] = '99'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/arg/0/cCI", "pattern"]
-	  ]})
+		message['arg'].first['cCI'] = '99'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/arg/0/cCI", "pattern"]]
+	  )
   end
 
   it 'catches missing arg' do
-		invalid = message.dup
-		invalid.delete 'arg'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>["arg"]}]
-	  ]})
+		message.delete 'arg'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["", "required", {"missing_keys"=>["arg"]}]]
+	  )
   end
 
   it 'catches empty arg array' do
-		invalid = message.dup
-		invalid["arg"].clear
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/arg", "minItems"]
-	  ]})
+		message["arg"].clear
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/arg", "minItems"]]
+	  )
   end
 
   it 'catches bad arg type' do
-		invalid = message.dup
-		invalid["arg"] = {}
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/arg", "array"]
-	  ]})
+		message["arg"] = {}
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/arg", "array"]]
+	  )
   end
 
   it 'catches missing command code' do
-		invalid = message.dup
-		invalid["arg"].first.delete 'cCI'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/arg/0", "required", {"missing_keys"=>["cCI"]}]
-	  ]})
+		message["arg"].first.delete 'cCI'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/arg/0", "required", {"missing_keys"=>["cCI"]}]]
+	  )
   end
 
   it 'catches bad command code' do
-		invalid = message.dup
-		invalid["arg"].first['cCI'] = 3
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/arg/0/cCI", "string"]
-	  ]})
+		message["arg"].first['cCI'] = 3
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/arg/0/cCI", "string"]]
+	  )
 
-		invalid["arg"].first['cCI'] = '3'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/arg/0/cCI", "pattern"]
-	  ]})
+		message["arg"].first['cCI'] = '3'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/arg/0/cCI", "pattern"]]
+	  )
   end
 
   it 'catches missing name' do
-		invalid = message.dup
-		invalid["arg"].first.delete 'n'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/arg/0", "required", {"missing_keys"=>["n"]}]
-	  ]})
+		message["arg"].first.delete 'n'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/arg/0", "required", {"missing_keys"=>["n"]}]]
+	  )
   end
 
   it 'catches missing command' do
-		invalid = message.dup
-		invalid["arg"].first.delete 'cO'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/arg/0", "required", {"missing_keys"=>["cO"]}]
-	  ]})
+		message["arg"].first.delete 'cO'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/arg/0", "required", {"missing_keys"=>["cO"]}]]
+	  )
   end
 
   it 'catches missing value' do
-		invalid = message.dup
-		invalid["arg"].first.delete 'v'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/arg/0", "required", {"missing_keys"=>["v"]}]
-	  ]})
+		message["arg"].first.delete 'v'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/arg/0", "required", {"missing_keys"=>["v"]}]]
+	  )
   end
 
 end

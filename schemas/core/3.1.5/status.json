@@ -1,7 +1,7 @@
 {
   "properties" : {
-    "mId" : { "$ref": "definitions.json#/message_id" },
-    "cId" : { "$ref": "definitions.json#/component_id" },
+    "mId" : { "$ref": "../3.1.1/definitions.json#/message_id" },
+    "cId" : { "$ref": "../3.1.1/definitions.json#/component_id" },
     "sS" : {
       "description" : "Status request arguments",
       "type" : "array",
@@ -9,7 +9,7 @@
       "items" : {
         "type" : "object",
         "properties": {
-          "sCI" : { "$ref": "definitions.json#/status_code" },
+          "sCI" : { "$ref": "../3.1.1/definitions.json#/status_code" },
           "n" : { "description" : "Unique reference of the value", "type" : "string" }
         },
         "required" : [ "sCI", "n" ],

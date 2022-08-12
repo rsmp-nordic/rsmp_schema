@@ -59,7 +59,7 @@ puts schemer.valid? message     # => true
 ```
 
 ## RSpec tests
-The reposity includes RSpec test that checks the schema, by testing the result of validating a set of valid and invalid RSMP messages using the json_schemer gem.
+The reposity includes RSpec test that checks the schema, by testing the result of validating a set of valid and message RSMP messages using the json_schemer gem.
 
 This is useful when developing the schema, to ensure it validates correctly.
 

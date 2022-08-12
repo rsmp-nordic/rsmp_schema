@@ -29,6 +29,10 @@ end
 end
 
 def validate json, schema, versions
+	validate_variations( {all:json}, schema, versions )
+end
+
+def validate_variations json_variations, schema, versions
 	raise RuntimeError.new("Unknown schema: #{schema}") unless $schemers[schema.to_s]
 	
 	if versions == :all
@@ -45,21 +49,23 @@ def validate json, schema, versions
 
 	errors = nil
 	schemers.each_pair do |version,schemer|
-		if schemer.valid? json
+		json_variation = json_variations[:all] || json_variations[version]
+		if schemer.valid? json_variation
 			next
 		else
 		  errors ||= {}
 		  begin
-		  	schemer.validate(json).each do |item|
+		  	schemer.validate(json_variation).each do |item|
 			  	errors[version] ||= []
 			    errors[version] << [item['data_pointer'],item['type'],item['details']].compact
 			  end
 		  end
 		end
 	end
+	# if all schemas has the same errors, then simplify to a single :all key
 	if errors && errors.any?
-		if errors.values.uniq.size == 1
-			errors = {all: errors.values.first}
+		if errors.size == schemers.size && errors.values.uniq.size == 1
+			errors = errors.values.first
 		end
 	end
 	errors

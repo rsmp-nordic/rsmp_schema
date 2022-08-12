@@ -7,31 +7,28 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	}}
 
 	it 'accepts valid message' do
-	  expect( validate(message, 'core', :all) ).to eq(nil)
+	  expect( validate(message, 'core', :all) ).to be_nil
   end
 
   it 'catches missing mId' do
-		invalid = message.dup
-		invalid.delete 'mId'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>["mId"]}]
-	  ]})
+		message.delete 'mId'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["", "required", {"missing_keys"=>["mId"]}]]
+	  )
   end
 
   it 'catches missing timestamp' do
-		invalid = message.dup
-		invalid.delete 'wTs'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>["wTs"]}]
-	  ]})
+		message.delete 'wTs'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["", "required", {"missing_keys"=>["wTs"]}]]
+	  )
   end
 
   it 'catches bad timestamp format' do
-		invalid = message.dup
-		invalid['wTs'] = '2015-06-08T12:01:39.654' 		# missing Z at end
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/wTs", "pattern"]
-	  ]})
+		message['wTs'] = '2015-06-08T12:01:39.654' 		# missing Z at end
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/wTs", "pattern"]]
+	  )
   end
 
 end

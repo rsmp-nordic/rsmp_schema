@@ -7,53 +7,49 @@
     "aCId" : { "$ref": "definitions.json#/alarm_code" },
     "xACId" : { "description" : "External alarm code id", "type" : "string" },
     "aSp" : {
-      "description" : "Alarm message variant",
+      "description" : "Alarm specialization",
       "type" : "string",
       "enum" : [ "Issue", "Acknowledge", "Suspend", "Resume",
                  "issue", "acknowledge", "suspend", "resume" ]
-    },
-    "ack" : {
-      "description" : "Acknowledgement",
-      "type" : "string",
-      "enum" : [ "Acknowledged", "notAcknowledged",
-                 "acknowledged", "NotAcknowledged" ]
-    },
-    "aS" : {
-      "description" : "Status",
-      "type" : "string",
-      "enum" : [ "inActive", "Active",
-                 "InActive", "active" ]
-    },
-    "sS" : {
-      "description" : "Suspended",
-      "type" : "string",
-      "enum" : [ "suspended", "notSuspended",
-                 "Suspended", "NotSuspended" ]
-    },
-    "aTs" : { "$ref": "definitions.json#/timestamp" },
-    "cat" : {
-      "description" : "Category",
-      "type" : "string",
-      "enum" : [ "T", "D" ]
-    },
-    "pri" : {
-      "description" : "Priority",
-      "type" : "string",
-      "enum" : [ "1", "2", "3" ]
-    },
-    "rvs" : {
-      "description" : "Return values",
-      "type" : "array",
-      "items" : {
-        "type" : "object",
-        "properties": {
-          "n" : { "description" : "Unique reference of the value", "type" : "string" },
-          "v" : { "description" : "Value", "type" : "string" }
-        },
-        "required" : [ "n", "v" ],
-        "additionProperties": false
-      }
     }
   },
-  "required" : [ "mId", "cId", "aCId", "xACId", "aSp", "ack", "aS", "aTs", "sS", "cat", "pri", "rvs" ]
+  "required" : [ "aSp"],
+  "allOf" : [
+    {
+      "if": {
+        "required" : [ "aSp" ],
+        "properties" : { "aSp" : { "const" : "Issue" } }
+      },
+      "then": { "$ref": "alarm_issue.json" }
+    },
+    {
+      "if": {
+        "allOf" : [
+          {
+            "required" : [ "aSp" ],
+            "properties" : {
+              "aSp" : { "enum" : [ "Suspend", "Resume",
+                                   "suspend", "resume"] }
+            }
+          },
+          {
+            "not": { "required" : [ "sS" ] }
+          }
+        ]
+      },
+      "then": { "$ref": "alarm_suspend_resume.json" }
+    },
+    {
+      "if": {
+        "required" : [ "aSp", "sS" ],
+        "properties" : {
+          "aSp" : { "enum" : [ "Suspend", "Resume",
+                               "suspend", "resume"] },
+          "sS" : { "enum" : [ "suspended", "notSuspended",
+                              "Suspended", "NotSuspended" ] }
+        }
+      },
+      "then": { "$ref": "alarm_suspended_resumed.json" }
+    }
+  ]
 }

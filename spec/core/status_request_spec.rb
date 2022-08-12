@@ -10,84 +10,75 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	}}
 
 	it 'accepts valid status request' do
-	  expect( validate(message, 'core', :all) ).to eq(nil)
+	  expect( validate(message, 'core', :all) ).to be_nil
   end
 
   it 'catches missing component id' do
-		invalid = message.dup
-		invalid.delete 'cId'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>["cId"]}]
-	  ]})
+		message.delete 'cId'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["", "required", {"missing_keys"=>["cId"]}]]
+	  )
   end
 
   it 'catches bad status code' do
-		invalid = message.dup
-		invalid['sS'].first['sCI'] = '99'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/sCI", "pattern"]
-	  ]})
+		message['sS'].first['sCI'] = '99'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/sS/0/sCI", "pattern"]]
+	  )
   end
 
   it 'catches missing sS' do
-		invalid = message.dup
-		invalid.delete 'sS'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>['sS']}]
-	  ]})
+		message.delete 'sS'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["", "required", {"missing_keys"=>['sS']}]]
+	  )
   end
 
   it 'catches empty sS array' do
-		invalid = message.dup
-		invalid['sS'].clear
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS", "minItems"]
-	  ]})
+		message['sS'].clear
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/sS", "minItems"]]
+	  )
   end
 
   it 'catches bad sS type' do
-		invalid = message.dup
-		invalid['sS'] = {}
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS", "array"]
-	  ]})
+		message['sS'] = {}
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/sS", "array"]]
+	  )
   end
 
   it 'catches missing status code' do
-		invalid = message.dup
-		invalid['sS'].first.delete 'sCI'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0", "required", {"missing_keys"=>["sCI"]}]
-	  ]})
+		message['sS'].first.delete 'sCI'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/sS/0", "required", {"missing_keys"=>["sCI"]}]]
+	  )
   end
 
   it 'catches bad status code' do
-		invalid = message.dup
-		invalid['sS'].first['sCI'] = 3
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/sCI", "string"]
-	  ]})
+		message['sS'].first['sCI'] = 3
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/sS/0/sCI", "string"]]
+	  )
 
-		invalid['sS'].first['sCI'] = '3'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/sCI", "pattern"]
-	  ]})
+		message['sS'].first['sCI'] = '3'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/sS/0/sCI", "pattern"]]
+	  )
   end
 
   it 'catches missing name' do
-		invalid = message.dup
-		invalid['sS'].first.delete 'n'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0", "required", {"missing_keys"=>["n"]}]
-	  ]})
+		message['sS'].first.delete 'n'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/sS/0", "required", {"missing_keys"=>["n"]}]]
+	  )
   end
 
   it 'catches bad name' do
-		invalid = message.dup
-		invalid['sS'].first['n'] = 3
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/n", "string"]
-	  ]})
+		message['sS'].first['n'] = 3
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/sS/0/n", "string"]]
+	  )
   end
 
 end

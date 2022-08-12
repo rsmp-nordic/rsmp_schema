@@ -2,9 +2,9 @@
   "title" :  "Alarm",
   "description" :  "Alarm messsage",
   "properties" : {
-    "mId" : { "$ref": "definitions.json#/message_id" },
-    "cId" : { "$ref": "definitions.json#/component_id" },
-    "aCId" : { "$ref": "definitions.json#/alarm_code" },
+    "mId" : { "$ref": "../3.1.1/definitions.json#/message_id" },
+    "cId" : { "$ref": "../3.1.1/definitions.json#/component_id" },
+    "aCId" : { "$ref": "../3.1.1/definitions.json#/alarm_code" },
     "xACId" : { "description" : "External alarm code id", "type" : "string" },
     "aSp" : {
       "description" : "Alarm specialization",
@@ -20,7 +20,7 @@
         "required" : [ "aSp" ],
         "properties" : { "aSp" : { "const" : "Issue" } }
       },
-      "then": { "$ref": "alarm_issue.json" }
+      "then": { "$ref": "../3.1.1/alarm_issue.json" }
     },
     {
       "if": {
@@ -28,8 +28,8 @@
           {
             "required" : [ "aSp" ],
             "properties" : {
-              "aSp" : { "enum" : [ "Suspend","Resume",
-                                   "suspend", "resume"]  }
+              "aSp" : { "enum" : [ "Suspend", "Resume",
+                                   "suspend", "resume"] }
             }
           },
           {
@@ -37,18 +37,19 @@
           }
         ]
       },
-      "then": { "$ref": "alarm_suspend_resume.json" }
+      "then": { "$ref": "../3.1.1/alarm_suspend_resume.json" }
     },
     {
       "if": {
         "required" : [ "aSp", "sS" ],
         "properties" : {
-          "aSp" : { "const" : "Suspend" },
+          "aSp" : { "enum" : [ "Suspend", "Resume",
+                               "suspend", "resume"] },
           "sS" : { "enum" : [ "suspended", "notSuspended",
                               "Suspended", "NotSuspended" ] }
         }
       },
-      "then": { "$ref": "alarm_suspended_resumed.json" }
+      "then": { "$ref": "../3.1.1/alarm_suspended_resumed.json" }
     }
   ]
 }

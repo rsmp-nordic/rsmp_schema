@@ -1,10 +1,10 @@
-{
+ {
   "title" :  "StatusUpdate",
   "description" :  "Status update",
   "properties" : {
-    "mId" : { "$ref": "definitions.json#/message_id" },
-    "cId" : { "$ref": "definitions.json#/component_id" },
-    "sTs" : { "$ref": "definitions.json#/timestamp" },
+    "mId" : { "$ref": "../3.1.1/definitions.json#/message_id" },
+    "cId" : { "$ref": "../3.1.1/definitions.json#/component_id" },
+    "sTs" : { "$ref": "../3.1.1/definitions.json#/timestamp" },
     "sS" : {
       "description" : "Status update arguments",
       "type" : "array",
@@ -12,17 +12,17 @@
       "items" : {
         "type" : "object",
         "properties": {
-          "sCI" : { "$ref": "definitions.json#/status_code" },
+          "sCI" : { "$ref": "../3.1.1/definitions.json#/status_code" },
           "n" : { "description" : "Unique reference of the value", "type" : "string" },
           "s" : { "description" : "Value", "type" : "string" },
-          "q" : {
+          "q" : {   // changed from "ageState" in 3.1.2 
             "description" : "Value",
             "type" : "string",
             "enum" : [ "recent", "old", "undefined", "unknown" ]
-        }
+          }
         },
         "required" : [ "sCI", "n", "s", "q" ],
-        "additionProperties": false
+        "additionalProperties": false
       }
     }
   },

@@ -11,45 +11,40 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	}}
 
 	it 'accepts valid message' do
-	  expect( validate(message, 'core', :all) ).to eq(nil)
+	  expect( validate(message, 'core', :all) ).to be_nil
   end
 
   it 'catches missing old message id' do
-		invalid = message.dup
-		invalid.delete 'oMId'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>["oMId"]}]
-	  ]})
+		message.delete 'oMId'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["", "required", {"missing_keys"=>["oMId"]}]]
+	  )
   end
 
   it 'catches bad old version message id format' do
-		invalid = message.dup
-		invalid['oMId'] = '4173c2c8-a933-ouch-9425-66d4613731ed'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/oMId", "pattern"]
-	  ]})
+		message['oMId'] = '4173c2c8-a933-ouch-9425-66d4613731ed'
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/oMId", "pattern"]]
+	  )
   end
 
   it 'catches wrong old version message id type' do
-		invalid = message.dup
-		invalid['oMId'] = 1234
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/oMId", "string"]
-	  ]})
+		message['oMId'] = 1234
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/oMId", "string"]]
+	  )
   end
 
   it 'allows reason to be omitted' do
-		invalid = message.dup
-		invalid.delete 'rea'
-	  expect( validate(invalid, 'core', :all) ).to be_nil
+		message.delete 'rea'
+	  expect( validate(message, 'core', :all) ).to be_nil
   end
 
   it 'catches bad reason, must be string' do
-		invalid = message.dup
-		invalid['rea'] = 123
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/rea", "string"]
-	  ]})
+		message['rea'] = 123
+	  expect( validate(message, 'core', :all) ).to eq(
+	  	[["/rea", "string"]]
+	  )
   end
  
 end

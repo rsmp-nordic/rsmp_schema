@@ -15,14 +15,14 @@
           "sCI" : { "$ref": "definitions.json#/status_code" },
           "n" : { "description" : "Unique reference of the value", "type" : "string" },
           "s" : { "description" : "Value", "type" : "string" },
-          "q" : {
+          "ageState" : {
             "description" : "Value",
             "type" : "string",
             "enum" : [ "recent", "old", "undefined", "unknown" ]
-        }
+          }
         },
-        "required" : [ "sCI", "n", "s", "q" ],
-        "additionProperties": false
+        "required" : [ "sCI", "n", "s", "ageState" ],
+        "additionalProperties": false
       }
     }
   },

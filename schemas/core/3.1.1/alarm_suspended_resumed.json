@@ -3,17 +3,20 @@
     "ack" : {
       "description" : "Acknowledgement",
       "type" : "string",
-      "enum" : [ "Acknowledged", "notAcknowledged" ]
+      "enum" : [ "Acknowledged", "notAcknowledged",
+                 "acknowledged", "NotAcknowledged" ]
     },
     "aS" : {
       "description" : "Active status",
       "type" : "string",
-      "enum" : [ "inActive", "Active" ]
+      "enum" : [ "inActive", "Active",
+                 "InActive", "active" ]
     },
     "sS" : {
       "description" : "Suspend status",
       "type" : "string",
-      "enum" : [ "suspended", "notSuspended" ]
+      "enum" : [ "suspended", "notSuspended",
+                 "Suspended", "NotSuspended" ]
     },
     "aTs" : { "$ref": "definitions.json#/timestamp" },
     "cat" : {
