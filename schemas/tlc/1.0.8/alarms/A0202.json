@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Less serious lamp error\n\nUsed for lamp errors\n\nIs a \"minor fault\" defined according to 3.11 in EN12675.",
+      "description" : "Less serious lamp error.\nUsed for lamp errors.\nIs a \"minor fault\" defined according to 3.11 in EN12675.",
       "properties" : {
         "n" : {
           "enum" : [

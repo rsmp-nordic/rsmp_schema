@@ -1,7 +1,7 @@
 {
   "name" : "tlc",
   "description" : "Traffic Light Controllers",
-  "version" : "1.0.8",
+  "version" : "1.0.7",
   "allOf" : [
     {
       "if" : {

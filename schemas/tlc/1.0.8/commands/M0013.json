@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Activate a series of inputs\n\nSet given inputs (1-255) of the controllers general purpose I/O to either true or false.\n\nThis command was introduced due to coordination requirements needing to set many inputs to true/false at the same time and M0006 being to slow to send a message for each input individually. With this command many inputs can be set to true/false at the same time using a single RSMP message.\n\nCan be used for all types of input where the traffic light controller must react to external control. Typical usages are bus priority, coordination between traffic controllers, external control systems, and much more.\n\nRequires security code 2",
+      "description" : "Activate a series of inputs.\nSet given inputs (1-255) of the controllers general purpose I/O to either true or false.\nThis command was introduced due to coordination requirements needing to set many inputs to true/false at the same time and M0006 being to slow to send a message for each input individually. With this command many inputs can be set to true/false at the same time using a single RSMP message.\nCan be used for all types of input where the traffic light controller must react to external control. Typical usages are bus priority, coordination between traffic controllers, external control systems, and much more.\nRequires security code 2",
       "properties" : {
         "n" : {
           "enum" : [

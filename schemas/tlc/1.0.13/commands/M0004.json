@@ -29,7 +29,7 @@
         "properties" : {
           "v" : {
             "description" : "True: Restart controller",
-            "$ref" : "../../core/definitions.json#/boolean"
+            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
           }
         }
       }

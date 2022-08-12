@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Operator logged in/out web-interface\n\nProvides information if maintenance personnel is currently working with the controller.",
+      "description" : "Operator logged in/out web-interface.\nProvides information if maintenance personnel is currently working with the controller.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -25,11 +25,8 @@
       "then" : {
         "properties" : {
           "s" : {
-            "type" : "string",
-            "enum" : [
-              "[nobody]",
-              "[username]"
-            ]
+            "description" : "nobody: No one logged in\n<username>: User currently logged in",
+            "type" : "string"
           }
         }
       }

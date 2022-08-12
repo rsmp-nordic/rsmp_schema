@@ -25,7 +25,7 @@
         "properties" : {
           "s" : {
             "description" : "Current traffic situation",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }

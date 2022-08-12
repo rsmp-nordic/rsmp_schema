@@ -837,49 +837,6 @@ objects:
               yellow: yellow
               green: green
     statuses:
-      S0025:
-        description: |-
-          Time-of-Green / Time-of-Red.
-          Provides predicted signal timings of green and red for each signal group. Max, min and likely time to green and red.
-        arguments:
-          minToGEstimate   :
-            type: timestamp
-            description: |-
-              Time stamp for the minimum time for the signal group to go to green. If the signal group is green, it is the minimum time for the next green.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
-          maxToGEstimate   :
-            type: timestamp
-            description: |-
-              Time stamp for the maximum time for the signal group to go to green. If the signal group is green, it is the maximum time for the next green.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
-          likelyToGEstimate   :
-            type: timestamp
-            description: |-
-              Time stamp for the most likely time for the signal group to go to green. If the signal group is green, it is the most likely time for the next green.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
-          ToGConfidence:
-            type: integer
-            description: Confidence of the likelyToGEstimate. 0-100%
-            range: "[0-100]"
-          minToREstimate   :
-            type: timestamp
-            description: |-
-              Time stamp for the minimum time for the signal group to go to red. If the signal group is red, it is the minimum time for the next red.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
-          maxToREstimate:
-            type: timestamp
-            description: |-
-              Time stamp for the maximum time for the signal group to go to red. If the signal group is red, it is the maximum time for the next red.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
-          likelyToREstimate   :
-            type: timestamp
-            description: |-
-              Time stamp for the most likely time for the signal group to go to red. If the signal group is red, it is the most likely time for the next red.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
-          ToRConfidence:
-            type: integer
-            description: Confidence of the likelyToREstimate. 0-100%
-            range: "[0-100]"
     commands:
       M0010:
         description: |-

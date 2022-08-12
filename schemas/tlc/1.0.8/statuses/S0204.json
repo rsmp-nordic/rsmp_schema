@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Traffic Counting: Number of vehicles of given classification\n\nUsed for Traffic counting.",
+      "description" : "Traffic Counting: Number of vehicles of given classification.\nUsed for Traffic counting.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -33,8 +33,8 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
-            "type" : "string"
+            "description" : "Time stamp for start of measuring. Format according to W3C\nXML dateTime with a resolution of 3 decimal places. All time stamps\nin UTC. E.g. 2009-10-02T14:34:34.341Z",
+            "$ref" : "../../../core/3.1.1/definitions.json#/timestamp"
           }
         }
       }
@@ -54,7 +54,7 @@
         "properties" : {
           "s" : {
             "description" : "Number of cars",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -74,7 +74,7 @@
         "properties" : {
           "s" : {
             "description" : "Number of cars with trailers",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -94,7 +94,7 @@
         "properties" : {
           "s" : {
             "description" : "Number of trucks",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -114,7 +114,7 @@
         "properties" : {
           "s" : {
             "description" : "Number of trucks with trailers",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -134,7 +134,7 @@
         "properties" : {
           "s" : {
             "description" : "Number of busses",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -154,7 +154,7 @@
         "properties" : {
           "s" : {
             "description" : "Number of trams",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -174,7 +174,7 @@
         "properties" : {
           "s" : {
             "description" : "Number of motor cycles",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -194,7 +194,7 @@
         "properties" : {
           "s" : {
             "description" : "Number of bicycles",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -214,7 +214,7 @@
         "properties" : {
           "s" : {
             "description" : "Number of pedestrians",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }

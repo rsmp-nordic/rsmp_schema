@@ -26,7 +26,7 @@
         "properties" : {
           "s" : {
             "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
-            "$ref" : "../../core/definitions.json#/integer_list"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
           }
         }
       }
@@ -46,7 +46,7 @@
         "properties" : {
           "s" : {
             "description" : "False: Isolated control disabled\nTrue: Isolated control enabled (Vehicle actuated control or Fixed time control)",
-            "$ref" : "../../core/definitions.json#/boolean_list"
+            "$ref" : "../../../core/3.1.1/definitions.json#/boolean_list"
           }
         }
       }

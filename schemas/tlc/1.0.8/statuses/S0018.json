@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Number of time plans\n\nCan be used for the management system to check the number of time plans configured in the controller.",
+      "description" : "Number of time plans\nCan be used for the management system to check the number of time plans configured in the controller.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -25,7 +25,7 @@
         "properties" : {
           "s" : {
             "description" : "Number of time plans (depreciated)",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }

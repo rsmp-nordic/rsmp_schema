@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Set clock\n\nCan be used to manually set the clock of the traffic light controller if automatic  time synchronization (NTP or watchdog sync) is not available. For instance, during maintenance work.\n\nRequires security code 1",
+      "description" : "Set clock.\nCan be used to manually set the clock of the traffic light controller if automatic  time synchronization (NTP or watchdog sync) is not available. For instance, during maintenance work.\nRequires security code 1",
       "properties" : {
         "n" : {
           "enum" : [
@@ -54,7 +54,7 @@
         "properties" : {
           "v" : {
             "description" : "Changes internal clock. Note: UTC is used\nYear according to YYYY",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -74,7 +74,7 @@
         "properties" : {
           "v" : {
             "description" : "Changes internal clock. Note: UTC is used\nMonth according to MM (01-12)",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -94,7 +94,7 @@
         "properties" : {
           "v" : {
             "description" : "Changes internal clock. Note: UTC is used\nDay in month according to DD (01-31)",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -114,7 +114,7 @@
         "properties" : {
           "v" : {
             "description" : "Changes internal clock. Note: UTC is used\nHour according to HH (00-23)",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -133,8 +133,8 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "Changes internal clock. Note: UTC is used\nMinute according to MM (00-23)",
-            "$ref" : "../../core/definitions.json#/integer"
+            "description" : "Changes internal clock. Note: UTC is used\nMinute according to MM (00-59)",
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -154,7 +154,7 @@
         "properties" : {
           "v" : {
             "description" : "Changes internal clock. Note: UTC is used\nSecond according to SS (00-59)",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }

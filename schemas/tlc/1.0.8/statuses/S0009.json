@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Fixed time control\n\nTraffic actuated control deactivated and a pre-timed control is used.\n\nUsually only used in case normal detectors can't be used, e.g. during maintenance work.",
+      "description" : "Fixed time control.\nTraffic actuated control deactivated and a pre-timed control is used.\nUsually only used in case normal detectors can't be used, e.g. during maintenance work.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -26,7 +26,7 @@
         "properties" : {
           "s" : {
             "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
-            "$ref" : "../../core/definitions.json#/integer_list"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
           }
         }
       }
@@ -45,8 +45,8 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "False:  Fixed time control inactive\nTrue:  Fixed time control active",
-            "$ref" : "../../core/definitions.json#/boolean_list"
+            "description" : "False: Fixed time control inactive\nTrue: Fixed time control active",
+            "$ref" : "../../../core/3.1.1/definitions.json#/boolean_list"
           }
         }
       }

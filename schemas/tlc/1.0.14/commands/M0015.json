@@ -30,7 +30,7 @@
         "properties" : {
           "v" : {
             "description" : "Set offset time in seconds",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -50,7 +50,7 @@
         "properties" : {
           "v" : {
             "description" : "Time plan nr",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }

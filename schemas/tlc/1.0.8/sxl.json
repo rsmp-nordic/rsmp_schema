@@ -1,5 +1,7 @@
 {
-  "description" : "A schema validatating message against the RSMP SXL for Traffic Light Controllers",
+  "name" : "tlc",
+  "description" : "Traffic Light Controllers",
+  "version" : "1.0.8",
   "allOf" : [
     {
       "if" : {

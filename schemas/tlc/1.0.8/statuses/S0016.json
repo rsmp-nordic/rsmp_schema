@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Number of detector logics\n\nCan be used by the management system to check the number of detector logics configured in the controller.",
+      "description" : "Number of detector logics.\nCan be used by the management system to check the number of detector logics configured in the controller.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -25,7 +25,7 @@
         "properties" : {
           "s" : {
             "description" : "Number of detector logics",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }

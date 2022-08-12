@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Sets traffic situation the controller uses.\n\nUsed for area-based control where a command can be sent to a master traffic light controller about which predefined traffic situation to use (1-255).\n\nTraffic situation is a concept used to divide multiple TLC's into areas and sub-areas. The traffic situation gives the possibility to change the TLC sub-area dynamically depending on the time of day and the traffic flow. Depending on the traffic situation each TLC selects the time plan dynamically.\n\nRequires security code 2",
+      "description" : "Sets traffic situation the controller uses.\nUsed for area-based control where a command can be sent to a master traffic light controller about which predefined traffic situation to use (1-255).\nTraffic situation is a concept used to divide multiple TLC's into areas and sub-areas. The traffic situation gives the possibility to change the TLC sub-area dynamically depending on the time of day and the traffic flow. Depending on the traffic situation each TLC selects the time plan dynamically.\nRequires security code 2",
       "properties" : {
         "n" : {
           "enum" : [
@@ -30,7 +30,7 @@
         "properties" : {
           "v" : {
             "description" : "False: Controller uses traffic situation according to own programming\nTrue: Controller uses traffic situation according to command",
-            "$ref" : "../../core/definitions.json#/boolean"
+            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
           }
         }
       }
@@ -70,7 +70,7 @@
         "properties" : {
           "v" : {
             "description" : "designation of traficsituation",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }

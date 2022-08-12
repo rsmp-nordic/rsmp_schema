@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Version of Traffic Light Controller\n\nProvides diagnostic version information.",
+      "description" : "Version of Traffic Light Controller.\nProvides diagnostic version information.",
       "properties" : {
         "n" : {
           "enum" : [

@@ -76,7 +76,7 @@
         "properties" : {
           "v" : {
             "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -96,7 +96,7 @@
         "properties" : {
           "v" : {
             "description" : "Intersection number",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }

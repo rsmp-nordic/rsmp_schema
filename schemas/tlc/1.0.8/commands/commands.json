@@ -17,14 +17,7 @@
               "M0011",
               "M0012",
               "M0013",
-              "M0014",
-              "M0015",
-              "M0016",
-              "M0017",
-              "M0018",
               "M0019",
-              "M0020",
-              "M0021",
               "M0103",
               "M0104"
             ]
@@ -218,117 +211,12 @@
           ],
           "properties" : {
             "cCI" : {
-              "const" : "M0014"
-            }
-          }
-        },
-        "then" : {
-          "$ref" : "M0014.json"
-        }
-      },
-      {
-        "if" : {
-          "required" : [
-            "cCI"
-          ],
-          "properties" : {
-            "cCI" : {
-              "const" : "M0015"
-            }
-          }
-        },
-        "then" : {
-          "$ref" : "M0015.json"
-        }
-      },
-      {
-        "if" : {
-          "required" : [
-            "cCI"
-          ],
-          "properties" : {
-            "cCI" : {
-              "const" : "M0016"
-            }
-          }
-        },
-        "then" : {
-          "$ref" : "M0016.json"
-        }
-      },
-      {
-        "if" : {
-          "required" : [
-            "cCI"
-          ],
-          "properties" : {
-            "cCI" : {
-              "const" : "M0017"
-            }
-          }
-        },
-        "then" : {
-          "$ref" : "M0017.json"
-        }
-      },
-      {
-        "if" : {
-          "required" : [
-            "cCI"
-          ],
-          "properties" : {
-            "cCI" : {
-              "const" : "M0018"
-            }
-          }
-        },
-        "then" : {
-          "$ref" : "M0018.json"
-        }
-      },
-      {
-        "if" : {
-          "required" : [
-            "cCI"
-          ],
-          "properties" : {
-            "cCI" : {
               "const" : "M0019"
             }
           }
         },
         "then" : {
           "$ref" : "M0019.json"
-        }
-      },
-      {
-        "if" : {
-          "required" : [
-            "cCI"
-          ],
-          "properties" : {
-            "cCI" : {
-              "const" : "M0020"
-            }
-          }
-        },
-        "then" : {
-          "$ref" : "M0020.json"
-        }
-      },
-      {
-        "if" : {
-          "required" : [
-            "cCI"
-          ],
-          "properties" : {
-            "cCI" : {
-              "const" : "M0021"
-            }
-          }
-        },
-        "then" : {
-          "$ref" : "M0021.json"
         }
       },
       {

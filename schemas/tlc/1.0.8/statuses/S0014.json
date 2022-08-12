@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Current time plan\n\nThe current time plan (signal program) used in the controller. There may be 1-255 predefined time plans.\n\nThe time plan (signal program) may change signal timings, cycle time, control strategy and much more. Typical usage is is scenario based control where change of program is used to change priority etc.",
+      "description" : "Current time plan.\nThe current time plan (signal program) used in the controller. There may be 1-255 predefined time plans.\nThe time plan (signal program) may change signal timings, cycle time, control strategy and much more. Typical usage is is scenario based control where change of program is used to change priority etc.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -25,7 +25,7 @@
         "properties" : {
           "s" : {
             "description" : "Current time plan",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }

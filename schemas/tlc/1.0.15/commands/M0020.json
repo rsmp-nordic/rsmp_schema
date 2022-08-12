@@ -31,7 +31,7 @@
         "properties" : {
           "v" : {
             "description" : "False: Force output\nTrue: Release output",
-            "$ref" : "../../core/definitions.json#/boolean"
+            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
           }
         }
       }
@@ -71,7 +71,7 @@
         "properties" : {
           "v" : {
             "description" : "Number of Output",
-            "$ref" : "../../core/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
           }
         }
       }
@@ -91,7 +91,7 @@
         "properties" : {
           "v" : {
             "description" : "False: output forced to False\nTrue: output forced to True",
-            "$ref" : "../../core/definitions.json#/boolean"
+            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
           }
         }
       }

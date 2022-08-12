@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Input status\n\nInput (1-255) of the controllers general purpose I/O.\n\nInput is used where the traffic light controller must react to external control. It could be external detectors, bus priority, and much more.",
+      "description" : "Input status.\nInput (1-255) of the controllers general purpose I/O.\nInput is used where the traffic light controller must react to external control. It could be external detectors, bus priority, and much more.",
       "properties" : {
         "n" : {
           "enum" : [
