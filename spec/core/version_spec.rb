@@ -1,133 +1,133 @@
 RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
-	let(:message) {{
-	  "mType" => "rSMsg",
-	  "mId" => "a28e94b9-05c7-41bb-8f8b-54693adc9698",
-	  "siteId" => [
-	    { "sId" => "RN+SI0001" }
-	  ],
-	  "type" => "Version",
-	  "RSMP" => [
-	    { "vers" => "3.1.1" },
-	    { "vers" => "3.1.2" },
-	    { "vers" => "3.1.3" },
-	    { "vers" => "3.1.4" }
-	  ],
-	  "SXL" => "1.1"
-	}}
+  let(:message) {{
+    "mType" => "rSMsg",
+    "mId" => "a28e94b9-05c7-41bb-8f8b-54693adc9698",
+    "siteId" => [
+      { "sId" => "RN+SI0001" }
+    ],
+    "type" => "Version",
+    "RSMP" => [
+      { "vers" => "3.1.1" },
+      { "vers" => "3.1.2" },
+      { "vers" => "3.1.3" },
+      { "vers" => "3.1.4" }
+    ],
+    "SXL" => "1.1"
+  }}
 
-	it 'accepts valid message' do
-	  expect( validate(message, 'core') ).to be_nil
+  it 'accepts valid message' do
+    expect( validate(message, 'core') ).to be_nil
   end
 
   it 'catches missing mId' do
-		message.delete 'mId'
-	  expect( validate(message, 'core') ).to eq(
-	  	[["", "required", {"missing_keys"=>["mId"]}]]
-	  )
+    message.delete 'mId'
+    expect( validate(message, 'core') ).to eq(
+      [["", "required", {"missing_keys"=>["mId"]}]]
+    )
   end
 
   it 'catches missing siteId' do
-		message.delete 'siteId'
-	  expect( validate(message, 'core') ).to eq(
-	  	[["", "required", {"missing_keys"=>["siteId"]}]]
-	  )
+    message.delete 'siteId'
+    expect( validate(message, 'core') ).to eq(
+      [["", "required", {"missing_keys"=>["siteId"]}]]
+    )
   end
 
   it 'catches bad siteId format, must be array' do
-		message['siteId'] = '1.0'
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/siteId", "array"]]
-	  )
+    message['siteId'] = '1.0'
+    expect( validate(message, 'core') ).to eq(
+      [["/siteId", "array"]]
+    )
   end
 
   it 'catches bad siteId format, array cannot be empty' do
-		message['siteId'] = []
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/siteId", "minItems"]]
-	  )
+    message['siteId'] = []
+    expect( validate(message, 'core') ).to eq(
+      [["/siteId", "minItems"]]
+    )
   end
 
   it 'catches bad siteId format, item must be hash' do
-		message['siteId'] = ['1.0']
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/siteId/0", "object"]]
-	  )
+    message['siteId'] = ['1.0']
+    expect( validate(message, 'core') ).to eq(
+      [["/siteId/0", "object"]]
+    )
   end
 
   it 'catches bad siteId format, item must have version' do
-		message['siteId'] = [{}]
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/siteId/0", "required", {"missing_keys"=>["sId"]}]]
-	  )
+    message['siteId'] = [{}]
+    expect( validate(message, 'core') ).to eq(
+      [["/siteId/0", "required", {"missing_keys"=>["sId"]}]]
+    )
   end
 
   it 'catches bad siteId format, item cannot have extra attributes' do
-		message['siteId'] = [{'sId'=>'RN+SI0001','extra'=>'123'}]
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/siteId/0/extra", "schema"]]
-	  )
+    message['siteId'] = [{'sId'=>'RN+SI0001','extra'=>'123'}]
+    expect( validate(message, 'core') ).to eq(
+      [["/siteId/0/extra", "schema"]]
+    )
   end
 
   it 'catches missing RSMP version' do
-		message.delete 'RSMP'
-	  expect( validate(message, 'core') ).to eq(
-	  	[["", "required", {"missing_keys"=>["RSMP"]}]]
-	  )
+    message.delete 'RSMP'
+    expect( validate(message, 'core') ).to eq(
+      [["", "required", {"missing_keys"=>["RSMP"]}]]
+    )
   end
 
   it 'catches bad RSMP format, must be array' do
-		message['RSMP'] = '1.0'
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/RSMP", "array"]]
-	  )
+    message['RSMP'] = '1.0'
+    expect( validate(message, 'core') ).to eq(
+      [["/RSMP", "array"]]
+    )
   end
 
   it 'catches bad RSMP format, array cannot be empty' do
-		message['RSMP'] = []
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/RSMP", "minItems"]]
-	  )
+    message['RSMP'] = []
+    expect( validate(message, 'core') ).to eq(
+      [["/RSMP", "minItems"]]
+    )
   end
 
   it 'catches bad RSMP format, item must be hash' do
-		message['RSMP'] = ['1.0']
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/RSMP/0", "object"]]
-	  )
+    message['RSMP'] = ['1.0']
+    expect( validate(message, 'core') ).to eq(
+      [["/RSMP/0", "object"]]
+    )
   end
 
   it 'catches bad RSMP format, item must have version' do
-		message['RSMP'] = [{}]
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/RSMP/0", "required", {"missing_keys"=>["vers"]}]]
-	  )
+    message['RSMP'] = [{}]
+    expect( validate(message, 'core') ).to eq(
+      [["/RSMP/0", "required", {"missing_keys"=>["vers"]}]]
+    )
   end
 
   it 'catches bad RSMP format, item cannot have extra attributes' do
-		message['RSMP'] = [{'vers'=>'1.0.0','extra'=>'123'}]
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/RSMP/0/extra", "schema"]]
-	  )
+    message['RSMP'] = [{'vers'=>'1.0.0','extra'=>'123'}]
+    expect( validate(message, 'core') ).to eq(
+      [["/RSMP/0/extra", "schema"]]
+    )
   end
 
   it 'catches bad RSMP format, version must be 1.0.0 format' do
-		message['RSMP'].first['vers'] = 'latest'
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/RSMP/0/vers", "pattern"]]
-	  )
+    message['RSMP'].first['vers'] = 'latest'
+    expect( validate(message, 'core') ).to eq(
+      [["/RSMP/0/vers", "pattern"]]
+    )
   end
 
   it 'catches missing SXL version' do
-		message.delete 'SXL'
-	  expect( validate(message, 'core') ).to eq(
-	  	[["", "required", {"missing_keys"=>["SXL"]}]]
-	  )
+    message.delete 'SXL'
+    expect( validate(message, 'core') ).to eq(
+      [["", "required", {"missing_keys"=>["SXL"]}]]
+    )
   end
 
   it 'catches bad SXL version' do
-		message['SXL'] = 'Release 1.0.1'
-	  expect( validate(message, 'core') ).to eq(
-	  	[["/SXL", "pattern"]]
-	  )
+    message['SXL'] = 'Release 1.0.1'
+    expect( validate(message, 'core') ).to eq(
+      [["/SXL", "pattern"]]
+    )
   end
 end
