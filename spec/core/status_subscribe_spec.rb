@@ -29,7 +29,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   end
 
   def validate_core
-  	validate_variations(make_variations, 'core', :all)
+  	validate_variations(make_variations, 'core')
   end
 
 	it 'accepts valid status subscription' do

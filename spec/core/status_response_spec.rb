@@ -32,7 +32,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   end
 
   def validate_core
-    validate_variations(make_variations, 'core', :all)
+    validate_variations(make_variations, 'core')
   end
 
   it 'accepts ageState in message_3_1_1 versions, q in newer' do
@@ -69,12 +69,12 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 
   it 'catches empty sS array' do
     message_3_1_3['sS'].clear
-    expect( validate(message_3_1_3, 'core', :all) ).to eq([["/sS", "minItems"]])
+    expect( validate(message_3_1_3, 'core') ).to eq([["/sS", "minItems"]])
   end
 
   it 'catches bad sS type' do
     message_3_1_3['sS'] = {}
-    expect( validate(message_3_1_3, 'core', :all) ).to eq([["/sS", "array"]])
+    expect( validate(message_3_1_3, 'core') ).to eq([["/sS", "array"]])
   end
 
   it 'catches missing status code' do

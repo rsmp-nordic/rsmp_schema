@@ -7,7 +7,9 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	}}
 
 	it 'accepts valid aggregated request from 3.1.5' do
-	  expect( validate(message, 'core', '3.1.5') ).to be_nil
+	  expect( validate(message, 'core') ).to eq({
+	  	['3.1.1','3.1.2','3.1.3','3.1.4'] => [["/type", "enum"]]
+	  })
   end
 
 	it 'reject valid alarm aggregated before 3.1.5' do

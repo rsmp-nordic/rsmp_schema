@@ -1,5 +1,5 @@
 RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
-	let(:older) {{
+	let(:message_3_1_1) {{
 	  "mType" => "rSMsg",
 	  "mId" => "4173c2c8-a933-43cb-9425-66d4613731ed",
 	  "type" => "StatusUpdate",
@@ -10,7 +10,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	   ]
 	}}
 
-	let(:message) {{
+	let(:message_3_1_3) {{
 	  "mType" => "rSMsg",
 	  "mId" => "4173c2c8-a933-43cb-9425-66d4613731ed",
 	  "type" => "StatusUpdate",
@@ -23,124 +23,121 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 
   def make_variations
   	{
-      '3.1.1' => older,
-      '3.1.2' => older,
-      '3.1.3' => message,
-      '3.1.4' => message,
-      '3.1.5' => message
+      '3.1.1' => message_3_1_1,
+      '3.1.2' => message_3_1_1,
+      '3.1.3' => message_3_1_3,
+      '3.1.4' => message_3_1_3,
+      '3.1.5' => message_3_1_3
     }
   end
 
-  it 'accepts ageState in older versions, q in newer' do
+  it 'accepts ageState in message_3_1_1 versions, q in newer' do
     expect( validate_variations(make_variations, 'core', '3.1.1') ).to be_nil
   end
 
-  it 'rejects q in older version, ageState in newer' do
-    expect( validate(message, 'core', ['3.1.1','3.1.2']) ).to eq(
+  it 'rejects q in message_3_1_1 version, ageState in newer' do
+    expect( validate(message_3_1_3, 'core', ['3.1.1','3.1.2']) ).to eq(
       [["/sS/0", "required", {"missing_keys"=>["ageState"]}], ["/sS/0/q", "schema"]]
      )
 
-    expect( validate(older, 'core', ['3.1.3','3.1.4','3.1.5']) ).to eq(
+    expect( validate(message_3_1_1, 'core', ['3.1.3','3.1.4','3.1.5']) ).to eq(
      [["/sS/0", "required", {"missing_keys"=>["q"]}], ["/sS/0/ageState", "schema"]]
      )
   end
 
 	it 'accepts valid status request' do
-	  expect( validate_variations(make_variations, 'core', :all) ).to be_nil
+	  expect( validate_variations(make_variations, 'core') ).to be_nil
   end
 
   it 'catches missing component id' do
-		older.delete 'cId'
-		message.delete 'cId'
-	  expect( validate_variations(make_variations, 'core', :all) ).to eq(
+		message_3_1_1.delete 'cId'
+		message_3_1_3.delete 'cId'
+	  expect( validate_variations(make_variations, 'core') ).to eq(
 	  	[["", "required", {"missing_keys"=>["cId"]}]]
 	  )
   end
 
   it 'catches bad status code' do
-		older['sS'].first['sCI'] = '99'
-		message['sS'].first['sCI'] = '99'
-	  expect( validate_variations(make_variations, 'core', :all) ).to eq(
+		message_3_1_1['sS'].first['sCI'] = '99'
+		message_3_1_3['sS'].first['sCI'] = '99'
+	  expect( validate_variations(make_variations, 'core') ).to eq(
 	  	[["/sS/0/sCI", "pattern"]]
 	  )
   end
 
   it 'catches missing sS' do
-		message.delete 'sS'
-	  expect( validate(message, 'core', :all) ).to eq(
+		message_3_1_3.delete 'sS'
+	  expect( validate(message_3_1_3, 'core') ).to eq(
 	  	[["", "required", {"missing_keys"=>['sS']}]]
 	  )
   end
 
   it 'catches empty sS array' do
-		message['sS'].clear
-	  expect( validate(message, 'core', :all) ).to eq(
+		message_3_1_3['sS'].clear
+	  expect( validate(message_3_1_3, 'core') ).to eq(
 	  	[["/sS", "minItems"]]
 	  )
   end
 
   it 'catches bad sS type' do
-		message['sS'] = {}
-	  expect( validate(message, 'core', :all) ).to eq(
+		message_3_1_3['sS'] = {}
+	  expect( validate(message_3_1_3, 'core') ).to eq(
 	  	[["/sS", "array"]]
 	  )
   end
 
   it 'catches missing status code' do
-		older['sS'].first.delete 'sCI'
-		message['sS'].first.delete 'sCI'
-	  expect( validate_variations(make_variations, 'core', :all) ).to eq(
+		message_3_1_1['sS'].first.delete 'sCI'
+		message_3_1_3['sS'].first.delete 'sCI'
+	  expect( validate_variations(make_variations, 'core') ).to eq(
 	  	[["/sS/0", "required", {"missing_keys"=>["sCI"]}]]
 	  )
   end
 
   it 'catches bad status code' do
-		older['sS'].first['sCI'] = 3
-		message['sS'].first['sCI'] = 3
-	  expect( validate_variations(make_variations, 'core', :all) ).to eq(
+		message_3_1_1['sS'].first['sCI'] = 3
+		message_3_1_3['sS'].first['sCI'] = 3
+	  expect( validate_variations(make_variations, 'core') ).to eq(
 	  	[["/sS/0/sCI", "string"]]
 	  )
 
-		older['sS'].first['sCI'] = '3'
-		message['sS'].first['sCI'] = '3'
-	  expect( validate_variations(make_variations, 'core', :all) ).to eq(
+		message_3_1_1['sS'].first['sCI'] = '3'
+		message_3_1_3['sS'].first['sCI'] = '3'
+	  expect( validate_variations(make_variations, 'core') ).to eq(
 	  	[["/sS/0/sCI", "pattern"]]
 	  )
   end
 
   it 'catches missing name' do
-		older['sS'].first.delete 'n'
-		message['sS'].first.delete 'n'
-	  expect( validate_variations(make_variations, 'core', :all) ).to eq(
+		message_3_1_1['sS'].first.delete 'n'
+		message_3_1_3['sS'].first.delete 'n'
+	  expect( validate_variations(make_variations, 'core') ).to eq(
 	  	[["/sS/0", "required", {"missing_keys"=>["n"]}]]
 	  )
   end
 
   it 'catches bad name' do
-		older['sS'].first['n'] = 3
-		message['sS'].first['n'] = 3
-	  expect( validate_variations(make_variations, 'core', :all) ).to eq(
+		message_3_1_1['sS'].first['n'] = 3
+		message_3_1_3['sS'].first['n'] = 3
+	  expect( validate_variations(make_variations, 'core') ).to eq(
 	  	[["/sS/0/n", "string"]]
 	  )
   end
 
   it 'catches missing value' do
-		older['sS'].first.delete 's'
-		message['sS'].first.delete 's'
-	  expect( validate_variations(make_variations, 'core', :all) ).to eq(
+		message_3_1_1['sS'].first.delete 's'
+		message_3_1_3['sS'].first.delete 's'
+	  expect( validate_variations(make_variations, 'core') ).to eq(
 	  	[["/sS/0", "required", {"missing_keys"=>["s"]}]]
 	  )
   end
 
   it 'catches bad quality' do
-		older['sS'].first['ageState'] = 'great'
-		message['sS'].first['q'] = 'great'
-	  expect( validate_variations(make_variations, 'core', ['3.1.1','3.1.2']) ).to eq(
-	  	[["/sS/0/ageState", "enum"]]
-	  )
-	  expect( validate_variations(make_variations, 'core', ['3.1.3','3.1.4','3.1.5']) ).to eq(
-	  	[["/sS/0/q", "enum"]]
-	  )
-
+		message_3_1_1['sS'].first['ageState'] = 'great'
+		message_3_1_3['sS'].first['q'] = 'great'
+	  expect( validate_variations(make_variations, 'core') ).to eq({
+	  	['3.1.1','3.1.2'] 			  => [["/sS/0/ageState", "enum"]],
+	  	['3.1.3','3.1.4','3.1.5'] => [["/sS/0/q", "enum"]]
+	  })
   end
 end

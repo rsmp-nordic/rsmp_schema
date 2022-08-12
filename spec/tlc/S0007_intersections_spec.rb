@@ -6,23 +6,13 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	  "cId" => "O+14439=481WA001",
 	  "sTs" => "2015-06-08T09:15:18.266Z",
       "sS" => [
-	    { "sCI" => "S0007", "n" => "intersection", "s" => "1,2,3", "q" => "recent" },
-	    { "sCI" => "S0007", "n" => "status", "s" => "True,False,True", "q" => "recent" }
+	    { "sCI" => "S0007", "n" => "intersection", "s" => "0", "q" => "recent" },
+	    { "sCI" => "S0007", "n" => "status", "s" => "True", "q" => "recent" }
 	   ]
 	}}
 
 	it 'accepts valid status request with a single intersection' do
-		message["sS"] = [
-	    { "sCI" => "S0007", "n" => "intersection", "s" => "0", "q" => "recent" },
-	    { "sCI" => "S0007", "n" => "status", "s" => "True", "q" => "recent" }
-	  ]
-		expect( validate(message) ).to be_nil
-
-		message["sS"] = [
-	    { "sCI" => "S0007", "n" => "intersection", "s" => "0", "q" => "recent" },
-	    { "sCI" => "S0007", "n" => "status", "s" => "False", "q" => "recent" }
-	  ]
-		expect( validate(message) ).to be_nil
+		expect( validate(message,'tlc') ).to be_nil
  	end
 
 	it 'accepts valid status request with two intersections' do
@@ -30,204 +20,85 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 	    { "sCI" => "S0007", "n" => "intersection", "s" => "1,2", "q" => "recent" },
 	    { "sCI" => "S0007", "n" => "status", "s" => "True,True", "q" => "recent" }
 	  ]
-		expect( validate(message) ).to be_nil
-
-		message["sS"] = [
-	    { "sCI" => "S0007", "n" => "intersection", "s" => "1,2", "q" => "recent" },
-	    { "sCI" => "S0007", "n" => "status", "s" => "True,False", "q" => "recent" }
-	  ]
-		expect( validate(message) ).to be_nil
-
-		message["sS"] = [
-	    { "sCI" => "S0007", "n" => "intersection", "s" => "1,2", "q" => "recent" },
-	    { "sCI" => "S0007", "n" => "status", "s" => "False,True", "q" => "recent" }
-	  ]
-		expect( validate(message) ).to be_nil
-
-		message["sS"] = [
-	    { "sCI" => "S0007", "n" => "intersection", "s" => "1,2", "q" => "recent" },
-	    { "sCI" => "S0007", "n" => "status", "s" => "False,True", "q" => "recent" }
-	  ]
-		expect( validate(message) ).to be_nil
+		expect( validate(message,'tlc') ).to be_nil
  	end
 
 	it 'catches bad intersections list' do
-		invalid = message.dup
-		invalid["sS"] = [
+		# trailing comma
+		message["sS"] = [
 	    { "sCI" => "S0007", "n" => "intersection", "s" => "1,2,", "q" => "recent" },
 	  ]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/s", "pattern"]
-	  ]})
+	  expect( validate(message,'tlc') ).to eq(
+	  	[["/sS/0/s", "pattern"]]
+	  )
 
-		invalid["sS"] = [
+	  # leading comma
+		message["sS"] = [
 	    { "sCI" => "S0007", "n" => "intersection", "s" => ",1,2", "q" => "recent" },
 	  ]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/s", "pattern"]
-	  ]})
+	  expect( validate(message,'tlc') ).to eq(
+	  	[["/sS/0/s", "pattern"]]
+	  )
 
-		invalid["sS"] = [
+	  # naked comma
+		message["sS"] = [
 	    { "sCI" => "S0007", "n" => "intersection", "s" => ",", "q" => "recent" },
 	  ]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/s", "pattern"]
-	  ]})
+	  expect( validate(message,'tlc') ).to eq(
+	  	[["/sS/0/s", "pattern"]]
+	  )
 
-		invalid["sS"] = [
+	  # empty item
+		message["sS"] = [
 	    { "sCI" => "S0007", "n" => "intersection", "s" => "1,,2", "q" => "recent" },
 	  ]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/s", "pattern"]
-	  ]})
+	  expect( validate(message,'tlc') ).to eq(
+	  	[["/sS/0/s", "pattern"]]
+	  )
 
-		invalid["sS"] = [
+	  # invalid item
+		message["sS"] = [
 	    { "sCI" => "S0007", "n" => "intersection", "s" => "1,a", "q" => "recent" },
 	  ]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/s", "pattern"]
-	  ]})
+	  expect( validate(message,'tlc') ).to eq(
+	  	[["/sS/0/s", "pattern"]]
+	  )
  	end
 
-	it 'catches bad intersections list' do
-		invalid = message.dup
-		invalid["sS"] = [
+	it 'catches bad status list' do
+		message["sS"] = [
 	    { "sCI" => "S0007", "n" => "status", "s" => "True,False,", "q" => "recent" },
 	  ]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/s", "pattern"]
-	  ]})
+	  expect( validate(message,'tlc') ).to eq(
+	  	[["/sS/0/s", "pattern"]]
+	  )
 
-		invalid["sS"] = [
+		message["sS"] = [
 	    { "sCI" => "S0007", "n" => "status", "s" => ",True,False", "q" => "recent" },
 	  ]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/s", "pattern"]
-	  ]})
+	  expect( validate(message,'tlc') ).to eq(
+	  	[["/sS/0/s", "pattern"]]
+	  )
 
-		invalid["sS"] = [
+		message["sS"] = [
 	    { "sCI" => "S0007", "n" => "status", "s" => ",", "q" => "recent" },
 	  ]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/s", "pattern"]
-	  ]})
+	  expect( validate(message,'tlc') ).to eq(
+	  	[["/sS/0/s", "pattern"]]
+	  )
 
-		invalid["sS"] = [
+		message["sS"] = [
 	    { "sCI" => "S0007", "n" => "status", "s" => "True,,False", "q" => "recent" },
 	  ]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/s", "pattern"]
-	  ]})
+	  expect( validate(message,'tlc') ).to eq(
+	  	[["/sS/0/s", "pattern"]]
+	  )
 
-		invalid["sS"] = [
+		message["sS"] = [
 	    { "sCI" => "S0007", "n" => "status", "s" => "True,1", "q" => "recent" },
 	  ]
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/s", "pattern"]
-	  ]})
+	  expect( validate(message,'tlc') ).to eq(
+	  	[["/sS/0/s", "pattern"]]
+	  )
  	end
-  it 'catches missing component id' do
-		invalid = message.dup
-		invalid.delete 'cId'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>["cId"]}]
-	  ]})
-  end
-
-  it 'catches bad status code' do
-		invalid = message.dup
-		invalid['sS'].first['sCI'] = '99'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/sCI", "pattern"],
-	  	["/sS/0/sCI", "enum"]
-	  ]})
-  end
-
-  it 'catches missing sS' do
-		invalid = message.dup
-		invalid.delete 'sS'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["", "required", {"missing_keys"=>['sS']}]
-	  ]})
-  end
-
-  it 'catches empty sS array' do
-		invalid = message.dup
-		invalid['sS'].clear
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS", "minItems"]
-	  ]})
-  end
-
-  it 'catches bad sS type' do
-		invalid = message.dup
-		invalid['sS'] = {}
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS", "array"]
-	  ]})
-  end
-
-  it 'catches missing status code' do
-		invalid = message.dup
-		invalid['sS'].first.delete 'sCI'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0", "required", {"missing_keys"=>["sCI"]}]
-	  ]})
-  end
-
-  it 'catches bad status code' do
-		invalid = message.dup
-		invalid['sS'].first['sCI'] = 3
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/sCI", "string"],
-	  	["/sS/0/sCI", "enum"]
-	  ]})
-
-		invalid['sS'].first['sCI'] = '3'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/sCI", "pattern"],
-	  	["/sS/0/sCI", "enum"]
-	  ]})
-  end
-
-  it 'catches missing name' do
-		invalid = message.dup
-		invalid['sS'].first.delete 'n'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0", "required", {"missing_keys"=>["n"]}]
-	  ]})
-  end
-
-  it 'catches bad name' do
-		invalid = message.dup
-		invalid['sS'].first['n'] = 3
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/n", "string"],
-	  	["/sS/0/n", "enum"]
-	  ]})
-  end
-
-  it 'catches missing value' do
-		invalid = message.dup
-		invalid['sS'].first.delete 's'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0", "required", {"missing_keys"=>["s"]}]
-	  ]})
-  end
-
-  it 'catches missing quality' do
-		invalid = message.dup
-		invalid['sS'].first.delete 'q'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0", "required", {"missing_keys"=>["q"]}]
-	  ]})
-  end
-
-  it 'catches bad quality' do
-		invalid = message.dup
-		invalid['sS'].first['q'] = 'great'
-	  expect( validate(invalid, 'core', :all) ).to eq({ all: [
-	  	["/sS/0/q", "enum"]
-	  ]})
-  end
 end

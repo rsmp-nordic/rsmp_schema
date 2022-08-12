@@ -28,11 +28,11 @@ end
 	$schemers['tlc'][version] = JSONSchemer.schema( Pathname.new("schemas/tlc/#{version}/sxl.json") )
 end
 
-def validate json, schema, versions
+def validate json, schema, versions = :all
 	validate_variations( {all:json}, schema, versions )
 end
 
-def validate_variations json_variations, schema, versions
+def validate_variations json_variations, schema, versions = :all
 	raise RuntimeError.new("Unknown schema: #{schema}") unless $schemers[schema.to_s]
 	
 	if versions == :all
@@ -62,11 +62,22 @@ def validate_variations json_variations, schema, versions
 		  end
 		end
 	end
-	# if all schemas has the same errors, then simplify to a single :all key
+	# done if no errors
+	return nil unless errors
+
+	# if all versions has the same errors, then simplify and just return a value
 	if errors && errors.any?
 		if errors.size == schemers.size && errors.values.uniq.size == 1
-			errors = errors.values.first
+			return errors.values.first
 		end
 	end
-	errors
+
+	# return errors, grouped by versions with the same error
+	# e.g. {'1.1' => 'A', 1.2 => 'A', '1.3' => 'B' }
+	# is transformed to { ['1.1','1.2'] => 'A', '1.3' => 'B'}
+	errors.
+		keys.
+		group_by {|version| errors[version] }.
+		transform_values {|arr| arr.size == 1 ? arr.first : arr }. 
+		invert
 end
