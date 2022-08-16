@@ -9,27 +9,26 @@ More about JSON Schema:
 https://json-schema.org/
 
 ## Schema organisation
-The schema is split into multiple files to enable reuse.
+The schema consists of a core schema shared by all equipment types, and an SXL schema for each supported equipment type. At the only SXL supported is for Traffic Light Controllers. An SXL defines massages specific to a particular type of equipment, but they all rely on the core part of the RSMP specification.
 
-An SXL defines massages specific to a particular type of equipment, but they all rely on the core part of the RSMP specification.
+Both core and SXL schemas exist in different version, for validation agaist a particular version of the spec.
 
-To validate a message against a particular SXL, use the sxl.json file in the relevant folder.
-For example, to validate against the SXL for Trafic Light Controllers (TLCs), include 'tcl/sxl.json'
+For example, to validate against the SXL for Trafic Light Controllers (TLCs), version 1.0.15, use the file schemas/tcl/1.0.15/sxl.json.
 
-This main sxl.json file includes the core.json part, which contains validations for the RSMP core elements.
-Depending on the message type, commands.json, alarms.json, etc. will be included. That file in turn looks at the command/status/alarm code and includes the file describing the detailed parameters, arguments, etc.
+Depending on the message type, relevant JSON Schema elements will be included to validate the detailed parameters, arguments, etc.
 
 For example, validating a CommandRequest M0001 message will include these parts:
 
 ```
 sxl.json
-  core.json
   commands.json
     M0001.json
 ```
 
-## Example usage
-To validate a JSON message with Ruby using the json_schemer gem:
+##  Usage
+The JSON Schema can be used from any language that provides a suitable JSON Schema validation library.
+
+For example, to validate a JSON message with Ruby using the json_schemer gem:
 
 ```ruby
 require 'json_schemer'
@@ -53,21 +52,22 @@ message = {
 }
 
 # try validating a message against our schema
-schema = Pathname.new('tlc/sxl.json')
+schema = Pathname.new('schemas/tlc/1.0.15/sxl.json')
 schemer = JSONSchemer.schema(schema)
 puts schemer.valid? message     # => true
 ```
 
 ## RSpec tests
-The reposity includes RSpec test that checks the schema, by testing the result of validating a set of valid and message RSMP messages using the json_schemer gem.
+The reposity includes RSpec test written in Ruby that checks the schema, by testing the result of validating a set of RSMP messages using the json_schemer gem.
 
-This is useful when developing the schema, to ensure it validates correctly.
-
+To run the tests, you need Ruby installed. Then run bundler to ensure you have rspec. Then run use the rspec command to run tests:
 
 ```
 $ bundle              # install gems
 $ bundle exec rspec   # run rspec tests
 ```
 
-## Schema generation
-Note that the SXL JSON schemas are generated automatically from an authoritative YAML file, and should therefore not be edited by hand. Instead, edit the YAML source and regenerate the schema files.
+## Schema maintenance
+The SXL JSON Schemas are generated automatically from their corresponding YAML source, and should therefore not be edited by hand. Instead, edit the YAML source and regenerate the schema files.
+
+The core schemas has no YAML sources and are maintained by hand.
