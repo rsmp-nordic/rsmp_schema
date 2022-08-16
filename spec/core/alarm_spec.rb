@@ -28,7 +28,9 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'accepts case variations' do
     valid = message.dup
     valid["aSp"] = 'issue'
-    expect( validate(valid, 'core') ).to be_nil
+    expect( validate(valid, 'core') ).to eq({
+      '3.2' => [["/aSp", "enum"]]
+    })
 
     valid = message.dup
     valid["aS"] = 'active'

@@ -27,7 +27,8 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
       '3.1.2' => message_3_1_1,
       '3.1.3' => message_3_1_3,
       '3.1.4' => message_3_1_3,
-      '3.1.5' => message_3_1_3
+      '3.1.5' => message_3_1_3,
+      '3.2'   => message_3_1_3
     }
   end
 
@@ -40,11 +41,11 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   end
 
   it 'rejects q in message_3_1_1 version, ageState in newer' do
-    expect( validate(message_3_1_3, 'core', ['3.1.1','3.1.2']) ).to eq(
+    expect( validate(message_3_1_3, 'core', '<3.1.3') ).to eq(
       [["/sS/0", "required", {"missing_keys"=>["ageState"]}], ["/sS/0/q", "schema"]]
     )
 
-    expect( validate(message_3_1_1, 'core', ['3.1.3','3.1.4','3.1.5']) ).to eq(
+    expect( validate(message_3_1_1, 'core', '>=3.1.3') ).to eq(
       [["/sS/0", "required", {"missing_keys"=>["q"]}],["/sS/0/ageState", "schema"]]
     )
   end
@@ -117,7 +118,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     expect( validate(message_3_1_1, 'core', ['3.1.1','3.1.2']) ).to eq(
       [["/sS/0", "required", {"missing_keys"=>["ageState"]}]]
     )
-    expect( validate(message_3_1_3, 'core', ['3.1.3','3.1.4','3.1.5']) ).to eq(
+    expect( validate(message_3_1_3, 'core', ['3.1.3','3.1.4','3.1.5','3.2']) ).to eq(
       [["/sS/0", "required", {"missing_keys"=>["q"]}]]
     )
   end
@@ -128,7 +129,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     expect( validate(message_3_1_1, 'core', ['3.1.1','3.1.2']) ).to eq(
       [["/sS/0/ageState", "enum"]]
     )
-    expect( validate(message_3_1_3, 'core', ['3.1.3','3.1.4','3.1.5']) ).to eq(
+    expect( validate(message_3_1_3, 'core', ['3.1.3','3.1.4','3.1.5','3.2']) ).to eq(
       [["/sS/0/q", "enum"]]
     )
   end

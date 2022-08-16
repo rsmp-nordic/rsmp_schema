@@ -10,31 +10,37 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   }}
 
   it 'accepts valid alarm request from 3.1.5' do
-    expect( validate(message, 'core', '3.1.5') ).to be_nil
+    expect( validate(message, 'core', '>=3.1.5') ).to be_nil
   end
 
   it 'reject valid alarm request before 3.1.5' do
-    expect( validate(message, 'core', ['3.1.1','3.1.2','3.1.3','3.1.4']) ).to eq(
+    expect( validate(message, 'core', '<3.1.5') ).to eq(
       [["/aSp", "enum"]]
     )
   end
 
-  it 'accepts case variations' do
-    valid = message.dup
-    valid["aSp"] = 'request'
-    expect( validate(valid, 'core', '3.1.5') ).to be_nil
+  it 'reject case variations from 3.2' do
+    message["aSp"] = 'request'
+    expect( validate(message, 'core', '>=3.2') ).to eq(
+      [["/aSp", "enum"]]
+    )
+  end
+
+  it 'accepts case variations before 3.2' do
+    message["aSp"] = 'request'
+    expect( validate(message, 'core', '3.1.5') ).to be_nil
   end
 
   it 'catches missing component id' do
     message.delete 'cId'
-    expect( validate(message, 'core', '3.1.5') ).to eq(
+    expect( validate(message, 'core', '>=3.1.5') ).to eq(
       [["", "required", {"missing_keys"=>["cId"]}]]
     )
   end
 
   it 'catches missing alarm code id' do
     message.delete 'aCId'
-    expect( validate(message, 'core', '3.1.5') ).to eq(
+    expect( validate(message, 'core', '>=3.1.5') ).to eq(
       [["", "required", {"missing_keys"=>["aCId"]}]]
     )
   end

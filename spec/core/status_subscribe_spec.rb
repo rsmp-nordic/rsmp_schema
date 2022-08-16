@@ -24,7 +24,8 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
       '3.1.2' => message_3_1_1,
       '3.1.3' => message_3_1_1,
       '3.1.4' => message_3_1_1,
-      '3.1.5' => message_3_1_5
+      '3.1.5' => message_3_1_5,
+      '3.2'   => message_3_1_5
     }
   end
 
@@ -139,7 +140,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'catches missing sOc' do
     message_3_1_5['sS'].first.delete 'sOc'
     expect(validate_core).to eq({
-      '3.1.5' => [["/sS/0", "required", {"missing_keys"=>["sOc"]}]]
+      ['3.1.5','3.2'] => [["/sS/0", "required", {"missing_keys"=>["sOc"]}]]
     })
   end
 
