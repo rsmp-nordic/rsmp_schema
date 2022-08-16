@@ -11,7 +11,8 @@ $schemers = {
   '3.1.2',
   '3.1.3',
   '3.1.4',
-  '3.1.5'
+  '3.1.5',
+  '3.2'
 ].each do |version|
   $schemers['core'][version] = JSONSchemer.schema( Pathname.new("schemas/core/#{version}/rsmp.json") )
 end
@@ -36,13 +37,21 @@ def validate_variations json_variations, schema, versions = :all
   raise RuntimeError.new("Unknown schema: #{schema}") unless $schemers[schema.to_s]
   
   if versions == :all
-    versions = $schemers[schema.to_s].keys
+    version_list = $schemers[schema.to_s].keys
   elsif versions.is_a? String
-    versions = [versions]
+    # convert a string like '>=3.1.3' to an array off matching version strings,
+    # by using the Gem::Requirement tool.
+    # This this has nothing to do with gems, we just use the version matching helper.
+    requirement = Gem::Requirement.new(versions)
+    version_list = $schemers[schema.to_s].keys.select do |version|
+      requirement.satisfied_by?(Gem::Version.new(version))
+    end
+  else
+    version_list = versions
   end
 
   schemers = {}
-  versions.each do |version|
+  version_list.each do |version|
     raise RuntimeError.new("Unknown schema version: #{schema} #{version}") unless $schemers[schema.to_s][version.to_s]
     schemers[version] = $schemers[schema][version]
   end
