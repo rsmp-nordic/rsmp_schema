@@ -373,12 +373,14 @@ objects:
           Can be used for the management system to check the current control mode (startup, normal, standby, failure, test).
         arguments:
           intersection:
+            list: true
             type: integer
             description: |-
               0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
               Other value: Intersection number
             range: "[0-255]"
           controlmode:
+            list: true
             type: string
             values:
               startup: Startup mode
@@ -749,6 +751,7 @@ objects:
           Requires security code 2.
         arguments:
           status:
+            list: true
             description: Set operating mode
             type: string
             values:
@@ -756,9 +759,11 @@ objects:
               YellowFlash: Enables yellow flash
               Dark: Enables dark mode
           securityCode:
+            list: true
             description: Security code 2
             type: string
           timeout:
+            list: true
             description: |-
               Time in minutes until controller automatically reverts to previous functional position.
               0=no automatic return
@@ -766,6 +771,7 @@ objects:
             min: 0
             max: 1440
           intersection:
+            list: true
             description: Intersection number
             type: integer
             min: 0
