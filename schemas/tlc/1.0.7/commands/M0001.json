@@ -31,12 +31,8 @@
         "properties" : {
           "v" : {
             "description" : "Set operating mode",
-            "type" : "string",
-            "enum" : [
-              "Dark",
-              "NormalControl",
-              "YellowFlash"
-            ]
+            "$ref" : "../../../core/3.1.1/definitions.json#/string_list",
+            "pattern" : "(?-mix:^(NormalControl|YellowFlash|Dark)(?:,(NormalControl|YellowFlash|Dark))*$)"
           }
         }
       }
@@ -56,7 +52,7 @@
         "properties" : {
           "v" : {
             "description" : "Security code 2",
-            "type" : "string"
+            "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
           }
         }
       }
@@ -76,7 +72,7 @@
         "properties" : {
           "v" : {
             "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
           }
         }
       }

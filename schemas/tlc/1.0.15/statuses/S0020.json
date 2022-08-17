@@ -45,14 +45,8 @@
       "then" : {
         "properties" : {
           "s" : {
-            "type" : "string",
-            "enum" : [
-              "control",
-              "failure",
-              "standby",
-              "startup",
-              "test"
-            ]
+            "$ref" : "../../../core/3.1.1/definitions.json#/string_list",
+            "pattern" : "(?-mix:^(startup|control|standby|failure|test)(?:,(startup|control|standby|failure|test))*$)"
           }
         }
       }
