@@ -52,7 +52,7 @@ message = {
 }
 
 # try validating a message against our schema
-schema = Pathname.new('schemas/tlc/1.0.15/sxl.json')
+schema = Pathname.new('schemas/tlc/1.1/sxl.json')
 schemer = JSONSchemer.schema(schema)
 puts schemer.valid? message     # => true
 ```
