@@ -29,8 +29,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "Plan to be changed",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Plan to be changed"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }

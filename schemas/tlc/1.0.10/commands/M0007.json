@@ -28,8 +28,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "False: Deactivate fixed time control\nTrue: Activate fixed time control",
-            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+            "allOf" : [
+              {
+                "description" : "False: Deactivate fixed time control\nTrue: Activate fixed time control"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+              }
+            ]
           }
         }
       }

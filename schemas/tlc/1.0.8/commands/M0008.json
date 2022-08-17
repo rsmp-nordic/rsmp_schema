@@ -29,8 +29,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "False: Deactivate manual control of detector logic\nTrue: Activate manual control of detector logic",
-            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+            "allOf" : [
+              {
+                "description" : "False: Deactivate manual control of detector logic\nTrue: Activate manual control of detector logic"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+              }
+            ]
           }
         }
       }
@@ -69,8 +75,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "False: Deactivate detector logic\nTrue: Activate detector logic",
-            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+            "allOf" : [
+              {
+                "description" : "False: Deactivate detector logic\nTrue: Activate detector logic"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+              }
+            ]
           }
         }
       }

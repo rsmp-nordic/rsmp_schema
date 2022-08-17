@@ -24,8 +24,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Number of traffic situations",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of traffic situations"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }

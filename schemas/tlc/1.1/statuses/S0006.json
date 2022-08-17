@@ -25,8 +25,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "False: Emergency stage inactive\nTrue: Emergency stage active",
-            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+            "allOf" : [
+              {
+                "description" : "False: Emergency stage inactive\nTrue: Emergency stage active"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+              }
+            ]
           }
         }
       }
@@ -45,8 +51,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Number of emergency stage",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of emergency stage"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }

@@ -95,8 +95,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "Manually controlled detector logic (True/False)",
-            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+            "allOf" : [
+              {
+                "description" : "Manually controlled detector logic (True/False)"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+              }
+            ]
           }
         }
       }

@@ -25,8 +25,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Current traffic situation",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Current traffic situation"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -45,9 +51,15 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Source of the status change",
-            "$ref" : "../../../core/3.1.1/definitions.json#/string_list",
-            "pattern" : "(?-mix:^(operator_panel|calendar_clock|control_block|forced|startup|other)(?:,(operator_panel|calendar_clock|control_block|forced|startup|other))*$)"
+            "allOf" : [
+              {
+                "description" : "Source of the status change",
+                "pattern" : "(?-mix:^(operator_panel|calendar_clock|control_block|forced|startup|other)(?:,(operator_panel|calendar_clock|control_block|forced|startup|other))*$)"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+              }
+            ]
           }
         }
       }

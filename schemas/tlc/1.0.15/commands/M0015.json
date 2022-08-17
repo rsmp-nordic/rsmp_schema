@@ -29,8 +29,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "Set offset time in seconds",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Set offset time in seconds"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -49,8 +55,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "Time plan nr",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Time plan nr"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }

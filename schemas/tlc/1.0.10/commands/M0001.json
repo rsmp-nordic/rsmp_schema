@@ -30,9 +30,15 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "Set operating mode",
-            "$ref" : "../../../core/3.1.1/definitions.json#/string_list",
-            "pattern" : "(?-mix:^(NormalControl|YellowFlash|Dark)(?:,(NormalControl|YellowFlash|Dark))*$)"
+            "allOf" : [
+              {
+                "description" : "Set operating mode",
+                "pattern" : "(?-mix:^(NormalControl|YellowFlash|Dark)(?:,(NormalControl|YellowFlash|Dark))*$)"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+              }
+            ]
           }
         }
       }
@@ -51,8 +57,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "Security code 2",
-            "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+            "allOf" : [
+              {
+                "description" : "Security code 2"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+              }
+            ]
           }
         }
       }
@@ -71,8 +83,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+            "allOf" : [
+              {
+                "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+              }
+            ]
           }
         }
       }
@@ -91,8 +109,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "Intersection number",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+            "allOf" : [
+              {
+                "description" : "Intersection number"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+              }
+            ]
           }
         }
       }

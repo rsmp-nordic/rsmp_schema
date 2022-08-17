@@ -30,8 +30,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "False: Force input\nTrue: Release input",
-            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+            "allOf" : [
+              {
+                "description" : "False: Force input\nTrue: Release input"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+              }
+            ]
           }
         }
       }
@@ -70,8 +76,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "Number of Input",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of Input"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -90,8 +102,14 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "False: input forced to False\nTrue: input forced to True",
-            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+            "allOf" : [
+              {
+                "description" : "False: input forced to False\nTrue: input forced to True"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+              }
+            ]
           }
         }
       }

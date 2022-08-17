@@ -5,7 +5,7 @@ require_relative "lib/rsmp_schema/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "rsmp_schema"
-  spec.version       = RSMP::VERSION
+  spec.version       = RSMP::Schema::VERSION
   spec.authors       = ["Emil Tin"]
   spec.email         = ["zf0f@kk.dk"]
 

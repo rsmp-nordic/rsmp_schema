@@ -33,8 +33,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Time stamp for start of measuring. Format according to W3C\nXML dateTime with a resolution of 3 decimal places. All time stamps\nin UTC. E.g. 2009-10-02T14:34:34.341Z",
-            "$ref" : "../../../core/3.1.1/definitions.json#/timestamp"
+            "allOf" : [
+              {
+                "description" : "Time stamp for start of measuring. Format according to W3C\nXML dateTime with a resolution of 3 decimal places. All time stamps\nin UTC. E.g. 2009-10-02T14:34:34.341Z"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/timestamp"
+              }
+            ]
           }
         }
       }
@@ -53,8 +59,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Number of cars",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of cars"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -73,8 +85,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Number of cars with trailers",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of cars with trailers"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -93,8 +111,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Number of trucks",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of trucks"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -113,8 +137,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Number of trucks with trailers",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of trucks with trailers"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -133,8 +163,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Number of busses",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of busses"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -153,8 +189,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Number of trams",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of trams"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -173,8 +215,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Number of motor cycles",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of motor cycles"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -193,8 +241,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Number of bicycles",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of bicycles"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -213,8 +267,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Number of pedestrians",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Number of pedestrians"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }

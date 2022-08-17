@@ -26,8 +26,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+            "allOf" : [
+              {
+                "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+              }
+            ]
           }
         }
       }
@@ -46,8 +52,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "False: Yellow flash disabled\nTrue: Yellow flash enabled",
-            "$ref" : "../../../core/3.1.1/definitions.json#/boolean_list"
+            "allOf" : [
+              {
+                "description" : "False: Yellow flash disabled\nTrue: Yellow flash enabled"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/boolean_list"
+              }
+            ]
           }
         }
       }
@@ -66,9 +78,15 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Source of the status change",
-            "$ref" : "../../../core/3.1.1/definitions.json#/string_list",
-            "pattern" : "(?-mix:^(operator_panel|calendar_clock|control_block|forced|startup|other)(?:,(operator_panel|calendar_clock|control_block|forced|startup|other))*$)"
+            "allOf" : [
+              {
+                "description" : "Source of the status change",
+                "pattern" : "(?-mix:^(operator_panel|calendar_clock|control_block|forced|startup|other)(?:,(operator_panel|calendar_clock|control_block|forced|startup|other))*$)"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+              }
+            ]
           }
         }
       }

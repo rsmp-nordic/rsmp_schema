@@ -79,8 +79,15 @@ module RSMP
             end
           end
 
-
-          out
+          # with draft-07 and older, using a $ref mean all other properties are ignored.
+          # to avoid this we need to use an allOf.
+          # this is changed from draft-08, but unfortunately, there is still no Ruby validator for that
+          if out.keys.include? '$ref'
+            ref = out.delete '$ref'
+            { "allOf" => [out,{"$ref"=>ref}]}
+          else
+            out
+          end
         end
 
         def self.build_item item, property_key: 'v'

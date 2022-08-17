@@ -24,12 +24,18 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "0: Nobody logged in \n1: Operator logged in at level 1 (read only) \n2: Operator logged in at level 2 (read/write)",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer",
-            "enum" : [
-              0,
-              1,
-              2
+            "allOf" : [
+              {
+                "description" : "0: Nobody logged in \n1: Operator logged in at level 1 (read only) \n2: Operator logged in at level 2 (read/write)",
+                "enum" : [
+                  0,
+                  1,
+                  2
+                ]
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
             ]
           }
         }

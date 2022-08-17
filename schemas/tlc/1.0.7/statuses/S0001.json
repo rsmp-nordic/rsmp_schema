@@ -48,8 +48,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Cycle counter",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Cycle counter"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -68,8 +74,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Base cycle counter",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Base cycle counter"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
@@ -88,8 +100,14 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Current stage (isolated)",
-            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+            "allOf" : [
+              {
+                "description" : "Current stage (isolated)"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
           }
         }
       }
