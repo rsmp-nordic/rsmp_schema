@@ -97,7 +97,6 @@ objects:
           signalgroupstatus:
             type: string
             description: Signal group status as text field
-            range: "[text]"
             pattern: "^[a-hA-G0-9N-P]*$"
           cyclecounter:
             type: integer
@@ -120,7 +119,6 @@ objects:
           detectorlogicstatus:
             type: string
             description: Detector logic status as text field
-            range: "[text]"
       S0003:
         description: |-
           Input status.
@@ -130,11 +128,9 @@ objects:
           inputstatus:
             type: string
             description: Input status as text field
-            range: "[text]"
           extendedinputstatus:
             type: string
             description: Extended input status as text field
-            range: "[text]"
       S0004:
         description: |-
           Output status.
@@ -144,11 +140,9 @@ objects:
           outputstatus:
             type: string
             description: Output status as text field
-            range: "[text]"
           extendedoutputstatus:
             type: string
             description: Extended output status as text field
-            range: "[text]"
       S0005:
         description: |-
           Traffic Light Controller starting.
@@ -397,7 +391,6 @@ objects:
           detectorlogics:
             type: string
             description: Manually set detector logics (1/0) as text field
-            range: "[text]"
             pattern: "^[01]*$"
       S0022:
         description: |-
@@ -408,7 +401,6 @@ objects:
           status:
             type: string
             description: Comma separated list of configured time plans. E.g. "1,2,3,5"
-            range: "[text]"
       S0023:
         description: |-
           Dynamic bands.
@@ -428,7 +420,6 @@ objects:
               
               E.g.
               pp-dd-ee,pp-dd-ee
-            range: "[text]"
             pattern: "(^$)|(^(?<item>(\\d{1,2})\\-\\d{1,2}-\\d{1,2})(,\\g<item>)*$)"
       S0024:
         description: |-
@@ -448,7 +439,6 @@ objects:
               
               E.g.
               pp-tt,pp-tt
-            range: "[text]"
             pattern: "^(\\d{1,2}\\-\\d{1,2})(?:,(\\d{1,2}\\-\\d{1,2}))*$"
       S0026:
         description: |-
@@ -476,7 +466,6 @@ objects:
               Each segment is separated with a comma
               E.g.
               d-t,d-t
-            range: "[text]"
       S0027:
         description: |-
           Time tables.
@@ -505,7 +494,6 @@ objects:
               
               E.g.
               t-o-h-m,t-o-h-m
-            range: "[text]"
       S0028:
         description: |-
           Cycle time.
@@ -524,7 +512,6 @@ objects:
               
               E.g.
               pp-tt,pp-tt
-            range: "[text]"
       S0029:
         description: |-
           Forced input status.
@@ -534,7 +521,6 @@ objects:
           status:
             type: string
             description: Forced input status as text field
-            range: "[text]"
       S0091:
         description: |-
           Operator logged in/out OP-panel.
@@ -573,7 +559,6 @@ objects:
           status:
             type: string
             description: Manufacturer, product name and version of traffic light controller
-            range: "[text]"
       S0096:
         description: |-
           Current date and time
@@ -793,7 +778,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
           timeplan:
             type: integer
             description: designation of time plan
@@ -814,7 +798,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
           traficsituation:
             type: integer
             description: designation of traficsituation
@@ -832,7 +815,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
         command: setRestart
       M0005:
         description: |-
@@ -849,7 +831,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
           emergencyroute:
             type: integer
             description: Number of emergency route
@@ -872,7 +853,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
           input:
             type: integer
             description: Number of Input
@@ -893,7 +873,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
         command: setFixedTime
       M0012:
         description: |-
@@ -930,11 +909,9 @@ objects:
               "5,4143,65:22,1,4"
               
               Such a message would order signal group 6,7,10,17,22 to green and signal group 5,11,24 to red
-            range: "[text]"
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
         command: setStart
       M0013:
         description: |-
@@ -965,11 +942,9 @@ objects:
               "5,4143:65:22,1,4"
               
               Such a message would activate input 6,7,10,17,22 and deactivate input 5,11,24
-            range: "[text]"
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
         command: setInput
       M0014:
         description: |-
@@ -994,11 +969,9 @@ objects:
               
               E.g.
               dd-ee,dd-ee
-            range: "[text]"
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
         command: setCommands
       M0015:
         description: |-
@@ -1018,7 +991,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
         command: setOffset
       M0016:
         description: |-
@@ -1048,11 +1020,9 @@ objects:
               
               E.g.
               d-t,d-t
-            range: "[text]"
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
         command: setWeekTable
       M0017:
         description: |-
@@ -1083,11 +1053,9 @@ objects:
               
               E.g.
               t-o-h-m,t-o-h-m
-            range: "[text]"
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
         command: setTimeTable
       M0018:
         description: |-
@@ -1107,7 +1075,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
         command: setCycleTime
       M0019:
         description: |-
@@ -1124,7 +1091,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
           input:
             type: integer
             description: Number of Input
@@ -1149,11 +1115,9 @@ objects:
           oldSecurityCode:
             type: string
             description: Previous security code
-            range: "[text]"
           newSecurityCode:
             type: string
             description: New security code
-            range: "[text]"
         command: setSecurityCode
       M0104:
         description: |-
@@ -1164,7 +1128,6 @@ objects:
           securityCode:
             type: string
             description: Security code 1
-            range: "[text]"
           year:
             type: integer
             description: |-
@@ -1314,7 +1277,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
         command: setStart
       M0011:
         description: |-
@@ -1331,7 +1293,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
         command: setStop
   Detector logic:
     description:
@@ -1505,7 +1466,6 @@ objects:
           securityCode:
             type: string
             description: Security code 2
-            range: "[text]"
           mode:
             type: boolean
             description: |-

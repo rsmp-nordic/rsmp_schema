@@ -234,7 +234,7 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "new: New priority request \nupdate: Update to existing priority request \ncancel: Cancel an existing priority",
+            "description" : "new: New priority request\nupdate: Update to existing priority request\ncancel: Cancel an existing priority",
             "type" : "string",
             "enum" : [
               "cancel",
@@ -311,7 +311,7 @@
       "then" : {
         "properties" : {
           "v" : {
-            "description" : "(Optional) Vehicle type\n\npedestrian: Pedestrians \nbicycle: Bicycles \nmotorcycle: Motorcycles \ncar: Passenger vehicle \nbus: Bus used for public transport \nlightTruck: Light truck \nheavyTruck: Heavy truck \ntram: Trams used for Public transport \nemergency: Police, fire or ambulance \nsafetyCar: For e.g. escort vehicles \nspecialTransport: For e.g. heavy load \nother: Other type of vehicle",
+            "description" : "(Optional) Vehicle type\n\npedestrian: Pedestrians\nbicycle: Bicycles\nmotorcycle: Motorcycles\ncar: Passenger vehicle\nbus: Bus used for public transport\nlightTruck: Light truck\nheavyTruck: Heavy truck\ntram: Trams used for Public transport\nemergency: Police, fire or ambulance\nsafetyCar: For e.g. escort vehicles\nspecialTransport: For e.g. heavy load\nother: Other type of vehicle",
             "type" : "string",
             "enum" : [
               "bicycle",
