@@ -1370,6 +1370,147 @@ objects:
             description: Security code 2
             range: "[text]"
         command: setLevel
+      M0022:
+        description: |-
+          Request Signal Priority
+
+          Useful for bus priority or other type of priorities like emergency vehicles or groups of cyclists.
+
+          The benefit of using this message over activating inputs or detector logics is that you can specify a priority level, vehicle type and estimated time of arrival. You can also update or cancel the request, and use the corresponding status message to track the status of the request, including how much priority was actually given.
+
+          To understand how this command relates to ETSI/J2735, please see the wiki.
+
+          Activating signal priority is expected to provide more green time for a particular movement through the intersection, but the exact mechanism must typically be configured in the controller.
+
+          The movement to prioritize can be referenced in a number of ways, depending on what is configured in the controller, and in the system that sends priority requests. Either:
+
+          - Reference a signal group by setting ‘signalGroupId’. This method is simple, but will not allow you to have different priority mechanism for the same signal group, unless they can be distinguished by the vehicle type. For example, if you need to trigger different priorities depending on whether a bus goes straight or makes a turn for the same signal group, you need to use of the other referencing methods.
+          - Reference an input by setting ‘inputId’. This can be useful if you previously used inputs to activate priority. The input will not be activated, only the priority.
+          - Reference a connection by setting ‘connectionId’. A connection is a movement from a specific ingoing lane to a specific outgoing lane.
+          - Reference an intersection approach by setting ‘approachId’.
+          - Reference an ingoing lane by setting ‘laneInId’, and optionally also reference an outgoing lane by setting ‘laneOutId’.
+
+          Referencing attributes that are not used must be left out, rather than set to null or empty strings. This includes:
+
+          - signalGroupId
+          - inputId
+          - connectionId
+          - approachId
+          - laneInId
+          - laneOutId
+
+          Referencing attributes are only used when initiating a request. When updating or cancelling the request, the request is identified by its requestId, and no referencing attributes are allowed.
+
+          You initiate a priority request with type set to ‘new’. You must provide a request id that uniquely identifies the request on the controller. It can be a randomly generated UUID (universally unique identifier), or it can be constructed by combining e.g. a vehicle id and some other identifier. When updating or cancelling a request, you must pass the same request id again.
+
+          Providing ETA (estimated time of arrival) when initiating a request is optional, but can help the controller plan ahead in cases where you’re able to send the request before the vehicle arrives at the intersection. You’re allowed to initiate the request without an ETA and provide it in a later request update. But providing the ETA when initiating the request is recommended, since it will give the controller more time to plan ahead.
+
+          Like ETA, providing a vehicle type is optional, but can help the controller decide how to best handle the request.
+
+          The priority level provides a way to indicate the relative importance of the request compared to other requests. For example, emergency vehicles or delayed buses could be given a higher priority level.
+
+          If the ETA changes before the priority is cancelled, or you want to change the priority level, you can send another request message with type set to ‘update’. The vehicle type cannot be changed.
+
+          When you send a priority request, it will be processed to decide if it’s possible to activate the requested priority.
+
+          If the request is accepted, the priority can either be activated immediately, or if another priority is currently active, it can be queued for later activation.
+
+          If the priority cannot be accepted the request is rejected. Cooldown is a specific type of rejection, which means that s similar request has just completed, and some time needs to pass before a similar request can be activated.
+
+          When a request is queued, it is expected to become activated later, but in case too long passes without activation, the controller is expected to time out the request.
+
+          Once a priority is activated, you’re excepted to cancel it as soon as there’s no need for it anymore, typically when the vehicle has passed the intersection. You cancel a request by sending a request passing the existing request id setting the type to ‘cancel’.
+
+          If a request is never cancelled, the controller is expected to remove the priority at some point, but until then the priority might block requests in other direction which is why you should always cancel a priority when it’s not needed anymore.
+        arguments:
+          requestId:
+            type: string
+            description: A string that uniquely identifies the request on the controller
+          signalGroupId:
+            type: string
+            description: (Optional) ID of a signal group component.
+          inputId:
+            type: integer
+            description: (Optional) ID of an input, using the same numbering scheme as M0006
+            min: 0
+            max: 255
+          connectionId:
+            type: integer
+            description: (Optional) ID of a connection, connecting an ingoing and an outgoing lane
+            min: 0
+            max: 255
+          approachId:
+            type: integer
+            description: (Optional) ID of an intersection approach
+            min: 0
+            max: 16
+          laneInId:
+            type: integer
+            description: (Optional) ID of an ingoing lane
+            min: 0
+            max: 255
+          laneOutId:
+            type: integer
+            description: (Optional) ID of an outgoing lane
+            min: 0
+            max: 255
+          priorityId:
+            type: integer
+            description: (Optional) ID of a priority
+            min: 0
+            max: 255
+          type:
+            type: string
+            description: |-
+              new: New priority request
+              update: Update to existing priority request
+              cancel: Cancel an existing priority
+            values:
+              new:
+              update:
+              cancel:
+          level:
+            type: integer
+            description: |-
+              0: Lowest, 14: Highest
+            min: 0
+            max: 14
+          eta:
+            type: integer
+            description: (Optional) Estimated time of arrival to the intersection, in seconds
+            min: 0
+            max: 255
+          vehicleType:
+            type: string
+            description: |-
+              (Optional) Vehicle type
+
+              pedestrian: Pedestrians
+              bicycle: Bicycles
+              motorcycle: Motorcycles
+              car: Passenger vehicle
+              bus: Bus used for public transport
+              lightTruck: Light truck
+              heavyTruck: Heavy truck
+              tram: Trams used for Public transport
+              emergency: Police, fire or ambulance
+              safetyCar: For e.g. escort vehicles
+              specialTransport: For e.g. heavy load
+              other: Other type of vehicle
+            values:
+              pedestrian:
+              bicycle:
+              motorcycle:
+              car:
+              bus:
+              lightTruck:
+              heavyTruck:
+              tram:
+              emergency:
+              safetyCar:
+              specialTransport:
+              other:
+        command: requestPriority
       M0103:
         description: |-
           Set security code.
