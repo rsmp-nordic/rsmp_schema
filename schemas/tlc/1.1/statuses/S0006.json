@@ -1,0 +1,55 @@
+{
+  "allOf" : [
+    {
+      "description" : "Emergency stage.\nThe status is active during emergency prioritization.\nUsed in situations where full priority is given in the emergency vehicle program.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "emergencystage",
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "False: Emergency stage inactive\nTrue: Emergency stage active",
+            "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "emergencystage"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "Number of emergency stage",
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+          }
+        }
+      }
+    }
+  ]
+}

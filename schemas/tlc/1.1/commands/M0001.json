@@ -1,0 +1,101 @@
+{
+  "allOf" : [
+    {
+      "description" : "Sets functional position.\nSets the controller to yellow flash, dark mode or normal control.\nRequires security code 2.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "intersection",
+            "securityCode",
+            "status",
+            "timeout"
+          ]
+        },
+        "cO" : {
+          "const" : "setValue"
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Set operating mode",
+            "$ref" : "../../../core/3.1.1/definitions.json#/string_list",
+            "pattern" : "(?-mix:^(NormalControl|YellowFlash|Dark)(?:,(NormalControl|YellowFlash|Dark))*$)"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "timeout"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return",
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "intersection"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Intersection number",
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+          }
+        }
+      }
+    }
+  ]
+}

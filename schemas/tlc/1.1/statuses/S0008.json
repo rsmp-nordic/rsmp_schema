@@ -1,0 +1,77 @@
+{
+  "allOf" : [
+    {
+      "description" : "Manual control.\nTraffic control deactivated in controller\nSignal timings is controlled manually by service personnel using the operating panel of the controller.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "intersection",
+            "source",
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "intersection"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "False: Manual control inactive\nTrue: Manual control active",
+            "$ref" : "../../../core/3.1.1/definitions.json#/boolean_list"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "source"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "Source of the status change",
+            "$ref" : "../../../core/3.1.1/definitions.json#/string_list",
+            "pattern" : "(?-mix:^(operator_panel|calendar_clock|control_block|forced|startup|other)(?:,(operator_panel|calendar_clock|control_block|forced|startup|other))*$)"
+          }
+        }
+      }
+    }
+  ]
+}

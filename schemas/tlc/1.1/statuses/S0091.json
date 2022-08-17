@@ -1,0 +1,39 @@
+{
+  "allOf" : [
+    {
+      "description" : "Operator logged in/out OP-panel.\nProvides information if maintenance personnel is currently working on site.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "user"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "0: Nobody logged in \n1: Operator logged in at level 1 (read only) \n2: Operator logged in at level 2 (read/write)",
+            "$ref" : "../../../core/3.1.1/definitions.json#/integer",
+            "enum" : [
+              0,
+              1,
+              2
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

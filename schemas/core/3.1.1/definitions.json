@@ -56,6 +56,10 @@
     "description" : "Comma-separated list of booleans as strings",
     "type" : "string",
     "pattern" : "^(True|False)(?:,(True|False))*$"
+  },
+  "string_list": {
+    "description" : "Comma-separated list of strings",
+    "type" : "string"
   }
 }
 
