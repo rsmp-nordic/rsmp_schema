@@ -644,6 +644,41 @@ objects:
               dd=loop detector number
               ss=sensitivity value
               Each loop detector is separated with a comma. E.g.dd-ss,dd-ss.
+      S0032:
+        description: |-
+          Coordinated control
+          This status is used when coordination between traffic light controllers is active. Coordination is described in detail in the corresponding section
+          Please note that all values in this status uses comma-separated lists - one value for each intersection, e.g. “1,2” and “centralized,off”
+        arguments:
+          intersection:
+            list: true
+            type: integer
+            description: |-
+              0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
+              Other value: Intersection number
+            range: "[0-255]"
+          status:
+            list: true
+            type: string
+            description: |-
+              local: Local coordination
+              centralized: Coordination with synchronized clock
+              off: Coordination not active
+            values:
+              local:
+              centralized:
+              off:
+          source:
+            description: Source of the status change
+            list: true
+            type: string
+            values:
+              operator_panel: Operator panel
+              calendar_clock: Calendar/clock
+              control_block: Control block
+              forced: Forced due to external command e.g. supervisor
+              startup: Set after startup mode
+              other: Other reason
       S0091:
         description: |-
           Operator logged in/out OP-panel.
