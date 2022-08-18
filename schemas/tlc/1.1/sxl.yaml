@@ -1761,6 +1761,61 @@ objects:
               always_off: no detection during predefined max time
               always_on: detection constantly on during predefined max time
               intermittent: intermittent logic fault (flutter)
+      A0303:
+        description: |-
+          Serious detector error (hardware).
+          Is a “major fault” defined according to 3.8 i EN12675 which causes the controller to switch to a “failure mode” according to 3.6 in EN12675.
+        priority: 3
+        category: D
+        arguments:
+          detector:
+            type: string
+            description: Designation of the detector (hardware)
+          type:
+            type: string
+            description: Type of detector.
+            values:
+              loop: Inductive detector loop
+              input: External input
+          errormode:
+            type: string
+            description: Detector forced on/off while detector error
+            # note that on and off must be quoted, otherwise they are parsed as true and false
+            values: ['on','off']
+          manual:
+            type: boolean
+            description: Manually controlled detector logic (True/False)
+      A0304:
+        description: |-
+          Serious detector error (logic error).
+          For instance; detector continuously on or off during an extended time.
+          Is a “major fault” defined according to 3.8 i EN12675 which causes the controller to switch to a “failure mode” according to 3.6 in EN12675
+        priority: 3
+        category: D
+        arguments:
+          detector:
+            type: string
+            description: Designation of the detector (hardware)
+          type:
+            type: string
+            description: Type of detector.
+            values:
+              loop: Inductive detector loop
+              input: External input
+          errormode:
+            type: string
+            description: Detector forced on/off while detector error
+            values: ['on','off']
+          manual:
+            type: boolean
+            description: Manually controlled detector logic (True/False)
+          logicerror:
+            type: string
+            description: Type of logic error
+            values:
+              always_off: no detection during predefined max time
+              always_on: detection constantly on during predefined max time
+              intermittent: intermittent logic fault (flutter)
     statuses:
       S0201:
         description: |-

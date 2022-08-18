@@ -16,7 +16,9 @@
         "A0201",
         "A0202",
         "A0301",
-        "A0302"
+        "A0302",
+        "A0303",
+        "A0304"
       ]
     },
     "rvs" : {
@@ -245,6 +247,36 @@
             },
             "then" : {
               "$ref" : "A0302.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "aCId"
+              ],
+              "properties" : {
+                "aCId" : {
+                  "const" : "A0303"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "A0303.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "aCId"
+              ],
+              "properties" : {
+                "aCId" : {
+                  "const" : "A0304"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "A0304.json"
             }
           }
         ]
