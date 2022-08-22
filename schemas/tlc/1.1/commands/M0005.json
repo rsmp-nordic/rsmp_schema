@@ -31,7 +31,7 @@
           "v" : {
             "allOf" : [
               {
-                "description" : "False: Activate emergency route\nTrue: Deactivate emergency route"
+                "description" : "False: Deactivate emergency route\nTrue: Activate emergency route"
               },
               {
                 "$ref" : "../../../core/3.1.1/definitions.json#/boolean"

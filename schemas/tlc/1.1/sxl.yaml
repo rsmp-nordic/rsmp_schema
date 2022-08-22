@@ -1059,8 +1059,8 @@ objects:
           status:
             type: boolean
             description: |-
-              False: Activate emergency route
-              True: Deactivate emergency route
+              False: Deactivate emergency route
+              True: Activate emergency route
           securityCode:
             type: string
             description: Security code 2
@@ -1319,8 +1319,8 @@ objects:
           status:
             type: boolean
             description: |-
-              False: Force input
-              True: Release input
+              False: Release input
+              True: Force input
           securityCode:
             type: string
             description: Security code 2
