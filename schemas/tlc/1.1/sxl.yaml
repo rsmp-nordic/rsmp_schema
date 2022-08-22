@@ -1517,6 +1517,21 @@ objects:
               specialTransport:
               other:
         command: requestPriority
+      M0023:
+        description: |-
+          Set timeout for dynamic bands
+          Switch to a designated time plan if this timeout is reached due to lost connection with the supervisor.
+          Disable by setting timeout to '0'.
+          Used in conjunction with dynamic bands, M0014
+        arguments:
+          status:
+            type: integer
+            min: 0
+            max: 65535
+            description: Timeout, in minutes
+          securityCode:
+            type: string
+            description: Security code 2
       M0103:
         description: |-
           Set security code.
