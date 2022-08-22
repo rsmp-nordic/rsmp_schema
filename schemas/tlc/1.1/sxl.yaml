@@ -1532,6 +1532,7 @@ objects:
           securityCode:
             type: string
             description: Security code 2
+        command: setTimeout
       M0103:
         description: |-
           Set security code.

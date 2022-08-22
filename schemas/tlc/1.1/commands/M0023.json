@@ -10,7 +10,7 @@
           ]
         },
         "cO" : {
-          "const" : null
+          "const" : "setTimeout"
         }
       }
     },
