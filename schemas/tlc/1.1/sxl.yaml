@@ -747,29 +747,35 @@ objects:
           year:
             type: integer
             description: 'Year according to format YYYY. NOTE: UTC is used'
-            range: YYYY
+            min: 0
+            max: 9999
           month:
             type: integer
             description: 'Month (01-12) according to format MM. Note: UTC is used'
-            range: MM
+            min: 1
+            max: 12
           day:
             type: integer
             description: 'Day of month (01-31) according to format DD.  Note: UTC
               is used'
-            range: DD
+            min: 1
+            max: 31
           hour:
             type: integer
             description: 'Hour of day (00-23) according to format DD. Note: UTC is
               used'
-            range: HH
+            min: 0
+            max: 23
           minute:
             type: integer
             description: 'Minute (00-59) according to format MM. Note: UTC is used'
-            range: MM
+            min: 0
+            max: 59
           second:
             type: integer
             description: 'Second (00-59) according to format SS. Note: UTC is used'
-            range: SS
+            min: 0
+            max: 59
       S0097:
         description: |-
           Checksum of traffic parameters.
@@ -1581,37 +1587,43 @@ objects:
             description: |-
               Changes internal clock. Note: UTC is used
               Year according to YYYY
-            range: "[YYYY]"
+            min: 0
+            max: 9999
           month:
             type: integer
             description: |-
               Changes internal clock. Note: UTC is used
               Month according to MM (01-12)
-            range: "[MM]"
+            min: 1
+            max: 12
           day:
             type: integer
             description: |-
               Changes internal clock. Note: UTC is used
               Day in month according to DD (01-31)
-            range: "[DD]"
+            min: 1
+            max: 31
           hour:
             type: integer
             description: |-
               Changes internal clock. Note: UTC is used
               Hour according to HH (00-23)
-            range: "[HH]"
+            min: 0
+            max: 23
           minute:
             type: integer
             description: |-
               Changes internal clock. Note: UTC is used
               Minute according to MM (00-59)
-            range: "[MM]"
+            min: 0
+            max: 59
           second:
             type: integer
             description: |-
               Changes internal clock. Note: UTC is used
               Second according to SS (00-59)
-            range: "[SS]"
+            min: 0
+            max: 59
         command: setDate
   Signal group:
     description:
@@ -1628,7 +1640,8 @@ objects:
           timeplan:
             type: integer
             description: Current time plan
-            range: "[designation]"
+            min: 1
+            max: 255
       A0101:
         description: |-
           Pushbutton error.
@@ -1875,7 +1888,8 @@ objects:
             type: integer
             description: Number of vehicles on a given detector logic (since last
               update)
-            range: "[number]"
+            min: 0
+            max: 65535
       S0202:
         description: |-
           Traffic Counting: Vehicle speed.
@@ -1890,7 +1904,7 @@ objects:
           speed:
             type: integer
             description: Average speed in km/h
-            range: "[speed]"
+            min: 0
       S0203:
         description: |-
           Traffic Counting: Occupancy.
@@ -1920,39 +1934,39 @@ objects:
           P:
             type: integer
             description: Number of cars
-            range: "[number]"
+            min: 0
           PS:
             type: integer
             description: Number of cars with trailers
-            range: "[number]"
+            min: 0
           L:
             type: integer
             description: Number of trucks
-            range: "[number]"
+            min: 0
           LS:
             type: integer
             description: Number of trucks with trailers
-            range: "[number]"
+            min: 0
           B:
             type: integer
             description: Number of busses
-            range: "[number]"
+            min: 0
           SP:
             type: integer
             description: Number of trams
-            range: "[number]"
+            min: 0
           MC:
             type: integer
             description: Number of motor cycles
-            range: "[number]"
+            min: 0
           C:
             type: integer
             description: Number of bicycles
-            range: "[number]"
+            min: 0
           F:
             type: integer
             description: Number of pedestrians
-            range: "[number]"
+            min: 0
     commands:
       M0008:
         description: |-
