@@ -30,9 +30,9 @@ module RSMP::Convert::Import::RST
 	    \-+\n
 			(.*)
 		/xm.match(rst)
-		convert_alarms result[1]
-		convert_statuses result[2]
-		convert_commands result[3]
+		sxl[:alarms] = convert_alarms result[1]
+		sxl[:statuses] = convert_statuses result[2]
+		sxl[:commands] = convert_commands result[3]
 	end
 
 	def self.convert_alarms rst
@@ -41,7 +41,7 @@ module RSMP::Convert::Import::RST
 				A\d{4}\n 							# A0001
 				\^+\n 								# ^^^^^
 			)
-		/x)[1..].each do |alarm|
+		/x)[1..].map do |alarm|
 			self.convert_alarm alarm.strip
 		end
 	end
@@ -63,17 +63,19 @@ module RSMP::Convert::Import::RST
 			(.+)  									# Serious hardware error
 		/xm.match(rst)
 
-		code = result[1].strip
-		description = result[2].strip
-		
+		alarm = {
+			code: result[1].strip,
+			description: result[2].strip
+		}
+
 		if result[3]
-			self.parse_table result[3].strip
+			alarm[:table] = self.parse_table result[3].strip
 		end
+
+		alarm
 	end
 
 	def self.parse_table rst
-		puts rst
-		puts
 	end
 
 	def self.convert_statuses rst
