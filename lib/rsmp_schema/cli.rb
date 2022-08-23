@@ -1,5 +1,6 @@
 require 'thor'
 require 'rsmp_schema'
+require 'pp'
 
 module RSMP::Schema
   class CLI < Thor
@@ -22,8 +23,19 @@ module RSMP::Schema
         exit
       end
 
-      sxl = RSMP::Convert::Import::YAML.read options[:in]
-      RSMP::Convert::Export::JSONSchema.write sxl, options[:out]
+      extension = File.extname options[:in]
+      case extension
+      when '.yaml', '.yml'
+        sxl = RSMP::Convert::Import::YAML.read options[:in]
+      when '.rst'
+        sxl = RSMP::Convert::Import::RST.read options[:in]
+      else
+        raise RuntimeError.new "Unknown input file format #{extension}"
+      end
+
+      #pp sxl
+
+      #RSMP::Convert::Export::JSONSchema.write sxl, options[:out]
     end
 
     # avoid Thor returnin 0 on failures, see
