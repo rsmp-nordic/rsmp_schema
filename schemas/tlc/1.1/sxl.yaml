@@ -109,15 +109,36 @@ objects:
         arguments:
           signalgroupstatus:
             type: string
-            description: Signal group status as text field
+            description: |-
+              Signal group status as text field.
+              Each character represent the state of the signal group in consecutive order.
+              Signal group status is described in detail in the corresponding section.
+              - = Signal group is undefined/does not exist
             pattern: "^[a-hA-G0-9N-P]*$"
           cyclecounter:
             type: integer
-            description: Cycle counter
+            description: |-
+              Cycle counter.
+              Used for handling of coordination between TLC’s.
+              Is counted from 0 until it reaches the cycle time (See S0028).
+              
+              c = (b + o) mod t
+               
+              where c = cycle counter,
+              b = base cycle counter,
+              o = offset,
+              t = cycle time,
+              mod = modulo
+
+              See the coordination section for more information.
             range: "[0-999]"
           basecyclecounter:
             type: integer
-            description: Base cycle counter
+            description: |-
+              Base cycle counter.
+              Used for handling of coordination between TLC’s.
+              Synchronized between all TLC’s in an active coordination.
+              See the coordination section for more information.
             range: "[0-999]"
           stage:
             type: integer
