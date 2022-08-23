@@ -383,6 +383,7 @@ objects:
               0: disabled
               1: dark mode
               2: yellow flash
+              3: all red
       S0014:
         description: |-
           Current time plan.
