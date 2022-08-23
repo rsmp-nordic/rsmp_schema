@@ -27,7 +27,7 @@
           "s" : {
             "allOf" : [
               {
-                "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number"
+                "description" : "Comma separated list of intersections which the status relates to, e.g. “1,2”.\nUse “0” for all intersections of the TLC."
               },
               {
                 "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"

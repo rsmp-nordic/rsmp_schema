@@ -208,9 +208,10 @@ objects:
             list: true
             type: integer
             description: |-
-              0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
-              Other value: Intersection number
-            range: "[0-255]"
+              Comma separated list of intersections which the status relates to, e.g. “1,2”.
+              Use “0” for all intersections of the TLC.
+            min: 0
+            max: 255
           status:
             list: true
             type: boolean
@@ -238,9 +239,10 @@ objects:
             list: true
             type: integer
             description: |-
-              0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
-              Other value: Intersection number
-            range: "[0-255]"
+              Comma separated list of intersections which the status relates to, e.g. “1,2”.
+              Use “0” for all intersections of the TLC.
+            min: 0
+            max: 255
           status:
             list: true
             type: boolean
@@ -268,9 +270,10 @@ objects:
             list: true
             type: integer
             description: |-
-              0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
-              Other value: Intersection number
-            range: "[0-255]"
+              Comma separated list of intersections which the status relates to, e.g. “1,2”.
+              Use “0” for all intersections of the TLC.
+            min: 0
+            max: 255
           status:
             list: true
             type: boolean
@@ -298,9 +301,10 @@ objects:
             list: true
             type: integer
             description: |-
-              0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
-              Other value: Intersection number
-            range: "[0-255]"
+              Comma separated list of intersections which the status relates to, e.g. “1,2”.
+              Use “0” for all intersections of the TLC.
+            min: 0
+            max: 255
           status:
             list: true
             type: boolean
@@ -328,9 +332,10 @@ objects:
             list: true
             type: integer
             description: |-
-              0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
-              Other value: Intersection number
-            range: "[0-255]"
+              Comma separated list of intersections which the status relates to, e.g. “1,2”.
+              Use “0” for all intersections of the TLC.
+            min: 0
+            max: 255
           status:
             list: true
             type: boolean
@@ -358,9 +363,10 @@ objects:
             list: true
             type: integer
             description: |-
-              0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
-              Other value: Intersection number
-            range: "[0-255]"
+              Comma separated list of intersections which the status relates to, e.g. “1,2”.
+              Use “0” for all intersections of the TLC.
+            min: 0
+            max: 255
           status:
             list: true
             type: boolean
@@ -388,9 +394,10 @@ objects:
             list: true
             type: integer
             description: |-
-              0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
-              Other value: Intersection number
-            range: "[0-255]"
+              Comma separated list of intersections which the status relates to, e.g. “1,2”.
+              Use “0” for all intersections of the TLC.
+            min: 0
+            max: 255
           status:
             list: true
             type: integer
@@ -487,9 +494,10 @@ objects:
             list: true
             type: integer
             description: |-
-              0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
-              Other value: Intersection number
-            range: "[0-255]"
+              Comma separated list of intersections which the status relates to, e.g. “1,2”.
+              Use “0” for all intersections of the TLC.
+            min: 0
+            max: 255
           controlmode:
             list: true
             type: string
@@ -670,9 +678,10 @@ objects:
             list: true
             type: integer
             description: |-
-              0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
-              Other value: Intersection number
-            range: "[0-255]"
+              Comma separated list of intersections which the status relates to, e.g. “1,2”.
+              Use “0” for all intersections of the TLC.
+            min: 0
+            max: 255
           status:
             list: true
             type: string
@@ -1012,8 +1021,10 @@ objects:
             max: 1440
           intersection:
             list: true
-            description: Intersection number
             type: integer
+            description: |-
+              Comma separated list of intersections which the status relates to, e.g. “1,2”.
+              Use “0” for all intersections of the TLC.
             min: 0
             max: 255
         command: setValue

@@ -111,7 +111,7 @@
           "v" : {
             "allOf" : [
               {
-                "description" : "Intersection number"
+                "description" : "Comma separated list of intersections which the status relates to, e.g. “1,2”.\nUse “0” for all intersections of the TLC."
               },
               {
                 "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
