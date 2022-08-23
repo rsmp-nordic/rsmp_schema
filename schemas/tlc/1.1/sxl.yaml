@@ -433,7 +433,7 @@ objects:
           Can be used by the management system to check the number of detector logics configured in the controller.
         arguments:
           number:
-            type: long
+            type: integer
             description: Number of detector logics
             range: "[1-65025]"
       S0017:
@@ -442,7 +442,7 @@ objects:
           Can be used for the management system to check the number of signal groups configured in the controller.
         arguments:
           number:
-            type: long
+            type: integer
             description: Number of signal groups
             range: "[1-65025]"
       S0018:
@@ -451,7 +451,7 @@ objects:
           Can be used for the management system to check the number of time plans configured in the controller.
         arguments:
           number:
-            type: long
+            type: integer
             description: Number of time plans (depreciated)
             range: "[1-65025]"
       S0019:
@@ -460,7 +460,7 @@ objects:
           Can be used for the management system to check the number of traffic situations configured in the controller.
         arguments:
           number:
-            type: long
+            type: integer
             description: Number of traffic situations
             range: "[1-65025]"
       S0020:
@@ -1857,7 +1857,7 @@ objects:
               XML dateTime with a resolution of 3 decimal places. All time stamps
               in UTC. E.g. 2009-10-02T14:34:34.341Z
           vehicles:
-            type: long
+            type: integer
             description: Number of vehicles on a given detector logic (since last
               update)
             range: "[number]"
@@ -1903,39 +1903,39 @@ objects:
               XML dateTime with a resolution of 3 decimal places. All time stamps
               in UTC. E.g. 2009-10-02T14:34:34.341Z
           P:
-            type: long
+            type: integer
             description: Number of cars
             range: "[number]"
           PS:
-            type: long
+            type: integer
             description: Number of cars with trailers
             range: "[number]"
           L:
-            type: long
+            type: integer
             description: Number of trucks
             range: "[number]"
           LS:
-            type: long
+            type: integer
             description: Number of trucks with trailers
             range: "[number]"
           B:
-            type: long
+            type: integer
             description: Number of busses
             range: "[number]"
           SP:
-            type: long
+            type: integer
             description: Number of trams
             range: "[number]"
           MC:
-            type: long
+            type: integer
             description: Number of motor cycles
             range: "[number]"
           C:
-            type: long
+            type: integer
             description: Number of bicycles
             range: "[number]"
           F:
-            type: long
+            type: integer
             description: Number of pedestrians
             range: "[number]"
     commands:
