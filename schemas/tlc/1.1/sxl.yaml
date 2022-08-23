@@ -131,7 +131,12 @@ objects:
         arguments:
           detectorlogicstatus:
             type: string
-            description: Detector logic status as text field
+            description: |-
+              Detector logic status as text field
+              Each character represent the state of the detector logic in consecutive order.
+              0 : Detector logic is not active
+              1 : Detector logic is active
+              - : Detector logic is undefined/does not exist
       S0003:
         description: |-
           Input status.
@@ -143,7 +148,12 @@ objects:
             description: Input status as text field
           extendedinputstatus:
             type: string
-            description: Extended input status as text field
+            description: |-
+              Extended input status as text field
+              Each character represent the state of the detector logic in consecutive order.
+              0 : Detector logic is not active
+              1 : Detector logic is active
+              - : Detector logic is undefined/does not exist
       S0004:
         description: |-
           Output status.
@@ -155,7 +165,12 @@ objects:
             description: Output status as text field
           extendedoutputstatus:
             type: string
-            description: Extended output status as text field
+            description: |-
+              Extended output status as text field
+              Each character represent the state of the detector logic in consecutive order.
+              0 : Detector logic is not active
+              1 : Detector logic is active
+              - : Detector logic is undefined/does not exist
       S0005:
         description: |-
           Traffic Light Controller starting.

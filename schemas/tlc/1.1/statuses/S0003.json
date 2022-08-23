@@ -45,7 +45,7 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Extended input status as text field",
+            "description" : "Extended input status as text field\nEach character represent the state of the detector logic in consecutive order.\n0 : Detector logic is not active\n1 : Detector logic is active\n- : Detector logic is undefined/does not exist",
             "type" : "string"
           }
         }
