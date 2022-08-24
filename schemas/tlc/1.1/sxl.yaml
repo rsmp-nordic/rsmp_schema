@@ -131,7 +131,8 @@ objects:
               mod = modulo
 
               See the coordination section for more information.
-            range: "[0-999]"
+            min: 0
+            max: 999
           basecyclecounter:
             type: integer
             description: |-
@@ -139,11 +140,13 @@ objects:
               Used for handling of coordination between TLC’s.
               Synchronized between all TLC’s in an active coordination.
               See the coordination section for more information.
-            range: "[0-999]"
+            min: 0
+            max: 999
           stage:
             type: integer
             description: Current stage (isolated)
-            range: "[0-999]"
+            min: 0
+            max: 999
       S0002:
         description: |-
           Detector logic status.
@@ -217,7 +220,8 @@ objects:
           emergencystage:
             type: integer
             description: Number of emergency stage
-            range: "[1-255]"
+            min: 1
+            max: 255
       S0007:
         description: |-
           Controller switched on.
@@ -436,7 +440,8 @@ objects:
           status:
             type: integer
             description: Current time plan
-            range: "[1-255]"
+            min: 1
+            max: 255
           source:
             list: true
             type: string
@@ -458,7 +463,8 @@ objects:
           status:
             type: integer
             description: Current traffic situation
-            range: "[1-255]"
+            min: 1
+            max: 255
           source:
             list: true
             type: string
@@ -478,7 +484,8 @@ objects:
           number:
             type: integer
             description: Number of detector logics
-            range: "[1-65025]"
+            min: 1
+            max: 65025
       S0017:
         description: |-
           Number of signal groups.
@@ -487,7 +494,8 @@ objects:
           number:
             type: integer
             description: Number of signal groups
-            range: "[1-65025]"
+            min: 1
+            max: 65025
       S0018:
         description: |-
           Number of time plans
@@ -496,7 +504,8 @@ objects:
           number:
             type: integer
             description: Number of time plans (depreciated)
-            range: "[1-65025]"
+            min: 1
+            max: 65025
       S0019:
         description: |-
           Number of traffic situations.
@@ -505,7 +514,8 @@ objects:
           number:
             type: integer
             description: Number of traffic situations
-            range: "[1-65025]"
+            min: 1
+            max: 65025
       S0020:
         description: |-
           Control mode.
@@ -917,7 +927,6 @@ objects:
               Note:
               - There is no way to upload this binary file to the TLC using RSMP
               - The format of the binary file is not specified and is not expected to be compatible between suppliers
-            range: "[binary]"
           timestamp:
             type: timestamp
             description: |-
@@ -937,13 +946,15 @@ objects:
             description: |-
               Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
           vehicles:
-            type: string
+            type: integer
+            list: true
             description: |-
               Number of vehicles.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-65535,...]"
+            min: 0
+            max: 65535
       S0206:
         description: |-
           Traffic Counting: Vehicle speed
@@ -956,13 +967,15 @@ objects:
               XML dateTime with a resolution of 3 decimal places. All time stamps
               in UTC. E.g. 2009-10-02T14:34:34.341Z
           speed:
-            type: string
+            type: integer
+            list: true
             description: |-
               Average speed in km/h (integer).
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-65535,...]"
+            min: 0
+            max: 65535
       S0207:
         description: |-
           Traffic Counting: Occupancy.
@@ -975,13 +988,15 @@ objects:
               XML dateTime with a resolution of 3 decimal places. All time stamps
               in UTC. E.g. 2009-10-02T14:34:34.341Z
           occupancy:
-            type: string
+            type: integer
+            list: true
             description: |-
               Occupancy in percent (%) (0-100)
               - Value expressed as an integer with a range of 0-100.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-100,...]"
+            min: 0
+            max: 100
       S0208:
         description: |-
           Traffic Counting: Number of vehicles of given classification.
@@ -994,77 +1009,95 @@ objects:
               XML dateTime with a resolution of 3 decimal places. All time stamps
               in UTC. E.g. 2009-10-02T14:34:34.341Z
           P:
-            type: string
+            type: integer
+            list: true
             description: |-
               Number of cars.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-65535,...]"
+            min: 0
+            max: 65535
           PS:
-            type: string
+            type: integer
+            list: true
             description: |-
               Number of cars with trailers.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-65535,...]"
+            min: 0
+            max: 65535
           L:
-            type: string
+            type: integer
+            list: true
             description: |-
               Number of trucks.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-65535,...]"
+            min: 0
+            max: 65535
           LS:
-            type: string
+            type: integer
+            list: true
             description: |-
               Number of trucks with trailers.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-65535,...]"
+            min: 0
+            max: 65535
           B:
-            type: string
+            type: integer
+            list: true
             description: |-
               Number of busses.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-65535,...]"
+            min: 0
+            max: 65535
           SP:
-            type: string
+            type: integer
+            list: true
             description: |-
               Number of trams.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-65535,...]"
+            min: 0
+            max: 65535
           MC:
-            type: string
+            type: integer
+            list: true
             description: |-
               Number of motor cycles.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-65535,...]"
+            min: 0
+            max: 65535
           C:
-            type: string
+            type: integer
+            list: true
             description: |-
               Number of bicycles.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-65535,...]"
+            min: 0
+            max: 65535
           F:
-            type: string
+            type: integer
+            list: true
             description: |-
               Number of pedestrians.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            range: "[0-65535,...]"
+            min: 0
+            max: 65535
     commands:
       M0001:
         description: |-
@@ -1120,7 +1153,8 @@ objects:
           timeplan:
             type: integer
             description: designation of time plan
-            range: "[1-255]"
+            min: 1
+            max: 255
         command: setPlan
       M0003:
         description: |-
@@ -1140,7 +1174,8 @@ objects:
           traficsituation:
             type: integer
             description: designation of traficsituation
-            range: "[1-255]"
+            min: 1
+            max: 255
         command: setTrafficSituation
       M0004:
         description: |-
@@ -1173,7 +1208,8 @@ objects:
           emergencyroute:
             type: integer
             description: Number of emergency route
-            range: "[1-255]"
+            min: 1
+            max: 255
         command: setEmergency
       M0006:
         description: |-
@@ -1195,7 +1231,8 @@ objects:
           input:
             type: integer
             description: Number of Input
-            range: "[1-255]"
+            min: 1
+            max: 255
         command: setInput
       M0007:
         description: |-
@@ -1311,7 +1348,8 @@ objects:
           plan:
             type: integer
             description: Plan to be changed
-            range: "[0-255]"
+            min: 0
+            max: 255
           status:
             type: string
             description: |-
@@ -1338,11 +1376,13 @@ objects:
           status:
             type: integer
             description: Set offset time in seconds
-            range: "[0-255]"
+            min: 0
+            max: 255
           plan:
             type: integer
             description: Time plan nr
-            range: "[0-255]"
+            min: 0
+            max: 255
           securityCode:
             type: string
             description: Security code 2
@@ -1422,11 +1462,13 @@ objects:
           status:
             type: integer
             description: Set cycle time in seconds
-            range: "[1-255]"
+            min: 1
+            max: 255
           plan:
             type: integer
             description: Time plan nr
-            range: "[0-255]"
+            min: 0
+            max: 255
           securityCode:
             type: string
             description: Security code 2
@@ -1449,7 +1491,8 @@ objects:
           input:
             type: integer
             description: Number of Input
-            range: "[1-255]"
+            min: 1
+            max: 255
           inputValue:
             type: boolean
             description: |-
@@ -1474,7 +1517,8 @@ objects:
           output:
             type: integer
             description: Number of Output
-            range: "[1-255]"
+            min: 1
+            max: 255
           outputValue:
             type: boolean
             description: |-
@@ -1784,17 +1828,17 @@ objects:
           Time-of-Green / Time-of-Red.
           Provides predicted signal timings of green and red for each signal group. Max, min and likely time to green and red.
         arguments:
-          minToGEstimate   :
+          minToGEstimate:
             type: timestamp
             description: |-
               Time stamp for the minimum time for the signal group to go to green. If the signal group is green, it is the minimum time for the next green.
               Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
-          maxToGEstimate   :
+          maxToGEstimate:
             type: timestamp
             description: |-
               Time stamp for the maximum time for the signal group to go to green. If the signal group is green, it is the maximum time for the next green.
               Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
-          likelyToGEstimate   :
+          likelyToGEstimate:
             type: timestamp
             description: |-
               Time stamp for the most likely time for the signal group to go to green. If the signal group is green, it is the most likely time for the next green.
@@ -1802,8 +1846,9 @@ objects:
           ToGConfidence:
             type: integer
             description: Confidence of the likelyToGEstimate. 0-100%
-            range: "[0-100]"
-          minToREstimate   :
+            min: 0
+            max: 100
+          minToREstimate:
             type: timestamp
             description: |-
               Time stamp for the minimum time for the signal group to go to red. If the signal group is red, it is the minimum time for the next red.
@@ -1813,7 +1858,7 @@ objects:
             description: |-
               Time stamp for the maximum time for the signal group to go to red. If the signal group is red, it is the maximum time for the next red.
               Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
-          likelyToREstimate   :
+          likelyToREstimate:
             type: timestamp
             description: |-
               Time stamp for the most likely time for the signal group to go to red. If the signal group is red, it is the most likely time for the next red.
@@ -1821,7 +1866,8 @@ objects:
           ToRConfidence:
             type: integer
             description: Confidence of the likelyToREstimate. 0-100%
-            range: "[0-100]"
+            min: 0
+            max: 100
     commands:
       M0010:
         description: |-
@@ -1868,7 +1914,6 @@ objects:
           detector:
             type: string
             description: Designation of the detector (hardware)
-            range: "[designation]"
           type:
             type: string
             description: Type of detector
@@ -1879,7 +1924,7 @@ objects:
             type: string
             description: Detector forced on/off while detector error
             values:
-              'on': ''
+              'on': ''  # an emptry string is requird here, otherwise 'on'/'off' is converted to true/false
               'off': ''
           manual:
             type: boolean
@@ -1895,7 +1940,6 @@ objects:
           detector:
             type: string
             description: Designation of the detector (hardware)
-            range: "[designation]"
           type:
             type: string
             description: Type of detector.
@@ -2019,7 +2063,8 @@ objects:
           occupancy:
             type: integer
             description: Occupancy in percent (0-100%)
-            range: "[0-100]"
+            min: 0
+            max: 100
       S0204:
         description: |-
           Traffic Counting: Number of vehicles of given classification.
