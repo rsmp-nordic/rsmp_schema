@@ -55,7 +55,7 @@
             "allOf" : [
               {
                 "description" : "local: Local coordination\ncentralized: Coordination with synchronized clock\noff: Coordination not active",
-                "pattern" : "(?-mix:^(local|centralized|false)(?:,(local|centralized|false))*$)"
+                "pattern" : "(?-mix:^(local|centralized|off)(?:,(local|centralized|off))*$)"
               },
               {
                 "$ref" : "../../../core/3.1.1/definitions.json#/string_list"

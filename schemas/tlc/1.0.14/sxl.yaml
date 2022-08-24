@@ -177,15 +177,13 @@ objects:
           During maintenance work the controller might be using dark mode (no output to the signal heads).
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
               Other value: Intersection number
             range: "[0-255]"
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: Traffic Light Controller in dark mode
               True: Traffic Light Controller not in dark mode
@@ -196,15 +194,13 @@ objects:
           Signal timings is controlled manually by service personnel using the operating panel of the controller.
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
               Other value: Intersection number
             range: "[0-255]"
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: Manual control inactive
               True: Manual control active
@@ -215,15 +211,13 @@ objects:
           Usually only used in case normal detectors can't be used, e.g. during maintenance work.
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
               Other value: Intersection number
             range: "[0-255]"
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: Fixed time control inactive
               True: Fixed time control active
@@ -234,15 +228,13 @@ objects:
           Used to determine if the controller is operating independently or operating with other controllers (coordination).
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
               Other value: Intersection number
             range: "[0-255]"
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: Isolated control disabled
               True: Isolated control enabled (Vehicle actuated control or Fixed time control)
@@ -253,15 +245,13 @@ objects:
           Yellow flash may be used during a serious fault (depending on configuration) or maintenance work. It can also be manually set using M0001.
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
               Other value: Intersection number
             range: "[0-255]"
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: Yellow flash disabled
               True: Yellow flash enabled
@@ -272,15 +262,13 @@ objects:
           All red can be manually set using the controllers operating panel during maintenance work.
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
               Other value: Intersection number
             range: "[0-255]"
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: All red disabled
               True: All red enabled
@@ -291,15 +279,13 @@ objects:
           The "police key" is a external control switch present in some controllers that manually switches the controller to either dark mode or yellow flash.
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
               Other value: Intersection number
             range: "[0-255]"
           status:
-            list: true
-            type: integer
+            type: integer_list
             values:
               0: disabled
               1: dark mode
@@ -367,15 +353,13 @@ objects:
           Can be used for the management system to check the current control mode (startup, normal, standby, failure, test).
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)
               Other value: Intersection number
             range: "[0-255]"
           controlmode:
-            list: true
-            type: string
+            type: string_list
             values:
               startup: Startup mode
               control: Normal control
@@ -736,29 +720,25 @@ objects:
           Requires security code 2.
         arguments:
           status:
-            list: true
+            type: string_list
             description: Set operating mode
-            type: string
             values:
               NormalControl: Normal Control
               YellowFlash: Enables yellow flash
               Dark: Enables dark mode
           securityCode:
-            list: true
+            type: string_list
             description: Security code 2
-            type: string
           timeout:
-            list: true
+            type: integer_list
             description: |-
               Time in minutes until controller automatically reverts to previous functional position.
               0=no automatic return
-            type: integer
             min: 0
             max: 1440
           intersection:
-            list: true
+            type: integer_list
             description: Intersection number
-            type: integer
             min: 0
             max: 255
         command: setValue

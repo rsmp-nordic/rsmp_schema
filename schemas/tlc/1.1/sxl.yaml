@@ -230,23 +230,20 @@ objects:
           During maintenance work the controller might be using dark mode (no output to the signal heads).
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: Traffic Light Controller in dark mode
               True: Traffic Light Controller not in dark mode
           source:
             description: Source of the status change
-            list: true
-            type: string
+            type: string_list
             values:
               operator_panel: Operator panel 
               calendar_clock: Calendar/clock 
@@ -261,22 +258,19 @@ objects:
           Signal timings is controlled manually by service personnel using the operating panel of the controller.
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: Manual control inactive
               True: Manual control active
           source:
-            list: true
-            type: string
+            type: string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel 
@@ -292,22 +286,19 @@ objects:
           Usually only used in case normal detectors can't be used, e.g. during maintenance work.
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: Fixed time control inactive
               True: Fixed time control active
           source:
-            list: true
-            type: string
+            type: string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel 
@@ -323,22 +314,19 @@ objects:
           Used to determine if the controller is operating independently or operating with other controllers (coordination).
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: Isolated control disabled
               True: Isolated control enabled (Vehicle actuated control or Fixed time control)
           source:
-            list: true
-            type: string
+            type: string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel 
@@ -354,22 +342,19 @@ objects:
           Yellow flash may be used during a serious fault (depending on configuration) or maintenance work. It can also be manually set using M0001.
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: Yellow flash disabled
               True: Yellow flash enabled
           source:
-            list: true
-            type: string
+            type: string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel 
@@ -385,22 +370,19 @@ objects:
           All red can be manually set using the controllers operating panel during maintenance work.
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            list: true
-            type: boolean
+            type: boolean_list
             description: |-
               False: All red disabled
               True: All red enabled
           source:
-            list: true
-            type: string
+            type: string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel 
@@ -416,16 +398,14 @@ objects:
           The "police key" is a external control switch present in some controllers that manually switches the controller to either dark mode or yellow flash.
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            list: true
-            type: integer
+            type: integer_list
             values:
               0: disabled
               1: dark mode
@@ -443,8 +423,7 @@ objects:
             min: 1
             max: 255
           source:
-            list: true
-            type: string
+            type: string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel 
@@ -466,8 +445,7 @@ objects:
             min: 1
             max: 255
           source:
-            list: true
-            type: string
+            type: string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel 
@@ -522,16 +500,14 @@ objects:
           Can be used for the management system to check the current control mode (startup, normal, standby, failure, test).
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           controlmode:
-            list: true
-            type: string
+            type: string_list
             values:
               startup: Startup mode
               control: Normal control
@@ -706,16 +682,14 @@ objects:
           Please note that all values in this status uses comma-separated lists - one value for each intersection, e.g. “1,2” and “centralized,off”
         arguments:
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            list: true
-            type: string
+            type: string_list
             description: |-
               local: Local coordination
               centralized: Coordination with synchronized clock
@@ -723,11 +697,10 @@ objects:
             values:
               local:
               centralized:
-              off:
+              'off':
           source:
             description: Source of the status change
-            list: true
-            type: string
+            type: string_list
             values:
               operator_panel: Operator panel
               calendar_clock: Calendar/clock
@@ -946,8 +919,7 @@ objects:
             description: |-
               Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
           vehicles:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Number of vehicles.
               - Value expressed as an integer with a range of 0-65535.
@@ -967,8 +939,7 @@ objects:
               XML dateTime with a resolution of 3 decimal places. All time stamps
               in UTC. E.g. 2009-10-02T14:34:34.341Z
           speed:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Average speed in km/h (integer).
               - Value expressed as an integer with a range of 0-65535.
@@ -988,8 +959,7 @@ objects:
               XML dateTime with a resolution of 3 decimal places. All time stamps
               in UTC. E.g. 2009-10-02T14:34:34.341Z
           occupancy:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Occupancy in percent (%) (0-100)
               - Value expressed as an integer with a range of 0-100.
@@ -1009,8 +979,7 @@ objects:
               XML dateTime with a resolution of 3 decimal places. All time stamps
               in UTC. E.g. 2009-10-02T14:34:34.341Z
           P:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Number of cars.
               - Value expressed as an integer with a range of 0-65535.
@@ -1019,8 +988,7 @@ objects:
             min: 0
             max: 65535
           PS:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Number of cars with trailers.
               - Value expressed as an integer with a range of 0-65535.
@@ -1029,8 +997,7 @@ objects:
             min: 0
             max: 65535
           L:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Number of trucks.
               - Value expressed as an integer with a range of 0-65535.
@@ -1039,8 +1006,7 @@ objects:
             min: 0
             max: 65535
           LS:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Number of trucks with trailers.
               - Value expressed as an integer with a range of 0-65535.
@@ -1049,8 +1015,7 @@ objects:
             min: 0
             max: 65535
           B:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Number of busses.
               - Value expressed as an integer with a range of 0-65535.
@@ -1059,8 +1024,7 @@ objects:
             min: 0
             max: 65535
           SP:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Number of trams.
               - Value expressed as an integer with a range of 0-65535.
@@ -1069,8 +1033,7 @@ objects:
             min: 0
             max: 65535
           MC:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Number of motor cycles.
               - Value expressed as an integer with a range of 0-65535.
@@ -1079,8 +1042,7 @@ objects:
             min: 0
             max: 65535
           C:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Number of bicycles.
               - Value expressed as an integer with a range of 0-65535.
@@ -1089,8 +1051,7 @@ objects:
             min: 0
             max: 65535
           F:
-            type: integer
-            list: true
+            type: integer_list
             description: |-
               Number of pedestrians.
               - Value expressed as an integer with a range of 0-65535.
@@ -1106,28 +1067,24 @@ objects:
           Requires security code 2.
         arguments:
           status:
-            list: true
+            type: string_list
             description: Set operating mode
-            type: string
             values:
               NormalControl: Normal Control
               YellowFlash: Enables yellow flash
               Dark: Enables dark mode
           securityCode:
-            list: true
+            type: string_list
             description: Security code 2
-            type: string
           timeout:
-            list: true
+            type: integer
             description: |-
               Time in minutes until controller automatically reverts to previous functional position.
               0=no automatic return
-            type: integer
             min: 0
             max: 1440
           intersection:
-            list: true
-            type: integer
+            type: integer_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
@@ -1924,8 +1881,8 @@ objects:
             type: string
             description: Detector forced on/off while detector error
             values:
-              'on': ''  # an emptry string is requird here, otherwise 'on'/'off' is converted to true/false
-              'off': ''
+              'on':    # on/off must be quoted, otherwise they are converted to true/false
+              'off':
           manual:
             type: boolean
             description: Manually controlled detector logic (True/False)

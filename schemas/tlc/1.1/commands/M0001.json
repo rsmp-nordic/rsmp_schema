@@ -88,7 +88,7 @@
                 "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
               }
             ]
           }

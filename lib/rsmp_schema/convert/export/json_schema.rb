@@ -26,7 +26,7 @@ module RSMP
           out = {}
           out['description'] = item['description'] if item['description']
 
-          if item['list']         # an rsmp-style string containing a list of items separated by comma
+          if item['type'] =~/_list$/
             handle_string_list item, out
           else
             handle_types item, out
@@ -86,11 +86,11 @@ module RSMP
         # convert a yaml item with list: true to json schema
         def self.handle_string_list item, out
           case item['type']
-          when "boolean"
+          when "boolean_list"
             out["$ref"] = "../../../core/3.1.1/definitions.json#/boolean_list"
-          when "integer", "ordinal", "unit", "scale", "long"
+          when "integer_list"
             out["$ref"] = "../../../core/3.1.1/definitions.json#/integer_list"
-          when "string"
+          when "string_list"
             out["$ref"] = "../../../core/3.1.1/definitions.json#/string_list"
           else
             raise "Error: List of #{item['type']} is not supported: #{item.inspect}"
