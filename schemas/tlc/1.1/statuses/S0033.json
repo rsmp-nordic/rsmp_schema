@@ -28,6 +28,11 @@
             "type" : "array",
             "items" : {
               "type" : "object",
+              "required" : [
+                "r",
+                "s",
+                "t"
+              ],
               "additionalProperties" : false,
               "properties" : {
                 "r" : {

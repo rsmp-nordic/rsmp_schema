@@ -751,6 +751,7 @@ objects:
                 description: |-
                   (Optional) Estimated green extension provided by the priority, in seconds
                   Only used when state is ‘completed’.
+                optional: true
                 min: 0
                 max: 255
               d:
@@ -758,6 +759,7 @@ objects:
                 description: |-
                   (Optional) Estimated red reduction provided by the priority, in seconds
                   Only used when state is ‘completed’.
+                optional: true
                 min: 0
                 max: 255
       S0034:
@@ -1557,34 +1559,41 @@ objects:
             description: A string that uniquely identifies the request on the controller
           signalGroupId:
             type: string
+            optional: true
             description: (Optional) ID of a signal group component.
           inputId:
             type: integer
+            optional: true
             description: (Optional) ID of an input, using the same numbering scheme as M0006
             min: 0
             max: 255
           connectionId:
             type: integer
+            optional: true
             description: (Optional) ID of a connection, connecting an ingoing and an outgoing lane
             min: 0
             max: 255
           approachId:
             type: integer
+            optional: true
             description: (Optional) ID of an intersection approach
             min: 0
             max: 16
           laneInId:
             type: integer
+            optional: true
             description: (Optional) ID of an ingoing lane
             min: 0
             max: 255
           laneOutId:
             type: integer
+            optional: true
             description: (Optional) ID of an outgoing lane
             min: 0
             max: 255
           priorityId:
             type: integer
+            optional: true
             description: (Optional) ID of a priority
             min: 0
             max: 255
@@ -1606,11 +1615,13 @@ objects:
             max: 14
           eta:
             type: integer
+            optional: true
             description: (Optional) Estimated time of arrival to the intersection, in seconds
             min: 0
             max: 255
           vehicleType:
             type: string
+            optional: true
             description: |-
               (Optional) Vehicle type
 

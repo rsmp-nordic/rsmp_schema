@@ -56,11 +56,12 @@ module RSMP
 
         # convert an yaml item with type: array to json schema
         def self.build_json_array item, out
+          required = item.select { |k,v| v['optional'] != true }.keys.sort
           out.merge!({
             "type" => "array",
             "items" => {
               "type" => "object",
-              #"required" => item.keys.sort,
+              "required" => required,
               "additionalProperties": false
             }
           })
