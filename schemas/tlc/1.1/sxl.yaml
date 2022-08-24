@@ -725,6 +725,58 @@ objects:
               forced: Forced due to external command e.g. supervisor
               startup: Set after startup mode
               other: Other reason
+      S0033:
+        description: |-
+          Signal Priority Status
+          This status can be used to get updates about priority requests. For example, you can use it to know when priority requests are activated or cancelled.
+          A list of priorities is returned, referred to by their request ids. The same request id can appear only once.
+          All priorities are included in the list (not only the ones that have changed state since the last update). This is done regardless of whether the status is send in respond to a status request, or due to a status subscription, and also regardless of whether a status subscription uses an update interval, or send-on-change, or both.
+          If you subscribe using an update interval, you’re not guaranteed to get all intermediate states. To guarantee that, send-on-change must be used when subscribing.
+          To understand how this status relates to ETSI/J2735, please see the wiki.
+          All priorities are send on every status update, regardless of whether an interval, or sendOnChange (or both) is used.
+          When a priority reaches an end states (completed, timeout, rejected, cooldown or stale), it must be sent once on the next status update, then removed from the list.
+          A request always starts in the ‘received’ state. The following table shows the possible state transitions:
+        arguments:
+          status:
+            description: JSON array of priority status items
+            type: array
+            items:
+              r:
+                type: string
+                description: ID of the priority request
+              t:
+                type: timestamp
+                description: |-
+                  Timestamp, indicating when the priority last changed state.
+                  Format according to W3C XML dateTime with a resolution of 3 decimal places.
+                  All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
+              s:
+                type: string
+                description: |-
+                  Current status of the priority request
+                values:
+                  received: A new priority request was received but has not yet been processed
+                  queued: The priority request has been queued for later activation
+                  activated: The priority was activated
+                  completed: The priority was cancelled as expected
+                  timeout: The priority has been queued for too long
+                  rejected: The priority request cannot be granted
+                  cooldown: A similar priority request means the priority request cannot be activated now
+                  stale: The priority has been active too long without cancellation, and was therefore removed
+              e:
+                type: integer
+                description: |-
+                  (Optional) Estimated green extension provided by the priority, in seconds
+                  Only used when state is ‘completed’.
+                min: 0
+                max: 255
+              d:
+                type: integer
+                description: |-
+                  (Optional) Estimated red reduction provided by the priority, in seconds
+                  Only used when state is ‘completed’.
+                min: 0
+                max: 255
       S0034:
         description: |-
           Timeout for dynamic bands.
