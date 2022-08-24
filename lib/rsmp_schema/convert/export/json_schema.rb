@@ -21,67 +21,60 @@ module RSMP
           JSON.generate(item,@@json_options)
         end
 
+        # convert a yaml item to json schema
         def self.build_value item
           out = {}
+          out['description'] = item['description'] if item['description']
 
-          if item['description']
-            out["description"] = item['description']
-          end
-
-          if item['list']
-            case item['type']
-            when "boolean"
-              out["$ref"] = "../../../core/3.1.1/definitions.json#/boolean_list"
-            when "integer", "ordinal", "unit", "scale", "long"
-              out["$ref"] = "../../../core/3.1.1/definitions.json#/integer_list"
-            when "string"
-              out["$ref"] = "../../../core/3.1.1/definitions.json#/string_list"
-            else
-              raise "Error: List of #{item['type']} is not supported: #{item.inspect}"
-            end
-
-            if item["values"]
-              value_list = item["values"].keys.join('|')
-              out['pattern'] = /(?-mix:^(#{value_list})(?:,(#{value_list}))*$)/
-            end
-
-            if item["pattern"]
-              puts "Warning: Pattern not support for lists: #{item.inspect}"
-            end
+          if item['list']         # an rsmp-style string containing a list of items separated by comma
+            handle_string_list item, out
           else
-            case item['type']
-            when "string", "base64"
-              out["type"] = "string"
-            when "boolean"
-              out["$ref"] = "../../../core/3.1.1/definitions.json#/boolean"
-            when "timestamp"
-              out["$ref"] = "../../../core/3.1.1/definitions.json#/timestamp"
-            when "integer", "ordinal", "unit", "scale", "long"
-              out["$ref"] = "../../../core/3.1.1/definitions.json#/integer"
-            else
-              out["type"] = "string"
-            end
-
-            if item["values"]
-              case item["values"]
-              when Hash
-                out["enum"] = item["values"].keys.sort
-              when Array
-                out["enum"] = item["values"].sort
-              else
-                raise "Error: Values must be specified as either a Hash or an Array"
-              end
-
-            end
-
-            if item["pattern"]
-              out["pattern"] = item["pattern"]
-            end
+            handle_types item, out
+            handle_enum item, out
+            handle_pattern item, out
           end
+          wrap_refs out
+        end
 
-          # with draft-07 and older, using a $ref mean all other properties are ignored.
-          # to avoid this we need to use an allOf.
-          # this is changed from draft-08, but unfortunately, there is still no Ruby validator for that
+        # convert an item which is not a string-list, to json schema
+        def self.handle_types item, out
+          case item['type']
+          when "string", "base64"
+            out["type"] = "string"
+          when "boolean"
+            out["$ref"] = "../../../core/3.1.1/definitions.json#/boolean"
+          when "timestamp"
+            out["$ref"] = "../../../core/3.1.1/definitions.json#/timestamp"
+          when "integer", "ordinal", "unit", "scale", "long"
+            out["$ref"] = "../../../core/3.1.1/definitions.json#/integer"
+          when 'array'   # a json array
+            build_json_array item['items'], out
+          else
+            out["type"] = "string"
+          end
+        end
+
+        # convert an yaml item with type: array to json schema
+        def self.build_json_array item, out
+          out.merge!({
+            "type" => "array",
+            "items" => {
+              "type" => "object",
+              #"required" => item.keys.sort,
+              "additionalProperties": false
+            }
+          })
+          out["items"]["properties"] = {}
+          item.each_pair do |key,v|
+            out["items"]["properties"][key] = build_value(v)
+          end
+          out
+        end
+
+        # with draft-07 and older, using a $ref mean all other properties are ignored.
+        # to avoid this we need to use an allOf.
+        # this is changed from draft-08, but unfortunately, there is still no Ruby validator for that
+        def self.wrap_refs out
           if out.keys.include? '$ref'
             ref = out.delete '$ref'
             { "allOf" => [out,{"$ref"=>ref}]}
@@ -90,6 +83,47 @@ module RSMP
           end
         end
 
+        # convert a yaml item with list: true to json schema
+        def self.handle_string_list item, out
+          case item['type']
+          when "boolean"
+            out["$ref"] = "../../../core/3.1.1/definitions.json#/boolean_list"
+          when "integer", "ordinal", "unit", "scale", "long"
+            out["$ref"] = "../../../core/3.1.1/definitions.json#/integer_list"
+          when "string"
+            out["$ref"] = "../../../core/3.1.1/definitions.json#/string_list"
+          else
+            raise "Error: List of #{item['type']} is not supported: #{item.inspect}"
+          end
+
+          if item["values"]
+            value_list = item["values"].keys.join('|')
+            out['pattern'] = /(?-mix:^(#{value_list})(?:,(#{value_list}))*$)/
+          end
+
+          puts "Warning: Pattern not support for lists: #{item.inspect}" if item["pattern"]
+        end
+
+        # convert yaml values to jsons schema enum
+        def self.handle_enum item, out
+          if item["values"]
+            case item["values"]
+            when Hash
+              out["enum"] = item["values"].keys.sort
+            when Array
+              out["enum"] = item["values"].sort
+            else
+              raise "Error: Values must be specified as either a Hash or an Array"
+            end
+          end
+        end
+
+        # convert yaml pattern to jsons schema
+        def self.handle_pattern item, out
+          out["pattern"] = item["pattern"] if item["pattern"]
+        end
+
+        # convert yaml alarm/status/command item to corresponding jsons schema
         def self.build_item item, property_key: 'v'
           json = { "allOf" => [ { "description" => item['description'] } ] }
           if item['arguments']
@@ -104,6 +138,7 @@ module RSMP
           json
         end
 
+        # convert alarms to json schema
         def self.output_alarms out, items
           list = items.keys.sort.map do |key|
             {
@@ -121,11 +156,13 @@ module RSMP
           items.each_pair { |key,item| output_alarm out, key, item }
         end
 
+        # convert an alarm to json schema
         def self.output_alarm out, key, item
           json = build_item item
           out["alarms/#{key}.json"] = output_json json
         end
 
+        # convert statuses to json schema
         def self.output_statuses out, items
           list = [ { "properties" => { "sCI" => { "enum"=> items.keys.sort }}} ]
           items.keys.sort.each do |key|
@@ -139,11 +176,13 @@ module RSMP
           items.each_pair { |key,item| output_status out, key, item }
         end
 
+        # convert a status to json schema
         def self.output_status out, key, item
           json = build_item item, property_key:'s'
           out["statuses/#{key}.json"] = output_json json
         end
 
+        # convert commands to json schema
         def self.output_commands out, items
           list = [ { "properties" => { "cCI" => { "enum"=> items.keys.sort }}} ]
           items.keys.sort.each do |key|
@@ -164,12 +203,14 @@ module RSMP
           items.each_pair { |key,item| output_command out, key, item }
         end
 
+        # convert a command to json schema
         def self.output_command out, key, item
           json = build_item item
           json["allOf"].first["properties"]['cO'] = { "const" => item['command'] }
           out["commands/#{key}.json"] = output_json json
         end
 
+        # output the json schema root
         def self.output_root out, meta
           json = {
             "name"=> meta['name'],
@@ -197,6 +238,7 @@ module RSMP
           out["sxl.json"] = output_json json
         end
 
+        # generate the json schema from a string containing yaml
         def self.generate sxl
           out = {}
           output_root out, sxl[:meta]
@@ -206,6 +248,7 @@ module RSMP
           out
         end
 
+        # convert yaml to json schema and write files to a folder
         def self.write sxl, folder
           out = generate sxl
           out.each_pair do |relative_path,str|
@@ -215,9 +258,7 @@ module RSMP
             file.puts str
           end
         end
-
       end
-
     end
   end
 end
