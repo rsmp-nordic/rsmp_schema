@@ -26,6 +26,17 @@ RSpec.describe RSMP::Schema do
     expect(RSMP::Schema.has_schema?(:tlc,'1.1.1')).to be(false)
   end
 
+  it 'provides schema versions' do
+    expect(RSMP::Schema.core_versions).to eq(["3.1.1", "3.1.2", "3.1.3", "3.1.4", "3.1.5", "3.2"])
+    expect(RSMP::Schema.earliest_core_version).to eq("3.1.1")
+    expect(RSMP::Schema.latest_core_version).to eq("3.2")
+
+    expect(RSMP::Schema.versions(:tlc)).to eq(["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15", "1.1"])
+    expect(RSMP::Schema.earliest_version(:tlc)).to eq("1.0.7")
+    expect(RSMP::Schema.latest_version(:tlc)).to eq("1.1")
+
+  end
+
   it 'parses versions strings strictly' do
     expect(RSMP::Schema.has_schema?(:core,'3.2.extra.9.8.7')).to be(false)
     expect(RSMP::Schema.has_schema?(:tlc,'1.1.extra.9.8.7')).to be(false)

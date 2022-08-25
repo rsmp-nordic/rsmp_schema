@@ -23,7 +23,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 
   it 'catches bad value' do
     message["arg"].first['v'] = 'bad'
-    expect( validate(message, 'tlc','1.0.7') ).to eq(
+    expect( validate(message, 'tlc',RSMP::Schema.latest_version(:tlc)) ).to eq(
       [["/arg/0/v", "pattern"]]
     )
   end
