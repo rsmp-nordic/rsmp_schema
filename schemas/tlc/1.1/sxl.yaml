@@ -781,8 +781,7 @@ objects:
         arguments:
           user:
             type: integer
-            values: [0,1,2]
-            description: |-
+            values:
               0: Nobody logged in 
               1: Operator logged in at level 1 (read only) 
               2: Operator logged in at level 2 (read/write)
@@ -793,8 +792,7 @@ objects:
         arguments:
           user:
             type: integer
-            values: [0,1,2]
-            description: |-
+            values:
               0: Nobody logged in 
               1: Operator logged in at level 1 (read only) 
               2: Operator logged in at level 2 (read/write)

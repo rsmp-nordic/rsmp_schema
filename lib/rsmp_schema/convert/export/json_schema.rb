@@ -108,13 +108,19 @@ module RSMP
         # convert yaml values to jsons schema enum
         def self.handle_enum item, out
           if item["values"]
-            case item["values"]
+            out["enum"] = case item["values"]
             when Hash
-              out["enum"] = item["values"].keys.sort
+              item["values"].keys.sort
             when Array
-              out["enum"] = item["values"].sort
+              item["values"].sort
             else
-              raise "Error: Values must be specified as either a Hash or an Array"
+              raise "Error: Values must be specified as either a Hash or an Array, got #{item["values"].class}"
+            end.map do |v|
+              if v.is_a?(Integer) || v.is_a?(Float)
+                v.to_s
+              else
+                v
+              end
             end
           end
         end
