@@ -11,19 +11,39 @@ module RSMP::Schema
     schemas_path = File.expand_path( File.join(__dir__,'..','..','schemas') )
     Dir.glob("#{schemas_path}/*").select {|f| File.directory? f}.each do |type_path|
       type = File.basename(type_path).to_sym
-      @@schemas[type] = {}
-      Dir.glob("#{type_path}/*").select {|f| File.directory? f}.each do |schema_path|
-        version = File.basename(schema_path)
-        if type == :core
-          file = 'rsmp.json'
-        else
-          file = 'sxl.json'
-        end
-        @@schemas[type][version] = JSONSchemer.schema(
-          Pathname.new(File.join(schema_path,file))
-        )
-      end
+      load_schema_type type, type_path
     end
+  end
+
+  # load an schema from a folder. schemas are organized by version, and contain
+  # json schema files, with the entry point being rsmp.jspon, eg:
+  # tlc
+  #   1.0.7
+  #     rsmp.json
+  #     other jon schema files...
+  #   1.0.8
+  #   ...
+  #
+  #  an error is raised if the schema type already exists, and force is not set to true
+  def self.load_schema_type type, type_path, force:false
+    raise RuntimeError.new("Schema type #{type} already loaded") if @@schemas[type] && force!=true
+    @@schemas[type] = {}
+    Dir.glob("#{type_path}/*").select {|f| File.directory? f}.each do |schema_path|
+      version = File.basename(schema_path)
+      @@schemas[type][version] = JSONSchemer.schema(
+        Pathname.new(File.join(schema_path,'rsmp.json'))
+      )
+    end
+  end
+
+  # remove a schema type
+  def self.remove_schema_type type
+    schemas.delete type
+  end
+
+  # get schemas types
+  def self.schema_types
+    schemas.keys
   end
 
   # get all schemas, oganized by type and version

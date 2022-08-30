@@ -79,4 +79,29 @@ RSpec.describe RSMP::Schema do
     }.to raise_error(RSMP::Schema::UnknownSchemaVersionError)
   end
 
+  it "can load and remove custom schema" do
+    expect(RSMP::Schema.schema_types).to eq([:core,:tlc])
+    type = :custom
+    path = File.expand_path( File.join(__dir__,'..','schemas','tlc') )
+    RSMP::Schema.load_schema_type type, path
+    expect(RSMP::Schema.schema_types).to eq([:core,:tlc,:custom])
+    expect(RSMP::Schema.versions(type)).to eq(["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15", "1.1"])
+
+    expect {
+      RSMP::Schema.load_schema_type type, path                # should complain that type is already loaded
+    }.to raise_error(RuntimeError)
+
+    expect {
+      RSMP::Schema.load_schema_type type, path, force:true    # should be able to force
+    }.not_to raise_error
+
+    RSMP::Schema.remove_schema_type type                      # remove custom schema
+    expect(RSMP::Schema.schema_types).to eq([:core,:tlc])
+
+
+  ensure
+    RSMP::Schema.remove_schema_type type                      # cleanup
+  end
+
+
 end

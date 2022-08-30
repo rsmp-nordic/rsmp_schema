@@ -242,7 +242,7 @@ module RSMP
               }
             ]
           }
-          out["sxl.json"] = output_json json
+          out["rsmp.json"] = output_json json
         end
 
         # generate the json schema from a string containing yaml

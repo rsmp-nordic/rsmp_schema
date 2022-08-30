@@ -13,14 +13,14 @@ The schema consists of a core schema shared by all equipment types, and an SXL s
 
 Both core and SXL schemas exist in different version, for validation agaist a particular version of the spec.
 
-For example, to validate against the SXL for Trafic Light Controllers (TLCs), version 1.0.15, use the file schemas/tcl/1.0.15/sxl.json.
+For example, to validate against the SXL for Trafic Light Controllers (TLCs), version 1.0.15, use the file schemas/tcl/1.0.15/rsmp.json.
 
 Depending on the message type, relevant JSON Schema elements will be included to validate the detailed parameters, arguments, etc.
 
 For example, validating a CommandRequest M0001 message will include these parts:
 
 ```
-sxl.json
+rsmp.json
   commands.json
     M0001.json
 ```
@@ -52,7 +52,7 @@ message = {
 }
 
 # try validating a message against our schema
-schema = Pathname.new('schemas/tlc/1.1/sxl.json')
+schema = Pathname.new('schemas/tlc/1.1/rsmp.json')
 schemer = JSONSchemer.schema(schema)
 puts schemer.valid? message     # => true
 ```
