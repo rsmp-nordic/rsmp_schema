@@ -80,11 +80,11 @@ RSpec.describe RSMP::Schema do
   end
 
   it "can load and remove custom schema" do
-    expect(RSMP::Schema.schema_types).to eq([:core,:tlc])
+    expect(RSMP::Schema.schema_types).to eq([:core,:tlc,:vms])
     type = :custom
     path = File.expand_path( File.join(__dir__,'..','schemas','tlc') )
     RSMP::Schema.load_schema_type type, path
-    expect(RSMP::Schema.schema_types).to eq([:core,:tlc,:custom])
+    expect(RSMP::Schema.schema_types).to eq([:core,:tlc,:vms,:custom])
     expect(RSMP::Schema.versions(type)).to eq(["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15", "1.1"])
 
     expect {
@@ -96,7 +96,7 @@ RSpec.describe RSMP::Schema do
     }.not_to raise_error
 
     RSMP::Schema.remove_schema_type type                      # remove custom schema
-    expect(RSMP::Schema.schema_types).to eq([:core,:tlc])
+    expect(RSMP::Schema.schema_types).to eq([:core,:tlc,:vms])
 
 
   ensure

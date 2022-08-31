@@ -1,0 +1,34 @@
+{
+  "allOf" : [
+    {
+      "description" : "Currently displayed bitmap.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "bitmap"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "bitmap"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "description" : "Currently displayed bitmap encoded as a string in base-64 format.\nThe image format is included in the data, e.g PNG",
+            "type" : "string"
+          }
+        }
+      }
+    }
+  ]
+}

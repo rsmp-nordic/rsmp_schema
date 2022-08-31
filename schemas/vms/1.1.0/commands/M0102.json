@@ -1,0 +1,64 @@
+{
+  "allOf" : [
+    {
+      "description" : "Store bitmap.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "bitmap",
+            "index"
+          ]
+        },
+        "cO" : {
+          "const" : "setBitMap"
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "index"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "allOf" : [
+              {
+                "description" : "Bitmap index"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "bitmap"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Bitmap encoded as a string in base-64 format. The image format is included in the data, e.g PNG",
+            "type" : "string"
+          }
+        }
+      }
+    }
+  ]
+}

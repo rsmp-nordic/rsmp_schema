@@ -1,0 +1,40 @@
+{
+  "allOf" : [
+    {
+      "description" : "Controller switched on.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "allOf" : [
+              {
+                "description" : "False: VMS switched off\nTrue: VMS switched on"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "allOf" : [
+    {
+      "description" : "Select previously stored bitmap to display.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "index"
+          ]
+        },
+        "cO" : {
+          "const" : "displayBitMap"
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "index"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "allOf" : [
+              {
+                "description" : "Bitmap index\n0 = no bitmap (dark display)"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

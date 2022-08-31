@@ -1,0 +1,66 @@
+{
+  "properties" : {
+    "sS" : {
+      "items" : {
+        "allOf" : [
+          {
+            "properties" : {
+              "sCI" : {
+                "enum" : [
+                  "S0007",
+                  "S0101",
+                  "S0102"
+                ]
+              }
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "sCI"
+              ],
+              "properties" : {
+                "sCI" : {
+                  "const" : "S0007"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "S0007.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "sCI"
+              ],
+              "properties" : {
+                "sCI" : {
+                  "const" : "S0101"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "S0101.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "sCI"
+              ],
+              "properties" : {
+                "sCI" : {
+                  "const" : "S0102"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "S0102.json"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

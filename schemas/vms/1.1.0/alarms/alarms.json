@@ -1,0 +1,94 @@
+{
+  "properties" : {
+    "aCId" : {
+      "enum" : [
+        "A0001",
+        "A0002",
+        "A0003",
+        "A0004",
+        "A0009"
+      ]
+    },
+    "rvs" : {
+      "items" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "aCId"
+              ],
+              "properties" : {
+                "aCId" : {
+                  "const" : "A0001"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "A0001.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "aCId"
+              ],
+              "properties" : {
+                "aCId" : {
+                  "const" : "A0002"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "A0002.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "aCId"
+              ],
+              "properties" : {
+                "aCId" : {
+                  "const" : "A0003"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "A0003.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "aCId"
+              ],
+              "properties" : {
+                "aCId" : {
+                  "const" : "A0004"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "A0004.json"
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "aCId"
+              ],
+              "properties" : {
+                "aCId" : {
+                  "const" : "A0009"
+                }
+              }
+            },
+            "then" : {
+              "$ref" : "A0009.json"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

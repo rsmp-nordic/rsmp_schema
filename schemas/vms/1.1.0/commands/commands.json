@@ -1,0 +1,46 @@
+{
+  "items" : {
+    "allOf" : [
+      {
+        "properties" : {
+          "cCI" : {
+            "enum" : [
+              "M0101",
+              "M0102"
+            ]
+          }
+        }
+      },
+      {
+        "if" : {
+          "required" : [
+            "cCI"
+          ],
+          "properties" : {
+            "cCI" : {
+              "const" : "M0101"
+            }
+          }
+        },
+        "then" : {
+          "$ref" : "M0101.json"
+        }
+      },
+      {
+        "if" : {
+          "required" : [
+            "cCI"
+          ],
+          "properties" : {
+            "cCI" : {
+              "const" : "M0102"
+            }
+          }
+        },
+        "then" : {
+          "$ref" : "M0102.json"
+        }
+      }
+    ]
+  }
+}

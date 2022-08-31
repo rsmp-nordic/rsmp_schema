@@ -1,0 +1,40 @@
+{
+  "allOf" : [
+    {
+      "description" : "Index of currently displayed bitmap.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "number"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "number"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "allOf" : [
+              {
+                "description" : "Index of currently displayed bitmap\n0 = no bitmap shown (display is dark)"
+              },
+              {
+                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

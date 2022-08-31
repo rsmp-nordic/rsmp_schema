@@ -1,0 +1,130 @@
+---
+meta:
+  name: vms
+  description: Variable Message Sign, as used in the City of Copenhagen
+  version: 1.1.0
+objects:
+  Controller:
+    description:
+    aggregated_status:
+      1:
+        title: Local mode
+        description: Controller is in local mode. NTS has no control.
+      2:
+        title: No Communications
+      3:
+        title: High Priority Fault
+        description: Controller is in fail safe mode; e.g. yellow flash or dark mode
+      4:
+        title: Medium Priority Fault
+        description: |-
+          Controller has a medium priority fault, but not in fail safe mode.
+          E.g. several lamp faults or detector fault
+      5:
+        title: Low Priority Fault
+        description: Controller has a low priority fault. E.g. Detector fault
+      6:
+        title: Connected / Normal - In Use
+      7:
+        title: Connected / Normal - Idle
+        description: |-
+          Controller dark according to configuration.
+          NOTE! When dark according to configuration the controller is considered to be in use
+      8:
+        title: Not Connected
+    functional_position: not used (set to null)
+    functional_state: not used (set to null)
+    alarms:
+      A0001:
+        description: |-
+          Serious hardware error.
+          Is a "major fault" defined according to 3.8 i EN12675 which causes the controller to switch to a "failure mode" according to 3.6 in EN12675.
+        priority: 2
+        category: D
+      A0002:
+        description: |-
+          Less serious hardware error.
+          Is a "minor fault" defined according to 3.11 in EN12675.
+        priority: 3
+        category: D
+      A0003:
+        description: |-
+          Serious configuration error.
+          Is a "major fault" defined according to 3.8 in EN12675 which causes the controller to switch to a "failure mode" according to 3.6 in EN12675.
+        priority: 2
+        category: D
+      A0004:
+        description: |-
+          Less serious configuration error.
+          Is a "minor fault" defined according to 3.11 in EN12675.
+        priority: 3
+        category: D
+      A0009:
+        description: |-
+          Other error.
+          Used for other errors not covered by any other alarm type
+          Is a "minor fault" defined according to 3.11 in EN12675.
+        priority: 3
+        category: D
+    statuses:
+      S0007:
+        description: |-
+          Controller switched on.
+        arguments:
+          status:
+            type: boolean
+            description: |-
+              False: VMS switched off
+              True: VMS switched on
+      S0101:
+        description: |-
+          Index of currently displayed bitmap.
+        arguments:
+          number:
+            type: integer
+            description: |-
+              Index of currently displayed bitmap
+              0 = no bitmap shown (display is dark)
+            min: 0
+            max: 255
+      S0102:
+        description: |-
+          Currently displayed bitmap.
+        arguments:
+          bitmap:
+            type: base64
+            description: |-
+              Currently displayed bitmap encoded as a string in base-64 format.
+              The image format is included in the data, e.g PNG
+    commands:
+      M0101:
+        description: |-
+          Select previously stored bitmap to display.
+        command: displayBitMap
+        arguments:
+          index:
+            type: integer
+            description: |-
+              Bitmap index
+              0 = no bitmap (dark display)
+            min: 0
+            max: 255
+      M0102:
+        description: |-
+          Store bitmap.
+        command: setBitMap
+        arguments:
+          index:
+            type: integer
+            description: |-
+              Bitmap index
+            min: 1
+            max: 255
+          bitmap:
+            type: base64
+            description:
+              Bitmap encoded as a string in base-64 format.
+              The image format is included in the data, e.g PNG
+
+            
+
