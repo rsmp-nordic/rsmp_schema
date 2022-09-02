@@ -106,6 +106,12 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     expect(validate_core).to eq([["/sS/0/n", "string"]])
   end
 
+  it 'catches n set to null' do
+    message_3_1_1['sS'].first['n'] = nil
+    message_3_1_3['sS'].first['n'] = nil
+    expect(validate_core).to eq([["/sS/0/n", "string"]])
+  end
+
   it 'catches missing value' do
     message_3_1_1['sS'].first.delete 's'
     message_3_1_3['sS'].first.delete 's'

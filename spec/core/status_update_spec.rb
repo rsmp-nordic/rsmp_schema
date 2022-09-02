@@ -32,6 +32,9 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     }
   end
 
+  def validate_core
+    validate_variations(make_variations, 'core')
+  end
   it 'accepts ageState in message_3_1_1 versions, q in newer' do
     expect( validate_variations(make_variations, 'core', '3.1.1') ).to be_nil
   end
@@ -47,13 +50,13 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   end
 
   it 'accepts valid status request' do
-    expect( validate_variations(make_variations, 'core') ).to be_nil
+    expect( validate_core ).to be_nil
   end
 
   it 'catches missing component id' do
     message_3_1_1.delete 'cId'
     message_3_1_3.delete 'cId'
-    expect( validate_variations(make_variations, 'core') ).to eq(
+    expect( validate_core ).to eq(
       [["", "required", {"missing_keys"=>["cId"]}]]
     )
   end
@@ -61,7 +64,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'catches bad status code' do
     message_3_1_1['sS'].first['sCI'] = '99'
     message_3_1_3['sS'].first['sCI'] = '99'
-    expect( validate_variations(make_variations, 'core') ).to eq(
+    expect( validate_core ).to eq(
       [["/sS/0/sCI", "pattern"]]
     )
   end
@@ -90,7 +93,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'catches missing status code' do
     message_3_1_1['sS'].first.delete 'sCI'
     message_3_1_3['sS'].first.delete 'sCI'
-    expect( validate_variations(make_variations, 'core') ).to eq(
+    expect( validate_core ).to eq(
       [["/sS/0", "required", {"missing_keys"=>["sCI"]}]]
     )
   end
@@ -98,13 +101,13 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'catches bad status code' do
     message_3_1_1['sS'].first['sCI'] = 3
     message_3_1_3['sS'].first['sCI'] = 3
-    expect( validate_variations(make_variations, 'core') ).to eq(
+    expect( validate_core ).to eq(
       [["/sS/0/sCI", "string"]]
     )
 
     message_3_1_1['sS'].first['sCI'] = '3'
     message_3_1_3['sS'].first['sCI'] = '3'
-    expect( validate_variations(make_variations, 'core') ).to eq(
+    expect( validate_core ).to eq(
       [["/sS/0/sCI", "pattern"]]
     )
   end
@@ -112,7 +115,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'catches missing name' do
     message_3_1_1['sS'].first.delete 'n'
     message_3_1_3['sS'].first.delete 'n'
-    expect( validate_variations(make_variations, 'core') ).to eq(
+    expect( validate_core ).to eq(
       [["/sS/0", "required", {"missing_keys"=>["n"]}]]
     )
   end
@@ -120,15 +123,22 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'catches bad name' do
     message_3_1_1['sS'].first['n'] = 3
     message_3_1_3['sS'].first['n'] = 3
-    expect( validate_variations(make_variations, 'core') ).to eq(
+    expect( validate_core ).to eq(
       [["/sS/0/n", "string"]]
     )
   end
 
+  it 'catches n set to null' do
+    message_3_1_1['sS'].first['n'] = nil
+    message_3_1_3['sS'].first['n'] = nil
+    expect(validate_core).to eq([["/sS/0/n", "string"]])
+  end
+
+
   it 'catches missing value' do
     message_3_1_1['sS'].first.delete 's'
     message_3_1_3['sS'].first.delete 's'
-    expect( validate_variations(make_variations, 'core') ).to eq(
+    expect( validate_core ).to eq(
       [["/sS/0", "required", {"missing_keys"=>["s"]}]]
     )
   end
@@ -136,7 +146,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'catches bad quality' do
     message_3_1_1['sS'].first['ageState'] = 'great'
     message_3_1_3['sS'].first['q'] = 'great'
-    expect( validate_variations(make_variations, 'core') ).to eq({
+    expect( validate_core ).to eq({
       ['3.1.1','3.1.2']               => [["/sS/0/ageState", "enum"]],
       ['3.1.3','3.1.4','3.1.5','3.2'] => [["/sS/0/q", "enum"]]
     })
