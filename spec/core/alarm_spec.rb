@@ -273,4 +273,11 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
       [["/rvs/0/v", "string"]]
     )
   end
+
+  it 'accepts alarm with wrong aSp casing before 3.2' do
+    s = %/{"mType":"rSMsg","type":"Alarm","mId":"5a453f52-48d1-4373-8ae1-bb895320e8ad","ntsOId":"KK+AG9998=001TC000","xNId":"","cId":"KK+AG9998=001SG009","aCId":"A0201","xACId":"C_LAMP_OFF_RED (8230, 9, 1) : Signal Group #9","xNACId":"","aSp":"issue","ack":"notAcknowledged","aS":"active","sS":"notSuspended","aTs":"2022-09-02T12:21:24.000Z","cat":"D","pri":"2","rvs":[{"n":"color","v":"red"}]}/
+    json = JSON.parse s
+    expect( validate(json, 'core', '<3.2') ).to be_nil
+    expect( validate(json, 'core', '>=3.2') ).to eq([["/aSp", "enum"]])
+  end
 end
