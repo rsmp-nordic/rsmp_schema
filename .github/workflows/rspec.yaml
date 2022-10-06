@@ -1,4 +1,4 @@
-# This workflow runs RSpec tests
+# Workflow to run RSpec tests
 
 name: RSpec
 on: push
