@@ -38,7 +38,7 @@
                 "description" : "Time stamp for start of measuring. Format according to W3C\nXML dateTime with a resolution of 3 decimal places. All time stamps\nin UTC. E.g. 2009-10-02T14:34:34.341Z"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/timestamp"
+                "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
               }
             ]
           }
@@ -64,7 +64,7 @@
                 "description" : "Number of cars"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -90,7 +90,7 @@
                 "description" : "Number of cars with trailers"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -116,7 +116,7 @@
                 "description" : "Number of trucks"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -142,7 +142,7 @@
                 "description" : "Number of trucks with trailers"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -168,7 +168,7 @@
                 "description" : "Number of busses"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -194,7 +194,7 @@
                 "description" : "Number of trams"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -220,7 +220,7 @@
                 "description" : "Number of motor cycles"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -246,7 +246,7 @@
                 "description" : "Number of bicycles"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -272,7 +272,7 @@
                 "description" : "Number of pedestrians"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }

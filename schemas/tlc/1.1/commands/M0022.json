@@ -83,7 +83,7 @@
                 "description" : "(Optional) ID of an input, using the same numbering scheme as M0006"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -109,7 +109,7 @@
                 "description" : "(Optional) ID of a connection, connecting an ingoing and an outgoing lane"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -135,7 +135,7 @@
                 "description" : "(Optional) ID of an intersection approach"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -161,7 +161,7 @@
                 "description" : "(Optional) ID of an ingoing lane"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -187,7 +187,7 @@
                 "description" : "(Optional) ID of an outgoing lane"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -213,7 +213,7 @@
                 "description" : "(Optional) ID of a priority"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -264,7 +264,7 @@
                 "description" : "0: Lowest, 14: Highest"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -290,7 +290,7 @@
                 "description" : "(Optional) Estimated time of arrival to the intersection, in seconds"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }

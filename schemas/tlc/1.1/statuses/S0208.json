@@ -38,7 +38,7 @@
                 "description" : "Time stamp for start of measuring. Format according to W3C\nXML dateTime with a resolution of 3 decimal places. All time stamps\nin UTC. E.g. 2009-10-02T14:34:34.341Z"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/timestamp"
+                "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
               }
             ]
           }
@@ -64,7 +64,7 @@
                 "description" : "Number of cars.\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }
@@ -90,7 +90,7 @@
                 "description" : "Number of cars with trailers.\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }
@@ -116,7 +116,7 @@
                 "description" : "Number of trucks.\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }
@@ -142,7 +142,7 @@
                 "description" : "Number of trucks with trailers.\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }
@@ -168,7 +168,7 @@
                 "description" : "Number of busses.\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }
@@ -194,7 +194,7 @@
                 "description" : "Number of trams.\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }
@@ -220,7 +220,7 @@
                 "description" : "Number of motor cycles.\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }
@@ -246,7 +246,7 @@
                 "description" : "Number of bicycles.\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }
@@ -272,7 +272,7 @@
                 "description" : "Number of pedestrians.\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }

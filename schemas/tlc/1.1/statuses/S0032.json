@@ -31,7 +31,7 @@
                 "description" : "Comma separated list of intersections which the status relates to, e.g. “1,2”.\nUse “0” for all intersections of the TLC."
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }
@@ -58,7 +58,7 @@
                 "pattern" : "(?-mix:^(local|centralized|off)(?:,(local|centralized|off))*$)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
               }
             ]
           }
@@ -85,7 +85,7 @@
                 "pattern" : "(?-mix:^(operator_panel|calendar_clock|control_block|forced|startup|other)(?:,(operator_panel|calendar_clock|control_block|forced|startup|other))*$)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
               }
             ]
           }

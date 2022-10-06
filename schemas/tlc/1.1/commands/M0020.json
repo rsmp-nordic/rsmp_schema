@@ -35,7 +35,7 @@
                 "description" : "False: Force output\nTrue: Release output"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
               }
             ]
           }
@@ -81,7 +81,7 @@
                 "description" : "Number of Output"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -107,7 +107,7 @@
                 "description" : "False: output forced to False\nTrue: output forced to True"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
               }
             ]
           }
