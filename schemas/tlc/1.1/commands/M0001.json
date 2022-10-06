@@ -36,7 +36,7 @@
                 "pattern" : "(?-mix:^(NormalControl|YellowFlash|Dark)(?:,(NormalControl|YellowFlash|Dark))*$)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
               }
             ]
           }
@@ -62,7 +62,7 @@
                 "description" : "Security code 2"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
               }
             ]
           }
@@ -88,7 +88,7 @@
                 "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -114,7 +114,7 @@
                 "description" : "Comma separated list of intersections which the status relates to, e.g. “1,2”.\nUse “0” for all intersections of the TLC."
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }

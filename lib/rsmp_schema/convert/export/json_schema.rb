@@ -42,11 +42,11 @@ module RSMP
           when "string", "base64"
             out["type"] = "string"
           when "boolean"
-            out["$ref"] = "../../../core/3.1.1/definitions.json#/boolean"
+            out["$ref"] = "../../../core/3.1.2/definitions.json#/boolean"
           when "timestamp"
-            out["$ref"] = "../../../core/3.1.1/definitions.json#/timestamp"
+            out["$ref"] = "../../../core/3.1.2/definitions.json#/timestamp"
           when "integer", "ordinal", "unit", "scale", "long"
-            out["$ref"] = "../../../core/3.1.1/definitions.json#/integer"
+            out["$ref"] = "../../../core/3.1.2/definitions.json#/integer"
           when 'array'   # a json array
             build_json_array item['items'], out
           else
@@ -88,11 +88,11 @@ module RSMP
         def self.handle_string_list item, out
           case item['type']
           when "boolean_list"
-            out["$ref"] = "../../../core/3.1.1/definitions.json#/boolean_list"
+            out["$ref"] = "../../../core/3.1.2/definitions.json#/boolean_list"
           when "integer_list"
-            out["$ref"] = "../../../core/3.1.1/definitions.json#/integer_list"
+            out["$ref"] = "../../../core/3.1.2/definitions.json#/integer_list"
           when "string_list"
-            out["$ref"] = "../../../core/3.1.1/definitions.json#/string_list"
+            out["$ref"] = "../../../core/3.1.2/definitions.json#/string_list"
           else
             raise "Error: List of #{item['type']} is not supported: #{item.inspect}"
           end

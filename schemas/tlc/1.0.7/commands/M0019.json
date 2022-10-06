@@ -35,7 +35,7 @@
                 "description" : "False: Force input\nTrue: Release input"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
               }
             ]
           }
@@ -81,7 +81,7 @@
                 "description" : "Number of Input"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -107,7 +107,7 @@
                 "description" : "False: input forced to False\nTrue: input forced to True"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
               }
             ]
           }

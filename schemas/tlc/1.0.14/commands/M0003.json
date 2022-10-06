@@ -34,7 +34,7 @@
                 "description" : "False: Controller uses traffic situation according to own programming\nTrue: Controller uses traffic situation according to command"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/boolean"
+                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
               }
             ]
           }
@@ -80,7 +80,7 @@
                 "description" : "designation of traficsituation"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }

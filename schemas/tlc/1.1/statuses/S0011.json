@@ -31,7 +31,7 @@
                 "description" : "Comma separated list of intersections which the status relates to, e.g. “1,2”.\nUse “0” for all intersections of the TLC."
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             ]
           }
@@ -57,7 +57,7 @@
                 "description" : "False: Yellow flash disabled\nTrue: Yellow flash enabled"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/boolean_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/boolean_list"
               }
             ]
           }
@@ -84,7 +84,7 @@
                 "pattern" : "(?-mix:^(operator_panel|calendar_clock|control_block|forced|startup|other)(?:,(operator_panel|calendar_clock|control_block|forced|startup|other))*$)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
               }
             ]
           }

@@ -30,7 +30,7 @@
                 "description" : "Current traffic situation"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -57,7 +57,7 @@
                 "pattern" : "(?-mix:^(operator_panel|calendar_clock|control_block|forced|startup|other)(?:,(operator_panel|calendar_clock|control_block|forced|startup|other))*$)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/string_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
               }
             ]
           }

@@ -53,7 +53,7 @@
                 "description" : "Cycle counter"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -79,7 +79,7 @@
                 "description" : "Base cycle counter"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
@@ -105,7 +105,7 @@
                 "description" : "Current stage (isolated)"
               },
               {
-                "$ref" : "../../../core/3.1.1/definitions.json#/integer"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
