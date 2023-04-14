@@ -719,6 +719,19 @@ objects:
           All priorities are send on every status update, regardless of whether an interval, or sendOnChange (or both) is used.
           When a priority reaches an end states (completed, timeout, rejected, cooldown or stale), it must be sent once on the next status update, then removed from the list.
           A request always starts in the ‘received’ state. The following table shows the possible state transitions:
+
+          ==========  =====================================
+          State       Possible next states
+          ==========  =====================================
+          received    queued, activated, rejected, cooldown
+          queued      activated, timeout
+          activated   completed, stale
+          completed
+          timeout
+          rejected
+          cooldown
+          stale
+          ==========  =====================================
         arguments:
           status:
             description: JSON array of priority status items
