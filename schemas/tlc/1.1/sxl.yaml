@@ -175,9 +175,9 @@ objects:
             description: |-
               Extended input status as text field
               Each character represent the state of the detector logic in consecutive order.
-              0 : Detector logic is not active
-              1 : Detector logic is active
-              - : Detector logic is undefined/does not exist
+              0 : Input is not active
+              1 : Input is active
+              - : Input is undefined/does not exist
       S0004:
         description: |-
           Output status.
