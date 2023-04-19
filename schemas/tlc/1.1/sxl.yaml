@@ -169,12 +169,17 @@ objects:
         arguments:
           inputstatus:
             type: string
-            description: Input status as text field
+            description: |-
+              Input status as text field
+              Each character represent the state of the input in consecutive order.
+              0 : Input is not active
+              1 : Input is active
+              - : Input is undefined/does not exist
           extendedinputstatus:
             type: string
             description: |-
               Extended input status as text field
-              Each character represent the state of the detector logic in consecutive order.
+              Each character represent the state of the extended input status in consecutive order.
               0 : Input is not active
               1 : Input is active
               - : Input is undefined/does not exist
