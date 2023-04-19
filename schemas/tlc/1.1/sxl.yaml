@@ -245,11 +245,11 @@ objects:
             description: Source of the status change
             type: string_list
             values:
-              operator_panel: Operator panel 
-              calendar_clock: Calendar/clock 
-              control_block: Control block 
-              forced: Forced due to external command e.g. supervisor 
-              startup: Set after startup mode 
+              operator_panel: Operator panel
+              calendar_clock: Calendar/clock
+              control_block: Control block
+              forced: Forced due to external command e.g. supervisor
+              startup: Set after startup mode
               other: Other reason
       S0008:
         description: |-
@@ -273,11 +273,11 @@ objects:
             type: string_list
             description: Source of the status change
             values:
-              operator_panel: Operator panel 
-              calendar_clock: Calendar/clock 
-              control_block: Control block 
-              forced: Forced due to external command e.g. supervisor 
-              startup: Set after startup mode 
+              operator_panel: Operator panel
+              calendar_clock: Calendar/clock
+              control_block: Control block
+              forced: Forced due to external command e.g. supervisor
+              startup: Set after startup mode
               other: Other reason
       S0009:
         description: |-
@@ -301,11 +301,11 @@ objects:
             type: string_list
             description: Source of the status change
             values:
-              operator_panel: Operator panel 
-              calendar_clock: Calendar/clock 
-              control_block: Control block 
-              forced: Forced due to external command e.g. supervisor 
-              startup: Set after startup mode 
+              operator_panel: Operator panel
+              calendar_clock: Calendar/clock
+              control_block: Control block
+              forced: Forced due to external command e.g. supervisor
+              startup: Set after startup mode
               other: Other reason
       S0010:
         description: |-
@@ -329,11 +329,11 @@ objects:
             type: string_list
             description: Source of the status change
             values:
-              operator_panel: Operator panel 
-              calendar_clock: Calendar/clock 
-              control_block: Control block 
-              forced: Forced due to external command e.g. supervisor 
-              startup: Set after startup mode 
+              operator_panel: Operator panel
+              calendar_clock: Calendar/clock
+              control_block: Control block
+              forced: Forced due to external command e.g. supervisor
+              startup: Set after startup mode
               other: Other reason
       S0011:
         description: |-
@@ -357,11 +357,11 @@ objects:
             type: string_list
             description: Source of the status change
             values:
-              operator_panel: Operator panel 
-              calendar_clock: Calendar/clock 
-              control_block: Control block 
-              forced: Forced due to external command e.g. supervisor 
-              startup: Set after startup mode 
+              operator_panel: Operator panel
+              calendar_clock: Calendar/clock
+              control_block: Control block
+              forced: Forced due to external command e.g. supervisor
+              startup: Set after startup mode
               other: Other reason
       S0012:
         description: |-
@@ -385,11 +385,11 @@ objects:
             type: string_list
             description: Source of the status change
             values:
-              operator_panel: Operator panel 
-              calendar_clock: Calendar/clock 
-              control_block: Control block 
-              forced: Forced due to external command e.g. supervisor 
-              startup: Set after startup mode 
+              operator_panel: Operator panel
+              calendar_clock: Calendar/clock
+              control_block: Control block
+              forced: Forced due to external command e.g. supervisor
+              startup: Set after startup mode
               other: Other reason
       S0013:
         description: |-
@@ -426,11 +426,11 @@ objects:
             type: string_list
             description: Source of the status change
             values:
-              operator_panel: Operator panel 
-              calendar_clock: Calendar/clock 
-              control_block: Control block 
-              forced: Forced due to external command e.g. supervisor 
-              startup: Set after startup mode 
+              operator_panel: Operator panel
+              calendar_clock: Calendar/clock
+              control_block: Control block
+              forced: Forced due to external command e.g. supervisor
+              startup: Set after startup mode
               other: Other reason
       S0015:
         description: |-
@@ -448,11 +448,11 @@ objects:
             type: string_list
             description: Source of the status change
             values:
-              operator_panel: Operator panel 
-              calendar_clock: Calendar/clock 
-              control_block: Control block 
-              forced: Forced due to external command e.g. supervisor 
-              startup: Set after startup mode 
+              operator_panel: Operator panel
+              calendar_clock: Calendar/clock
+              control_block: Control block
+              forced: Forced due to external command e.g. supervisor
+              startup: Set after startup mode
               other: Other reason
       S0016:
         description: |-
@@ -782,8 +782,8 @@ objects:
           user:
             type: integer
             values:
-              0: Nobody logged in 
-              1: Operator logged in at level 1 (read only) 
+              0: Nobody logged in
+              1: Operator logged in at level 1 (read only)
               2: Operator logged in at level 2 (read/write)
       S0092:
         description: |-
@@ -793,8 +793,8 @@ objects:
           user:
             type: integer
             values:
-              0: Nobody logged in 
-              1: Operator logged in at level 1 (read only) 
+              0: Nobody logged in
+              1: Operator logged in at level 1 (read only)
               2: Operator logged in at level 2 (read/write)
       S0095:
         description: |-
