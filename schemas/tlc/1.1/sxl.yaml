@@ -2046,38 +2046,47 @@ objects:
             type: integer
             description: Number of cars
             min: 0
+            max: 65535
           PS:
             type: integer
             description: Number of cars with trailers
             min: 0
+            max: 65535
           L:
             type: integer
             description: Number of trucks
             min: 0
+            max: 65535
           LS:
             type: integer
             description: Number of trucks with trailers
             min: 0
+            max: 65535
           B:
             type: integer
             description: Number of busses
             min: 0
+            max: 65535
           SP:
             type: integer
             description: Number of trams
             min: 0
+            max: 65535
           MC:
             type: integer
             description: Number of motor cycles
             min: 0
+            max: 65535
           C:
             type: integer
             description: Number of bicycles
             min: 0
+            max: 65535
           F:
             type: integer
             description: Number of pedestrians
             min: 0
+            max: 65535
     commands:
       M0008:
         description: |-
