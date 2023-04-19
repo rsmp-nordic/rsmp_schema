@@ -423,7 +423,7 @@ objects:
             min: 1
             max: 255
           source:
-            type: string_list
+            type: string
             description: Source of the status change
             values:
               operator_panel: Operator panel 
