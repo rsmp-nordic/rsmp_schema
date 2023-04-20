@@ -771,7 +771,7 @@ objects:
               e:
                 type: integer
                 description: |-
-                  (Optional) Estimated green extension provided by the priority, in seconds
+                  Estimated green extension provided by the priority, in seconds
                   Only used when state is ‘completed’.
                 optional: true
                 min: 0
@@ -779,7 +779,7 @@ objects:
               d:
                 type: integer
                 description: |-
-                  (Optional) Estimated red reduction provided by the priority, in seconds
+                  Estimated red reduction provided by the priority, in seconds
                   Only used when state is ‘completed’.
                 optional: true
                 min: 0
@@ -1580,41 +1580,41 @@ objects:
           signalGroupId:
             type: string
             optional: true
-            description: (Optional) ID of a signal group component.
+            description: ID of a signal group component.
           inputId:
             type: integer
             optional: true
-            description: (Optional) ID of an input, using the same numbering scheme as M0006
+            description: ID of an input, using the same numbering scheme as M0006
             min: 0
             max: 255
           connectionId:
             type: integer
             optional: true
-            description: (Optional) ID of a connection, connecting an ingoing and an outgoing lane
+            description: ID of a connection, connecting an ingoing and an outgoing lane
             min: 0
             max: 255
           approachId:
             type: integer
             optional: true
-            description: (Optional) ID of an intersection approach
+            description: ID of an intersection approach
             min: 0
             max: 16
           laneInId:
             type: integer
             optional: true
-            description: (Optional) ID of an ingoing lane
+            description: ID of an ingoing lane
             min: 0
             max: 255
           laneOutId:
             type: integer
             optional: true
-            description: (Optional) ID of an outgoing lane
+            description: ID of an outgoing lane
             min: 0
             max: 255
           priorityId:
             type: integer
             optional: true
-            description: (Optional) ID of a priority
+            description: ID of a priority
             min: 0
             max: 255
           type:
@@ -1636,14 +1636,14 @@ objects:
           eta:
             type: integer
             optional: true
-            description: (Optional) Estimated time of arrival to the intersection, in seconds
+            description: Estimated time of arrival to the intersection, in seconds
             min: 0
             max: 255
           vehicleType:
             type: string
             optional: true
             description: |-
-              (Optional) Vehicle type
+              Vehicle type
 
               pedestrian: Pedestrians
               bicycle: Bicycles
