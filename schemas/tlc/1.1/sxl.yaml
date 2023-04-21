@@ -833,34 +833,32 @@ objects:
         arguments:
           year:
             type: integer
-            description: 'Year according to format YYYY. NOTE: UTC is used'
+            description: 'Year. Note: UTC is used'
             min: 0
             max: 9999
           month:
             type: integer
-            description: 'Month (01-12) according to format MM. Note: UTC is used'
+            description: 'Month. Note: UTC is used'
             min: 1
             max: 12
           day:
             type: integer
-            description: 'Day of month (01-31) according to format DD.  Note: UTC
-              is used'
+            description: 'Day of month.  Note: UTC is used'
             min: 1
             max: 31
           hour:
             type: integer
-            description: 'Hour of day (00-23) according to format DD. Note: UTC is
-              used'
+            description: 'Hour of day. Note: UTC is used'
             min: 0
             max: 23
           minute:
             type: integer
-            description: 'Minute (00-59) according to format MM. Note: UTC is used'
+            description: 'Minute. Note: UTC is used'
             min: 0
             max: 59
           second:
             type: integer
-            description: 'Second (00-59) according to format SS. Note: UTC is used'
+            description: 'Second. Note: UTC is used'
             min: 0
             max: 59
       S0097:
