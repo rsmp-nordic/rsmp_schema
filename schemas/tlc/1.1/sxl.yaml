@@ -701,14 +701,10 @@ objects:
             max: 255
           status:
             type: string_list
-            description: |-
+            values:
               local: Local coordination
               centralized: Coordination with synchronized clock
-              off: Coordination not active
-            values:
-              local:
-              centralized:
-              'off':
+              'off': Coordination not active
           source:
             description: Source of the status change
             type: string_list
@@ -1618,14 +1614,10 @@ objects:
             max: 255
           type:
             type: string
-            description: |-
+            values:
               new: New priority request
               update: Update to existing priority request
               cancel: Cancel an existing priority
-            values:
-              new:
-              update:
-              cancel:
           level:
             type: integer
             description: |-
@@ -1641,9 +1633,8 @@ objects:
           vehicleType:
             type: string
             optional: true
-            description: |-
-              Vehicle type
-
+            description: Vehicle type
+            values:
               pedestrian: Pedestrians
               bicycle: Bicycles
               motorcycle: Motorcycles
@@ -1656,19 +1647,6 @@ objects:
               safetyCar: For e.g. escort vehicles
               specialTransport: For e.g. heavy load
               other: Other type of vehicle
-            values:
-              pedestrian:
-              bicycle:
-              motorcycle:
-              car:
-              bus:
-              lightTruck:
-              heavyTruck:
-              tram:
-              emergency:
-              safetyCar:
-              specialTransport:
-              other:
         command: requestPriority
       M0023:
         description: |-
