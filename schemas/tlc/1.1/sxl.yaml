@@ -177,6 +177,7 @@ objects:
               - : Input is undefined/does not exist
           extendedinputstatus:
             type: string
+            deprecated: true
             description: |-
               Extended input status as text field
               Each character represent the state of the extended input status in consecutive order.
@@ -198,6 +199,7 @@ objects:
               - : Output is undefined/does not exist
           extendedoutputstatus:
             type: string
+            deprecated: true
             description: |-
               Extended output status as text field
               Each character represent the state of the extended output status in consecutive order.
