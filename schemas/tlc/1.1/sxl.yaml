@@ -1239,6 +1239,7 @@ objects:
           Only used when a primary controller orders signal group of other controller to green or red (Coordination with external control bits).
           May also include purposes for adaptive control where a UTC system or a local traffic light controller takes over the phase control (stage control).
           Requires security code 2.
+        reserved: true
         arguments:
           status:
             type: string
@@ -1863,6 +1864,7 @@ objects:
           Although this command is intended to be used with coordination it is not actually specified to be used for this yet. It is reserved in the SXL for possible future use.
           Intended for use with coordination of signaling systems where a traffic light controller communicates with neighboring controllers. Only used when a primary controller orders signal group of other controller to green or red (Coordination with external control bits).
           Requires security code 2
+        reserved: true
         arguments:
           status:
             type: boolean
@@ -1879,6 +1881,7 @@ objects:
           Although this command is intended to be used with coordination it is not actually specified to be used for this yet. It is reserved in the SXL for possible future use.
           Intended for use with coordination of signaling systems where a traffic light controller communicates with neighboring controllers. Only used when a primary controller orders signal group of other controller to green or red (Coordination with external control bits).
           Requires security code 2
+        reserved: true
         arguments:
           status:
             type: boolean
