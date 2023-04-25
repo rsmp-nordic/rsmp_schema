@@ -826,37 +826,38 @@ objects:
             description: Manufacturer, product name and version of traffic light controller
       S0096:
         description: |-
-          Current date and time
+          Current date and time.
+          Note: UTC is used.
           Provides diagnostic information about the current date and time set in the controller.
         arguments:
           year:
             type: integer
-            description: 'Year. Note: UTC is used'
+            description: Year
             min: 0
             max: 9999
           month:
             type: integer
-            description: 'Month. Note: UTC is used'
+            description: Month
             min: 1
             max: 12
           day:
             type: integer
-            description: 'Day of month.  Note: UTC is used'
+            description: Day of month
             min: 1
             max: 31
           hour:
             type: integer
-            description: 'Hour of day. Note: UTC is used'
+            description: Hour
             min: 0
             max: 23
           minute:
             type: integer
-            description: 'Minute. Note: UTC is used'
+            description: Minute
             min: 0
             max: 59
           second:
             type: integer
-            description: 'Second. Note: UTC is used'
+            description: Second
             min: 0
             max: 59
       S0097:
