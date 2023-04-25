@@ -1688,6 +1688,7 @@ objects:
         description: |-
           Set clock.
           Can be used to manually set the clock of the traffic light controller if automatic  time synchronization (NTP or watchdog sync) is not available. For instance, during maintenance work.
+          Note: UTC is used.
           Requires security code 1
         arguments:
           securityCode:
@@ -1695,44 +1696,32 @@ objects:
             description: Security code 1
           year:
             type: integer
-            description: |-
-              Changes internal clock. Note: UTC is used
-              Year according to YYYY
+            description: Year
             min: 0
             max: 9999
           month:
             type: integer
-            description: |-
-              Changes internal clock. Note: UTC is used
-              Month according to MM (01-12)
+            description: Month
             min: 1
             max: 12
           day:
             type: integer
-            description: |-
-              Changes internal clock. Note: UTC is used
-              Day in month according to DD (01-31)
+            description: Day of month
             min: 1
             max: 31
           hour:
             type: integer
-            description: |-
-              Changes internal clock. Note: UTC is used
-              Hour according to HH (00-23)
+            description: Hour
             min: 0
             max: 23
           minute:
             type: integer
-            description: |-
-              Changes internal clock. Note: UTC is used
-              Minute according to MM (00-59)
+            description: Minute
             min: 0
             max: 59
           second:
             type: integer
-            description: |-
-              Changes internal clock. Note: UTC is used
-              Second according to SS (00-59)
+            description: Second
             min: 0
             max: 59
         command: setDate
