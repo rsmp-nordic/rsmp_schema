@@ -945,7 +945,7 @@ objects:
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 65535
       S0206:
         description: |-
@@ -965,7 +965,7 @@ objects:
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 65535
       S0207:
         description: |-
@@ -985,7 +985,7 @@ objects:
               - Value expressed as an integer with a range of 0-100.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 100
       S0208:
         description: |-
@@ -1005,7 +1005,7 @@ objects:
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 65535
           PS:
             type: integer_list
@@ -1014,7 +1014,7 @@ objects:
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 65535
           L:
             type: integer_list
@@ -1023,7 +1023,7 @@ objects:
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 65535
           LS:
             type: integer_list
@@ -1032,7 +1032,7 @@ objects:
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 65535
           B:
             type: integer_list
@@ -1041,7 +1041,7 @@ objects:
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 65535
           SP:
             type: integer_list
@@ -1050,7 +1050,7 @@ objects:
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 65535
           MC:
             type: integer_list
@@ -1059,7 +1059,7 @@ objects:
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 65535
           C:
             type: integer_list
@@ -1068,7 +1068,7 @@ objects:
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 65535
           F:
             type: integer_list
@@ -1077,7 +1077,7 @@ objects:
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
-            min: 0
+            min: -1
             max: 65535
     commands:
       M0001:
