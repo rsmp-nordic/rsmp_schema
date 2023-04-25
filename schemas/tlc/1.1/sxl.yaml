@@ -351,6 +351,7 @@ objects:
           Yellow flash.
           The controller shows yellow flash.
           Yellow flash may be used during a serious fault (depending on configuration) or maintenance work. It can also be manually set using M0001.
+          Some countries may use yellow flash as an normal operating mode, and not necessarily during fault.
         arguments:
           intersection:
             type: integer_list
