@@ -1933,7 +1933,7 @@ objects:
         description: |-
           Serious detector error (hardware).
           Is a “major fault” defined according to 3.8 i EN12675 which causes the controller to switch to a “failure mode” according to 3.6 in EN12675.
-        priority: 3
+        priority: 2
         category: D
         arguments:
           detector:
@@ -1958,7 +1958,7 @@ objects:
           Serious detector error (logic error).
           For instance; detector continuously on or off during an extended time.
           Is a “major fault” defined according to 3.8 i EN12675 which causes the controller to switch to a “failure mode” according to 3.6 in EN12675
-        priority: 3
+        priority: 2
         category: D
         arguments:
           detector:
