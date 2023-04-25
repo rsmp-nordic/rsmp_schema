@@ -321,7 +321,7 @@ objects:
       S0010:
         description: |-
           Isolated control.
-          Isolated control mode indicates that the controller operates independently of any other traffic light controllers. This may different depending on traffic program (time plan).
+          Isolated control mode indicates that the controller operates independently of any other traffic light controller. This may be different depending on traffic program (time plan).
           Used to determine if the controller is operating independently or operating with other controllers (coordination).
         arguments:
           intersection:
