@@ -888,6 +888,7 @@ objects:
               
               Note:
               - The checksum should be calculated using the same data as used in S0098
+              - Data Downloaded with S0098 and hashed with SHA-2 should match this value.
           timestamp:
             type: timestamp
             description: Time stamp of the checksum. Format according to W3C XML dateTime
