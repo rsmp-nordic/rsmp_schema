@@ -90,7 +90,7 @@ objects:
       A0009:
         description: |-
           Other error.
-          Used for other errors not covered by any other alarm type
+          Used for other errors not covered by any other alarm type.
           Is a "minor fault" defined according to 3.11 in EN12675.
         priority: 3
         category: D
@@ -192,7 +192,8 @@ objects:
         arguments:
           outputstatus:
             type: string
-            description: Output status as text field
+            description: |-
+              Output status as text field
               Each character represent the state of the output status in consecutive order.
               0 : Output is not active
               1 : Output is active
@@ -265,7 +266,7 @@ objects:
       S0008:
         description: |-
           Manual control.
-          Traffic control deactivated in controller
+          Traffic control deactivated in controller.
           Signal timings is controlled manually by service personnel using the operating panel of the controller.
         arguments:
           intersection:
@@ -1277,7 +1278,7 @@ objects:
           The parameter ‘status’ sets/unsets a block of 16 inputs at a time. It can be repeated to set several blocks of 16 inputs. Values are separated with comma. Blocks are separated with semicolon. Format: [Offset];[Bits to set];[Bits to unset];…
 
           - ‘Offset’ defines where the 16 inputs starts from
-          - ‘Bits to set’ defines which bit(s) to set. ‘0’ if unsed
+          - ‘Bits to set’ defines which bit(s) to set. ‘0’ if unused
           - ‘Bits to unset’ defines which bit(s) to unset. ‘0’ if unused
 
           Example 1:
