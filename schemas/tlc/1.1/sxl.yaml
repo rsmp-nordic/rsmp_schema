@@ -737,6 +737,8 @@ affic_lights/wiki/Signal-priority-and-ETSI-J2735)
           completed  |
           timeout    |
           rejected   |
+          cooldown   |
+          stale      |
         arguments:
           status:
             description: JSON array of priority status items
