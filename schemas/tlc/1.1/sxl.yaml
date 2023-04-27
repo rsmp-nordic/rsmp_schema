@@ -1653,6 +1653,7 @@ objects:
           Switch to a designated time plan if this timeout is reached due to lost connection with the supervisor.
           Disable by setting timeout to '0'.
           Used in conjunction with dynamic bands, M0014
+          Requires security code 2.
         arguments:
           status:
             type: integer
