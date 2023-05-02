@@ -2006,6 +2006,7 @@ objects:
             type: integer
             description: Average speed in km/h
             min: 0
+            max: 65535
       S0203:
         description: |-
           Traffic Counting: Occupancy.
