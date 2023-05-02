@@ -732,23 +732,21 @@ objects:
           A list of priorities is returned, referred to by their request ids. The same request id can appear only once.
           All priorities are included in the list (not only the ones that have changed state since the last update). This is done regardless of whether the status is send in respond to a status request, or due to a status subscription, and also regardless of whether a status subscription uses an update interval, or send-on-change, or both.
           If you subscribe using an update interval, you’re not guaranteed to get all intermediate states. To guarantee that, send-on-change must be used when subscribing.
-          To understand how this status relates to ETSI/J2735, please see the wiki.
+          To understand how this status relates to ETSI/J2735, please see the [wiki](https://github.com/rsmp-nordic/rsmp_sxl_traffic_lights/wiki/Signal-priority-and-ETSI-J2735).
           All priorities are send on every status update, regardless of whether an interval, or sendOnChange (or both) is used.
           When a priority reaches an end states (completed, timeout, rejected, cooldown or stale), it must be sent once on the next status update, then removed from the list.
           A request always starts in the ‘received’ state. The following table shows the possible state transitions:
 
-          ==========  =====================================
-          State       Possible next states
-          ==========  =====================================
-          received    queued, activated, rejected, cooldown
-          queued      activated, timeout
-          activated   completed, stale
-          completed
-          timeout
-          rejected
-          cooldown
-          stale
-          ==========  =====================================
+          State      | Possible next states
+          ---------- | -------------------------------------
+          received   | queued, activated, rejected, cooldown
+          queued     | activated, timeout
+          activated  | completed, stale
+          completed  |
+          timeout    |
+          rejected   |
+          cooldown   |
+          stale      |
         arguments:
           status:
             description: JSON array of priority status items
@@ -1532,7 +1530,7 @@ objects:
 
           The benefit of using this message over activating inputs or detector logics is that you can specify a priority level, vehicle type and estimated time of arrival. You can also update or cancel the request, and use the corresponding status message to track the status of the request, including how much priority was actually given.
 
-          To understand how this command relates to ETSI/J2735, please see the wiki.
+          To understand how this command relates to ETSI/J2735, please see the [wiki](https://github.com/rsmp-nordic/rsmp_sxl_traffic_lights/wiki/Signal-priority-and-ETSI-J2735).
 
           Activating signal priority is expected to provide more green time for a particular movement through the intersection, but the exact mechanism must typically be configured in the controller.
 
