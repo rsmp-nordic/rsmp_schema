@@ -123,7 +123,7 @@ objects:
               Is counted from 0 until it reaches the cycle time (See S0028).
               
               c = (b + o) mod t
-               
+              
               where c = cycle counter,
               b = base cycle counter,
               o = offset,
@@ -1045,7 +1045,7 @@ objects:
           B:
             type: integer_list
             description: |-
-              Number of busses.
+              Number of buses.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
               - The value is set to “-1” if no data could be measured (e.g. detector fault)
@@ -2062,7 +2062,7 @@ objects:
             max: 65535
           B:
             type: integer
-            description: Number of busses
+            description: Number of buses
             min: 0
             max: 65535
           SP:
