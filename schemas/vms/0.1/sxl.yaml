@@ -1,0 +1,78 @@
+---
+meta:
+  name: vms
+  description: Variable Message Sign
+  version: 0.1
+objects:
+  Main:
+    description: Main object.
+    aggregated_status:
+      1:
+        title: Active
+        description: Sign is active.
+    functional_position: nil
+    functional_state: nil
+    alarms:
+      A0001:
+        description: Serious hardware error.
+        priority: 2
+        category: D
+      A0002:
+        description: Less serious hardware error.
+        priority: 3
+        category: D
+      A0003:
+        description: Serious configuration error.
+        priority: 2
+        category: D
+      A0004:
+        description: Less serious configuration error.
+        priority: 3
+        category: D
+      A0009:
+        description: Other error.
+        priority: 3
+        category: D
+    statuses:
+      S0007:
+        description: Is the display switched on?
+        arguments:
+          status:
+            type: boolean
+            values:
+              True: Display is switched on.
+              False: Display is switched off.
+      S0101:
+        description: Index of currently displayed bitmap. 0=No bitmap shown (display is dark).
+        arguments:
+          number:
+            type: integer
+            min: 0
+            max: 255
+      S0102:
+        description: Currently displayed bitmap.
+        arguments:
+          bitmap:
+            type: base64
+            description: bitmap in JPG or PNG format, encoded as base 64.
+    commands:
+      M0101:
+        description: Display bitmap, which must already be on device.
+        arguments:
+          index:
+            type: integer
+            description: Index of bitmap to display, 0=Show no bitmap (dark display).
+            min: 0
+            max: 255
+      M0102:
+        description: Upload bitmap and store at specified index.
+        arguments:
+          index:
+            type: integer
+            description: Index to store at. If a bitmap is already stored at the index it will be overwritten.
+            min: 0
+            max: 255
+          index:
+            type: base64
+            description: Bitmap in JPG or PNG format, encoded as base 64.
+            min: 
