@@ -24,7 +24,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'catches bad value' do
     message["arg"].first['v'] = 'bad'
     expect( validate(message, 'tlc',RSMP::Schema.latest_version(:tlc)) ).to eq(
-      [["/arg/0/v", "pattern"]]
+      [["/arg/0/v", "enum"]]
     )
   end
 
@@ -39,7 +39,10 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message["arg"].first['n'] = 'status'
     message["arg"].first['v'] = 'bad'
     expect( validate(message, 'tlc') ).to eq(
-      [["/arg/0/v", "pattern"]]
+      {
+        "1.1.1" => [["/arg/0/v", "enum"]],
+        ["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15", "1.1"] => [["/arg/0/v", "pattern"]]
+      }
     )
   end
 
