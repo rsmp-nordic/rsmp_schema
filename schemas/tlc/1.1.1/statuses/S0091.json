@@ -1,0 +1,44 @@
+{
+  "allOf" : [
+    {
+      "description" : "Operator logged in/out OP-panel.\nProvides information if maintenance personnel is currently working on site.",
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "n"
+        ],
+        "properties" : {
+          "n" : {
+            "const" : "user"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "s" : {
+            "allOf" : [
+              {
+                "enum" : [
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
