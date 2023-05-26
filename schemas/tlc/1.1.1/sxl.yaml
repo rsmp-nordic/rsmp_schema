@@ -800,6 +800,28 @@ objects:
             description: Timeout, in minutes
             min: 0
             max: 65535
+      S0035:
+        description: |-
+          Emergency route.
+          The status is active during emergency prioritization.
+          Used in situations where full priority is given in the emergency vehicle program.
+
+          This status is similar to S0006, but supports multiple routes
+        arguments:
+          emergencyroutes:
+            description: Emergency routes
+            type: array
+            items:
+              active:
+                type: boolean
+                description: |-
+                  False: Emergency route inactive
+                  True: Emergency route active
+              id:
+                type: integer
+                description: ID of emergency route
+                min: 1
+                max: 255
       S0091:
         description: |-
           Operator logged in/out OP-panel.
