@@ -165,7 +165,7 @@
           "s" : {
             "allOf" : [
               {
-                "description" : "Number of busses"
+                "description" : "Number of buses"
               },
               {
                 "$ref" : "../../../core/3.1.2/definitions.json#/integer"

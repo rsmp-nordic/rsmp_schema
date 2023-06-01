@@ -25,7 +25,7 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Checksum of the traffic parameters\nUses SHA-2 as hashing algorithm\nIncludes\n- all signal programs, including program versions\n- signal group settings\n- time plans\n- safety matrix\n- intergreen times\n- detector settings\n\nIt should NOT include:\n- network settings\n- log files\n- software\n- other device settings that are not part of the signal program\n\nNote:\n- The checksum should be calculated using the same data as used in S0098",
+            "description" : "Checksum of the traffic parameters\nUses SHA-2 as hashing algorithm\nIncludes\n- all signal programs, including program versions\n- signal group settings\n- time plans\n- safety matrix\n- intergreen times\n- detector settings\n\nIt should NOT include:\n- network settings\n- log files\n- software\n- other device settings that are not part of the signal program\n\nNote:\n- The checksum should be calculated using the same data as used in S0098\n- Data Downloaded with S0098 and hashed with SHA-2 should match this value.",
             "type" : "string"
           }
         }

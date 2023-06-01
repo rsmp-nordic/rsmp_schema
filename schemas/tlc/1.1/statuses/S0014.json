@@ -51,14 +51,15 @@
       "then" : {
         "properties" : {
           "s" : {
-            "allOf" : [
-              {
-                "description" : "Source of the status change",
-                "pattern" : "(?-mix:^(operator_panel|calendar_clock|control_block|forced|startup|other)(?:,(operator_panel|calendar_clock|control_block|forced|startup|other))*$)"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
-              }
+            "description" : "Source of the status change",
+            "type" : "string",
+            "enum" : [
+              "calendar_clock",
+              "control_block",
+              "forced",
+              "operator_panel",
+              "other",
+              "startup"
             ]
           }
         }

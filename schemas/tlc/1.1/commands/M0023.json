@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Set timeout for dynamic bands\nSwitch to a designated time plan if this timeout is reached due to lost connection with the supervisor.\nDisable by setting timeout to '0'.\nUsed in conjunction with dynamic bands, M0014",
+      "description" : "Set timeout for dynamic bands\nSwitch to a designated time plan if this timeout is reached due to lost connection with the supervisor.\nDisable by setting timeout to '0'.\nUsed in conjunction with dynamic bands, M0014\nRequires security code 2.",
       "properties" : {
         "n" : {
           "enum" : [
