@@ -71,7 +71,7 @@
                 "s" : {
                   "allOf" : [
                     {
-                      "description" : "Number of emergency stage (set to zero is no route is active)"
+                      "description" : "Number of emergency stage (set to zero if no route is active)"
                     },
                     {
                       "$ref" : "../../../core/3.1.2/definitions.json#/integer"
