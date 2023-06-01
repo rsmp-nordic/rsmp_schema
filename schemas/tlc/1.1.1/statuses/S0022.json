@@ -1,7 +1,7 @@
 {
+  "description" : "List of time plans.\nProvides a list of the configured time plans which is possible to use. This status was added due to status S0018 only provides the total number of time plans and not which were possible to use with M0002.\nCan be used for the management system to check the number of time plans configured in the controller.",
   "allOf" : [
     {
-      "description" : "List of time plans.\nProvides a list of the configured time plans which is possible to use. This status was added due to status S0018 only provides the total number of time plans and not which were possible to use with M0002.\nCan be used for the management system to check the number of time plans configured in the controller.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -13,21 +13,42 @@
     {
       "if" : {
         "required" : [
-          "n"
+          "q"
         ],
         "properties" : {
-          "n" : {
-            "const" : "status"
+          "q" : {
+            "const" : "undefined"
           }
         }
       },
       "then" : {
-        "properties" : {
-          "s" : {
-            "description" : "Comma separated list of configured time plans. E.g. \"1,2,3,5\"",
-            "type" : "string"
-          }
+        "s" : {
+          "type" : "null"
         }
+      },
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "status"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "description" : "Comma separated list of configured time plans. E.g. \"1,2,3,5\"",
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        ]
       }
     }
   ]

@@ -1,7 +1,7 @@
 {
+  "description" : "Traffic Counting: Number of vehicles.\nUsed for Traffic counting.",
   "allOf" : [
     {
-      "description" : "Traffic Counting: Number of vehicles.\nUsed for Traffic counting.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -14,53 +14,74 @@
     {
       "if" : {
         "required" : [
-          "n"
+          "q"
         ],
         "properties" : {
-          "n" : {
-            "const" : "starttime"
+          "q" : {
+            "const" : "undefined"
           }
         }
       },
       "then" : {
-        "properties" : {
-          "s" : {
-            "allOf" : [
-              {
-                "description" : "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "vehicles"
-          }
+        "s" : {
+          "type" : "null"
         }
       },
-      "then" : {
-        "properties" : {
-          "s" : {
-            "allOf" : [
-              {
-                "description" : "Number of vehicles on a given detector logic (since last update)"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "starttime"
+                }
               }
-            ]
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "allOf" : [
+                    {
+                      "description" : "Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z"
+                    },
+                    {
+                      "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "vehicles"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "allOf" : [
+                    {
+                      "description" : "Number of vehicles on a given detector logic (since last update)"
+                    },
+                    {
+                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                    }
+                  ]
+                }
+              }
+            }
           }
-        }
+        ]
       }
     }
   ]

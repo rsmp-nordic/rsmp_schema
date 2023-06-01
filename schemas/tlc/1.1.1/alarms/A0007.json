@@ -1,7 +1,7 @@
 {
+  "description" : "Communication error.\nUsed for communication errors with the central system. Includes NTP connection loss if the TLC is configured to use NTP.\nIs a \"minor fault\" defined according to 3.11 in EN12675.",
   "allOf" : [
     {
-      "description" : "Communication error.\nUsed for communication errors with the central system. Includes NTP connection loss if the TLC is configured to use NTP.\nIs a \"minor fault\" defined according to 3.11 in EN12675.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -13,25 +13,46 @@
     {
       "if" : {
         "required" : [
-          "n"
+          "q"
         ],
         "properties" : {
-          "n" : {
-            "const" : "protocol"
+          "q" : {
+            "const" : "undefined"
           }
         }
       },
       "then" : {
-        "properties" : {
-          "v" : {
-            "description" : "Type of communication error, e.g. NTP or RSMP",
-            "type" : "string",
-            "enum" : [
-              "ntp",
-              "rsmp"
-            ]
-          }
+        "s" : {
+          "type" : "null"
         }
+      },
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "protocol"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "v" : {
+                  "description" : "Type of communication error, e.g. NTP or RSMP",
+                  "type" : "string",
+                  "enum" : [
+                    "ntp",
+                    "rsmp"
+                  ]
+                }
+              }
+            }
+          }
+        ]
       }
     }
   ]

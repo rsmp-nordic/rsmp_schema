@@ -1,7 +1,7 @@
 {
+  "description" : "Set timeout for dynamic bands\nSwitch to a designated time plan if this timeout is reached due to lost connection with the supervisor.\nDisable by setting timeout to '0'.\nUsed in conjunction with dynamic bands, M0014\nRequires security code 2.",
   "allOf" : [
     {
-      "description" : "Set timeout for dynamic bands\nSwitch to a designated time plan if this timeout is reached due to lost connection with the supervisor.\nDisable by setting timeout to '0'.\nUsed in conjunction with dynamic bands, M0014\nRequires security code 2.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -17,47 +17,68 @@
     {
       "if" : {
         "required" : [
-          "n"
+          "q"
         ],
         "properties" : {
-          "n" : {
-            "const" : "status"
+          "q" : {
+            "const" : "undefined"
           }
         }
       },
       "then" : {
-        "properties" : {
-          "v" : {
-            "allOf" : [
-              {
-                "description" : "Timeout, in minutes"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+        "s" : {
+          "type" : "null"
+        }
+      },
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "status"
+                }
               }
-            ]
+            },
+            "then" : {
+              "properties" : {
+                "v" : {
+                  "allOf" : [
+                    {
+                      "description" : "Timeout, in minutes"
+                    },
+                    {
+                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "securityCode"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "v" : {
+                  "description" : "Security code 2",
+                  "type" : "string"
+                }
+              }
+            }
           }
-        }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "securityCode"
-          }
-        }
-      },
-      "then" : {
-        "properties" : {
-          "v" : {
-            "description" : "Security code 2",
-            "type" : "string"
-          }
-        }
+        ]
       }
     }
   ]
