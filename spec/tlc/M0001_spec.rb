@@ -40,8 +40,8 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message["arg"].first['v'] = 'bad'
     expect( validate(message, 'tlc') ).to eq(
       {
-        "1.1.1" => [["/arg/0/v", "enum"]],
-        ["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15", "1.1"] => [["/arg/0/v", "pattern"]]
+        ["1.1","1.1.1"] => [["/arg/0/v", "enum"]],
+        ["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15"] => [["/arg/0/v", "pattern"]]
       }
     )
   end
