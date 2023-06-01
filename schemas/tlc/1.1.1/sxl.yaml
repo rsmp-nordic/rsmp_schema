@@ -218,11 +218,12 @@ objects:
             description: |-
               False: Controller is not in start up mode
               True: Controller is currently in start up mode
-      S0006:
+            S0006:
         description: |-
-          Emergency stage.
+          Emergency route.
           The status is active during emergency prioritization.
           Used in situations where full priority is given in the emergency vehicle program.
+          If no emergency route is active, status should be set to False, and emergencystage to zero.
         arguments:
           status:
             type: boolean
@@ -231,8 +232,8 @@ objects:
               True: Emergency stage active
           emergencystage:
             type: integer
-            description: Number of emergency stage
-            min: 1
+            description: Number of emergency stage (set to zero is no route is active)
+            min: 0
             max: 255
       S0007:
         description: |-
