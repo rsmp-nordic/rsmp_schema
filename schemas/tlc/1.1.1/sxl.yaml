@@ -809,17 +809,12 @@ objects:
           This status is similar to S0006, but supports multiple routes
         arguments:
           emergencyroutes:
-            description: Emergency routes
+            description: Active emergency routes
             type: array
             items:
-              active:
-                type: boolean
-                description: |-
-                  False: Emergency route inactive
-                  True: Emergency route active
               id:
                 type: integer
-                description: ID of emergency route
+                description: ID of active emergency route
                 min: 1
                 max: 255
       S0091:
