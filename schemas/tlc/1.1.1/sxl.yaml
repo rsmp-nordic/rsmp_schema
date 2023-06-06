@@ -218,7 +218,7 @@ objects:
             description: |-
               False: Controller is not in start up mode
               True: Controller is currently in start up mode
-            S0006:
+      S0006:
         description: |-
           Emergency route.
           The status is active during emergency prioritization.
