@@ -17,7 +17,7 @@
             "additionalProperties" : false,
             "properties": {
               "sCI" : { "$ref": "../3.1.2/definitions.json#/status_code" },
-              "n" : { "description" : "Value name", "type" : "string" },
+              "n" : { "description" : "Unique reference of the value", "type" : "string" },
               "q" : { "description" : "Quality", "type" : "string" },
               "s" : { "description" : "Value" }
             }
