@@ -232,7 +232,7 @@ objects:
               True: Emergency stage active
           emergencystage:
             type: integer
-            description: Number of emergency stage (set to zero is no route is active)
+            description: Number of emergency stage (set to zero if no route is active)
             min: 0
             max: 255
       S0007:
