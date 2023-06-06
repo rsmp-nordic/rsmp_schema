@@ -13,6 +13,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   }}
 
   it 'accepts valid status S0006, route is active' do
+    message['sS'][1]['s'] = 'True'
     expect( validate(message,'tlc') ).to be_nil
    end
 
@@ -21,10 +22,30 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     expect( validate(message,'tlc') ).to be_nil
    end
 
-  it 'accepts valid status S0006, no route active' do
+  it 'accepts valid status S0006, route 0 can be used' do
     message['sS'][0]['s'] = '0'
+    message['sS'][1]['s'] = 'True'
+    expect( validate(message,'tlc') ).to be_nil
     message['sS'][1]['s'] = 'False'
     expect( validate(message,'tlc') ).to be_nil
    end
+
+  it 'route cannot be empty' do
+    message['sS'][0]['s'] = ''
+    expect( validate(message,'tlc') ).to eq(
+      [["/sS/0/s", "pattern"]]
+    )
+  end
+
+  it 'S0006 must be string' do
+    message['sS'][0]['s'] = nil
+    expect( validate(message,'tlc') ).to eq(
+      [["/sS/0/s", "string"]]
+    )
+    message['sS'][0]['s'] = 1234
+    expect( validate(message,'tlc') ).to eq(
+      [["/sS/0/s", "string"]]
+    )
+  end
 
 end
