@@ -30,14 +30,12 @@
       "then" : {
         "properties" : {
           "v" : {
-            "allOf" : [
-              {
-                "description" : "Set operating mode",
-                "pattern" : "(?-mix:^(NormalControl|YellowFlash|Dark)(?:,(NormalControl|YellowFlash|Dark))*$)"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
-              }
+            "description" : "Set operating mode",
+            "type" : "string",
+            "enum" : [
+              "Dark",
+              "NormalControl",
+              "YellowFlash"
             ]
           }
         }
