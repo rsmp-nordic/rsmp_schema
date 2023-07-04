@@ -69,10 +69,10 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     "mType" => "rSMsg",
     "type" => "StatusResponse",
     "mId" => "f1a13213-b90a-4abc-8953-2b8142923c55",
-    "ntsOId":"KK+AG9998=001TC000",
-    "xNId":"",
-    "cId":"KK+AG9998=001TC000",
-    "sTs":"2021-12-13T11:11:07.317Z",
+    "ntsOId" => "KK+AG9998=001TC000",
+    "xNId" => "",
+    "cId" => "KK+AG9998=001TC000",
+    "sTs" => "2021-12-13T11:11:07.317Z",
     "sS" => [
       {
         "sCI" => "S0033",
