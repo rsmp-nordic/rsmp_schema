@@ -1,7 +1,7 @@
 {
   "allOf" : [
     {
-      "description" : "Emergency stage.\nThe status is active during emergency prioritization.\nUsed in situations where full priority is given in the emergency vehicle program.",
+      "description" : "Emergency route.\nThe status is active during emergency prioritization.\nUsed in situations where full priority is given in the emergency vehicle program.\nIf no emergency route is active, status should be set to False, and emergencystage to zero.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -53,7 +53,7 @@
           "s" : {
             "allOf" : [
               {
-                "description" : "Number of emergency stage"
+                "description" : "Number of emergency stage (set to zero if no route is active)"
               },
               {
                 "$ref" : "../../../core/3.1.2/definitions.json#/integer"

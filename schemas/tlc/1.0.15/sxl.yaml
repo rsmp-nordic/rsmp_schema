@@ -817,7 +817,7 @@ objects:
           Requires security code 2.
         arguments:
           status:
-            type: string_list
+            type: string
             description: Set operating mode
             values:
               NormalControl: Normal Control

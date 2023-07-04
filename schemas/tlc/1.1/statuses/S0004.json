@@ -25,7 +25,7 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Output status as text field",
+            "description" : "Output status as text field\nEach character represent the state of the output status in consecutive order.\n0 : Output is not active\n1 : Output is active\n- : Output is undefined/does not exist",
             "type" : "string"
           }
         }
@@ -45,7 +45,7 @@
       "then" : {
         "properties" : {
           "s" : {
-            "description" : "Extended output status as text field\nEach character represent the state of the detector logic in consecutive order.\n0 : Detector logic is not active\n1 : Detector logic is active\n- : Detector logic is undefined/does not exist",
+            "description" : "Extended output status as text field\nEach character represent the state of the extended output status in consecutive order.\n0 : Output is not active\n1 : Output is active\n- : Output is undefined/does not exist",
             "type" : "string"
           }
         }
