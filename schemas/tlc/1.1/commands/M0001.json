@@ -30,14 +30,12 @@
       "then" : {
         "properties" : {
           "v" : {
-            "allOf" : [
-              {
-                "description" : "Set operating mode",
-                "pattern" : "(?-mix:^(NormalControl|YellowFlash|Dark)(?:,(NormalControl|YellowFlash|Dark))*$)"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
-              }
+            "description" : "Set operating mode",
+            "type" : "string",
+            "enum" : [
+              "Dark",
+              "NormalControl",
+              "YellowFlash"
             ]
           }
         }
@@ -57,14 +55,8 @@
       "then" : {
         "properties" : {
           "v" : {
-            "allOf" : [
-              {
-                "description" : "Security code 2"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
-              }
-            ]
+            "description" : "Security code 2",
+            "type" : "string"
           }
         }
       }
@@ -111,10 +103,10 @@
           "v" : {
             "allOf" : [
               {
-                "description" : "Comma separated list of intersections which the status relates to, e.g. “1,2”.\nUse “0” for all intersections of the TLC."
+                "description" : "Intersection number"
               },
               {
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             ]
           }
