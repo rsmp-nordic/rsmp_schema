@@ -1888,8 +1888,9 @@ objects:
             type: string
             description: Detector forced on/off while detector error
             values:
-              'on':    # on/off must be quoted, otherwise they are converted to true/false
-              'off':
+              # on/off must be quoted, otherwise they are converted to true/false
+              'on': ''
+              'off': ''
           manual:
             type: boolean
             description: Manually controlled detector logic (True/False)
