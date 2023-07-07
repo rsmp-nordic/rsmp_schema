@@ -1887,9 +1887,8 @@ objects:
           errormode:
             type: string
             description: Detector forced on/off while detector error
-            values:
-              'on':    # on/off must be quoted, otherwise they are converted to true/false
-              'off':
+            # on/off must be quoted, otherwise they are parsed as true/false
+            values: ['on','off']
           manual:
             type: boolean
             description: Manually controlled detector logic (True/False)
@@ -1913,9 +1912,8 @@ objects:
           errormode:
             type: string
             description: Detector forced on/off while detector error
-            values:
-              'on': ''
-              'off': ''
+            # on/off must be quoted, otherwise they are parsed as true/false
+            values: ['on','off']
           manual:
             type: boolean
             description: Manually controlled detector logic (True/False)
@@ -1945,7 +1943,7 @@ objects:
           errormode:
             type: string
             description: Detector forced on/off while detector error
-            # note that on and off must be quoted, otherwise they are parsed as true and false
+            # on/off must be quoted, otherwise they are parsed as true/false
             values: ['on','off']
           manual:
             type: boolean
@@ -1970,6 +1968,7 @@ objects:
           errormode:
             type: string
             description: Detector forced on/off while detector error
+            # on/off must be quoted, otherwise they are parsed as true/false
             values: ['on','off']
           manual:
             type: boolean
