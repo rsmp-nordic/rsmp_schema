@@ -110,6 +110,11 @@ module RSMP
           if item["values"]
             out["enum"] = case item["values"]
             when Hash
+              item["values"].each_pair do |k,v|
+                if v=='' or v==nil
+                  raise "Error: '#{k}' has empty value in #{item}. (When using a hash to specify 'values', the hash values cannot be empty.)"
+                end
+              end
               item["values"].keys.sort
             when Array
               item["values"].sort
