@@ -1436,9 +1436,7 @@ objects:
           errormode:
             type: string
             description: Detector forced on/off while detector error
-            values:
-              'on': ''
-              'off': ''
+            values: ['on','off']
           manual:
             type: boolean
             description: Manually controlled detector logic (True/False)
@@ -1463,9 +1461,7 @@ objects:
           errormode:
             type: string
             description: Detector forced on/off while detector error
-            values:
-              'on': ''
-              'off': ''
+            values: ['on','off']
           manual:
             type: boolean
             description: Manually controlled detector logic (True/False)

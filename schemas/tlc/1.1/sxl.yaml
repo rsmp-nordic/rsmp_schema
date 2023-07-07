@@ -1887,7 +1887,10 @@ objects:
           errormode:
             type: string
             description: Detector forced on/off while detector error
+<<<<<<< HEAD
             # on/off must be quoted, otherwise they are parsed as true/false
+=======
+>>>>>>> 59e99c4 (use array for on/off enums, show error if an enum hash has empty values)
             values: ['on','off']
           manual:
             type: boolean
@@ -1912,7 +1915,10 @@ objects:
           errormode:
             type: string
             description: Detector forced on/off while detector error
+<<<<<<< HEAD
             # on/off must be quoted, otherwise they are parsed as true/false
+=======
+>>>>>>> 59e99c4 (use array for on/off enums, show error if an enum hash has empty values)
             values: ['on','off']
           manual:
             type: boolean
@@ -1943,7 +1949,6 @@ objects:
           errormode:
             type: string
             description: Detector forced on/off while detector error
-            # on/off must be quoted, otherwise they are parsed as true/false
             values: ['on','off']
           manual:
             type: boolean
