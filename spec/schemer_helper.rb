@@ -39,8 +39,8 @@ def validate_variations json_variations, schema, versions = :all
   if versions == :all
     version_list = $schemers[schema.to_s].keys
   elsif versions.is_a? String
-    # convert a string like '>=3.1.3' to an array off matching version strings,
-    # by using the Gem::Requirement tool.
+    # convert a string like '>=3.1.3' to an array of matching version strings,
+    # by using the Gem::Requirement class.
     # This this has nothing to do with gems, we just use the version matching helper.
     requirement = Gem::Requirement.new(versions)
     version_list = $schemers[schema.to_s].keys.select do |version|

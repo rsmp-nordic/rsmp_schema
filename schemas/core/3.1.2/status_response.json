@@ -16,7 +16,7 @@
           "n" : { "description" : "Unique reference of the value", "type" : "string" },
           "s" : { "description" : "Value", "type" : "string" },
           "q" : {
-            "description" : "Value",
+            "description" : "Quality",
             "type" : "string",
             "enum" : [ "recent", "old", "undefined", "unknown" ]
           }

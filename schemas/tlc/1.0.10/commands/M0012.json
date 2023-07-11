@@ -17,6 +17,21 @@
     {
       "if" : {
         "required" : [
+          "q"
+        ],
+        "properties" : {
+          "q" : {
+            "const" : "undefined"
+          }
+        }
+      },
+      "then" : {
+        "s" : null
+      }
+    },
+    {
+      "if" : {
+        "required" : [
           "n"
         ],
         "properties" : {

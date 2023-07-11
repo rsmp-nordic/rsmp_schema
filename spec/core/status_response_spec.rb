@@ -21,25 +21,13 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
      ]
   }}
 
-  it 'vals' do
-    attributes = {
-      "mType"=>"rSMsg",
-      "type"=>"StatusResponse",
-      "cId"=>"bad",
-      "sTs"=>"2023-07-11T10:46:20.360Z",
-      "sS"=>[{"sCI"=>"S0001", "n"=>"signalgroupstatus", "q"=>"undefined", "s"=>nil}],
-      "mId"=>"743bab9d-9c39-4ac6-b8fc-0f7113445674", "ntsOId"=>"KK+AG9998=001TC000", "xNId"=>""
-    }
-    schemas = {tlc: RSMP::Schema.latest_version(:tlc) }
-    expect( RSMP::Schema.validate(attributes, schemas) ).to be_nil
-  end
-
   it 'accepts valid message' do
     expect(validate message, 'core').to be_nil
   end
 
   it 'accepts valid message with q=undefined, s=null from 3.1.3' do
     expect(validate undefined, 'core', '>=3.1.3').to be_nil
+    expect(validate undefined, 'core', '<3.1.3').to eq( [["/sS/0/s", "string"]] )
   end
 
   it 'catches missing component id' do

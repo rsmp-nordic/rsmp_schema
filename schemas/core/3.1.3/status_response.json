@@ -11,18 +11,35 @@
       "minItems": 1,
       "items" : {
         "type" : "object",
-        "properties": {
-          "sCI" : { "$ref": "../3.1.2/definitions.json#/status_code" },
-          "n" : { "description" : "Unique reference of the value", "type" : "string" },
-          "s" : { "description" : "Value", "type" : "string" },
-          "q" : { 
-            "description" : "Value",
-            "type" : "string",
-            "enum" : [ "recent", "old", "undefined", "unknown" ]  // 'undefined' was added
+        "oneOf" : [
+          {
+            "properties": {
+              "sCI" : { "$ref": "../3.1.2/definitions.json#/status_code" },
+              "n" : { "description" : "Unique reference of the value", "type" : "string" },
+              "s" : { "description" : "Value", "type" : "string" },
+              "q" : { 
+                "description" : "Value",
+                "type" : "string",
+                "enum" : [ "recent", "old", "unknown" ]
+              }
+            },
+            "additionalProperties" : false
+          },
+          {
+            "properties": {
+              "sCI" : { "$ref": "../3.1.2/definitions.json#/status_code" },
+              "n" : { "description" : "Unique reference of the value", "type" : "string" },
+              "s" : { "description" : "Null when q=undefined", "type" : "null" },
+              "q" : { 
+                "description" : "Quality",
+                "type" : "string",
+                "const" : "undefined"       // 'undefined' was added
+              }
+            },
+            "additionalProperties" : false
           }
-        },
-        "required" : [ "sCI", "n", "s", "q" ],
-        "additionalProperties": false
+        ],
+        "required" : [ "sCI", "n", "s", "q" ]
       }
     }
   },
