@@ -22,10 +22,9 @@ module RSMP
         end
 
         # convert a yaml item to json schema
-        def self.build_value item
+        def self.build_value item, can_be_null: false
           out = {}
           out['description'] = item['description'] if item['description']
-
           if item['type'] =~/_list$/
             handle_string_list item, out
           else
@@ -33,7 +32,12 @@ module RSMP
             handle_enum item, out
             handle_pattern item, out
           end
-          wrap_refs out
+          wrapped = wrap_refs out
+          if can_be_null
+            {"oneOf"=>[wrapped,{'type'=>'null'}] }
+          else
+            wrapped
+          end
         end
 
         # convert an item which is not a string-list, to json schema
@@ -136,14 +140,14 @@ module RSMP
         end
 
         # convert yaml alarm/status/command item to corresponding jsons schema
-        def self.build_item item, property_key: 'v'
+        def self.build_item item, property_key: 'v', can_be_null: false
           json = { "allOf" => [ { "description" => item['description'] } ] }
           if item['arguments']
             json["allOf"].first["properties"] = { "n" => { "enum" => item['arguments'].keys.sort } }
             item['arguments'].each_pair do |key,argument|
               json["allOf"] << {
                 "if" => { "required" => ["n"], "properties" => { "n" => { "const" => key }}},
-                "then" => { "properties" => { property_key => build_value(argument) } }
+                "then" => { "properties" => { property_key => build_value(argument, can_be_null: can_be_null) } }
               }
             end
           end
@@ -175,7 +179,7 @@ module RSMP
         end
 
         # convert statuses to json schema
-        def self.output_statuses out, items
+        def self.output_statuses out, items, options
           list = [ { "properties" => { "sCI" => { "enum"=> items.keys.sort }}} ]
           items.keys.sort.each do |key|
             list << {
@@ -185,17 +189,19 @@ module RSMP
           end
           json = { "properties" => { "sS" => { "items" => { "allOf" => list }}}}
           out['statuses/statuses.json'] = output_json json
-          items.each_pair { |key,item| output_status out, key, item }
+          items.each_pair { |key,item| output_status out, key, item, options }
         end
 
         # convert a status to json schema
-        def self.output_status out, key, item
-          json = build_item item, property_key:'s'
+        def self.output_status out, key, item, options
+          can_be_null = options["version"]
+          p can_be_null
+          json = build_item item, property_key:'s', can_be_null: true
           out["statuses/#{key}.json"] = output_json json
         end
 
         # convert commands to json schema
-        def self.output_commands out, items
+        def self.output_commands out, items, options
           list = [ { "properties" => { "cCI" => { "enum"=> items.keys.sort }}} ]
           items.keys.sort.each do |key|
             list << {
@@ -212,7 +218,7 @@ module RSMP
           json = { "properties" => { "rvs" => { "$ref" => "commands.json" }}}
           out['commands/command_responses.json'] = output_json json
 
-          items.each_pair { |key,item| output_command out, key, item }
+          items.each_pair { |key,item| output_command out, key, item, options }
         end
 
         # convert a command to json schema
@@ -255,8 +261,8 @@ module RSMP
           out = {}
           output_root out, sxl[:meta]
           output_alarms out, sxl[:alarms]
-          output_statuses out, sxl[:statuses]
-          output_commands out, sxl[:commands]
+          output_statuses out, sxl[:statuses], sxl[:meta]
+          output_commands out, sxl[:commands], sxl[:meta]
           out
         end
 

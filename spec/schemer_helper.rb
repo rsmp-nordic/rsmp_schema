@@ -87,6 +87,7 @@ def validate_variations json_variations, schema, versions = :all
   errors.
     keys.
     group_by {|version| errors[version] }.
-    transform_values {|arr| arr.size == 1 ? arr.first : arr }. 
-    invert
+    transform_values {|arr| arr.size == 1 ? arr.first : arr }.
+    invert.
+    transform_values! {|arr| arr.uniq }
 end
