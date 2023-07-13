@@ -1,7 +1,7 @@
 {
+  "description" : "Less serious lamp error.\nUsed for lamp errors.\nIs a \"minor fault\" defined according to 3.11 in EN12675.",
   "allOf" : [
     {
-      "description" : "Less serious lamp error.\nUsed for lamp errors.\nIs a \"minor fault\" defined according to 3.11 in EN12675.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -22,32 +22,38 @@
         }
       },
       "then" : {
-        "s" : null
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "color"
-          }
+        "s" : {
+          "type" : "null"
         }
       },
-      "then" : {
-        "properties" : {
-          "v" : {
-            "description" : "Color of lamp",
-            "type" : "string",
-            "enum" : [
-              "green",
-              "red",
-              "yellow"
-            ]
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "color"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "v" : {
+                  "description" : "Color of lamp",
+                  "type" : "string",
+                  "enum" : [
+                    "green",
+                    "red",
+                    "yellow"
+                  ]
+                }
+              }
+            }
           }
-        }
+        ]
       }
     }
   ]

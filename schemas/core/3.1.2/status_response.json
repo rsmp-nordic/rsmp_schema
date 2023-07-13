@@ -13,7 +13,7 @@
         "type" : "object",
         "properties": {
           "sCI" : { "$ref": "definitions.json#/status_code" },
-          "n" : { "description" : "Unique reference of the value", "type" : "string" },
+          "n" : { "description" : "Value name", "type" : "string" },
           "s" : { "description" : "Value", "type" : "string" },
           "q" : {
             "description" : "Quality",

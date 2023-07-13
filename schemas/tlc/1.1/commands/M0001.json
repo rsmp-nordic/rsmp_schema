@@ -1,7 +1,7 @@
 {
+  "description" : "Sets functional position.\nSets the controller to yellow flash, dark mode or normal control.\nRequires security code 2.",
   "allOf" : [
     {
-      "description" : "Sets functional position.\nSets the controller to yellow flash, dark mode or normal control.\nRequires security code 2.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -28,104 +28,110 @@
         }
       },
       "then" : {
-        "s" : null
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "status"
-          }
+        "s" : {
+          "type" : "null"
         }
       },
-      "then" : {
-        "properties" : {
-          "v" : {
-            "description" : "Set operating mode",
-            "type" : "string",
-            "enum" : [
-              "Dark",
-              "NormalControl",
-              "YellowFlash"
-            ]
-          }
-        }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "securityCode"
-          }
-        }
-      },
-      "then" : {
-        "properties" : {
-          "v" : {
-            "description" : "Security code 2",
-            "type" : "string"
-          }
-        }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "timeout"
-          }
-        }
-      },
-      "then" : {
-        "properties" : {
-          "v" : {
-            "allOf" : [
-              {
-                "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "status"
+                }
               }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "intersection"
-          }
-        }
-      },
-      "then" : {
-        "properties" : {
-          "v" : {
-            "allOf" : [
-              {
-                "description" : "Intersection number"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+            },
+            "then" : {
+              "properties" : {
+                "v" : {
+                  "description" : "Set operating mode",
+                  "type" : "string",
+                  "enum" : [
+                    "Dark",
+                    "NormalControl",
+                    "YellowFlash"
+                  ]
+                }
               }
-            ]
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "securityCode"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "v" : {
+                  "description" : "Security code 2",
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "timeout"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "v" : {
+                  "allOf" : [
+                    {
+                      "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return"
+                    },
+                    {
+                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "intersection"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "v" : {
+                  "allOf" : [
+                    {
+                      "description" : "Intersection number"
+                    },
+                    {
+                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                    }
+                  ]
+                }
+              }
+            }
           }
-        }
+        ]
       }
     }
   ]

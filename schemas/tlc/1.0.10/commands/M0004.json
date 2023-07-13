@@ -1,7 +1,7 @@
 {
+  "description" : "Restarts Traffic Light Controller.\nUsed in the event of serious faults in the device where a restart is considered to be able to remedy a problem.\nRequires security code 2",
   "allOf" : [
     {
-      "description" : "Restarts Traffic Light Controller.\nUsed in the event of serious faults in the device where a restart is considered to be able to remedy a problem.\nRequires security code 2",
       "properties" : {
         "n" : {
           "enum" : [
@@ -26,53 +26,59 @@
         }
       },
       "then" : {
-        "s" : null
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "status"
-          }
+        "s" : {
+          "type" : "null"
         }
       },
-      "then" : {
-        "properties" : {
-          "v" : {
-            "allOf" : [
-              {
-                "description" : "True: Restart controller"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "status"
+                }
               }
-            ]
+            },
+            "then" : {
+              "properties" : {
+                "v" : {
+                  "allOf" : [
+                    {
+                      "description" : "True: Restart controller"
+                    },
+                    {
+                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "securityCode"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "v" : {
+                  "description" : "Security code 2",
+                  "type" : "string"
+                }
+              }
+            }
           }
-        }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "securityCode"
-          }
-        }
-      },
-      "then" : {
-        "properties" : {
-          "v" : {
-            "description" : "Security code 2",
-            "type" : "string"
-          }
-        }
+        ]
       }
     }
   ]

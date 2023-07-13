@@ -1,7 +1,7 @@
 {
+  "description" : "Input status.\nInput (1-255) of the controllers general purpose I/O.\nInput is used where the traffic light controller must react to external control. It could be external detectors, bus priority, and much more.",
   "allOf" : [
     {
-      "description" : "Input status.\nInput (1-255) of the controllers general purpose I/O.\nInput is used where the traffic light controller must react to external control. It could be external detectors, bus priority, and much more.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -23,47 +23,53 @@
         }
       },
       "then" : {
-        "s" : null
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "inputstatus"
-          }
+        "s" : {
+          "type" : "null"
         }
       },
-      "then" : {
-        "properties" : {
-          "s" : {
-            "description" : "Input status as text field",
-            "type" : "string"
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "inputstatus"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "description" : "Input status as text field",
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "extendedinputstatus"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "description" : "Extended input status as text field",
+                  "type" : "string"
+                }
+              }
+            }
           }
-        }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "extendedinputstatus"
-          }
-        }
-      },
-      "then" : {
-        "properties" : {
-          "s" : {
-            "description" : "Extended input status as text field",
-            "type" : "string"
-          }
-        }
+        ]
       }
     }
   ]
