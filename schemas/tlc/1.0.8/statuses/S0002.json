@@ -1,7 +1,7 @@
 {
+  "description" : "Detector logic status.\nProvides the status of all detector logics of the controller.\nCan be used to draw a live signal group diagram as well provide diagnostic information about the performance of the controller. Can also be used for bus priority, external control systems, and much more.",
   "allOf" : [
     {
-      "description" : "Detector logic status.\nProvides the status of all detector logics of the controller.\nCan be used to draw a live signal group diagram as well provide diagnostic information about the performance of the controller. Can also be used for bus priority, external control systems, and much more.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -22,27 +22,33 @@
         }
       },
       "then" : {
-        "s" : null
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "detectorlogicstatus"
-          }
+        "s" : {
+          "type" : "null"
         }
       },
-      "then" : {
-        "properties" : {
-          "s" : {
-            "description" : "Detector logic status as text field",
-            "type" : "string"
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "detectorlogicstatus"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "description" : "Detector logic status as text field",
+                  "type" : "string"
+                }
+              }
+            }
           }
-        }
+        ]
       }
     }
   ]

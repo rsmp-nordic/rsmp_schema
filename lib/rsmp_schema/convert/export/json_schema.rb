@@ -136,20 +136,40 @@ module RSMP
 
         # convert yaml alarm/status/command item to corresponding jsons schema
         def self.build_item item, property_key: 'v'
-          json = { "allOf" => [ { "description" => item['description'] } ] }
-          if item['arguments']
-            json["allOf"] << {
-              "if"=> { "required" => ["q"], "properties" => { "q"=> { "const" => "undefined" }}},
-              "then" => { "s" => nil }
+          unless item['arguments']
+            json = {
+              "description" => item['description'],
             }
-            json["allOf"].first["properties"] = { "n" => { "enum" => item['arguments'].keys.sort } }
-            item['arguments'].each_pair do |key,argument|
-              json["allOf"] << {
-                "if" => { "required" => ["n"], "properties" => { "n" => { "const" => key }}},
-                "then" => { "properties" => { property_key => build_value(argument) } }
-              }
-            end
+            return json
           end
+
+          json = {
+            "description" => item['description'],
+            "allOf" => [
+              {
+               "properties" => { "n" => { "enum" => item['arguments'].keys.sort }},
+              },
+              {
+                "if" =>
+                {
+                  "required" => ["q"],
+                  "properties" => { "q"=> { "const" => "undefined" }},
+                },
+                  "then" => {
+                  "s" => { "type" => "null" }
+                },
+                "else" => {
+                  "allOf" => item['arguments'].map do |key,argument|
+                    {
+                      "if" => { "required" => ["n"], "properties" => { "n" => { "const" => key }}},
+                      "then" => { "properties" => { property_key => build_value(argument) }}
+                    }
+                  end
+                }
+              }
+            ]
+          }
+
           json
         end
 
