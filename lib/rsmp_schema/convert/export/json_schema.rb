@@ -25,7 +25,6 @@ module RSMP
         def self.build_value item
           out = {}
           out['description'] = item['description'] if item['description']
-
           if item['type'] =~/_list$/
             handle_string_list item, out
           else
@@ -139,6 +138,10 @@ module RSMP
         def self.build_item item, property_key: 'v'
           json = { "allOf" => [ { "description" => item['description'] } ] }
           if item['arguments']
+            json["allOf"] << {
+              "if"=> { "required" => ["q"], "properties" => { "q"=> { "const" => "undefined" }}},
+              "then" => { "s" => nil }
+            }
             json["allOf"].first["properties"] = { "n" => { "enum" => item['arguments'].keys.sort } }
             item['arguments'].each_pair do |key,argument|
               json["allOf"] << {
@@ -190,7 +193,7 @@ module RSMP
 
         # convert a status to json schema
         def self.output_status out, key, item
-          json = build_item item, property_key:'s'
+          json = build_item item, property_key: 's'
           out["statuses/#{key}.json"] = output_json json
         end
 

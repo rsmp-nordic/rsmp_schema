@@ -10,8 +10,24 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
      ]
   }}
 
+  let(:undefined) {{
+    "mType" => "rSMsg",
+    "mId" => "4173c2c8-a933-43cb-9425-66d4613731ed",
+    "type" => "StatusResponse",
+    "cId" => "O+14439=481WA001",
+    "sTs" => "2015-06-08T09:15:18.266Z",
+     "sS" => [
+       { "sCI" => "S0003", "n" => "inputstatus", "s" => nil, "q" => "undefined" }
+     ]
+  }}
+
   it 'accepts valid message' do
     expect(validate message, 'core').to be_nil
+  end
+
+  it 'accepts valid message with q=undefined, s=null from 3.1.3' do
+    expect(validate undefined, 'core', '>=3.1.3').to be_nil
+    expect(validate undefined, 'core', '<3.1.3').to eq( [["/sS/0/s", "string"]] )
   end
 
   it 'catches missing component id' do
@@ -21,7 +37,14 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 
   it 'catches bad status code' do
     message['sS'].first['sCI'] = '99'
-    expect(validate message, 'core').to eq([["/sS/0/sCI", "pattern"]])
+    expect(validate message, 'core').to eq(
+      "3.1.2" => [["/sS/0/sCI", "pattern"]],
+      ["3.1.3", "3.1.4", "3.1.5", "3.2"] => [
+        ["/sS/0/sCI", "pattern"],
+        ["/sS/0/s", "null"],
+        ["/sS/0/q", "const"]
+      ],
+    )
   end
 
   it 'catches missing sS' do
@@ -46,10 +69,17 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 
   it 'catches bad status code' do
     message['sS'].first['sCI'] = 3
-    expect(validate message, 'core').to eq([["/sS/0/sCI", "string"]])
+    expect(validate message, 'core').to eq({
+      "3.1.2" => [["/sS/0/sCI", "string"]],
+      ["3.1.3", "3.1.4", "3.1.5", "3.2"] => [["/sS/0/sCI", "string"], ["/sS/0/s", "null"], ["/sS/0/q", "const"]]
+    })
+
 
     message['sS'].first['sCI'] = '3'
-    expect(validate message, 'core').to eq([["/sS/0/sCI", "pattern"]])
+    expect(validate message, 'core').to eq({
+      "3.1.2" => [["/sS/0/sCI", "pattern"]],
+      ["3.1.3", "3.1.4", "3.1.5", "3.2"] => [["/sS/0/sCI", "pattern"], ["/sS/0/s", "null"], ["/sS/0/q", "const"]]
+    })
   end
 
   it 'catches missing name' do
@@ -59,12 +89,18 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 
   it 'catches bad name' do
     message['sS'].first['n'] = 3
-    expect(validate message, 'core').to eq([["/sS/0/n", "string"]])
+    expect(validate message, 'core').to eq({
+      "3.1.2" => [["/sS/0/n", "string"]],
+      ["3.1.3", "3.1.4", "3.1.5", "3.2"] => [["/sS/0/n", "string"], ["/sS/0/s", "null"], ["/sS/0/q", "const"]]
+    })
   end
 
   it 'catches n set to null' do
     message['sS'].first['n'] = nil
-    expect(validate message, 'core').to eq([["/sS/0/n", "string"]])
+    expect(validate message, 'core').to eq({
+      "3.1.2" => [["/sS/0/n", "string"]],
+      ["3.1.3", "3.1.4", "3.1.5", "3.2"] => [["/sS/0/n", "string"], ["/sS/0/s", "null"], ["/sS/0/q", "const"]]
+    })
   end
 
   it 'catches missing value' do
@@ -81,8 +117,9 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 
   it 'catches bad quality' do
     message['sS'].first['q'] = 'great'
-    expect(validate message, 'core').to eq(
-      [["/sS/0/q", "enum"]]
-    )
+    expect(validate message, 'core').to eq({
+      "3.1.2" => [["/sS/0/q", "enum"]],
+      ["3.1.3", "3.1.4", "3.1.5", "3.2"] => [["/sS/0/q", "enum"], ["/sS/0/s", "null"], ["/sS/0/q", "const"]]
+    })
   end
 end
