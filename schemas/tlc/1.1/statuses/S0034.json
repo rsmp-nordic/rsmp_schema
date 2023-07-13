@@ -1,7 +1,7 @@
 {
+  "description" : "Timeout for dynamic bands.\nTime until a designated time plan is entered due to lost connection with the supervisor.\nDisabled if set to '0'.\nUsed in conjunction with dynamic bands, M0014",
   "allOf" : [
     {
-      "description" : "Timeout for dynamic bands.\nTime until a designated time plan is entered due to lost connection with the supervisor.\nDisabled if set to '0'.\nUsed in conjunction with dynamic bands, M0014",
       "properties" : {
         "n" : {
           "enum" : [
@@ -22,33 +22,39 @@
         }
       },
       "then" : {
-        "s" : null
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "status"
-          }
+        "s" : {
+          "type" : "null"
         }
       },
-      "then" : {
-        "properties" : {
-          "s" : {
-            "allOf" : [
-              {
-                "description" : "Timeout, in minutes"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "status"
+                }
               }
-            ]
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "allOf" : [
+                    {
+                      "description" : "Timeout, in minutes"
+                    },
+                    {
+                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                    }
+                  ]
+                }
+              }
+            }
           }
-        }
+        ]
       }
     }
   ]

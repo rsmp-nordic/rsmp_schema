@@ -1,7 +1,7 @@
 {
+  "description" : "Current time plan.\nThe current time plan (signal program) used in the controller. There may be 1-255 predefined time plans.\nThe time plan (signal program) may change signal timings, cycle time, control strategy and much more. Typical usage is is scenario based control where change of program is used to change priority etc.",
   "allOf" : [
     {
-      "description" : "Current time plan.\nThe current time plan (signal program) used in the controller. There may be 1-255 predefined time plans.\nThe time plan (signal program) may change signal timings, cycle time, control strategy and much more. Typical usage is is scenario based control where change of program is used to change priority etc.",
       "properties" : {
         "n" : {
           "enum" : [
@@ -22,33 +22,39 @@
         }
       },
       "then" : {
-        "s" : null
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "n"
-        ],
-        "properties" : {
-          "n" : {
-            "const" : "status"
-          }
+        "s" : {
+          "type" : "null"
         }
       },
-      "then" : {
-        "properties" : {
-          "s" : {
-            "allOf" : [
-              {
-                "description" : "Current time plan"
-              },
-              {
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "status"
+                }
               }
-            ]
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "allOf" : [
+                    {
+                      "description" : "Current time plan"
+                    },
+                    {
+                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                    }
+                  ]
+                }
+              }
+            }
           }
-        }
+        ]
       }
     }
   ]
