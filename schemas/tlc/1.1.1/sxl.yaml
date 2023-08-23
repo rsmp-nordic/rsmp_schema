@@ -228,11 +228,11 @@ objects:
           status:
             type: boolean
             description: |-
-              False: Emergency stage inactive
-              True: Emergency stage active
+              False: Emergency route inactive
+              True: Emergency route active
           emergencystage:
             type: integer
-            description: Number of emergency stage (set to zero if no route is active)
+            description: Number of emergency route (set to zero if no route is active)
             min: 0
             max: 255
       S0007:
