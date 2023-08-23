@@ -758,10 +758,7 @@ objects:
                 description: ID of the priority request
               t:
                 type: timestamp
-                description: |-
-                  Timestamp, indicating when the priority last changed state.
-                  Format according to W3C XML dateTime with a resolution of 3 decimal places.
-                  All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
+                description: Timestamp, indicating when the priority last changed state.
               s:
                 type: string
                 description: |-
@@ -899,9 +896,7 @@ objects:
               - Data Downloaded with S0098 and hashed with SHA-2 should match this value.
           timestamp:
             type: timestamp
-            description: Time stamp of the checksum. Format according to W3C XML dateTime
-              with a resolution of 3 decimal places. All time stamps in UTC. E.g.
-              2009-10-02T14:34:34.341Z
+            description: Time stamp of the checksum
       S0098:
         description: |-
           Configuration of traffic parameters.
@@ -931,8 +926,7 @@ objects:
               - The format of the binary file is not specified and is not expected to be compatible between suppliers
           timestamp:
             type: timestamp
-            description: |-
-              Time stamp of the config. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
+            description: Time stamp of the config
           version:
             type: string
             description: |-
@@ -945,8 +939,7 @@ objects:
         arguments:
           start:
             type: timestamp
-            description: |-
-              Time stamp for start of measuring. Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
+            description: Time stamp for start of measuring
           vehicles:
             type: integer_list
             description: |-
@@ -963,10 +956,7 @@ objects:
         arguments:
           start:
             type: timestamp
-            description: |-
-              Time stamp for start of measuring. Format according to W3C
-              XML dateTime with a resolution of 3 decimal places. All time stamps
-              in UTC. E.g. 2009-10-02T14:34:34.341Z
+            description: Time stamp for start of measuring
           speed:
             type: integer_list
             description: |-
@@ -983,10 +973,7 @@ objects:
         arguments:
           start:
             type: timestamp
-            description: |-
-              Time stamp for start of measuring. Format according to W3C
-              XML dateTime with a resolution of 3 decimal places. All time stamps
-              in UTC. E.g. 2009-10-02T14:34:34.341Z
+            description: Time stamp for start of measuring
           occupancy:
             type: integer_list
             description: |-
@@ -1003,10 +990,7 @@ objects:
         arguments:
           start:
             type: timestamp
-            description: |-
-              Time stamp for start of measuring. Format according to W3C
-              XML dateTime with a resolution of 3 decimal places. All time stamps
-              in UTC. E.g. 2009-10-02T14:34:34.341Z
+            description: Time stamp for start of measuring
           P:
             type: integer_list
             description: |-
@@ -1794,17 +1778,14 @@ objects:
             type: timestamp
             description: |-
               Time stamp for the minimum time for the signal group to go to green. If the signal group is green, it is the minimum time for the next green.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
           maxToGEstimate:
             type: timestamp
             description: |-
               Time stamp for the maximum time for the signal group to go to green. If the signal group is green, it is the maximum time for the next green.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
           likelyToGEstimate:
             type: timestamp
             description: |-
               Time stamp for the most likely time for the signal group to go to green. If the signal group is green, it is the most likely time for the next green.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
           ToGConfidence:
             type: integer
             description: Confidence of the likelyToGEstimate. 0-100%
@@ -1814,17 +1795,14 @@ objects:
             type: timestamp
             description: |-
               Time stamp for the minimum time for the signal group to go to red. If the signal group is red, it is the minimum time for the next red.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
           maxToREstimate:
             type: timestamp
             description: |-
               Time stamp for the maximum time for the signal group to go to red. If the signal group is red, it is the maximum time for the next red.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
           likelyToREstimate:
             type: timestamp
             description: |-
               Time stamp for the most likely time for the signal group to go to red. If the signal group is red, it is the most likely time for the next red.
-              Format according to W3C XML dateTime with a resolution of 3 decimal places. All time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z
           ToRConfidence:
             type: integer
             description: Confidence of the likelyToREstimate. 0-100%
@@ -1984,9 +1962,7 @@ objects:
         arguments:
           starttime:
             type: timestamp
-            description: Time stamp for start of measuring. Format according to W3C
-              XML dateTime with a resolution of 3 decimal places. All time stamps
-              in UTC. E.g. 2009-10-02T14:34:34.341Z
+            description: Time stamp for start of measuring
           vehicles:
             type: integer
             description: Number of vehicles on a given detector logic (since last
@@ -2000,10 +1976,7 @@ objects:
         arguments:
           starttime:
             type: timestamp
-            description: |-
-              Time stamp for start of measuring. Format according to W3C
-              XML dateTime with a resolution of 3 decimal places. All time stamps
-              in UTC. E.g. 2009-10-02T14:34:34.341Z
+            description: Time stamp for start of measuring
           speed:
             type: integer
             description: Average speed in km/h
@@ -2016,10 +1989,7 @@ objects:
         arguments:
           starttime:
             type: timestamp
-            description: |-
-              Time stamp for start of measuring. Format according to W3C
-              XML dateTime with a resolution of 3 decimal places. All time stamps
-              in UTC. E.g. 2009-10-02T14:34:34.341Z
+            description: Time stamp for start of measuring
           occupancy:
             type: integer
             description: Occupancy in percent (0-100%)
@@ -2032,10 +2002,7 @@ objects:
         arguments:
           starttime:
             type: timestamp
-            description: |-
-              Time stamp for start of measuring. Format according to W3C
-              XML dateTime with a resolution of 3 decimal places. All time stamps
-              in UTC. E.g. 2009-10-02T14:34:34.341Z
+            description: Time stamp for start of measuring
           P:
             type: integer
             description: Number of cars
