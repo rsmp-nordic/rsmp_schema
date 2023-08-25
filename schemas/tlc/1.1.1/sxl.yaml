@@ -218,6 +218,16 @@ objects:
             description: |-
               False: Controller is not in start up mode
               True: Controller is currently in start up mode
+          statusByIntersection:
+            description:
+            type: array
+            items:
+              intersection:
+                type: integer
+                description: Intersection
+              startup:
+                type: boolean
+                description: Intersection is currently in start up mode
       S0006:
         description: |-
           Emergency stage.
