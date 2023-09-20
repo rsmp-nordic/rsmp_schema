@@ -219,15 +219,19 @@ objects:
               False: Controller is not in start up mode
               True: Controller is currently in start up mode
           statusByIntersection:
-            description:
+            description: |-
+              False: Intersection is not in start up mode
+              True: Intersection is currently in start up mode
             type: array
             items:
               intersection:
                 type: integer
-                description: Intersection
+                description: Intersection id
+                min: 0
+                max: 255
               startup:
                 type: boolean
-                description: Intersection is currently in start up mode
+                description: Start up mode
       S0006:
         description: |-
           Emergency route.
