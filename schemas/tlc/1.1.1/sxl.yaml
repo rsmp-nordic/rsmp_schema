@@ -236,7 +236,9 @@ objects:
         description: |-
           Emergency stage.
           The status is active during emergency prioritization.
-          Used in situations where full priority is given in the emergency vehicle program.
+          Used in situations where full priority is given in the emergency vehicle program
+          or for other types of priority in some cases.
+
           If no emergency route is active, status should be set to False, and emergencystage to zero.
         arguments:
           status:
@@ -818,7 +820,8 @@ objects:
         description: |-
           Emergency route.
           The status is active during emergency prioritization.
-          Used in situations where full priority is given in the emergency vehicle program.
+          Used in situations where full priority is given in the emergency vehicle program
+          or for other types of priority in some cases.
 
           This status is similar to S0006, but supports multiple routes
         arguments:
