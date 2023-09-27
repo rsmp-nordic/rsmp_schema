@@ -240,14 +240,18 @@ objects:
           or for other types of priority in some cases.
 
           If no emergency route is active, status should be set to False, and emergencystage to zero.
+
+          Deprecated, use S0035 instead.
         arguments:
           status:
             type: boolean
+            deprecated: true
             description: |-
               False: Emergency stage inactive
               True: Emergency stage active
           emergencystage:
             type: integer
+            deprecated: true
             description: Number of emergency stage (set to zero if no route is active)
             min: 0
             max: 255
