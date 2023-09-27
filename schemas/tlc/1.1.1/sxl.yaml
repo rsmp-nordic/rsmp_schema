@@ -516,7 +516,8 @@ objects:
         arguments:
           number:
             type: integer
-            description: Number of time plans (depreciated)
+            deprecated: true
+            description: Number of time plans
             min: 1
             max: 65025
       S0019:
