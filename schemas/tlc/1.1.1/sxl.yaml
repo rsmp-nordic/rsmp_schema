@@ -175,15 +175,6 @@ objects:
               0 : Input is not active
               1 : Input is active
               - : Input is undefined/does not exist
-          extendedinputstatus:
-            type: string
-            deprecated: true
-            description: |-
-              Extended input status as text field
-              Each character represent the state of the extended input status in consecutive order.
-              0 : Input is not active
-              1 : Input is active
-              - : Input is undefined/does not exist
       S0004:
         description: |-
           Output status.
@@ -195,15 +186,6 @@ objects:
             description: |-
               Output status as text field
               Each character represent the state of the output status in consecutive order.
-              0 : Output is not active
-              1 : Output is active
-              - : Output is undefined/does not exist
-          extendedoutputstatus:
-            type: string
-            deprecated: true
-            description: |-
-              Extended output status as text field
-              Each character represent the state of the extended output status in consecutive order.
               0 : Output is not active
               1 : Output is active
               - : Output is undefined/does not exist
@@ -515,17 +497,6 @@ objects:
             description: Number of signal groups
             min: 1
             max: 65025
-      S0018:
-        description: |-
-          Number of time plans
-          Can be used for the management system to check the number of time plans configured in the controller.
-        arguments:
-          number:
-            type: integer
-            deprecated: true
-            description: Number of time plans
-            min: 1
-            max: 65025
       S0019:
         description: |-
           Number of traffic situations.
@@ -570,7 +541,7 @@ objects:
       S0022:
         description: |-
           List of time plans.
-          Provides a list of the configured time plans which is possible to use. This status was added due to status S0018 only provides the total number of time plans and not which were possible to use with M0002.
+          Provides a list of the configured time plans which is possible to use. This status was added due to status S0018 only provided the total number of time plans and not which were possible to use with M0002.
           Can be used for the management system to check the number of time plans configured in the controller.
         arguments:
           status:
