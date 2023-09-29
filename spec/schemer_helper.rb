@@ -25,7 +25,7 @@ end
   '1.0.14',
   '1.0.15',
   '1.1',
-  '1.1.1'
+  '1.2'
 ].each do |version|
   $schemers['tlc'][version] = JSONSchemer.schema( Pathname.new("schemas/tlc/#{version}/rsmp.json") )
 end
