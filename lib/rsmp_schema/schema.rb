@@ -30,9 +30,12 @@ module RSMP::Schema
     @@schemas[type] = {}
     Dir.glob("#{type_path}/*").select {|f| File.directory? f}.each do |schema_path|
       version = File.basename(schema_path)
-      @@schemas[type][version] = JSONSchemer.schema(
-        Pathname.new(File.join(schema_path,'rsmp.json'))
-      )
+      file_path = File.join(schema_path,'rsmp.json')
+      if File.exist? file_path
+        @@schemas[type][version] = JSONSchemer.schema(
+          Pathname.new(File.join(schema_path,'rsmp.json'))
+        )
+      end
     end
   end
 
