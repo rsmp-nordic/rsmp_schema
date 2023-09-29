@@ -11,7 +11,8 @@ $schemers = {
   '3.1.3',
   '3.1.4',
   '3.1.5',
-  '3.2'
+  '3.2',
+  '3.2.1'
 ].each do |version|
   $schemers['core'][version] = JSONSchemer.schema( Pathname.new("schemas/core/#{version}/rsmp.json") )
 end
