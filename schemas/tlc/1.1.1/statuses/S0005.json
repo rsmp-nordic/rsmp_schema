@@ -5,7 +5,8 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "status"
+            "status",
+            "statusByIntersection"
           ]
         }
       }
@@ -50,6 +51,56 @@
                       "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
                     }
                   ]
+                }
+              }
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "statusByIntersection"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "description" : "False: Intersection is not in start up mode\nTrue: Intersection is currently in start up mode",
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "required" : [
+                      "intersection",
+                      "startup"
+                    ],
+                    "additionalProperties" : false,
+                    "properties" : {
+                      "intersection" : {
+                        "allOf" : [
+                          {
+                            "description" : "Intersection id"
+                          },
+                          {
+                            "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                          }
+                        ]
+                      },
+                      "startup" : {
+                        "allOf" : [
+                          {
+                            "description" : "Start up mode"
+                          },
+                          {
+                            "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
+                          }
+                        ]
+                      }
+                    }
+                  }
                 }
               }
             }

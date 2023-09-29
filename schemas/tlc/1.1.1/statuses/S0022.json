@@ -1,5 +1,5 @@
 {
-  "description" : "List of time plans.\nProvides a list of the configured time plans which is possible to use. This status was added due to status S0018 only provides the total number of time plans and not which were possible to use with M0002.\nCan be used for the management system to check the number of time plans configured in the controller.",
+  "description" : "List of time plans.\nProvides a list of the configured time plans which is possible to use. This status was added due to status S0018 only provided the total number of time plans and not which were possible to use with M0002.\nCan be used for the management system to check the number of time plans configured in the controller.",
   "allOf" : [
     {
       "properties" : {

@@ -5,7 +5,6 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "extendedoutputstatus",
             "outputstatus"
           ]
         }
@@ -44,26 +43,6 @@
               "properties" : {
                 "s" : {
                   "description" : "Output status as text field\nEach character represent the state of the output status in consecutive order.\n0 : Output is not active\n1 : Output is active\n- : Output is undefined/does not exist",
-                  "type" : "string"
-                }
-              }
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "extendedoutputstatus"
-                }
-              }
-            },
-            "then" : {
-              "properties" : {
-                "s" : {
-                  "description" : "Extended output status as text field\nEach character represent the state of the extended output status in consecutive order.\n0 : Output is not active\n1 : Output is active\n- : Output is undefined/does not exist",
                   "type" : "string"
                 }
               }

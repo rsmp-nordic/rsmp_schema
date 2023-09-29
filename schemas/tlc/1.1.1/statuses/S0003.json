@@ -5,7 +5,6 @@
       "properties" : {
         "n" : {
           "enum" : [
-            "extendedinputstatus",
             "inputstatus"
           ]
         }
@@ -44,26 +43,6 @@
               "properties" : {
                 "s" : {
                   "description" : "Input status as text field\nEach character represent the state of the input in consecutive order.\n0 : Input is not active\n1 : Input is active\n- : Input is undefined/does not exist",
-                  "type" : "string"
-                }
-              }
-            }
-          },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "extendedinputstatus"
-                }
-              }
-            },
-            "then" : {
-              "properties" : {
-                "s" : {
-                  "description" : "Extended input status as text field\nEach character represent the state of the extended input status in consecutive order.\n0 : Input is not active\n1 : Input is active\n- : Input is undefined/does not exist",
                   "type" : "string"
                 }
               }
