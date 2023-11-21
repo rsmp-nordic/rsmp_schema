@@ -18,7 +18,7 @@
             "description" : "Update interval in seconds, 0 means send when value changes"
           },
           "sOc" : {
-            "$ref": "../3.1.2/definitions.json#/boolean",
+            "type": "boolean",
             "description" : "Whether to send an update as soon as the value changes"
           }
         },

@@ -14,7 +14,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     "type" => "StatusSubscribe",
     "cId" => "O+14439=481WA001",
      "sS" => [
-       { "sCI" => "S0003", "n" => "inputstatus", "uRt" => "0", "sOc" => "True" }
+       { "sCI" => "S0003", "n" => "inputstatus", "uRt" => "0", "sOc" => true }
      ]
   }}
 
@@ -136,6 +136,13 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     expect(validate_core).to eq(
       [["/sS/0/uRt", "pattern"]]
     )
+  end
+
+  it 'catches sOc wrongly typed as string' do
+    message_3_1_5['sS'].first['sOc'] = "True"
+    expect(validate_core).to eq({
+      ['3.1.5','3.2','3.2.1'] => [["/sS/0/sOc", "boolean"]]
+    })
   end
 
   it 'catches missing sOc' do
