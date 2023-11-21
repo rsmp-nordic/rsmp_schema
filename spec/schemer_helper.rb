@@ -79,7 +79,7 @@ def validate_variations json_variations, schema, versions = :all
   # if all versions has the same errors, then simplify and just return a value
   if errors && errors.any?
     if errors.size == schemers.size && errors.values.uniq.size == 1
-      return errors.values.first
+      return errors.values.first.sort
     end
   end
 
@@ -91,5 +91,5 @@ def validate_variations json_variations, schema, versions = :all
     group_by {|version| errors[version] }.
     transform_values {|arr| arr.size == 1 ? arr.first : arr }.
     invert.
-    transform_values! {|arr| arr.uniq }
+    transform_values! {|arr| arr.uniq.sort }
 end
