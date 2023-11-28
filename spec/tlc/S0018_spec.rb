@@ -7,12 +7,13 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     "cId" => "O+14439=481WA001",
     "sTs" => "2015-06-08T09:15:18.266Z",
       "sS" => [
-      { "sCI" => "S0007", "n" => "intersection" },
-      { "sCI" => "S0007", "n" => "status" }
+      { "sCI" => "S0018", "n" => "number"},
      ]
   }}
 
-  it 'accepts valid status request' do
-    expect( validate(message,'tlc') ).to be_nil
+  it 'accepts valid status request for sxl < 1.2' do
+    expect( validate(message,'tlc') ).to eq(
+      "1.2" => [["/sS/0/sCI", "enum"]]
+    )
    end
 end

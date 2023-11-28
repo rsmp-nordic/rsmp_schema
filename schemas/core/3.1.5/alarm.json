@@ -58,6 +58,15 @@
       "if": {
         "required" : [ "aSp" ],
         "properties" : {
+          "aSp" : { "enum" : [ "Acknowledge"] }
+        }
+      },
+      "then": { "$ref": "../3.1.2/alarm_acknowledge.json" }
+    },
+    {
+      "if": {
+        "required" : [ "aSp" ],
+        "properties" : {
           "aSp" : { "enum" : [ "Request",
                                "request"] }
         }

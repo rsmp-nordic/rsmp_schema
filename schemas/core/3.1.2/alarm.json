@@ -53,6 +53,15 @@
         }
       },
       "then": { "$ref": "alarm_suspended_resumed.json" }
+    },
+    {
+      "if": {
+        "required" : [ "aSp" ],
+        "properties" : {
+          "aSp" : { "enum" : [ "Acknowledge"] }
+        }
+      },
+      "then": { "$ref": "alarm_acknowledge.json" }
     }
   ]
 }
