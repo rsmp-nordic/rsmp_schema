@@ -1,4 +1,4 @@
-x{
+{
   "properties" : {
     "ack" : {
       "description" : "Acknowledgement",
@@ -15,7 +15,7 @@ x{
       "type" : "string",
       "enum" : [ "Suspended", "notSuspended" ]
     },
-    "aTs" : { "$ref": "definitions.json#/timestamp" },
+    "aTs" : { "$ref": "../3.1.2/definitions.json#/timestamp" },
     "cat" : {
       "description" : "Category",
       "type" : "string",
