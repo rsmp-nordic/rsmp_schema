@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rsmp_schema (0.5.2)
+    rsmp_schema (0.5.3)
       json_schemer (~> 2.1.0)
       thor (~> 1.3.0)
 
