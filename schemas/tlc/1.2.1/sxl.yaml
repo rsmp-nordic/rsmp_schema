@@ -523,11 +523,11 @@ objects:
           controlmode:
             type: string_list
             values:
-              startup: Startup mode
-              control: Normal control
-              standby: Standby mode
-              failure: Failure mode
-              test: Test mode
+              startup: The controller starts up, performs a power on self test and performs each :term:`start-up interval`
+              control: Normal 3-light control
+              standby: The controller is in dark or yellow flash mode (either according to programming or manually set)
+              failure: The controller has a “major fault” defined according to 3.8 i EN12675. The controller is in dark or yellow flash mode
+              test: Mode used for various tests, e.g. signal lights
       S0021:
         description: |-
           Manually set detector logic.
