@@ -86,7 +86,7 @@ RSpec.describe RSMP::Schema do
     path = File.expand_path( File.join(__dir__,'..','schemas','tlc') )
     RSMP::Schema.load_schema_type type, path
     expect(RSMP::Schema.schema_types).to eq([:core,:tlc,:custom])
-    expect(RSMP::Schema.versions(type)).to eq(["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15", "1.1", "1.2"])
+    expect(RSMP::Schema.versions(type)).to eq(["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15", "1.1", "1.2", "1.2.1"])
 
     expect {
       RSMP::Schema.load_schema_type type, path                # should complain that type is already loaded
