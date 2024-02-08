@@ -216,7 +216,7 @@ objects:
                 description: Start up mode
       S0006:
         description: |-
-          Emergency stage.
+          Emergency route.
           The status is active during emergency prioritization.
           Used in situations where full priority is given in the emergency vehicle program
           or for other types of priority in some cases.
@@ -229,12 +229,12 @@ objects:
             type: boolean
             deprecated: true
             description: |-
-              False: Emergency stage inactive
-              True: Emergency stage active
+              False: Emergency route inactive
+              True: Emergency route active
           emergencystage:
             type: integer
             deprecated: true
-            description: Number of emergency stage (set to zero if no route is active)
+            description: Number of emergency route (set to zero if no route is active)
             min: 0
             max: 255
       S0007:
