@@ -111,9 +111,10 @@ objects:
             type: string
             description: |-
               Signal group status as text field.
-              Each character represent the state of the signal group in consecutive order.
+              Each character represent the state of the signal group in consecutive order,
+              where the leftmost character starts with signal group 1.
               Signal group status is described in detail in the corresponding section.
-              - = Signal group is undefined/does not exist
+              - : Signal group is undefined/does not exist
             pattern: "^[a-hA-G0-9N-P]*$"
           cyclecounter:
             type: integer
@@ -156,8 +157,9 @@ objects:
           detectorlogicstatus:
             type: string
             description: |-
-              Detector logic status as text field
-              Each character represent the state of the detector logic in consecutive order.
+              Detector logic status as text field.
+              Each character represent the state of the detector logic in consecutive order,
+              where the leftmost character starts with detector logic 1.
               0 : Detector logic is not active
               1 : Detector logic is active
               - : Detector logic is undefined/does not exist
@@ -170,8 +172,9 @@ objects:
           inputstatus:
             type: string
             description: |-
-              Input status as text field
-              Each character represent the state of the input in consecutive order.
+              Input status as text field.
+              Each character represent the state of the input in consecutive order,
+              where the leftmost character starts with input 1.
               0 : Input is not active
               1 : Input is active
               - : Input is undefined/does not exist
@@ -184,8 +187,9 @@ objects:
           outputstatus:
             type: string
             description: |-
-              Output status as text field
-              Each character represent the state of the output status in consecutive order.
+              Output status as text field.
+              Each character represent the state of the output status in consecutive order,
+              where the leftmost character starts with output 1.
               0 : Output is not active
               1 : Output is active
               - : Output is undefined/does not exist
@@ -536,7 +540,13 @@ objects:
         arguments:
           detectorlogics:
             type: string
-            description: Manually set detector logics (1/0) as text field
+            description: |-
+              Manually set detector logic as text field.
+              Each character represent the state in consecutive order,
+              where the leftmost character starts with detector logic 1.
+              0 : Detector logic not manually set
+              1 : Detector logic manually set
+              - : Detector logic is undefined/does not exist
             pattern: "^[01]*$"
       S0022:
         description: |-
@@ -666,7 +676,13 @@ objects:
         arguments:
           status:
             type: string
-            description: Forced input status as text field
+            description: |-
+              Forced input status as text field.
+              Each character represent the state in consecutive order,
+              where the leftmost character starts with input 1.
+              0 : Input not forced
+              1 : Input forced
+              - : Input undefined/does not exist
       S0030:
         description: |-
           Forced output status.
@@ -675,7 +691,13 @@ objects:
         arguments:
           status:
             type: string
-            description: Forced output status as text field
+            description: |-
+              Forced output status as text field.
+              Each character represent the state in consecutive order,
+              where the leftmost character starts with output 1.
+              0 : Output not forced
+              1 : Output forced
+              - : Output undefined/does not exist
       S0031:
         description: |-
           Trigger level sensitivity for loop detector.
