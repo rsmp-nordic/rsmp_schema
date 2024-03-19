@@ -1688,6 +1688,17 @@ objects:
             type: string
             description: Security code 2
         command: setTimeout
+      M0024:
+        description: |-
+          Reset alarms
+          Some types of alarms may use a delay or threshold(s) in order to prevent alarms
+          to trigger too soon or too often. This command resets the alarm to the default state.
+          It is useful during maintenance work.
+        arguments:
+          status:
+            type: boolean
+            description: 'True: Reset alarms'
+        command: setResetAlarms
       M0103:
         description: |-
           Set security code.
