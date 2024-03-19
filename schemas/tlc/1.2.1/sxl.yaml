@@ -1185,9 +1185,11 @@ objects:
         arguments:
           status:
             type: boolean
+            deprecated: true
             description: 'True: Restart controller'
           securityCode:
             type: string
+            deprecated: true
             description: Security code 2
         command: setRestart
       M0005:
