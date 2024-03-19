@@ -1130,7 +1130,10 @@ objects:
             max: 1440
           intersection:
             type: integer
-            description: Intersection number
+            description: |-
+              Intersection number.
+              Command only applies to specified intersection. Other intersections remains in their respective operating mode(s).
+              0: All intersections
             min: 0
             max: 255
         command: setValue
