@@ -19,7 +19,7 @@ message = {
 }
 
 # try validating a message against our schema
-schema = Pathname.new('schema/tlc/1.1/rsmp.json')
+schema = Pathname.new('schema/tlc/1.2.1/rsmp.json')
 schemer = JSONSchemer.schema(schema)
 if schemer.valid? message
   puts 'ok'
