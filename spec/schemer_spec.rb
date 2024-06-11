@@ -24,7 +24,8 @@ RSpec.describe RSMP::Schema do
     expect(RSMP::Schema.has_schema?(:tlc,'1.0.15')).to be(true)
     expect(RSMP::Schema.has_schema?(:tlc,'1.1')).to be(true)
     expect(RSMP::Schema.has_schema?(:tlc,'1.2')).to be(true)
-    expect(RSMP::Schema.has_schema?(:tlc,'1.1.2')).to be(false)
+    expect(RSMP::Schema.has_schema?(:tlc,'1.2.1')).to be(true)
+    expect(RSMP::Schema.has_schema?(:tlc,'1.2.2')).to be(false)
   end
 
   it 'provides schema versions' do
