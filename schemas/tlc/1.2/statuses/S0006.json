@@ -1,5 +1,5 @@
 {
-  "description" : "Emergency stage.\nThe status is active during emergency prioritization.\nUsed in situations where full priority is given in the emergency vehicle program\nor for other types of priority in some cases.\n\nIf no emergency route is active, status should be set to False, and emergencystage to zero.\n\nDeprecated, use S0035 instead.",
+  "description" : "Emergency route.\nThe status is active during emergency prioritization.\nUsed in situations where full priority is given in the emergency vehicle program\nor for other types of priority in some cases.\n\nIf no emergency route is active, status should be set to False, and emergencystage to zero.\n\nDeprecated, use S0035 instead.",
   "allOf" : [
     {
       "properties" : {
@@ -45,7 +45,7 @@
                 "s" : {
                   "allOf" : [
                     {
-                      "description" : "False: Emergency stage inactive\nTrue: Emergency stage active"
+                      "description" : "False: Emergency route inactive\nTrue: Emergency route active"
                     },
                     {
                       "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
@@ -71,7 +71,7 @@
                 "s" : {
                   "allOf" : [
                     {
-                      "description" : "Number of emergency stage (set to zero if no route is active)"
+                      "description" : "Number of emergency route (set to zero if no route is active)"
                     },
                     {
                       "$ref" : "../../../core/3.1.2/definitions.json#/integer"

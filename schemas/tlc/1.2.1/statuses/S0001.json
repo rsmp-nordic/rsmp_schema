@@ -45,7 +45,7 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "description" : "Signal group status as text field.\nEach character represent the state of the signal group in consecutive order.\nSignal group status is described in detail in the corresponding section.\n- = Signal group is undefined/does not exist",
+                  "description" : "Signal group status as text field.\nEach character represent the state of the signal group in consecutive order,\nwhere the leftmost character starts with signal group 1.\nSignal group status is described in detail in the corresponding section.\n- : Signal group is undefined/does not exist",
                   "type" : "string",
                   "pattern" : "^[a-hA-G0-9N-P]*$"
                 }

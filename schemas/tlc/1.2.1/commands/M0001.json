@@ -121,7 +121,7 @@
                 "v" : {
                   "allOf" : [
                     {
-                      "description" : "Intersection number"
+                      "description" : "Intersection number.\nCommand only applies to specified intersection. Other intersections remains in their respective operating mode(s).\n0: All intersections"
                     },
                     {
                       "$ref" : "../../../core/3.1.2/definitions.json#/integer"

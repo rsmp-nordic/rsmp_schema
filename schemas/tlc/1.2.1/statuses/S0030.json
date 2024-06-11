@@ -42,7 +42,7 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "description" : "Forced output status as text field",
+                  "description" : "Forced output status as text field.\nEach character represent the state in consecutive order,\nwhere the leftmost character starts with output 1.\n0 : Output not forced\n1 : Output forced\n- : Output undefined/does not exist",
                   "type" : "string"
                 }
               }
