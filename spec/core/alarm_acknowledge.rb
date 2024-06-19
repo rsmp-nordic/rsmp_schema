@@ -18,7 +18,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     valid = message.dup
     valid["aSp"] = 'acknowledge'
     expect( validate(valid, 'core') ).to eq({
-      ['3.2','3.2.1'] => [["/aSp", "enum"]]
+      ['3.2','3.2.1','3.2.2'] => [["/aSp", "enum"]]
     })
   end
 
