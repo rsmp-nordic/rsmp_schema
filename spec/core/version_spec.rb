@@ -8,7 +8,8 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     "type" => "Version",
     "RSMP" => [
       { "vers" => "3.2" },
-      { "vers" => "3.2.1" }
+      { "vers" => "3.2.1" },
+      { "vers" => "3.2.2" }
     ],
     "SXL" => "1.2.1"
   }}
