@@ -108,4 +108,10 @@ RSpec.describe RSMP::Schema do
   ensure
     RSMP::Schema.remove_schema_type type                      # cleanup
   end
+
+  describe "#sanitize" do
+    it 'works' do
+      expect(RSMP::Schema.sanitize_version('1.2.1')).to eq('1.2.1')
+    end
+  end
 end
