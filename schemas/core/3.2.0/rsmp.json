@@ -99,7 +99,7 @@
         "properties": { "type": { "const": "StatusResponse" } }
       },
       "then": {
-        "$ref": "../3.2/status_response.json"
+        "$ref": "../3.2.0/status_response.json"
       }
     },
     {
@@ -126,7 +126,7 @@
         "properties": { "type": { "const": "StatusUpdate" } }
       },
       "then": {
-        "$ref": "../3.2/status_update.json"
+        "$ref": "../3.2.0/status_update.json"
       }
     }
   ]

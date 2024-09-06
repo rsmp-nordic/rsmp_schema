@@ -21,7 +21,7 @@
           "aSp" : { "enum" : [ "Issue"] }
         }
       },
-      "then": { "$ref": "../3.2/alarm_issue.json" }
+      "then": { "$ref": "../3.2.0/alarm_issue.json" }
     },
     {
       "if": {
@@ -47,7 +47,7 @@
           "sS" : { "enum" : [ "suspended", "notSuspended"] }
         }
       },
-      "then": { "$ref": "../3.2/alarm_suspended_resumed.json" }
+      "then": { "$ref": "../3.2.0/alarm_suspended_resumed.json" }
     },
     {
       "if": {
@@ -65,7 +65,7 @@
           "aSp" : { "enum" : [ "Acknowledge"] }
         }
       },
-      "then": { "$ref": "../3.2/alarm_acknowledge.json" }
+      "then": { "$ref": "../3.2.0/alarm_acknowledge.json" }
     }
    ]
 }

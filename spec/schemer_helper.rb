@@ -11,7 +11,7 @@ $schemers = {
   '3.1.3',
   '3.1.4',
   '3.1.5',
-  '3.2',
+  '3.2.0',
   '3.2.1',
   '3.2.2'
 ].each do |version|
@@ -26,8 +26,8 @@ end
   '1.0.13',
   '1.0.14',
   '1.0.15',
-  '1.1',
-  '1.2',
+  '1.1.0',
+  '1.2.0',
   '1.2.1'
 ].each do |version|
   $schemers['tlc'][version] = JSONSchemer.schema( Pathname.new("schemas/tlc/#{version}/rsmp.json") )
@@ -86,8 +86,8 @@ def validate_variations json_variations, schema, versions = :all
   end
 
   # return errors, grouped by versions with the same error
-  # e.g. {'1.1' => 'A', 1.2 => 'A', '1.3' => 'B' }
-  # is transformed to { ['1.1','1.2'] => 'A', '1.3' => 'B'}
+  # e.g. {'1.1.0' => 'A', '1.2.0' => 'A', '1.3.0' => 'B' }
+  # is transformed to { ['1.1.0','1.2.0'] => 'A', '1.3.0' => 'B'}
   errors.
     keys.
     group_by {|version| errors[version] }.
