@@ -25,27 +25,27 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     expect( validate(message, 'core') ).to be_nil
   end
 
-  it 'accepts aSp case variations only for core < 3.2,' do
+  it 'accepts aSp case variations only for core < 3.2.0,' do
     valid = message.dup
     valid["aSp"] = 'issue'
     expect( validate(valid, 'core') ).to eq({
-      ['3.2','3.2.1','3.2.2'] => [["/aSp", "enum"]]
+      ['3.2.0','3.2.1','3.2.2'] => [["/aSp", "enum"]]
     })
   end
 
-  it 'accepts aS case variations only for core < 3.2' do
+  it 'accepts aS case variations only for core < 3.2.0' do
     valid = message.dup
     valid["aS"] = 'active'
     expect( validate(valid, 'core') ).to eq({
-      ['3.2','3.2.1','3.2.2'] => [["/aS", "enum"]]
+      ['3.2.0','3.2.1','3.2.2'] => [["/aS", "enum"]]
     })
   end
 
-  it 'accepts ack case variations only for core < 3.2' do#
+  it 'accepts ack case variations only for core < 3.2.0' do#
     valid = message.dup
     valid["ack"] = 'NotAcknowledged'
     expect( validate(valid, 'core') ).to eq({
-      ['3.2','3.2.1','3.2.2'] => [["/ack", "enum"]]
+      ['3.2.0','3.2.1','3.2.2'] => [["/ack", "enum"]]
     })
   end
 

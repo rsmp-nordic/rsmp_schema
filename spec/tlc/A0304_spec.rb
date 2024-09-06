@@ -41,12 +41,12 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     ]
   }}
 
-  it 'accepts from 1.1' do
-    expect( validate(message,'tlc', '>=1.1') ).to be_nil
+  it 'accepts from 1.1.0' do
+    expect( validate(message,'tlc', '>=1.1.0') ).to be_nil
    end
 
-  it 'reject before 1.1' do
-    expect( validate(message,'tlc', '<1.1') ).to eq(
+  it 'reject before 1.1.0' do
+    expect( validate(message,'tlc', '<1.1.0') ).to eq(
       [["/aCId", "enum"]]
     )
    end

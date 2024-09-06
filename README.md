@@ -25,7 +25,7 @@ rsmp.json
     M0001.json
 ```
 
-##  Usage
+## Usage
 The JSON Schema can be used from any language that provides a suitable JSON Schema validation library.
 
 For example, to validate a JSON message with Ruby using the json_schemer gem:
@@ -52,7 +52,7 @@ message = {
 }
 
 # try validating a message against our schema
-schema = Pathname.new('schemas/tlc/1.1/rsmp.json')
+schema = Pathname.new('schemas/tlc/1.1.0/rsmp.json')
 schemer = JSONSchemer.schema(schema)
 puts schemer.valid? message     # => true
 ```

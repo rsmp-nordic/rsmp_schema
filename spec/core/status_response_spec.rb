@@ -11,7 +11,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   }}
 
   it 'accepts valid message' do
-    expect(validate message, 'core', '3.2').to be_nil
+    expect(validate message, 'core', '3.2.0').to be_nil
   end
 
   it 'accepts valid message with q=undefined, s=null from 3.1.3' do

@@ -19,14 +19,14 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     )
   end
 
-  it 'reject case variations from 3.2' do
+  it 'reject case variations from 3.2.0' do
     message["aSp"] = 'request'
-    expect( validate(message, 'core', '>=3.2') ).to eq(
+    expect( validate(message, 'core', '>=3.2.0') ).to eq(
       [["/aSp", "enum"]]
     )
   end
 
-  it 'accepts case variations before 3.2' do
+  it 'accepts case variations before 3.2.0' do
     message["aSp"] = 'request'
     expect( validate(message, 'core', '3.1.5') ).to be_nil
   end

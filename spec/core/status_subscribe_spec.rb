@@ -25,7 +25,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
       '3.1.3' => message_3_1_1,
       '3.1.4' => message_3_1_1,
       '3.1.5' => message_3_1_5,
-      '3.2'   => message_3_1_5,
+      '3.2.0'   => message_3_1_5,
       '3.2.1' => message_3_1_5,
       '3.2.2' => message_3_1_5,
     }
@@ -142,14 +142,14 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'catches sOc wrongly typed as string' do
     message_3_1_5['sS'].first['sOc'] = "True"
     expect(validate_core).to eq({
-      ['3.1.5','3.2','3.2.1','3.2.2'] => [["/sS/0/sOc", "boolean"]]
+      ['3.1.5','3.2.0','3.2.1','3.2.2'] => [["/sS/0/sOc", "boolean"]]
     })
   end
 
   it 'catches missing sOc' do
     message_3_1_5['sS'].first.delete 'sOc'
     expect(validate_core).to eq({
-      ['3.1.5','3.2','3.2.1','3.2.2'] => [["/sS/0", "required", {"missing_keys"=>["sOc"]}]]
+      ['3.1.5','3.2.0','3.2.1','3.2.2'] => [["/sS/0", "required", {"missing_keys"=>["sOc"]}]]
     })
   end
 

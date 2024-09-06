@@ -13,7 +13,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 
   it 'accepts valid status request for sxl < 1.2' do
     expect( validate(message,'tlc') ).to eq(
-      ["1.2", "1.2.1"] => [["/sS/0/sCI", "enum"]]
+      ["1.2.0", "1.2.1"] => [["/sS/0/sCI", "enum"]]
     )
    end
 end

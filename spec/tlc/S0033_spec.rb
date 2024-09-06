@@ -135,30 +135,30 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   }}
 
 
-  it 'accepts from 1.1' do
-    expect( validate(request, 'tlc', '>=1.1') ).to be_nil
-    expect( validate(response, 'tlc', '>=1.1') ).to be_nil
-    expect( validate(empty_response, 'tlc', '>=1.1') ).to be_nil
-    expect( validate(update, 'tlc', '>=1.1') ).to be_nil
+  it 'accepts from 1.1.0' do
+    expect( validate(request, 'tlc', '>=1.1.0') ).to be_nil
+    expect( validate(response, 'tlc', '>=1.1.0') ).to be_nil
+    expect( validate(empty_response, 'tlc', '>=1.1.0') ).to be_nil
+    expect( validate(update, 'tlc', '>=1.1.0') ).to be_nil
   end
 
   it 'rejects before 1.1' do
-    expect( validate(request, 'tlc', '<1.1') ).to eq(
+    expect( validate(request, 'tlc', '<1.1.0') ).to eq(
       [
         ["/sS/0/sCI", "enum"]
       ]
     )
-    expect( validate(response, 'tlc', '<1.1') ).to eq(
+    expect( validate(response, 'tlc', '<1.1.0') ).to eq(
       [        
         ["/sS/0/sCI", "enum"]
       ]
     )
-    expect( validate(empty_response, 'tlc', '<1.1') ).to eq(
+    expect( validate(empty_response, 'tlc', '<1.1.0') ).to eq(
       [        
         ["/sS/0/sCI", "enum"]
       ]
     )
-    expect( validate(update, 'tlc', '<1.1') ).to eq(
+    expect( validate(update, 'tlc', '<1.1.0') ).to eq(
       [        
         ["/sS/0/sCI", "enum"]
       ]

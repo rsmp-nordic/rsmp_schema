@@ -139,8 +139,13 @@ module RSMP::Schema
   #   3.1A3r3 >= 3.1
   # return nil if string doesn't match
   def self.sanitize_version version
-    matched = /^\d+\.\d+(\.\d+)?/.match version
+    # match normal z.y.z format
+    matched = /^\d+\.\d+\.\d+/.match version
     matched.to_s if matched
+
+    # match x.y format, and add patch version zero to get z.y.0
+    matched = /^\d+\.\d+/.match version
+    "#{matched.to_s}.0" if matched
   end
 
   # find schema for a particular schema and version
