@@ -44,7 +44,7 @@
         "required" : [ "aSp", "sS" ],
         "properties" : {
           "aSp" : { "enum" : [ "Suspend", "Resume"] },
-          "sS" : { "enum" : [ "suspended", "notSuspended"] }
+          "sS" : { "enum" : [ "Suspended", "notSuspended"] }
         }
       },
       "then": { "$ref": "../3.2.0/alarm_suspended_resumed.json" }

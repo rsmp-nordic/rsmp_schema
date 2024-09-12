@@ -9,7 +9,7 @@
     "aS" : {
       "description" : "Active status",
       "type" : "string",
-      "enum" : [ "inActive", "Active",
+      "enum" : [ "inActive", "Active", "inactive",
                  "InActive", "active" ]
     },
     "sS" : {
