@@ -9,8 +9,8 @@
     "aSp" : {
       "description" : "Alarm specialization",
       "type" : "string",
-      "enum" : [ "Issue", "Acknowledge", "Suspend", "Resume", "Request",
-                 "issue", "acknowledge", "request" ]
+      "enum" : [ "Issue", "Acknowledge", "Suspend", "Resume",
+                 "issue", "acknowledge" ]
     }
   },
   "required" : [ "aSp"],
@@ -60,16 +60,6 @@
         }
       },
       "then": { "$ref": "../3.1.2/alarm_acknowledge.json" }
-    },
-    {
-      "if": {
-        "required" : [ "aSp" ],
-        "properties" : {
-          "aSp" : { "enum" : [ "Request",
-                               "request"] }
-        }
-      },
-      "then": { "$ref": "alarm_request.json" }
     }
-   ]
+  ]
 }
