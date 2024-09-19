@@ -36,7 +36,7 @@
         "properties": { "type": { "const": "AggregatedStatus" } }
       },
       "then": {
-        "$ref": "../3.1.2/aggregated_status.json"
+        "$ref": "aggregated_status.json"
       }
     },
     {
