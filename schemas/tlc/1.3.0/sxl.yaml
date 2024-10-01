@@ -159,7 +159,7 @@ objects:
               See the coordination section for more information.
             min: 0
             max: 999
-          basecyclecounter:
+          basecyclecounter10:
             type: integer
             description: |-
               The same as basecyclecounter, but in 10th of a second.

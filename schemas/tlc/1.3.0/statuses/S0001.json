@@ -6,6 +6,7 @@
         "n" : {
           "enum" : [
             "basecyclecounter",
+            "basecyclecounter10",
             "cyclecounter",
             "cyclecounter10",
             "signalgroupstatus",
@@ -113,6 +114,32 @@
               "properties" : {
                 "n" : {
                   "const" : "basecyclecounter"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "allOf" : [
+                    {
+                      "description" : "Base cycle counter.\nUsed for handling of coordination between TLC’s.\nSynchronized between all TLC’s in an active coordination.\nSee the coordination section for more information."
+                    },
+                    {
+                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "basecyclecounter10"
                 }
               }
             },
