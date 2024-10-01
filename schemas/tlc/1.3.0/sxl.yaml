@@ -159,6 +159,19 @@ objects:
               See the coordination section for more information.
             min: 0
             max: 999
+          basecyclecounter:
+            type: integer
+            description: |-
+              The same as basecyclecounter, but in 10th of a second.
+
+              The basecyclecounter must increase each time basecyclecounter10 hits a whole second, eg. 0, 10, 20...
+              In other words, dividing basecyclecounter10 while truncating to zero must equal basecyclecounter.
+
+              If the internal cycle counter precision is 1 second, then basecyclecounter10 will always equal basecyclecounter.
+
+              The basecyclecounter10 attribute is metadata and is updated only when other non-metadata attributes changes.
+              For example, if you subscribe to signalgroupstatus and basecyclecounter10,
+              you will get an update whenever signal group status changes, not every 10th of a second.
           stage:
             type: integer
             description: Current stage (isolated)
