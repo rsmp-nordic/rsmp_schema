@@ -95,7 +95,7 @@
                 "s" : {
                   "allOf" : [
                     {
-                      "description" : "The same as cyclecounter, but in 10th of a second.\n\nRounding down cyclecounter10 to the nearest integer equal cyclecounter.\n\nThe cyclecounter10 attribute is metadata and is updated only when other non-metadata attributes changes.\nFor example, if you subscribe to signalgroupstatus and cyclecounter10,\nyou will get an update whenever signal group status changes, not every 10th of a second."
+                      "description" : "The same as cyclecounter, but in 10th of a second.\n\nThe cyclecounter must increase each time cyclecounter10 hits a whole second, eg. 0, 10, 20...\nIn other words, dividing cyclecounter10 while truncating to zero must equal cyclecounter.\n\nIf the internal cycle counter precision is 1 second, then cyclecounter10 will always equal cyclecounter.\n\nThe cyclecounter10 attribute is metadata and is updated only when other non-metadata attributes changes.\nFor example, if you subscribe to signalgroupstatus and cyclecounter10,\nyou will get an update whenever signal group status changes, not every 10th of a second."
                     },
                     {
                       "$ref" : "../../../core/3.1.2/definitions.json#/integer"
@@ -121,7 +121,7 @@
                 "s" : {
                   "allOf" : [
                     {
-                      "description" : "Base cycle counter.\nUsed for handling of coordination between TLC’s.\nSynchronized between all TLC’s in an active coordination.\nSee the coordination section for more information."
+                      "description" : "The same as basecyclecounter, but in 10th of a second.\n\nThe basecyclecounter must increase each time basecyclecounter10 hits a whole second, eg. 0, 10, 20...\nIn other words, dividing basecyclecounter10 while truncating to zero must equal basecyclecounter.\n\nIf the internal cycle counter precision is 1 second, then basecyclecounter10 will always equal basecyclecounter.\n\nThe basecyclecounter10 attribute is metadata and is updated only when other non-metadata attributes changes.\nFor example, if you subscribe to signalgroupstatus and basecyclecounter10,\nyou will get an update whenever signal group status changes, not every 10th of a second."
                     },
                     {
                       "$ref" : "../../../core/3.1.2/definitions.json#/integer"
