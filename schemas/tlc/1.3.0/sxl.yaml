@@ -139,7 +139,10 @@ objects:
             description: |-
               The same as cyclecounter, but in 10th of a second.
 
-              Rounding down cyclecounter10 to the nearest integer equal cyclecounter.
+              The cyclecounter must increase each time cyclecounter10 hits a whole second, eg. 0, 10, 20...
+              In other words, dividing cyclecounter10 while truncating to zero must equal cyclecounter.
+
+              If the internal cycle counter precision is 1 second, then cyclecounter10 will always equal cyclecounter.
 
               The cyclecounter10 attribute is metadata and is updated only when other non-metadata attributes changes.
               For example, if you subscribe to signalgroupstatus and cyclecounter10,
