@@ -550,7 +550,7 @@ objects:
 
               The leftmost character represents the first detector logic,
               the second character the second detector logic, etc.
-              The  implies that the receiver must be able to map character indexes to detector logics.
+              This implies that it must be possible to map character indexes to detector logics.
               
               If detector logic component ids include an integer part, it's recommended to use them as indexes, e.g.:
 
