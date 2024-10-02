@@ -569,7 +569,7 @@ objects:
               prio_c => 3
 
               To set these three detector logics, the string "111" would be used.
-            pattern: "^[01\-]*$"
+            pattern: "^[01-]*$"
       S0022:
         description: |-
           List of time plans.
