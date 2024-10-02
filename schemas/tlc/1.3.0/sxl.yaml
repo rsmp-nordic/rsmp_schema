@@ -550,17 +550,16 @@ objects:
 
               The leftmost character represents the first detector logic,
               the second character the second detector logic, etc.
-              The receiver must be able to map integer indexes for a detector logics.
+              The  implies that the receiver must be able to map character indexes to detector logics.
               
-              If the component ids of detector logics include an integer part, it's recommended to use them for the ordering.
-              For example:
+              If detector logic component ids include an integer part, it's recommended to use them for the mapping, e.g.:
 
               KK+AG0503=001DL001 => 1
               KK+AG0503=001DL002 => 2
               KK+AG0503=001DL004 => 4
 
-              To set all three detector logics, the string "11-1" would be used. Because there is no KK+AG0503=001DL003,
-              which would corresponded to index 3, the 3rd character is set to '-'.
+              To set these three detector logics, the string "11-1" would be used. Because there is no KK+AG0503=001DL003,
+              (which would corresponded to index 3), the 3rd character is set to '-'.
 
               If the component ids of detector logics has no integer part,
               it's recommend to index them by sorting them alphabetically:
@@ -568,6 +567,8 @@ objects:
               prio_a => 1
               prio_b => 2
               prio_c => 3
+
+              To set these three detector logics, the string "111" would be used.
             pattern: "^[01\-]*$"
       S0022:
         description: |-
