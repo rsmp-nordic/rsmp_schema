@@ -541,13 +541,34 @@ objects:
           detectorlogics:
             type: string
             description: |-
-              Manually set detector logic as text field.
-              Each character represent the state in consecutive order,
-              where the leftmost character starts with detector logic 1.
+              Manually set detector logics using a string like "10011110".
+              Each character represent the requested state of a detector logic:
+
               0 : Detector logic not manually set
               1 : Detector logic manually set
               - : Detector logic is undefined/does not exist
-            pattern: "^[01]*$"
+
+              The leftmost character represents the first detector logic,
+              the second character the second detector logic, etc.
+              The receiver must be able to map integer indexes for a detector logics.
+              
+              If the component ids of detector logics include an integer part, it's recommended to use them for the ordering.
+              For example:
+
+              KK+AG0503=001DL001 => 1
+              KK+AG0503=001DL002 => 2
+              KK+AG0503=001DL004 => 4
+
+              To set all three detector logics, the string "11-1" would be used. Because there is no KK+AG0503=001DL003,
+              which would corresponded to index 3, the 3rd character is set to '-'.
+
+              If the component ids of detector logics has no integer part,
+              it's recommend to index them by sorting them alphabetically:
+
+              prio_a => 1
+              prio_b => 2
+              prio_c => 3
+            pattern: "^[01\-]*$"
       S0022:
         description: |-
           List of time plans.
