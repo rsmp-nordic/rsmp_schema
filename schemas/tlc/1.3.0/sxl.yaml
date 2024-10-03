@@ -550,23 +550,24 @@ objects:
 
               The leftmost character represents the first detector logic,
               the second character the second detector logic, etc.
-              This implies that it must be possible to map character indexes to detector logics.
               
-              If detector logic component ids include an integer part, it's recommended to use them as indexes, e.g.:
+              If detector logic component ids include an integer index part,
+              it's recommended to use it when mapping between index and detector logic, e.g.:
 
-              KK+AG0503=001DL001 => 1
-              KK+AG0503=001DL002 => 2
-              KK+AG0503=001DL004 => 4
+              KK+AG0503=001DL001 <=> 1
+              KK+AG0503=001DL002 <=> 2
+              KK+AG0503=001DL004 <=> 4
 
-              To set these three detector logics, the string "11-1" would be used. Because there is no KK+AG0503=001DL003,
+              To set these three detector logics, the string "11-1" would be used.
+              Because there is no KK+AG0503=001DL003 component,
               (which would corresponded to index 3), the 3rd character is set to '-'.
 
               If detector logic component ids has no integer part,
-              it's recommend to index them by sorting them alphabetically:
+              it's recommended to index them by sorting alphabetically:
 
-              prio_a => 1
-              prio_b => 2
-              prio_c => 3
+              prio_a <=> 1
+              prio_b <=> 2
+              prio_c <=> 3
 
               To set these three detector logics, the string "111" would be used.
             pattern: "^[01-]*$"
