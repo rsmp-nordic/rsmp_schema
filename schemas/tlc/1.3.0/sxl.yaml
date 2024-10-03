@@ -534,18 +534,19 @@ objects:
               test: Mode used for various tests, e.g. signal lights
       S0021:
         description: |-
-          Manually set detector logic.
-          Provides status of detector logic (1-255) regarding if they are either forced to true or false.
+          Detector logics forcing.
+          Provides detector logics (1-255) forcing status, indicating whether they are forced or not.
+          Note that this is not the same as the actual value.
           Can be used to connect RSMP compatible detection equipment to the traffic light controller. Can also be used for prioritization.
         arguments:
           detectorlogics:
             type: string
             description: |-
-              Manually set detector logics using a string like "10011110".
-              Each character represent the requested state of a detector logic:
+              Detector logic forcing, provided as a string like "1001111-0".
+              Each character represent the state of a detector logic:
 
-              0 : Detector logic not manually set
-              1 : Detector logic manually set
+              0 : Detector logic not forced
+              1 : Detector logic forced
               - : Detector logic is undefined/does not exist
 
               The leftmost character represents the first detector logic,
@@ -558,7 +559,7 @@ objects:
               KK+AG0503=001DL002 <=> 2
               KK+AG0503=001DL004 <=> 4
 
-              To set these three detector logics, the string "11-1" would be used.
+              The status of these three detector logics would be send as "11-1", assuming they are all forced.
               Because there is no KK+AG0503=001DL003 component,
               (which would corresponded to index 3), the 3rd character is set to '-'.
 
@@ -569,7 +570,7 @@ objects:
               prio_b <=> 2
               prio_c <=> 3
 
-              To set these three detector logics, the string "111" would be used.
+              The status of these three detector logics would be send as "111", assuming they are all forced.
             pattern: "^[01-]*$"
       S0022:
         description: |-
