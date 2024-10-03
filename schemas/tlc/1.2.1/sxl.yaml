@@ -547,7 +547,7 @@ objects:
               0 : Detector logic not manually set
               1 : Detector logic manually set
               - : Detector logic is undefined/does not exist
-            pattern: "^[01]*$"
+            pattern: "^[01-]*$"
       S0022:
         description: |-
           List of time plans.

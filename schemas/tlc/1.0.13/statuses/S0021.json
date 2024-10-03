@@ -44,7 +44,7 @@
                 "s" : {
                   "description" : "Manually set detector logics (1/0) as text field",
                   "type" : "string",
-                  "pattern" : "^[01]*$"
+                  "pattern" : "^[01-]*$"
                 }
               }
             }

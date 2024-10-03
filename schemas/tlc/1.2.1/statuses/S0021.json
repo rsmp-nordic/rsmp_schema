@@ -44,7 +44,7 @@
                 "s" : {
                   "description" : "Manually set detector logic as text field.\nEach character represent the state in consecutive order,\nwhere the leftmost character starts with detector logic 1.\n0 : Detector logic not manually set\n1 : Detector logic manually set\n- : Detector logic is undefined/does not exist",
                   "type" : "string",
-                  "pattern" : "^[01]*$"
+                  "pattern" : "^[01-]*$"
                 }
               }
             }

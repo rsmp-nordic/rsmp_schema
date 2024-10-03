@@ -375,7 +375,7 @@ objects:
           detectorlogics:
             type: string
             description: Manually set detector logics (1/0) as text field
-            pattern: "^[01]*$"
+            pattern: "^[01-]*$"
       S0022:
         description: |-
           List of time plans.

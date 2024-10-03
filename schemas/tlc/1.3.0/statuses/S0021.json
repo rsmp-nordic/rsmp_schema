@@ -42,9 +42,9 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "description" : "Manually set detector logic as text field.\nEach character represent the state in consecutive order,\nwhere the leftmost character starts with detector logic 1.\n0 : Detector logic not manually set\n1 : Detector logic manually set\n- : Detector logic is undefined/does not exist",
+                  "description" : "Manually set detector logics using a string like \"10011110\".\nEach character represent the requested state of a detector logic:\n\n0 : Detector logic not manually set\n1 : Detector logic manually set\n- : Detector logic is undefined/does not exist\n\nThe leftmost character represents the first detector logic,\nthe second character the second detector logic, etc.\n\nIf detector logic component ids include an integer index part,\nit's recommended to use it when mapping between index and detector logic, e.g.:\n\nKK+AG0503=001DL001 <=> 1\nKK+AG0503=001DL002 <=> 2\nKK+AG0503=001DL004 <=> 4\n\nTo set these three detector logics, the string \"11-1\" would be used.\nBecause there is no KK+AG0503=001DL003 component,\n(which would corresponded to index 3), the 3rd character is set to '-'.\n\nIf detector logic component ids has no integer part,\nit's recommended to index them by sorting alphabetically:\n\nprio_a <=> 1\nprio_b <=> 2\nprio_c <=> 3\n\nTo set these three detector logics, the string \"111\" would be used.",
                   "type" : "string",
-                  "pattern" : "^[01]*$"
+                  "pattern" : "^[01-]*$"
                 }
               }
             }
