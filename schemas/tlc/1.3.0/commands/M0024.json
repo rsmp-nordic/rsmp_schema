@@ -1,0 +1,58 @@
+{
+  "description" : "Clear all alarms.\nIf a problem persist, relevant alarms are expected to be activated again.\nRequires security code 2",
+  "allOf" : [
+    {
+      "properties" : {
+        "n" : {
+          "enum" : [
+            "securityCode"
+          ]
+        },
+        "cO" : {
+          "const" : "clearAlarms"
+        }
+      }
+    },
+    {
+      "if" : {
+        "required" : [
+          "q"
+        ],
+        "properties" : {
+          "q" : {
+            "const" : "undefined"
+          }
+        }
+      },
+      "then" : {
+        "s" : {
+          "type" : "null"
+        }
+      },
+      "else" : {
+        "allOf" : [
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "securityCode"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "v" : {
+                  "description" : "Security code 2",
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

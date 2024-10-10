@@ -1185,6 +1185,7 @@ objects:
           Restarts Traffic Light Controller.
           Used in the event of serious faults in the device where a restart is considered to be able to remedy a problem.
           Requires security code 2
+          Deprecated, use M0024 instead.
         arguments:
           status:
             type: boolean
@@ -1693,6 +1694,17 @@ objects:
             type: string
             description: Security code 2
         command: setTimeout
+      M0024:
+        description: |-
+          Clear all alarms.
+          If a problem persist, relevant alarms are expected to be activated again.
+          Requires security code 2
+        arguments:
+          securityCode:
+            type: string
+            deprecated: true
+            description: Security code 2
+        command: clearAlarms
       M0103:
         description: |-
           Set security code.
