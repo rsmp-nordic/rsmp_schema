@@ -1511,8 +1511,8 @@ objects:
           status:
             type: boolean
             description: |-
-              False: Force output
-              True: Release output
+              True: Force output
+              False: Release output
           securityCode:
             type: string
             description: Security code 2

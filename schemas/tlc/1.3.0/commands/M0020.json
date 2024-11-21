@@ -50,7 +50,7 @@
                 "v" : {
                   "allOf" : [
                     {
-                      "description" : "False: Force output\nTrue: Release output"
+                      "description" : "True: Force output\nFalse: Release output"
                     },
                     {
                       "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
