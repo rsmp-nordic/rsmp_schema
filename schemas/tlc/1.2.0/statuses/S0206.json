@@ -71,7 +71,7 @@
                 "s" : {
                   "allOf" : [
                     {
-                      "description" : "Average speed in km/h (integer).\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to “-1” if no data could be measured (e.g. detector fault)"
+                      "description" : "Average speed in km/h (integer).\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to \"-1\" if no data could be measured (e.g. detector fault)"
                     },
                     {
                       "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"

@@ -469,7 +469,7 @@ objects:
               Function legend:
               0=no plan is selected by time table
               1=set plan 1
-              …
+              ...
               16= set plan 16
               
               hour and minute is using local time (not UTC)
@@ -589,7 +589,7 @@ objects:
               Number of vehicles.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-65535,...]"
       S0206:
         description: |-
@@ -608,7 +608,7 @@ objects:
               Average speed in km/h (integer).
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-65535,...]"
       S0207:
         description: |-
@@ -627,7 +627,7 @@ objects:
               Occupancy in percent (%) (0-100)
               - Value expressed as an integer with a range of 0-100.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-100,...]"
       S0208:
         description: |-
@@ -646,7 +646,7 @@ objects:
               Number of cars.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-65535,...]"
           PS:
             type: string
@@ -654,7 +654,7 @@ objects:
               Number of cars with trailers.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-65535,...]"
           L:
             type: string
@@ -662,7 +662,7 @@ objects:
               Number of trucks.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-65535,...]"
           LS:
             type: string
@@ -670,7 +670,7 @@ objects:
               Number of trucks with trailers.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-65535,...]"
           B:
             type: string
@@ -678,7 +678,7 @@ objects:
               Number of busses.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-65535,...]"
           SP:
             type: string
@@ -686,7 +686,7 @@ objects:
               Number of trams.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-65535,...]"
           MC:
             type: string
@@ -694,7 +694,7 @@ objects:
               Number of motor cycles.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-65535,...]"
           C:
             type: string
@@ -702,7 +702,7 @@ objects:
               Number of bicycles.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-65535,...]"
           F:
             type: string
@@ -710,7 +710,7 @@ objects:
               Number of pedestrians.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             range: "[0-65535,...]"
     commands:
       M0001:
@@ -873,7 +873,7 @@ objects:
               1=Order signal group to green
               0=Order signal group to red
               
-              Format: [Offset],[Bits to set],[Bits to unset]:…
+              Format: [Offset],[Bits to set],[Bits to unset]:...
               
               Offset sets where the 16 inputs starts from followed by two 16 bit values telling which bit to set and unset in binary format, i.e. first bit have value 1 and last bit have value 32768.
               
@@ -906,7 +906,7 @@ objects:
             description: |-
               Sets/Unsets a block of 16 inputs at a time. Can be repeated to set several blocks of 16 inputs. Values are separated with comma. Blocks are separated with semicolon. Since semicolon breaks the SXL csv-format, colon, ":" is used in example below.
               
-              Format: [Offset],[Bits to set],[Bits to unset]:…
+              Format: [Offset],[Bits to set],[Bits to unset]:...
               
               Offset sets where the 16 inputs starts from followed by two 16 bit values telling which bit to set and unset in binary format, i.e. first bit have value 1 and last bit have value 32768.
               
@@ -1024,7 +1024,7 @@ objects:
               Function legend:
               0=no plan is selected by time table
               1=set plan 1
-              …
+              ...
               16= set plan 16
               
               hour and minute is using local time (not UTC)

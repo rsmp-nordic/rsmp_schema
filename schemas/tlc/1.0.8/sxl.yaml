@@ -606,7 +606,7 @@ objects:
               1=Order signal group to green
               0=Order signal group to red
               
-              Format: [Offset],[Bits to set],[Bits to unset]:…
+              Format: [Offset],[Bits to set],[Bits to unset]:...
               
               Offset sets where the 16 inputs starts from followed by two 16 bit values telling which bit to set and unset in binary format, i.e. first bit have value 1 and last bit have value 32768.
               
@@ -639,7 +639,7 @@ objects:
             description: |-
               Sets/Unsets a block of 16 inputs at a time. Can be repeated to set several blocks of 16 inputs. Values are separated with comma. Blocks are separated with semicolon. Since semicolon breaks the SXL csv-format, colon, ":" is used in example below.
               
-              Format: [Offset],[Bits to set],[Bits to unset]:…
+              Format: [Offset],[Bits to set],[Bits to unset]:...
               
               Offset sets where the 16 inputs starts from followed by two 16 bit values telling which bit to set and unset in binary format, i.e. first bit have value 1 and last bit have value 32768.
               
