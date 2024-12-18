@@ -119,7 +119,7 @@ objects:
             type: integer
             description: |-
               Cycle counter.
-              Used for handling of coordination between TLC’s.
+              Used for handling of coordination between TLC's.
               Is counted from 0 until it reaches the cycle time (See S0028).
               
               c = (b + o) mod t
@@ -137,8 +137,8 @@ objects:
             type: integer
             description: |-
               Base cycle counter.
-              Used for handling of coordination between TLC’s.
-              Synchronized between all TLC’s in an active coordination.
+              Used for handling of coordination between TLC's.
+              Synchronized between all TLC's in an active coordination.
               See the coordination section for more information.
             min: 0
             max: 999
@@ -246,8 +246,8 @@ objects:
           intersection:
             type: integer_list
             description: |-
-              Comma separated list of intersections which the status relates to, e.g. “1,2”.
-              Use “0” for all intersections of the TLC.
+              Comma separated list of intersections which the status relates to, e.g. "1,2".
+              Use "0" for all intersections of the TLC.
             min: 0
             max: 255
           status:
@@ -275,8 +275,8 @@ objects:
           intersection:
             type: integer_list
             description: |-
-              Comma separated list of intersections which the status relates to, e.g. “1,2”.
-              Use “0” for all intersections of the TLC.
+              Comma separated list of intersections which the status relates to, e.g. "1,2".
+              Use "0" for all intersections of the TLC.
             min: 0
             max: 255
           status:
@@ -304,8 +304,8 @@ objects:
           intersection:
             type: integer_list
             description: |-
-              Comma separated list of intersections which the status relates to, e.g. “1,2”.
-              Use “0” for all intersections of the TLC.
+              Comma separated list of intersections which the status relates to, e.g. "1,2".
+              Use "0" for all intersections of the TLC.
             min: 0
             max: 255
           status:
@@ -333,8 +333,8 @@ objects:
           intersection:
             type: integer_list
             description: |-
-              Comma separated list of intersections which the status relates to, e.g. “1,2”.
-              Use “0” for all intersections of the TLC.
+              Comma separated list of intersections which the status relates to, e.g. "1,2".
+              Use "0" for all intersections of the TLC.
             min: 0
             max: 255
           status:
@@ -363,8 +363,8 @@ objects:
           intersection:
             type: integer_list
             description: |-
-              Comma separated list of intersections which the status relates to, e.g. “1,2”.
-              Use “0” for all intersections of the TLC.
+              Comma separated list of intersections which the status relates to, e.g. "1,2".
+              Use "0" for all intersections of the TLC.
             min: 0
             max: 255
           status:
@@ -392,8 +392,8 @@ objects:
           intersection:
             type: integer_list
             description: |-
-              Comma separated list of intersections which the status relates to, e.g. “1,2”.
-              Use “0” for all intersections of the TLC.
+              Comma separated list of intersections which the status relates to, e.g. "1,2".
+              Use "0" for all intersections of the TLC.
             min: 0
             max: 255
           status:
@@ -421,8 +421,8 @@ objects:
           intersection:
             type: integer_list
             description: |-
-              Comma separated list of intersections which the status relates to, e.g. “1,2”.
-              Use “0” for all intersections of the TLC.
+              Comma separated list of intersections which the status relates to, e.g. "1,2".
+              Use "0" for all intersections of the TLC.
             min: 0
             max: 255
           status:
@@ -524,8 +524,8 @@ objects:
           intersection:
             type: integer_list
             description: |-
-              Comma separated list of intersections which the status relates to, e.g. “1,2”.
-              Use “0” for all intersections of the TLC.
+              Comma separated list of intersections which the status relates to, e.g. "1,2".
+              Use "0" for all intersections of the TLC.
             min: 0
             max: 255
           controlmode:
@@ -639,7 +639,7 @@ objects:
               Function legend:
               0=no plan is selected by time table
               1=set plan 1
-              …
+              ...
               16= set plan 16
               
               hour and minute is using local time (not UTC)
@@ -701,13 +701,13 @@ objects:
         description: |-
           Coordinated control
           This status is used when coordination between traffic light controllers is active. Coordination is described in detail in the corresponding section
-          Please note that all values in this status uses comma-separated lists - one value for each intersection, e.g. “1,2” and “centralized,off”
+          Please note that all values in this status uses comma-separated lists - one value for each intersection, e.g. "1,2" and "centralized,off"
         arguments:
           intersection:
             type: integer_list
             description: |-
-              Comma separated list of intersections which the status relates to, e.g. “1,2”.
-              Use “0” for all intersections of the TLC.
+              Comma separated list of intersections which the status relates to, e.g. "1,2".
+              Use "0" for all intersections of the TLC.
             min: 0
             max: 255
           status:
@@ -732,11 +732,11 @@ objects:
           This status can be used to get updates about priority requests. For example, you can use it to know when priority requests are activated or cancelled.
           A list of priorities is returned, referred to by their request ids. The same request id can appear only once.
           All priorities are included in the list (not only the ones that have changed state since the last update). This is done regardless of whether the status is send in respond to a status request, or due to a status subscription, and also regardless of whether a status subscription uses an update interval, or send-on-change, or both.
-          If you subscribe using an update interval, you’re not guaranteed to get all intermediate states. To guarantee that, send-on-change must be used when subscribing.
+          If you subscribe using an update interval, you're not guaranteed to get all intermediate states. To guarantee that, send-on-change must be used when subscribing.
           To understand how this status relates to ETSI/J2735, please see the [wiki](https://github.com/rsmp-nordic/rsmp_sxl_traffic_lights/wiki/Signal-priority-and-ETSI-J2735).
           All priorities are send on every status update, regardless of whether an interval, or sendOnChange (or both) is used.
           When a priority reaches an end states (completed, timeout, rejected, cooldown or stale), it must be sent once on the next status update, then removed from the list.
-          A request always starts in the ‘received’ state. The following table shows the possible state transitions:
+          A request always starts in the 'received' state. The following table shows the possible state transitions:
 
           State      | Possible next states
           ---------- | -------------------------------------
@@ -779,7 +779,7 @@ objects:
                 type: integer
                 description: |-
                   Estimated green extension provided by the priority, in seconds
-                  Only used when state is ‘completed’.
+                  Only used when state is 'completed'.
                 optional: true
                 min: 0
                 max: 255
@@ -787,7 +787,7 @@ objects:
                 type: integer
                 description: |-
                   Estimated red reduction provided by the priority, in seconds
-                  Only used when state is ‘completed’.
+                  Only used when state is 'completed'.
                 optional: true
                 min: 0
                 max: 255
@@ -953,7 +953,7 @@ objects:
               Number of vehicles.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 65535
       S0206:
@@ -973,7 +973,7 @@ objects:
               Average speed in km/h (integer).
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 65535
       S0207:
@@ -993,7 +993,7 @@ objects:
               Occupancy in percent (%) (0-100)
               - Value expressed as an integer with a range of 0-100.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 100
       S0208:
@@ -1013,7 +1013,7 @@ objects:
               Number of cars.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 65535
           PS:
@@ -1022,7 +1022,7 @@ objects:
               Number of cars with trailers.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 65535
           L:
@@ -1031,7 +1031,7 @@ objects:
               Number of trucks.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 65535
           LS:
@@ -1040,7 +1040,7 @@ objects:
               Number of trucks with trailers.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 65535
           B:
@@ -1049,7 +1049,7 @@ objects:
               Number of buses.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 65535
           SP:
@@ -1058,7 +1058,7 @@ objects:
               Number of trams.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 65535
           MC:
@@ -1067,7 +1067,7 @@ objects:
               Number of motor cycles.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 65535
           C:
@@ -1076,7 +1076,7 @@ objects:
               Number of bicycles.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 65535
           F:
@@ -1085,7 +1085,7 @@ objects:
               Number of pedestrians.
               - Value expressed as an integer with a range of 0-65535.
               - Contains data from all detector logics. Each detector logic is separated with a comma.
-              - The value is set to “-1” if no data could be measured (e.g. detector fault)
+              - The value is set to "-1" if no data could be measured (e.g. detector fault)
             min: -1
             max: 65535
     commands:
@@ -1254,7 +1254,7 @@ objects:
               1=Order signal group to green
               0=Order signal group to red
               
-              Format: [Offset],[Bits to set],[Bits to unset]:…
+              Format: [Offset],[Bits to set],[Bits to unset]:...
               
               Offset sets where the 16 inputs starts from followed by two 16 bit values telling which bit to set and unset in binary format, i.e. first bit have value 1 and last bit have value 32768.
               
@@ -1282,39 +1282,39 @@ objects:
 
           Requires security code 2.
 
-          The parameter ‘status’ sets/unsets a block of 16 inputs at a time. It can be repeated to set several blocks of 16 inputs. Values are separated with comma. Blocks are separated with semicolon. Format: [Offset];[Bits to set];[Bits to unset];…
+          The parameter 'status' sets/unsets a block of 16 inputs at a time. It can be repeated to set several blocks of 16 inputs. Values are separated with comma. Blocks are separated with semicolon. Format: [Offset];[Bits to set];[Bits to unset];...
 
-          - ‘Offset’ defines where the 16 inputs starts from
-          - ‘Bits to set’ defines which bit(s) to set. ‘0’ if unused
-          - ‘Bits to unset’ defines which bit(s) to unset. ‘0’ if unused
+          - 'Offset' defines where the 16 inputs starts from
+          - 'Bits to set' defines which bit(s) to set. '0' if unused
+          - 'Bits to unset' defines which bit(s) to unset. '0' if unused
 
           Example 1:
-          “3,4134,65” sets input 4,5,8,15 and unsets 3,9
+          "3,4134,65" sets input 4,5,8,15 and unsets 3,9
           - Input starts from no. 5
-          - “4134” is 1 0000 0010 0110 in binary, but since input starts from 3, it is shifted 3 bits, e.g. 1000 0001 0011 0000 which are bits 4,5,8,15
-          - “65” is 100 0001 in binary, but since input starts from 3, it is shifted 3 bits, e.g. 10 0000 1000 which are bits 3,9
+          - "4134" is 1 0000 0010 0110 in binary, but since input starts from 3, it is shifted 3 bits, e.g. 1000 0001 0011 0000 which are bits 4,5,8,15
+          - "65" is 100 0001 in binary, but since input starts from 3, it is shifted 3 bits, e.g. 10 0000 1000 which are bits 3,9
 
           Example 2:
-          “12,1,4” sets input 12 and unsets 14
+          "12,1,4" sets input 12 and unsets 14
           - Input starts from no. 12
-          - “1” is 1 in binary, but since input starts at 12 it is shifted 12 bits, e.g. 1 0000 0000 0000, which is bit 12
-          - “4” is 100 in binary, but since input starts at 12 it is shifted 12 bits, e.g. 100 0000 0000 0000, which is bit 14
+          - "1" is 1 in binary, but since input starts at 12 it is shifted 12 bits, e.g. 1 0000 0000 0000, which is bit 12
+          - "4" is 100 in binary, but since input starts at 12 it is shifted 12 bits, e.g. 100 0000 0000 0000, which is bit 14
 
-          And both these examples could be sent in the same message as: “3,4143,65;12,1,4”
+          And both these examples could be sent in the same message as: "3,4143,65;12,1,4"
 
           Such a message would set input 4,5,8,12,15 and unset input 3,9,14
 
           Example 3:
-          “0,1,2” sets input 0 and unsets 1
+          "0,1,2" sets input 0 and unsets 1
           - Input starts from 0
-          - “1” is 1 in binary, which is bit 0
-          - “2” is 10 in binary, which is bit 1
+          - "1" is 1 in binary, which is bit 0
+          - "2" is 10 in binary, which is bit 1
         arguments:
           status:
             type: string
             description: |-
               Sets/Unsets a block of 16 inputs at a time. Can be repeated to set several blocks of 16 inputs. Values are separated with comma. Blocks are separated with semicolon.
-              Format: [Offset];[Bits to set];[Bits to unset];…
+              Format: [Offset];[Bits to set];[Bits to unset];...
           securityCode:
             type: string
             description: Security code 2
@@ -1420,7 +1420,7 @@ objects:
               Function legend:
               0=no plan is selected by time table
               1=set plan 1
-              …
+              ...
               16= set plan 16
               
               hour and minute is using local time (not UTC)
@@ -1537,11 +1537,11 @@ objects:
 
           The movement to prioritize can be referenced in a number of ways, depending on what is configured in the controller, and in the system that sends priority requests. Either:
 
-          - Reference a signal group by setting ‘signalGroupId’. This method is simple, but will not allow you to have different priority mechanism for the same signal group, unless they can be distinguished by the vehicle type. For example, if you need to trigger different priorities depending on whether a bus goes straight or makes a turn for the same signal group, you need to use of the other referencing methods.
-          - Reference an input by setting ‘inputId’. This can be useful if you previously used inputs to activate priority. The input will not be activated, only the priority.
-          - Reference a connection by setting ‘connectionId’. A connection is a movement from a specific ingoing lane to a specific outgoing lane.
-          - Reference an intersection approach by setting ‘approachId’.
-          - Reference an ingoing lane by setting ‘laneInId’, and optionally also reference an outgoing lane by setting ‘laneOutId’.
+          - Reference a signal group by setting 'signalGroupId'. This method is simple, but will not allow you to have different priority mechanism for the same signal group, unless they can be distinguished by the vehicle type. For example, if you need to trigger different priorities depending on whether a bus goes straight or makes a turn for the same signal group, you need to use of the other referencing methods.
+          - Reference an input by setting 'inputId'. This can be useful if you previously used inputs to activate priority. The input will not be activated, only the priority.
+          - Reference a connection by setting 'connectionId'. A connection is a movement from a specific ingoing lane to a specific outgoing lane.
+          - Reference an intersection approach by setting 'approachId'.
+          - Reference an ingoing lane by setting 'laneInId', and optionally also reference an outgoing lane by setting 'laneOutId'.
 
           Referencing attributes that are not used must be left out, rather than set to null or empty strings. This includes:
 
@@ -1554,17 +1554,17 @@ objects:
 
           Referencing attributes are only used when initiating a request. When updating or cancelling the request, the request is identified by its requestId, and no referencing attributes are allowed.
 
-          You initiate a priority request with type set to ‘new’. You must provide a request id that uniquely identifies the request on the controller. It can be a randomly generated UUID (universally unique identifier), or it can be constructed by combining e.g. a vehicle id and some other identifier. When updating or cancelling a request, you must pass the same request id again.
+          You initiate a priority request with type set to 'new'. You must provide a request id that uniquely identifies the request on the controller. It can be a randomly generated UUID (universally unique identifier), or it can be constructed by combining e.g. a vehicle id and some other identifier. When updating or cancelling a request, you must pass the same request id again.
 
-          Providing ETA (estimated time of arrival) when initiating a request is optional, but can help the controller plan ahead in cases where you’re able to send the request before the vehicle arrives at the intersection. You’re allowed to initiate the request without an ETA and provide it in a later request update. But providing the ETA when initiating the request is recommended, since it will give the controller more time to plan ahead.
+          Providing ETA (estimated time of arrival) when initiating a request is optional, but can help the controller plan ahead in cases where you're able to send the request before the vehicle arrives at the intersection. You're allowed to initiate the request without an ETA and provide it in a later request update. But providing the ETA when initiating the request is recommended, since it will give the controller more time to plan ahead.
 
           Like ETA, providing a vehicle type is optional, but can help the controller decide how to best handle the request.
 
           The priority level provides a way to indicate the relative importance of the request compared to other requests. For example, emergency vehicles or delayed buses could be given a higher priority level.
 
-          If the ETA changes before the priority is cancelled, or you want to change the priority level, you can send another request message with type set to ‘update’. The vehicle type cannot be changed.
+          If the ETA changes before the priority is cancelled, or you want to change the priority level, you can send another request message with type set to 'update'. The vehicle type cannot be changed.
 
-          When you send a priority request, it will be processed to decide if it’s possible to activate the requested priority.
+          When you send a priority request, it will be processed to decide if it's possible to activate the requested priority.
 
           If the request is accepted, the priority can either be activated immediately, or if another priority is currently active, it can be queued for later activation.
 
@@ -1572,9 +1572,9 @@ objects:
 
           When a request is queued, it is expected to become activated later, but in case too long passes without activation, the controller is expected to time out the request.
 
-          Once a priority is activated, you’re excepted to cancel it as soon as there’s no need for it anymore, typically when the vehicle has passed the intersection. You cancel a request by sending a request passing the existing request id setting the type to ‘cancel’.
+          Once a priority is activated, you're excepted to cancel it as soon as there's no need for it anymore, typically when the vehicle has passed the intersection. You cancel a request by sending a request passing the existing request id setting the type to 'cancel'.
 
-          If a request is never cancelled, the controller is expected to remove the priority at some point, but until then the priority might block requests in other direction which is why you should always cancel a priority when it’s not needed anymore.
+          If a request is never cancelled, the controller is expected to remove the priority at some point, but until then the priority might block requests in other direction which is why you should always cancel a priority when it's not needed anymore.
         arguments:
           requestId:
             type: string
@@ -1925,7 +1925,7 @@ objects:
       A0303:
         description: |-
           Serious detector error (hardware).
-          Is a “major fault” defined according to 3.8 i EN12675 which causes the controller to switch to a “failure mode” according to 3.6 in EN12675.
+          Is a "major fault" defined according to 3.8 i EN12675 which causes the controller to switch to a "failure mode" according to 3.6 in EN12675.
         priority: 2
         category: D
         arguments:
@@ -1949,7 +1949,7 @@ objects:
         description: |-
           Serious detector error (logic error).
           For instance; detector continuously on or off during an extended time.
-          Is a “major fault” defined according to 3.8 i EN12675 which causes the controller to switch to a “failure mode” according to 3.6 in EN12675
+          Is a "major fault" defined according to 3.8 i EN12675 which causes the controller to switch to a "failure mode" according to 3.6 in EN12675
         priority: 2
         category: D
         arguments:
