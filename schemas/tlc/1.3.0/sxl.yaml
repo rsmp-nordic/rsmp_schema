@@ -1123,6 +1123,7 @@ objects:
             description: Security code 2
           timeout:
             type: integer
+            optional: true
             description: |-
               Time in minutes until controller automatically reverts to previous functional position.
               0=no automatic return
@@ -1130,6 +1131,7 @@ objects:
             max: 1440
           intersection:
             type: integer
+            optional: true
             description: |-
               Intersection number.
               Command only applies to specified intersection. Other intersections remains in their respective operating mode(s).
