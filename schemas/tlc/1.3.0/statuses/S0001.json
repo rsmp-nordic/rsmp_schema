@@ -6,7 +6,9 @@
         "n" : {
           "enum" : [
             "basecyclecounter",
+            "basecyclecounter_ms",
             "cyclecounter",
+            "cyclecounter_ms",
             "signalgroupstatus",
             "stage"
           ]
@@ -95,6 +97,58 @@
                   "allOf" : [
                     {
                       "description" : "Base cycle counter.\nUsed for handling of coordination between TLC’s.\nSynchronized between all TLC’s in an active coordination.\nSee the coordination section for more information."
+                    },
+                    {
+                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "cyclecounter_ms"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "allOf" : [
+                    {
+                      "description" : "The cycle counter in milliseconds.\nThe cycle_ms attribute divided by 1000 and rounded down to the nearest\ninteger must equal the cyclecounter attribute."
+                    },
+                    {
+                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "if" : {
+              "required" : [
+                "n"
+              ],
+              "properties" : {
+                "n" : {
+                  "const" : "basecyclecounter_ms"
+                }
+              }
+            },
+            "then" : {
+              "properties" : {
+                "s" : {
+                  "allOf" : [
+                    {
+                      "description" : "The base cycle counter in milliseconds.\nThe base_ms attribute divided by 1000 and rounded down to the nearest\ninteger must equal the basecyclecounter attribute."
                     },
                     {
                       "$ref" : "../../../core/3.1.2/definitions.json#/integer"

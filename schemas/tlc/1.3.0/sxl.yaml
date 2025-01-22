@@ -143,6 +143,22 @@ objects:
               See the coordination section for more information.
             min: 0
             max: 999
+          cyclecounter_ms:
+            type: integer
+            description: |-
+              The cycle counter in milliseconds.
+              The quotient of cyclecounter_ms divided by 1000 equals cyclecounter.
+            min: 0
+            max: 999999
+            lean: true
+          basecyclecounter_ms:
+            type: integer
+            description: |-
+              The base cycle counter in milliseconds.
+              The quotient of basecyclecounter_ms divided by 1000 equals basecyclecounter.
+            min: 0
+            max: 999999
+            lean: true
           stage:
             type: integer
             description: Current stage (isolated)
