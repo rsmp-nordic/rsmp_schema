@@ -26,11 +26,11 @@ objects:
         description: Traffic Light Controller has a low priority fault. E.g. Detector
           fault
       6:
-        title: Connected / Normal - In Use
-        description: Traffic Light Controller is functioning normally (not in dark mode)
+        title: Connected - In Use
+        description: Traffic Light Controller is not in dark mode or in yellow flash
       7:
-        title: Connected / Normal - Idle
-        description: Traffic Light Controller is in dark mode
+        title: Connected - Idle
+        description: Traffic Light Controller is in dark mode or in yellow flash
       8:
         title: Not Connected
     functional_position: null
