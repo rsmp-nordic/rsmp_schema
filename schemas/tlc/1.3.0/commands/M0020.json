@@ -122,7 +122,7 @@
                 "v" : {
                   "allOf" : [
                     {
-                      "description" : "False: output forced to False\nTrue: output forced to True"
+                      "description" : "False: output forced off\nTrue: output forced on"
                     },
                     {
                       "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
