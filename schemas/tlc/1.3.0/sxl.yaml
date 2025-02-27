@@ -1524,8 +1524,8 @@ objects:
           outputValue:
             type: boolean
             description: |-
-              False: output forced to False
-              True: output forced to True
+              False: output forced off
+              True: output forced on
         command: setOutput
       M0021:
         description: |-
