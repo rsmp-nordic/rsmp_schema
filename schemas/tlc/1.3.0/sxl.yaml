@@ -12,6 +12,7 @@ objects:
         description: Traffic Light Controller is in local mode. NTS has no control.
       2:
         title: No Communications
+        description: Not used
       3:
         title: High Priority Fault
         description: Traffic Light Controller is in fail safe mode; e.g. yellow flash
@@ -26,14 +27,14 @@ objects:
         description: Traffic Light Controller has a low priority fault. E.g. Detector
           fault
       6:
-        title: Connected / Normal - In Use
+        title: Connected - In Use
+        description: Traffic Light Controller is not in dark mode or in yellow flash
       7:
-        title: Connected / Normal - Idle
-        description: |-
-          Traffic Light Controller dark according to configuration.
-          NOTE! When dark according to configuration the controller is considered to be in use
+        title: Connected - Idle
+        description: Traffic Light Controller is in dark mode or in yellow flash
       8:
         title: Not Connected
+        description: Not used
     functional_position: null
     functional_state: null
     alarms:
