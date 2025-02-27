@@ -1507,13 +1507,14 @@ objects:
           Force output.
           Force a given output (1-255) of the controllers general purpose I/O to either True of False. Can be used for all types of output where the traffic light controller needs to control other equipment.
           Can be used for bus priority, coordination between traffic controllers, external control systems, and much more.
+          When the output is released (status=False), the outputValue is ignored.
           Requires security code 2.
         arguments:
           status:
             type: boolean
             description: |-
-              False: Force output
-              True: Release output
+              True: Force output
+              False: Release output
           securityCode:
             type: string
             description: Security code 2
@@ -1525,8 +1526,8 @@ objects:
           outputValue:
             type: boolean
             description: |-
-              False: output forced to False
-              True: output forced to True
+              False: output forced off
+              True: output forced on
         command: setOutput
       M0021:
         description: |-
