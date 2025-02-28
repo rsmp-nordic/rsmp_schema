@@ -14,8 +14,27 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     expect(validate message, 'core').to be_nil
   end
 
-  it 'accepts valid status request' do
+  it 'accepts valid status request with unkmown=q, s=null' do
+    message['sS'].first['q'] = 'unknown'
+    message['sS'].first['s'] = nil
     expect(validate message, 'core').to be_nil
+  end
+
+  it 's must be null if q=unknown' do
+    message['sS'].first['q'] = 'unknown'
+    message['sS'].first['s'] = "1"
+    expect(validate message, 'core').to eq(
+      [["/sS/0/s", "null"]]
+    )
+  end
+
+  it 's cannot be null if q!=unknown' do
+    message['sS'].first['q'] = 'recent'
+    message['sS'].first['s'] = nil
+    expect(validate message, 'core').to eq(
+       ["3.1.2", "3.1.3", "3.1.4", "3.1.5"] => [["/sS/0/s", "string"]],
+       ["3.2.0", "3.2.1", "3.2.2"] => [["/sS/0/s", "type"]],
+    )
   end
 
   it 'catches missing component id' do
