@@ -6,38 +6,34 @@
     "cId" : { "$ref": "../3.1.2/definitions.json#/component_id" },
     "sTs" : { "$ref": "../3.1.2/definitions.json#/timestamp" },
     "sS" : {
-      "description" : "Status response arguments",
+      "description" : "Status update arguments",
       "type" : "array",
       "minItems": 1,
       "items" : {
         "type" : "object",
-        "allOf" : [
-          {
-            "required" : [ "sCI", "n", "s", "q" ],
-            "additionalProperties" : false,
-            "properties": {
-              "sCI" : { "$ref": "../3.1.2/definitions.json#/status_code" },
-              "n" : { "description" : "Value name", "type" : "string" },
-              "q" : { "description" : "Quality", "type" : "string" },
-              "s" : { "description" : "Value" }
-            }
-          },
-          {
-            "if" : {
-              "required" : [ "q" ],
-              "properties": { "q" : { "const": "undefined" }}
-            },
-            "then" : {
-              "properties": { "s" : { "type": "null" }}
-            },
-            "else" : {
-              "properties": {
-                "s" : { "type" : ["string"] },
-                "q" : { "enum" : [ "recent", "old", "unknown" ] }
-              }
-            }
+        "properties": {
+          "sCI" : { "$ref": "../3.1.2/definitions.json#/status_code" },
+          "n" : { "description" : "Value identifier", "type" : "string" },
+          "s" : { "description" : "Value"},
+          "q" : { "description" : "Quality", "type" : "string", "enum" : [ "recent", "old", "unknown", "undefined"] } // 'undefined' was addded
+        },
+        "if": {
+          "properties": {
+            "q" : { "enum" : ["unknown","undefined"] }
           }
-        ]
+        },
+        "then": {
+          "properties": {
+            "s" : { "type" : "null" }
+          }
+        },
+        "else": {
+          "properties": {
+            "s" : { "type" : "string" }
+          }
+        },
+        "required" : [ "sCI", "n", "s", "q" ],
+        "additionalProperties": false
       }
     }
   },

@@ -13,24 +13,9 @@
         "type" : "object",
         "properties": {
           "sCI" : { "$ref": "definitions.json#/status_code" },
-          "n" : { "description" : "Unique reference of the value", "type" : "string" },
-          "s" : { "description" : "Value"},
-          "q" : { "description" : "Quality", "type" : "string", "enum" : [ "recent", "old", "unknown"] }
-        },
-        "if": {
-          "properties": {
-            "q" : { "const" : "unknown" }
-          }
-        },
-        "then": {
-          "properties": {
-            "s" : { "type" : "null" }
-          }
-        },
-        "else": {
-          "properties": {
-            "s" : { "type" : "string" }
-          }
+          "n" : { "description" : "Value identifier", "type" : "string" },
+          "s" : { "description" : "Value", "type" : "string" },
+          "q" : { "description" : "Quality", "type" : "string", "enum" : [ "recent", "old", "unknown" ] }
         },
         "required" : [ "sCI", "n", "s", "q" ],
         "additionalProperties": false

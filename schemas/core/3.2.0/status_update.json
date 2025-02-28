@@ -19,7 +19,7 @@
         },
         "if": {
           "properties": {
-            "q" : { "const" : "unknown" }
+            "q" : { "enum" : ["unknown","undefined"] }
           }
         },
         "then": {
