@@ -29,7 +29,7 @@
         },
         "else": {
           "properties": {
-            "s" : { "type" : ["string","array"] }  // array allowed from 3.2.0
+            "s" : { "type" : ["string","array"] }
           }
         },
         "required" : [ "sCI", "n", "s", "q" ],

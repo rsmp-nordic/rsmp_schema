@@ -6,7 +6,7 @@
     "cId" : { "$ref": "../3.1.2/definitions.json#/component_id" },
     "sTs" : { "$ref": "../3.1.2/definitions.json#/timestamp" },
     "sS" : {
-      "description" : "Status update arguments",
+      "description" : "Status response arguments",
       "type" : "array",
       "minItems": 1,
       "items" : {
@@ -15,7 +15,7 @@
           "sCI" : { "$ref": "../3.1.2/definitions.json#/status_code" },
           "n" : { "description" : "Value identifier", "type" : "string" },
           "s" : { "description" : "Value"},
-          "q" : { "description" : "Quality", "type" : "string", "enum" : [ "recent", "old", "unknown", "undefined"] } // 'undefined' was addded
+          "q" : { "description" : "Quality", "type" : "string", "enum" : [ "recent", "old", "unknown", "undefined"] }
         },
         "if": {
           "properties": {
