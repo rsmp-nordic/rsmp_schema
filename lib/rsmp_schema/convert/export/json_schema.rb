@@ -153,11 +153,9 @@ module RSMP
                 "if" =>
                 {
                   "required" => ["q"],
-                  "properties" => { "q"=> { "const" => "undefined" }},
+                  "properties" => { "q"=> { "enum" => ["undefined","unknown"] }},
                 },
-                  "then" => {
-                  "s" => { "type" => "null" }
-                },
+                "then" => {},
                 "else" => {
                   "allOf" => item['arguments'].map do |key,argument|
                     {
