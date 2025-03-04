@@ -31,14 +31,14 @@
         ],
         "properties" : {
           "q" : {
-            "const" : "undefined"
+            "enum" : [
+              "undefined",
+              "unknown"
+            ]
           }
         }
       },
       "then" : {
-        "s" : {
-          "type" : "null"
-        }
       },
       "else" : {
         "allOf" : [
