@@ -10,6 +10,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
      ]
   }}
 
+
   it 'accepts valid message' do
     expect(validate message, 'core').to be_nil
   end
@@ -25,34 +26,46 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     end
   end
 
-  describe "q=undefined" do
-    it 'rejects s being null before 3.1.3' do
-      message["sS"].first["q"] = "undefined"   
+  describe "q=old" do
+    it 'rejects s=null if q=old' do
+      message["sS"].first["q"] = "old"
       message["sS"].first["s"] = nil
-      expect(validate message, 'core', '<3.1.3').to eq(
-        [["/sS/0/q", "enum"], ["/sS/0/s", "string"]])
+      expect(validate message, 'core').to eq(
+        ["3.1.2", "3.1.3", "3.1.4", "3.1.5"] => [["/sS/0/s", "string"]],
+        ["3.2.0", "3.2.1", "3.2.2"] => [["/sS/0/s", "type"]],
+      )
+    end
+  end
+
+  describe "q=undefined" do
+    it 'is rejects before 3.1.3' do
+      message["sS"].first["q"] = "undefined"
+      expect(validate message, 'core', '<3.1.3').to eq([["/sS/0/q", "enum"]])
     end
 
     it 'requires s being null from 3.1.3' do
       message["sS"].first["q"] = "undefined"
-      message["sS"].first["s"] = "bad"
-      expect(validate message, 'core', '>=3.1.3').to eq(
-        [["/sS/0/s", "null"]]
-      )
-    end
-
-    it 'rejects s being string from 3.1.3' do
-      message["sS"].first["q"] = "undefined"
+      message["sS"].first["s"] = nil
+      expect(validate message, 'core', '>=3.1.3').to be_nil
       message["sS"].first["s"] = "something"
-      expect(validate message, 'core', '>=3.1.3').to eq( [["/sS/0/s", "null"]] )
+      expect(validate message, 'core', '>=3.1.3').to eq([["/sS/0/s", "null"]])
     end
   end
 
   describe "q=unknown" do
+    it 'rejects s being null before 3.1.3' do
+      message["sS"].first["q"] = "unknown"
+      message["sS"].first["s"] = nil
+      expect(validate message, 'core', '<3.1.3').to eq(
+        [["/sS/0/s", "string"]])
+    end
+
     it 'requires s being null from 3.1.3' do
       message["sS"].first["q"] = "unknown"
       message["sS"].first["s"] = nil
       expect(validate message, 'core', '>=3.1.3').to be_nil
+      message["sS"].first["s"] = "something"
+      expect(validate message, 'core', '>=3.1.3').to eq([["/sS/0/s", "null"]])
     end
   end
 
