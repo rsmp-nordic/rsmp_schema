@@ -969,6 +969,7 @@ objects:
         description: |-
           Traffic Counting: Number of vehicles.
           This status was introduced to improve performance in case traffic counting is done on all all detectors.
+          Please see Section 4: "Traffic counting" for additional requirements.
         arguments:
           start:
             type: timestamp
@@ -986,6 +987,7 @@ objects:
         description: |-
           Traffic Counting: Vehicle speed
           This status was introduced to improve performance in case traffic counting is done on all all detectors.
+          Please see Section 4: "Traffic counting" for additional requirements.
         arguments:
           start:
             type: timestamp
@@ -1003,6 +1005,7 @@ objects:
         description: |-
           Traffic Counting: Occupancy.
           This status was introduced to improve performance in case traffic counting is done on all all detectors.
+          Please see Section 4: "Traffic counting" for additional requirements.
         arguments:
           start:
             type: timestamp
@@ -1020,6 +1023,7 @@ objects:
         description: |-
           Traffic Counting: Number of vehicles of given classification.
           This status was introduced to improve performance in case traffic counting is done on all all detectors.
+          Please see Section 4: "Traffic counting" for additional requirements.
         arguments:
           start:
             type: timestamp
@@ -1998,6 +2002,7 @@ objects:
         description: |-
           Traffic Counting: Number of vehicles.
           Used for Traffic counting.
+          Please see Section 4: "Traffic counting" for additional requirements.
         arguments:
           starttime:
             type: timestamp
@@ -2012,6 +2017,7 @@ objects:
         description: |-
           Traffic Counting: Vehicle speed.
           Used for Traffic counting.
+          Please see Section 4: "Traffic counting" for additional requirements.
         arguments:
           starttime:
             type: timestamp
@@ -2025,6 +2031,7 @@ objects:
         description: |-
           Traffic Counting: Occupancy.
           Used for Traffic counting.
+          Please see Section 4: "Traffic counting" for additional requirements.
         arguments:
           starttime:
             type: timestamp
@@ -2038,6 +2045,7 @@ objects:
         description: |-
           Traffic Counting: Number of vehicles of given classification.
           Used for Traffic counting.
+          Please see Section 4: "Traffic counting" for additional requirements.
         arguments:
           starttime:
             type: timestamp
