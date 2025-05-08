@@ -2090,22 +2090,45 @@ objects:
     commands:
       M0008:
         description: |-
-          Sets manual activation of detector logic.
-          Set given detector logic (1-255) to either true or false.
-          Can e.g. be used to connect RSMP compatible detection equipment to the traffic light controller. Can also be used for prioritization.
+          Force detector logic.
+          Force a given detector logic (1-255) to either true or false.
+ 
+          When 'status' is true the detector logic is forced to the state specified in 'mode'.
+          While forced, no other source can activate or deactivate the detector logic.
+          When forcing, the 'duration' can be set to automatically release the
+          detector logic after a specific time interval.
+          
+          When 'status' is false the detector logic is released and the state
+          will again be controlled by other sources, e.g. hardware.
+          Note that this means that releasing does not guarantee a return to the previous state.
+          This is because the other control sources might have changed state while
+          the detector logic was forced.
+          When releasing, the 'mode' and 'duration' attributes are ignored.
+          
+          Can also be for signal group prioritization if the controller is programmed
+          to activate priority based on detector logic actication.
+
           Requires security code 2
         arguments:
           status:
             type: boolean
             description: |-
-              False: Deactivate manual control of detector logic
-              True: Activate manual control of detector logic
+              False: Release detector logic, 'mode' is ignored.
+              True: Force detector logic to the value in 'mode'.
+          duration:
+            type: integer
+            description: |-
+              If set, automatically release after this number of
+              milliseconds. Ignored if 'status' is false.
+              Setting to zero is the same as leaving out, and means
+              no automatic release will happen.
           securityCode:
             type: string
             description: Security code 2
           mode:
             type: boolean
             description: |-
+              Mode to force to (ignored if 'status' is false).
               False: Deactivate detector logic
               True: Activate detector logic
         command: setForceDetectorLogic
