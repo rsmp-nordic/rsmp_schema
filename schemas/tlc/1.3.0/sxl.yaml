@@ -128,7 +128,7 @@ objects:
               - : Signal group is undefined/does not exist
             pattern: "^[a-hA-G0-9N-P]*$"
           cyclecounter:
-            type: integer
+            type: integer_as_string
             description: |-
               Cycle counter.
               Used for handling of coordination between TLC’s.
@@ -146,7 +146,7 @@ objects:
             min: 0
             max: 999
           basecyclecounter:
-            type: integer
+            type: integer_as_string
             description: |-
               Base cycle counter.
               Used for handling of coordination between TLC’s.
@@ -155,7 +155,7 @@ objects:
             min: 0
             max: 999
           stage:
-            type: integer
+            type: integer_as_string
             description: Current stage (isolated)
             min: 0
             max: 999
@@ -167,7 +167,7 @@ objects:
         from_version: 1.0.2
         arguments:
           detectorlogicstatus:
-            type: string
+            type: string_list_as_string
             description: |-
               Detector logic status as text field.
               Each character represent the state of the detector logic in consecutive order,
@@ -183,7 +183,7 @@ objects:
         from_version: 1.0.2
         arguments:
           inputstatus:
-            type: string
+            type: string_list_as_string
             description: |-
               Input status as text field.
               Each character represent the state of the input in consecutive order,
@@ -215,7 +215,7 @@ objects:
         from_version: 1.0.2
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: Controller is not in start up mode
               True: Controller is currently in start up mode
@@ -226,12 +226,12 @@ objects:
             type: array
             items:
               intersection:
-                type: integer
+                type: integer_as_string
                 description: Intersection id
                 min: 0
                 max: 255
               startup:
-                type: boolean
+                type: boolean_as_string
                 description: Start up mode
       S0006:
         description: |-
@@ -246,13 +246,13 @@ objects:
         from_version: 1.0.2
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             deprecated: true
             description: |-
               False: Emergency route inactive
               True: Emergency route active
           emergencystage:
-            type: integer
+            type: integer_as_string
             deprecated: true
             description: Number of emergency route (set to zero if no route is active)
             min: 0
@@ -267,20 +267,20 @@ objects:
         from_version: 1.0.2
         arguments:
           intersection:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            type: boolean_list
+            type: boolean_as_string_list
             description: |-
               False: Traffic Light Controller in dark mode
               True: Traffic Light Controller not in dark mode
           source:
             description: Source of the status change
-            type: string_list
+            type: string_list_as_string_list
             values:
               operator_panel: Operator panel
               calendar_clock: Calendar/clock
@@ -297,19 +297,19 @@ objects:
         from_version: 1.0.2
         arguments:
           intersection:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            type: boolean_list
+            type: boolean_as_string_list
             description: |-
               False: Manual control inactive
               True: Manual control active
           source:
-            type: string_list
+            type: string_list_as_string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -327,19 +327,19 @@ objects:
         from_version: 1.0.2
         arguments:
           intersection:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            type: boolean_list
+            type: boolean_as_string_list
             description: |-
               False: Fixed time control inactive
               True: Fixed time control active
           source:
-            type: string_list
+            type: string_list_as_string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -357,19 +357,19 @@ objects:
         from_version: 1.0.2
         arguments:
           intersection:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            type: boolean_list
+            type: boolean_as_string_list
             description: |-
               False: Isolated control disabled
               True: Isolated control enabled (Vehicle actuated control or Fixed time control)
           source:
-            type: string_list
+            type: string_list_as_string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -388,19 +388,19 @@ objects:
         from_version: 1.0.2
         arguments:
           intersection:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            type: boolean_list
+            type: boolean_as_string_list
             description: |-
               False: Yellow flash disabled
               True: Yellow flash enabled
           source:
-            type: string_list
+            type: string_list_as_string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -418,19 +418,19 @@ objects:
         from_version: 1.0.2
         arguments:
           intersection:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            type: boolean_list
+            type: boolean_as_string_list
             description: |-
               False: All red disabled
               True: All red enabled
           source:
-            type: string_list
+            type: string_list_as_string_list
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -448,14 +448,14 @@ objects:
         from_version: 1.0.2
         arguments:
           intersection:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            type: integer_list
+            type: integer_as_string_list
             values:
               0: disabled
               1: dark mode
@@ -469,12 +469,12 @@ objects:
         from_version: 1.0.2
         arguments:
           status:
-            type: integer
+            type: integer_as_string
             description: Current time plan
             min: 1
             max: 255
           source:
-            type: string
+            type: string_list_as_string
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -492,12 +492,12 @@ objects:
         from_version: 1.0.2
         arguments:
           status:
-            type: integer
+            type: integer_as_string
             description: Current traffic situation
             min: 1
             max: 255
           source:
-            type: string
+            type: string_list_as_string
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -513,7 +513,7 @@ objects:
         from_version: 1.0.2
         arguments:
           number:
-            type: integer
+            type: integer_as_string
             description: Number of detector logics
             min: 1
             max: 65025
@@ -524,7 +524,7 @@ objects:
         from_version: 1.0.2
         arguments:
           number:
-            type: integer
+            type: integer_as_string
             description: Number of signal groups
             min: 1
             max: 65025
@@ -535,7 +535,7 @@ objects:
         from_version: 1.0.2
         arguments:
           number:
-            type: integer
+            type: integer_as_string
             description: Number of traffic situations
             min: 1
             max: 65025
@@ -547,14 +547,14 @@ objects:
         from_version: 1.0.2
         arguments:
           intersection:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           controlmode:
-            type: string_list
+            type: string_list_as_string_list
             values:
               startup: The controller starts up, performs a power on self test and performs each :term:`start-up interval`
               control: Normal 3-light control
@@ -586,7 +586,7 @@ objects:
         from_version: 1.0.13
         arguments:
           status:
-            type: string
+            type: integer_list_as_string
             description: Comma separated list of configured time plans. E.g. "1,2,3,5"
       S0023:
         description: |-
@@ -617,7 +617,7 @@ objects:
         from_version: 1.0.13
         arguments:
           status:
-            type: string
+            type: string_list_as_string
             description: |-
               Offset table
               Each offset time is written as p-t where:
@@ -637,7 +637,7 @@ objects:
         from_version: 1.0.13
         arguments:
           status:
-            type: string
+            type: string_list_as_string
             description: |-
               Week time table. Defines time table to use for each week day
               Each day is written as d-t where:
@@ -664,7 +664,7 @@ objects:
         from_version: 1.0.13
         arguments:
           status:
-            type: string
+            type: string_list_as_string
             description: |-
               Time Table. Defines time tables.
               Each time definition is written as t-o-h-m where:
@@ -693,7 +693,7 @@ objects:
         from_version: 1.0.13
         arguments:
           status:
-            type: string
+            type: string_list_as_string
             description: |-
               Cycle time table
               Each cycle time is written as pp-tt where:
@@ -744,7 +744,7 @@ objects:
         from_version: 1.0.15
         arguments:
           status:
-            type: string
+            type: string_list_as_string
             description: |-
               Loop detector trigger level sensitivity is written as dd-ss where:
               dd=loop detector number
@@ -758,21 +758,21 @@ objects:
         from_version: 1.1.0
         arguments:
           intersection:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Comma separated list of intersections which the status relates to, e.g. “1,2”.
               Use “0” for all intersections of the TLC.
             min: 0
             max: 255
           status:
-            type: string_list
+            type: string_list_as_string_list
             values:
               local: Local coordination
               centralized: Coordination with synchronized clock
               'off': Coordination not active
           source:
             description: Source of the status change
-            type: string_list
+            type: string_list_as_string_list
             values:
               operator_panel: Operator panel
               calendar_clock: Calendar/clock
@@ -828,7 +828,7 @@ objects:
                   cooldown: A similar priority request means the priority request cannot be activated now
                   stale: The priority has been active too long without cancellation, and was therefore removed
               e:
-                type: integer
+                type: integer_as_string
                 description: |-
                   Estimated green extension provided by the priority, in seconds
                   Only used when state is ‘completed’.
@@ -836,7 +836,7 @@ objects:
                 min: 0
                 max: 255
               d:
-                type: integer
+                type: integer_as_string
                 description: |-
                   Estimated red reduction provided by the priority, in seconds
                   Only used when state is ‘completed’.
@@ -852,7 +852,7 @@ objects:
         from_version: 1.1.0
         arguments:
           status:
-            type: integer
+            type: integer_as_string
             description: Timeout, in minutes
             min: 0
             max: 65535
@@ -871,7 +871,7 @@ objects:
             type: array
             items:
               id:
-                type: integer
+                type: integer_as_string
                 description: ID of active emergency route
                 min: 1
                 max: 255
@@ -882,7 +882,7 @@ objects:
         from_version: 1.0.1
         arguments:
           user:
-            type: integer
+            type: integer_as_string
             values:
               0: Nobody logged in
               1: Operator logged in at level 1 (read only)
@@ -894,7 +894,7 @@ objects:
         from_version: 1.0.1
         arguments:
           user:
-            type: integer
+            type: integer_as_string
             values:
               0: Nobody logged in
               1: Operator logged in at level 1 (read only)
@@ -916,32 +916,32 @@ objects:
         from_version: 1.0.1
         arguments:
           year:
-            type: integer
+            type: integer_as_string
             description: Year
             min: 0
             max: 9999
           month:
-            type: integer
+            type: integer_as_string
             description: Month
             min: 1
             max: 12
           day:
-            type: integer
+            type: integer_as_string
             description: Day of month
             min: 1
             max: 31
           hour:
-            type: integer
+            type: integer_as_string
             description: Hour
             min: 0
             max: 23
           minute:
-            type: integer
+            type: integer_as_string
             description: Minute
             min: 0
             max: 59
           second:
-            type: integer
+            type: integer_as_string
             description: Second
             min: 0
             max: 59
@@ -1009,7 +1009,7 @@ objects:
             type: timestamp
             description: Time stamp of the config
           version:
-            type: string
+            type: string_list_as_string
             description: |-
               Version information of the configuration. Contains basic information such as controller id, changes to config and other information.
               The format is not specified in detail.
@@ -1023,7 +1023,7 @@ objects:
             type: timestamp
             description: Time stamp for start of measuring
           vehicles:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Number of vehicles.
               - Value expressed as an integer with a range of 0-65535.
@@ -1041,7 +1041,7 @@ objects:
             type: timestamp
             description: Time stamp for start of measuring
           speed:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Average speed in km/h (integer).
               - Value expressed as an integer with a range of 0-65535.
@@ -1059,7 +1059,7 @@ objects:
             type: timestamp
             description: Time stamp for start of measuring
           occupancy:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Occupancy in percent (%) (0-100)
               - Value expressed as an integer with a range of 0-100.
@@ -1077,7 +1077,7 @@ objects:
             type: timestamp
             description: Time stamp for start of measuring
           P:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Number of cars.
               - Value expressed as an integer with a range of 0-65535.
@@ -1086,7 +1086,7 @@ objects:
             min: -1
             max: 65535
           PS:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Number of cars with trailers.
               - Value expressed as an integer with a range of 0-65535.
@@ -1095,7 +1095,7 @@ objects:
             min: -1
             max: 65535
           L:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Number of trucks.
               - Value expressed as an integer with a range of 0-65535.
@@ -1104,7 +1104,7 @@ objects:
             min: -1
             max: 65535
           LS:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Number of trucks with trailers.
               - Value expressed as an integer with a range of 0-65535.
@@ -1113,7 +1113,7 @@ objects:
             min: -1
             max: 65535
           B:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Number of buses.
               - Value expressed as an integer with a range of 0-65535.
@@ -1122,7 +1122,7 @@ objects:
             min: -1
             max: 65535
           SP:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Number of trams.
               - Value expressed as an integer with a range of 0-65535.
@@ -1131,7 +1131,7 @@ objects:
             min: -1
             max: 65535
           MC:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Number of motor cycles.
               - Value expressed as an integer with a range of 0-65535.
@@ -1140,7 +1140,7 @@ objects:
             min: -1
             max: 65535
           C:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Number of bicycles.
               - Value expressed as an integer with a range of 0-65535.
@@ -1149,7 +1149,7 @@ objects:
             min: -1
             max: 65535
           F:
-            type: integer_list
+            type: integer_as_string_list
             description: |-
               Number of pedestrians.
               - Value expressed as an integer with a range of 0-65535.
@@ -1176,14 +1176,14 @@ objects:
             type: string
             description: Security code 2
           timeout:
-            type: integer
+            type: integer_as_string
             description: |-
               Time in minutes until controller automatically reverts to previous functional position.
               0=no automatic return
             min: 0
             max: 1440
           intersection:
-            type: integer
+            type: integer_as_string
             description: |-
               Intersection number.
               Command only applies to specified intersection. Other intersections remains in their respective operating mode(s).
@@ -1201,7 +1201,7 @@ objects:
         from_version: 1.0.1
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: Controller uses time plan according to programming
               True: Controller uses time plan according to command
@@ -1209,7 +1209,7 @@ objects:
             type: string
             description: Security code 2
           timeplan:
-            type: integer
+            type: integer_as_string
             description: designation of time plan
             min: 1
             max: 255
@@ -1223,7 +1223,7 @@ objects:
         from_version: 1.0.1
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: Controller uses traffic situation according to own programming
               True: Controller uses traffic situation according to command
@@ -1231,7 +1231,7 @@ objects:
             type: string
             description: Security code 2
           traficsituation:
-            type: integer
+            type: integer_as_string
             description: designation of traficsituation
             min: 1
             max: 255
@@ -1244,7 +1244,7 @@ objects:
         from_version: 1.0.1
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             deprecated: true
             description: 'True: Restart controller'
           securityCode:
@@ -1261,7 +1261,7 @@ objects:
         from_version: 1.0.1
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: Deactivate emergency route
               True: Activate emergency route
@@ -1269,7 +1269,7 @@ objects:
             type: string
             description: Security code 2
           emergencyroute:
-            type: integer
+            type: integer_as_string
             description: Number of emergency route
             min: 1
             max: 255
@@ -1285,7 +1285,7 @@ objects:
         from_version: 1.0.1
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: Deactivate input
               True: Activate input
@@ -1293,7 +1293,7 @@ objects:
             type: string
             description: Security code 2
           input:
-            type: integer
+            type: integer_as_string
             description: Number of Input
             min: 1
             max: 255
@@ -1307,7 +1307,7 @@ objects:
         from_version: 1.0.2
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: Deactivate fixed time control
               True: Activate fixed time control
@@ -1329,7 +1329,7 @@ objects:
         reserved: true
         arguments:
           status:
-            type: string
+            type: string_list_as_string
             description: |-
               Orders signal groups to green or red. Sets a block of 16 signal groups at a time. Can be repeated to set several blocks of 16 signal groups. Values are separated with comma. Blocks are separated with semicolon. Since semicolon breaks the SXL csv-format, colon is used in example below.
               
@@ -1394,7 +1394,7 @@ objects:
         from_version: 1.0.8
         arguments:
           status:
-            type: string
+            type: string_list_as_string
             description: |-
               Sets/Unsets a block of 16 inputs at a time. Can be repeated to set several blocks of 16 inputs. Values are separated with comma. Blocks are separated with semicolon.
               Format: [Offset];[Bits to set];[Bits to unset];…
@@ -1411,12 +1411,12 @@ objects:
         from_version: 1.0.13
         arguments:
           plan:
-            type: integer
+            type: integer_as_string
             description: Plan to be changed
             min: 0
             max: 255
           status:
-            type: string
+            type: string_list_as_string
             description: |-
               Dynamic bands.
               Each dynamic band are written as dd-ee where:
@@ -1440,12 +1440,12 @@ objects:
         from_version: 1.0.13
         arguments:
           status:
-            type: integer
+            type: integer_as_string
             description: Set offset time in seconds
             min: 0
             max: 255
           plan:
-            type: integer
+            type: integer_as_string
             description: Time plan nr
             min: 0
             max: 255
@@ -1462,7 +1462,7 @@ objects:
         from_version: 1.0.13
         arguments:
           status:
-            type: string
+            type: string_list_as_string
             description: |-
               Week time table. Defines time table to use for each week day
               Each segment is written as d-t where:
@@ -1495,7 +1495,7 @@ objects:
         from_version: 1.0.13
         arguments:
           status:
-            type: string
+            type: string_list_as_string
             description: |-
               Time Table. Defines time tables.
               Each time definition is written as t-o-h-m where:
@@ -1529,12 +1529,12 @@ objects:
         from_version: 1.0.13
         arguments:
           status:
-            type: integer
+            type: integer_as_string
             description: Set cycle time in seconds
             min: 1
             max: 255
           plan:
-            type: integer
+            type: integer_as_string
             description: Time plan nr
             min: 0
             max: 255
@@ -1551,7 +1551,7 @@ objects:
         from_version: 1.0.13
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: Release input
               True: Force input
@@ -1559,12 +1559,12 @@ objects:
             type: string
             description: Security code 2
           input:
-            type: integer
+            type: integer_as_string
             description: Number of Input
             min: 1
             max: 255
           inputValue:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: input forced to False
               True: input forced to True
@@ -1579,7 +1579,7 @@ objects:
         from_version: 1.0.15
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             description: |-
               True: Force output
               False: Release output
@@ -1587,12 +1587,12 @@ objects:
             type: string
             description: Security code 2
           output:
-            type: integer
+            type: integer_as_string
             description: Number of Output
             min: 1
             max: 255
           outputValue:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: output forced off
               True: output forced on
@@ -1606,7 +1606,7 @@ objects:
         from_version: 1.0.15
         arguments:
           status:
-            type: string
+            type: string_list_as_string
             description: |-
               Loop detector trigger level sensitivity is written as dd-ss where:
               dd=loop detector number
@@ -1677,37 +1677,37 @@ objects:
             optional: true
             description: ID of a signal group component.
           inputId:
-            type: integer
+            type: integer_as_string
             optional: true
             description: ID of an input, using the same numbering scheme as M0006
             min: 0
             max: 255
           connectionId:
-            type: integer
+            type: integer_as_string
             optional: true
             description: ID of a connection, connecting an ingoing and an outgoing lane
             min: 0
             max: 255
           approachId:
-            type: integer
+            type: integer_as_string
             optional: true
             description: ID of an intersection approach
             min: 0
             max: 16
           laneInId:
-            type: integer
+            type: integer_as_string
             optional: true
             description: ID of an ingoing lane
             min: 0
             max: 255
           laneOutId:
-            type: integer
+            type: integer_as_string
             optional: true
             description: ID of an outgoing lane
             min: 0
             max: 255
           priorityId:
-            type: integer
+            type: integer_as_string
             optional: true
             description: ID of a priority
             min: 0
@@ -1719,13 +1719,13 @@ objects:
               update: Update to existing priority request
               cancel: Cancel an existing priority
           level:
-            type: integer
+            type: integer_as_string
             description: |-
               0: Lowest, 14: Highest
             min: 0
             max: 14
           eta:
-            type: integer
+            type: integer_as_string
             optional: true
             description: Estimated time of arrival to the intersection, in seconds
             min: 0
@@ -1758,7 +1758,7 @@ objects:
         from_version: 1.1.0
         arguments:
           status:
-            type: integer
+            type: integer_as_string
             min: 0
             max: 65535
             description: Timeout, in minutes
@@ -1797,32 +1797,32 @@ objects:
             type: string
             description: Security code 1
           year:
-            type: integer
+            type: integer_as_string
             description: Year
             min: 0
             max: 9999
           month:
-            type: integer
+            type: integer_as_string
             description: Month
             min: 1
             max: 12
           day:
-            type: integer
+            type: integer_as_string
             description: Day of month
             min: 1
             max: 31
           hour:
-            type: integer
+            type: integer_as_string
             description: Hour
             min: 0
             max: 23
           minute:
-            type: integer
+            type: integer_as_string
             description: Minute
             min: 0
             max: 59
           second:
-            type: integer
+            type: integer_as_string
             description: Second
             min: 0
             max: 59
@@ -1841,7 +1841,7 @@ objects:
         from_version: 1.0.1
         arguments:
           timeplan:
-            type: integer
+            type: integer_as_string
             description: Current time plan
             min: 1
             max: 255
@@ -1904,7 +1904,7 @@ objects:
             description: |-
               Time stamp for the most likely time for the signal group to go to green. If the signal group is green, it is the most likely time for the next green.
           ToGConfidence:
-            type: integer
+            type: integer_as_string
             description: Confidence of the likelyToGEstimate. 0-100%
             min: 0
             max: 100
@@ -1921,7 +1921,7 @@ objects:
             description: |-
               Time stamp for the most likely time for the signal group to go to red. If the signal group is red, it is the most likely time for the next red.
           ToRConfidence:
-            type: integer
+            type: integer_as_string
             description: Confidence of the likelyToREstimate. 0-100%
             min: 0
             max: 100
@@ -1936,7 +1936,7 @@ objects:
         reserved: true
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: No command (default)
               True: Order a signal group to green
@@ -1954,7 +1954,7 @@ objects:
         reserved: true
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: No command (default)
               True: Order a signal group to red
@@ -1987,7 +1987,7 @@ objects:
             description: Detector forced on/off while detector error
             values: ['on','off'] # on/off must be quoted, otherwise they are converted to true/false
           manual:
-            type: boolean
+            type: boolean_as_string
             description: Manually controlled detector logic (True/False)
       A0302:
         description: |-
@@ -2012,7 +2012,7 @@ objects:
             description: Detector forced on/off while detector error
             values: ['on','off'] # on/off must be quoted, otherwise they are converted to true/false
           manual:
-            type: boolean
+            type: boolean_as_string
             description: Manually controlled detector logic (True/False)
           logicerror:
             type: string
@@ -2043,7 +2043,7 @@ objects:
             description: Detector forced on/off while detector error
             values: ['on','off'] # on/off must be quoted, otherwise they are converted to true/false
           manual:
-            type: boolean
+            type: boolean_as_string
             description: Manually controlled detector logic (True/False)
       A0304:
         description: |-
@@ -2068,7 +2068,7 @@ objects:
             description: Detector forced on/off while detector error
             values: ['on','off'] # on/off must be quoted, otherwise they are converted to true/false
           manual:
-            type: boolean
+            type: boolean_as_string
             description: Manually controlled detector logic (True/False)
           logicerror:
             type: string
@@ -2088,7 +2088,7 @@ objects:
             type: timestamp
             description: Time stamp for start of measuring
           vehicles:
-            type: integer
+            type: integer_as_string
             description: Number of vehicles on a given detector logic (since last
               update)
             min: 0
@@ -2103,7 +2103,7 @@ objects:
             type: timestamp
             description: Time stamp for start of measuring
           speed:
-            type: integer
+            type: integer_as_string
             description: Average speed in km/h
             min: 0
             max: 65535
@@ -2117,7 +2117,7 @@ objects:
             type: timestamp
             description: Time stamp for start of measuring
           occupancy:
-            type: integer
+            type: integer_as_string
             description: Occupancy in percent (0-100%)
             min: 0
             max: 100
@@ -2131,47 +2131,47 @@ objects:
             type: timestamp
             description: Time stamp for start of measuring
           P:
-            type: integer
+            type: integer_as_string
             description: Number of cars
             min: 0
             max: 65535
           PS:
-            type: integer
+            type: integer_as_string
             description: Number of cars with trailers
             min: 0
             max: 65535
           L:
-            type: integer
+            type: integer_as_string
             description: Number of trucks
             min: 0
             max: 65535
           LS:
-            type: integer
+            type: integer_as_string
             description: Number of trucks with trailers
             min: 0
             max: 65535
           B:
-            type: integer
+            type: integer_as_string
             description: Number of buses
             min: 0
             max: 65535
           SP:
-            type: integer
+            type: integer_as_string
             description: Number of trams
             min: 0
             max: 65535
           MC:
-            type: integer
+            type: integer_as_string
             description: Number of motor cycles
             min: 0
             max: 65535
           C:
-            type: integer
+            type: integer_as_string
             description: Number of bicycles
             min: 0
             max: 65535
           F:
-            type: integer
+            type: integer_as_string
             description: Number of pedestrians
             min: 0
             max: 65535
@@ -2200,7 +2200,7 @@ objects:
         from_version: 1.0.3
         arguments:
           status:
-            type: boolean
+            type: boolean_as_string
             description: |-
               False: Release detector logic, 'mode' is ignored.
               True: Force detector logic to the value in 'mode'.
@@ -2215,7 +2215,7 @@ objects:
             type: string
             description: Security code 2
           mode:
-            type: boolean
+            type: boolean_as_string
             description: |-
               Mode to force to (ignored if 'status' is false).
               False: Deactivate detector logic
