@@ -280,7 +280,7 @@ objects:
               True: Traffic Light Controller not in dark mode
           source:
             description: Source of the status change
-            type: string_list_as_string_list
+            type: string_list_as_string
             values:
               operator_panel: Operator panel
               calendar_clock: Calendar/clock
@@ -309,7 +309,7 @@ objects:
               False: Manual control inactive
               True: Manual control active
           source:
-            type: string_list_as_string_list
+            type: string_list_as_string
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -339,7 +339,7 @@ objects:
               False: Fixed time control inactive
               True: Fixed time control active
           source:
-            type: string_list_as_string_list
+            type: string_list_as_string
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -369,7 +369,7 @@ objects:
               False: Isolated control disabled
               True: Isolated control enabled (Vehicle actuated control or Fixed time control)
           source:
-            type: string_list_as_string_list
+            type: string_list_as_string
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -400,7 +400,7 @@ objects:
               False: Yellow flash disabled
               True: Yellow flash enabled
           source:
-            type: string_list_as_string_list
+            type: string_list_as_string
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -430,7 +430,7 @@ objects:
               False: All red disabled
               True: All red enabled
           source:
-            type: string_list_as_string_list
+            type: string_list_as_string
             description: Source of the status change
             values:
               operator_panel: Operator panel
@@ -554,7 +554,7 @@ objects:
             min: 0
             max: 255
           controlmode:
-            type: string_list_as_string_list
+            type: string_list_as_string
             values:
               startup: The controller starts up, performs a power on self test and performs each :term:`start-up interval`
               control: Normal 3-light control
@@ -765,14 +765,14 @@ objects:
             min: 0
             max: 255
           status:
-            type: string_list_as_string_list
+            type: string_list_as_string
             values:
               local: Local coordination
               centralized: Coordination with synchronized clock
               'off': Coordination not active
           source:
             description: Source of the status change
-            type: string_list_as_string_list
+            type: string_list_as_string
             values:
               operator_panel: Operator panel
               calendar_clock: Calendar/clock
