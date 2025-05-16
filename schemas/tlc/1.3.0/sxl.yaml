@@ -114,46 +114,67 @@ objects:
       S0001:
         description: |-
           Signal group status.
-          Provides the status of each signal group, including basic information such as green, yellow and red. But also detailed technical information.
-          Can be used to draw a live signal group diagram as well provide diagnostic information about the performance of the controller.
+          Provides the status of each signal group, e.g. green, yellow, red,
+          or other states used in the signal program.
+          See the section on signal group states for more information about
+          the possible states.
+
+          Can be used to draw a live signal group diagram as well as to provide
+          diagnostic information about the performance of the controller.
+
+          The base cycle counter is based on the internal clock and the cycle
+          length. Controllers with synchronized clocks and the same cycle
+          length will therefore have identical base cycle counters.
+
+          The cycle clock is based on the base cycle counter, but shifts the
+          phase using the offset in the controller:
+
+          c = (b + o) mod t
+
+          where c = cycle counter,
+          b = base cycle counter,
+          o = offset,
+          t = cycle time,
+          mod = modulo
+
+          See the coordination section for more information.
+
+          The millisecond attributes updates only when the
+          signal group state changes, meaning it's safe to subscribe to it
+          using **sendOnChange** - you will not be flooded with state updates
+          every millisecond.
         from_version: 1.0.0
         arguments:
           signalgroupstatus:
             type: string
             description: |-
               Signal group status as text field.
-              Each character represent the state of the signal group in consecutive order,
+              Each character represents the state of the signal group in consecutive order,
               where the leftmost character starts with signal group 1.
               Signal group status is described in detail in the corresponding section.
-              - : Signal group is undefined/does not exist
+              A dash "-" is used for undefined/non-exiting signal groups.
             pattern: "^[a-hA-G0-9N-P]*$"
-          cyclecounter:
-            type: integer_as_string
-            description: |-
-              Cycle counter.
-              Used for handling of coordination between TLC’s.
-              Is counted from 0 until it reaches the cycle time (See S0028).
-              
-              c = (b + o) mod t
-              
-              where c = cycle counter,
-              b = base cycle counter,
-              o = offset,
-              t = cycle time,
-              mod = modulo
-
-              See the coordination section for more information.
-            min: 0
-            max: 999
           basecyclecounter:
             type: integer_as_string
             description: |-
               Base cycle counter.
-              Used for handling of coordination between TLC’s.
-              Synchronized between all TLC’s in an active coordination.
-              See the coordination section for more information.
+              Updates once per second, counting from 0 and wrapping around at the cycle length
             min: 0
             max: 999
+          cyclecounter:
+            type: integer_as_string
+            description: |-
+              Cycle counter.
+              Updates once per second, counting from 0 and wrapping around at the cycle length
+            min: 0
+            max: 999
+          millisecond:
+            type: integer_as_string
+            min: 0
+            max: 999999
+            description: | -
+              Updates only when the signal group status changes, providing the precise
+              cycle counter in milliseconds of when the state changed.
           stage:
             type: integer_as_string
             description: Current stage (isolated)
