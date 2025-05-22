@@ -122,9 +122,9 @@ objects:
           Can be used to draw a live signal group diagram as well as to provide
           diagnostic information about the performance of the controller.
 
-          The base cycle counter is based on just the internal clock and the
-          cycle length. Controllers with synchronized clocks and the same cycle
-          length will therefore have identical base cycle counters.
+          The base cycle counter is computed based on the internal clock and
+          the cycle time. Controllers in active coordination will have
+          synchronized base cycle counters.
 
           The cycle clock is based on the base cycle counter, but shifts the
           phase using the offset set in the controller:
@@ -135,13 +135,14 @@ objects:
           c = cycle counter
           b = base cycle counter
           o = offset
-          t = cycle length
+          t = cycle time
 
           See the coordination section for more information about cycle
           counters.
 
           The millisecond attributes updates only when the
-          signal group state changes, meaning it's safe to subscribe to it
+          signal group state changes, and indicates when the last
+          signal group state change occurred. It's safe to subscribe to it
           using **sendOnChange** - you will not be flooded with state updates
           every millisecond.
         from_version: 1.0.0
@@ -153,7 +154,7 @@ objects:
               Each character represents the state of the signal group in consecutive order,
               where the leftmost character starts with signal group 1.
               Signal group status is described in detail in the corresponding section.
-              A dash "-" is used for undefined/non-exiting signal groups.
+              A dash "-" is used for undefined/non-existing signal groups.
             pattern: "^[a-hA-G0-9N-P]*$"
           basecyclecounter:
             type: integer_as_string
@@ -174,8 +175,9 @@ objects:
             min: 0
             max: 999999
             description: | -
-              Updates only when the signal group status changes, providing the precise
-              cycle counter in milliseconds of when the state changed.
+              Provides the cycle counter in milliseconds of when the last signal
+              group state changed occured.
+              Updates only when the signal group state changes.
           stage:
             type: integer_as_string
             description: Current stage (isolated)
