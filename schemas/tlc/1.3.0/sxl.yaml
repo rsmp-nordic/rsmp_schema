@@ -2210,6 +2210,7 @@ objects:
               milliseconds. Ignored if 'status' is false.
               Setting to zero is the same as leaving out, and means
               no automatic release will happen.
+            min: 0
           securityCode:
             type: string
             description: Security code 2
