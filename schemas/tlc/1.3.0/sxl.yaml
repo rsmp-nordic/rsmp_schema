@@ -174,7 +174,7 @@ objects:
             type: integer_as_string
             min: 0
             max: 999999
-            description: | -
+            description: |-
               Provides the cycle counter in milliseconds of when the last signal
               group state changed occured.
               Updates only when the signal group state changes.
