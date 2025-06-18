@@ -1176,6 +1176,7 @@ objects:
             type: string
             description: Security code 2
           timeout:
+            optional: true
             type: integer_as_string
             description: |-
               Time in minutes until controller automatically reverts to previous functional position.
@@ -1183,6 +1184,7 @@ objects:
             min: 0
             max: 1440
           intersection:
+            optional: true
             type: integer_as_string
             description: |-
               Intersection number.
