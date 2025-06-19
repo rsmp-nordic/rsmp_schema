@@ -160,14 +160,14 @@ objects:
             type: integer_as_string
             description: |-
               Base cycle counter.
-              Updates once per second, counting from 0 and wrapping around at the cycle.
+              Updates once per second, counting from 0 and wrapping around when reaching the cycle time.
             min: 0
             max: 999
           cyclecounter:
             type: integer_as_string
             description: |-
               Cycle counter.
-              Updates once per second, counting from 0 and wrapping around at the cycle.
+              Updates once per second, counting from 0 and wrapping around when reaching the cycle time.
             min: 0
             max: 999
           millisecond:
