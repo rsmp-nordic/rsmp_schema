@@ -1789,7 +1789,7 @@ objects:
       M0104:
         description: |-
           Set clock.
-          Can be used to manually set the clock of the traffic light controller if automatic  time synchronization (NTP or watchdog sync) is not available. For instance, during maintenance work.
+          Can be used to manually set the clock of the traffic light controller if automatic synchronization using e.g. NTP or GPS is is not available. For instance, during maintenance work.
           Note: UTC is used.
           Requires security code 1
         from_version: 1.0.1
