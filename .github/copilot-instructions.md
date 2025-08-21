@@ -6,23 +6,17 @@ Always reference these instructions first and fallback to search or bash command
 
 ## Working Effectively
 
-Bootstrap, build, and test the repository using mise (recommended) or manual Ruby setup:
+Bootstrap, build, and test the repository using mise:
 
-### Recommended: Using mise
+### Using mise
 - Install mise: https://mise.jdx.dev/
 - Install Ruby version from .tool-versions: `mise install`
 - Install dependencies: `bundle install` -- takes 10-15 seconds. NEVER CANCEL. Set timeout to 60+ seconds.
 - Run tests: `bundle exec rspec` -- takes 2 seconds. NEVER CANCEL. Set timeout to 30+ seconds.
 
-### Alternative: Manual Setup (if Ruby already installed per .tool-versions)
-- Add bundler to user gems: `gem install --user-install bundler`
-- Add user gems to PATH: `export PATH="$HOME/.local/share/gem/ruby/$(cut -d' ' -f2 .tool-versions | cut -d'.' -f1,2).0/bin:$PATH"`
-- Install dependencies: `bundle install` -- takes 10-15 seconds. NEVER CANCEL. Set timeout to 60+ seconds.
-- Run tests: `bundle exec rspec` -- takes 2 seconds. NEVER CANCEL. Set timeout to 30+ seconds.
-
 ## Environment Setup Commands
 
-### Recommended: Using mise
+### Using mise
 
 ```bash
 # Install mise (if not already installed)
@@ -30,21 +24,6 @@ Bootstrap, build, and test the repository using mise (recommended) or manual Rub
 
 # Install Ruby version specified in .tool-versions
 mise install
-
-# Install all dependencies
-bundle install
-```
-
-### Alternative: Manual Setup
-
-Execute these commands in sequence for a fresh clone:
-
-```bash
-# Install bundler to user directory (avoid permission issues)
-gem install --user-install bundler
-
-# Add user gems to PATH
-export PATH="$HOME/.local/share/gem/ruby/$(cut -d' ' -f2 .tool-versions | cut -d'.' -f1,2).0/bin:$PATH"
 
 # Install all dependencies
 bundle install
@@ -182,16 +161,13 @@ Requires Ruby version as specified in .tool-versions.
 ## Common Issues and Solutions
 
 **Ruby version or environment issues**:
-- **Recommended**: Use mise for automatic Ruby management: `mise install`
-- Alternatively, ensure Ruby version matches .tool-versions
+- Use mise for automatic Ruby management: `mise install`
 
 **Permission errors during bundle install**:
-- **Recommended**: Use mise which handles permissions automatically
-- **Manual approach**: Use `gem install --user-install bundler` and configure PATH manually
+- Use mise which handles permissions automatically
 
 **Missing bundler command**:
-- **With mise**: Run `mise install` first, bundler should be available automatically
-- **Manual approach**: Install bundler first: `gem install --user-install bundler` and ensure PATH includes user gem binaries
+- Run `mise install` first, bundler should be available automatically
 
 **JSON Schema validation errors**:
 - Check that schema paths use `schemas/` not `schema/` (common typo in examples)
