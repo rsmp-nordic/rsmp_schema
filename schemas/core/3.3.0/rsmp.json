@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "../3.2.0/core.json"
+      "$ref": "core.json"
     },
     {
       "if": {
@@ -45,7 +45,7 @@
         "properties": { "type": { "const": "AggregatedStatusRequest" } }
       },
       "then": {
-        "$ref": "../3.1.5/aggregated_status_request.json"
+        "$ref": "aggregated_status_request.json"
       }
     },
     {

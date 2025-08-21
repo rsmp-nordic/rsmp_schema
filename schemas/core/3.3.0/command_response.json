@@ -1,12 +1,12 @@
 {
   "title" :  "CommandResponse",
-  "description" :  "Command response - only single command (cCI) allowed per response",
+  "description" :  "Command response",
   "properties" : {
     "mId" : { "$ref": "../3.1.2/definitions.json#/message_id" },
     "cId" : { "$ref": "definitions.json#/component_id" },
     "cTS" : { "$ref": "../3.1.2/definitions.json#/timestamp" },
     "rvs" : {
-      "description" : "Command return values",
+      "description" : "Command arguments",
       "type" : "array",
       "items" : {
         "type" : "object",

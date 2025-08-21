@@ -3,7 +3,7 @@
     "description" : "Number as string",
     "type": "string",
     "$comment" : "Example: 123, -123, 0.5, -2.4",
-    "pattern": "^\\-?[0-9]+(\\.[0-9]+)?$"
+    "pattern": "^-?[0-9]+(\.[0-9]+)?$"
   },
   "component_id": {
     "description" : "Component id - supports both format A (AA+BBCDD=EEEFFGGG) and format B (/component/path)",

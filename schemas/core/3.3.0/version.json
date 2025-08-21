@@ -4,9 +4,13 @@
   "properties" : {
     "mId" : { "$ref": "../3.1.2/definitions.json#/message_id" },
     "step" : {
-      "description" : "Request or Response step",
+      "description" : "Message step - Request for initial messages from sites, Response for supervisor replies",
       "type" : "string",
-      "enum" : ["Request", "Response"]
+      "enum" : [ "Request", "Response" ]
+    },
+    "receiveAlarms" : {
+      "description" : "Whether supervisor wants to receive alarms (optional, only in Response messages)",
+      "type" : "boolean"
     },
     "RSMP" : {
       "description" : "Supported RSMP versions",
@@ -41,32 +45,13 @@
           }
         },
         "required" : [ "sId" ],
-        "additionalProperties" : true
+        "additionalProperties" : false
       },
       "minItems" : 1,
-      "uniqueItems" : true
-    },
-    "receiveAlarms" : {
-      "description" : "Whether supervisor wants to receive alarms (only in Response)",
-      "type" : "boolean"
+      "uniqueItems" : true,
+      "additionalProperties" : false
     }
   },
   "required" : [ "mId", "step", "RSMP", "SXL", "siteId" ],
-  "additionalProperties" : true,
-  "if": {
-    "properties": { "step": { "const": "Response" } }
-  },
-  "then": {
-    "properties": {
-      "receiveAlarms": true
-    }
-  },
-  "else": {
-    "not": {
-      "properties": {
-        "receiveAlarms": true
-      },
-      "required": ["receiveAlarms"]
-    }
-  }
+  "additionalProperties": true
 }
