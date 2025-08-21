@@ -1,0 +1,57 @@
+{
+  "title" :  "Version",
+  "description" :  "Version message",
+  "properties" : {
+    "mId" : { "$ref": "../3.1.2/definitions.json#/message_id" },
+    "step" : {
+      "description" : "Message step - Request for initial messages from sites, Response for supervisor replies",
+      "type" : "string",
+      "enum" : [ "Request", "Response" ]
+    },
+    "receiveAlarms" : {
+      "description" : "Whether supervisor wants to receive alarms (optional, only in Response messages)",
+      "type" : "boolean"
+    },
+    "RSMP" : {
+      "description" : "Supported RSMP versions",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "vers" : {
+            "$ref": "../3.1.2/definitions.json#/version",
+            "description" : "RSMP version"
+          }
+        },
+        "required" : ["vers"],
+        "additionalProperties" : false
+      },
+      "minItems" : 1,
+      "uniqueItems" : true
+    },
+    "SXL" : {
+      "$ref": "../3.1.2/definitions.json#/version",
+      "description" : "SXL version"
+    },
+    "siteId" : {
+      "description" : "Site ids",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "sId" : {
+            "type" : "string",
+            "minLength": 1
+          }
+        },
+        "required" : [ "sId" ],
+        "additionalProperties" : false
+      },
+      "minItems" : 1,
+      "uniqueItems" : true,
+      "additionalProperties" : false
+    }
+  },
+  "required" : [ "mId", "step", "RSMP", "SXL", "siteId" ],
+  "additionalProperties": true
+}
