@@ -2,7 +2,7 @@
   "title" :  "StatusSubscribe",
   "description" :  "Status subscribe",
   "properties" : {
-    "mId" : { "$ref": "definitions.json#/message_id" },
+    "mId" : { "$ref": "../3.1.2/definitions.json#/message_id" },
     "cId" : { "$ref": "definitions.json#/component_id" },
     "sS" : {
       "description" : "Status request arguments",
@@ -11,7 +11,7 @@
       "items" : {
         "type" : "object",
         "properties": {
-          "sCI" : { "$ref": "definitions.json#/status_code" },
+          "sCI" : { "$ref": "../3.1.2/definitions.json#/status_code" },
           "n" : { "description" : "Unique reference of the value", "type" : "string" },
           "uRt" : {
             "$ref": "definitions.json#/number_as_string",

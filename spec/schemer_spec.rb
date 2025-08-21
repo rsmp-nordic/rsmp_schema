@@ -12,6 +12,7 @@ RSpec.describe RSMP::Schema do
     expect(RSMP::Schema.has_schema?(:core,'3.2.1')).to be(true)
     expect(RSMP::Schema.has_schema?(:core,'3.2.2')).to be(true)
     expect(RSMP::Schema.has_schema?(:core,'3.3.0')).to be(true)
+    expect(RSMP::Schema.has_schema?(:core,'3.4.0')).to be(false)
     expect(RSMP::Schema.has_schema?(:core,'3.3')).to be(false)
 
     expect(RSMP::Schema.has_schema?(:tlc,'1.0.6')).to be(false)

@@ -2,7 +2,7 @@
   "title" :  "Version",
   "description" :  "Version message",
   "properties" : {
-    "mId" : { "$ref": "definitions.json#/message_id" },
+    "mId" : { "$ref": "../3.1.2/definitions.json#/message_id" },
     "step" : {
       "description" : "Request or Response step",
       "type" : "string",
@@ -15,7 +15,7 @@
         "type" : "object",
         "properties" : {
           "vers" : {
-            "$ref": "definitions.json#/version",
+            "$ref": "../3.1.2/definitions.json#/version",
             "description" : "RSMP version"
           }
         },
@@ -26,7 +26,7 @@
       "uniqueItems" : true
     },
     "SXL" : {
-      "$ref": "definitions.json#/version",
+      "$ref": "../3.1.2/definitions.json#/version",
       "description" : "SXL version"
     },
     "siteId" : {
@@ -41,11 +41,10 @@
           }
         },
         "required" : [ "sId" ],
-        "additionalProperties" : false
+        "additionalProperties" : true
       },
       "minItems" : 1,
-      "uniqueItems" : true,
-      "additionalProperties" : false
+      "uniqueItems" : true
     },
     "receiveAlarms" : {
       "description" : "Whether supervisor wants to receive alarms (only in Response)",
@@ -53,6 +52,7 @@
     }
   },
   "required" : [ "mId", "step", "RSMP", "SXL", "siteId" ],
+  "additionalProperties" : true,
   "if": {
     "properties": { "step": { "const": "Response" } }
   },

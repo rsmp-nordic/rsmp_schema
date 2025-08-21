@@ -2,7 +2,7 @@
   "title" :  "CommandRequest",
   "description" :  "Command request - only single command (cCI) allowed per request",
   "properties" : {
-    "mId" : { "$ref": "definitions.json#/message_id" },
+    "mId" : { "$ref": "../3.1.2/definitions.json#/message_id" },
     "cId" : { "$ref": "definitions.json#/component_id" },
     "arg" : {
       "description" : "Command arguments",
@@ -11,7 +11,7 @@
       "items" : {
         "type" : "object",
         "properties": {
-          "cCI" : { "$ref": "definitions.json#/command_code" },
+          "cCI" : { "$ref": "../3.1.2/definitions.json#/command_code" },
           "n" : { "description" : "Unique reference of the value", "type" : "string" },
           "cO" : { "description" : "Command", "type" : "string" },
           "v" : { "description" : "Value" }
