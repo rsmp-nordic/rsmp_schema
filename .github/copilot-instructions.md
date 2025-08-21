@@ -8,7 +8,7 @@ Always reference these instructions first and fallback to search or bash command
 
 Bootstrap, build, and test the repository (assumes Ruby is already installed per .tool-versions):
 - Add bundler to user gems: `gem install --user-install bundler`
-- Add user gems to PATH: `export PATH="$HOME/.local/share/gem/ruby/$(ruby -e 'puts RUBY_VERSION.split(".")[0,2].join(".")').0/bin:$PATH"`
+- Add user gems to PATH: `export PATH="$HOME/.local/share/gem/ruby/$(cut -d' ' -f2 .tool-versions | cut -d'.' -f1,2).0/bin:$PATH"`
 - Configure bundle to install locally: `bundle config set --local path vendor/bundle`
 - Install dependencies: `bundle install` -- takes 10-15 seconds. NEVER CANCEL. Set timeout to 60+ seconds.
 - Run tests: `bundle exec rspec` -- takes 2 seconds. NEVER CANCEL. Set timeout to 30+ seconds.
@@ -22,7 +22,7 @@ Execute these commands in sequence for a fresh clone:
 gem install --user-install bundler
 
 # Add user gems to PATH
-export PATH="$HOME/.local/share/gem/ruby/$(ruby -e 'puts RUBY_VERSION.split(".")[0,2].join(".")').0/bin:$PATH"
+export PATH="$HOME/.local/share/gem/ruby/$(cut -d' ' -f2 .tool-versions | cut -d'.' -f1,2).0/bin:$PATH"
 
 # Configure bundle to install gems locally
 bundle config set --local path vendor/bundle
@@ -164,7 +164,7 @@ Requires Ruby version as specified in .tool-versions.
 
 **Permission errors during bundle install**:
 - Use `gem install --user-install bundler`
-- Add user gems to PATH: `export PATH="$HOME/.local/share/gem/ruby/$(ruby -e 'puts RUBY_VERSION.split(".")[0,2].join(".")').0/bin:$PATH"`
+- Add user gems to PATH: `export PATH="$HOME/.local/share/gem/ruby/$(cut -d' ' -f2 .tool-versions | cut -d'.' -f1,2).0/bin:$PATH"`
 - Configure local bundle path: `bundle config set --local path vendor/bundle`
 
 **Missing bundler command**:
