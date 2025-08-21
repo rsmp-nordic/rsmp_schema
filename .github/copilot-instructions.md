@@ -11,14 +11,12 @@ Bootstrap, build, and test the repository using mise (recommended) or manual Rub
 ### Recommended: Using mise
 - Install mise: https://mise.jdx.dev/
 - Install Ruby version from .tool-versions: `mise install`
-- Configure bundle to install locally: `bundle config set --local path vendor/bundle`
 - Install dependencies: `bundle install` -- takes 10-15 seconds. NEVER CANCEL. Set timeout to 60+ seconds.
 - Run tests: `bundle exec rspec` -- takes 2 seconds. NEVER CANCEL. Set timeout to 30+ seconds.
 
 ### Alternative: Manual Setup (if Ruby already installed per .tool-versions)
 - Add bundler to user gems: `gem install --user-install bundler`
 - Add user gems to PATH: `export PATH="$HOME/.local/share/gem/ruby/$(cut -d' ' -f2 .tool-versions | cut -d'.' -f1,2).0/bin:$PATH"`
-- Configure bundle to install locally: `bundle config set --local path vendor/bundle`
 - Install dependencies: `bundle install` -- takes 10-15 seconds. NEVER CANCEL. Set timeout to 60+ seconds.
 - Run tests: `bundle exec rspec` -- takes 2 seconds. NEVER CANCEL. Set timeout to 30+ seconds.
 
@@ -32,9 +30,6 @@ Bootstrap, build, and test the repository using mise (recommended) or manual Rub
 
 # Install Ruby version specified in .tool-versions
 mise install
-
-# Configure bundle to install gems locally
-bundle config set --local path vendor/bundle
 
 # Install all dependencies
 bundle install
@@ -50,9 +45,6 @@ gem install --user-install bundler
 
 # Add user gems to PATH
 export PATH="$HOME/.local/share/gem/ruby/$(cut -d' ' -f2 .tool-versions | cut -d'.' -f1,2).0/bin:$PATH"
-
-# Configure bundle to install gems locally
-bundle config set --local path vendor/bundle
 
 # Install all dependencies
 bundle install
@@ -196,7 +188,6 @@ Requires Ruby version as specified in .tool-versions.
 **Permission errors during bundle install**:
 - **Recommended**: Use mise which handles permissions automatically
 - **Manual approach**: Use `gem install --user-install bundler` and configure PATH manually
-- Configure local bundle path: `bundle config set --local path vendor/bundle`
 
 **Missing bundler command**:
 - **With mise**: Run `mise install` first, bundler should be available automatically
