@@ -2,6 +2,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   let(:message) {{
     "mType" => "rSMsg",
     "mId" => "a28e94b9-05c7-41bb-8f8b-54693adc9698",
+    "step" => "Request",
     "siteId" => [
       { "sId" => "RN+SI0001" }
     ],
