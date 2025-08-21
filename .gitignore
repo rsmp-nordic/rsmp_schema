@@ -1,4 +1,5 @@
 /.bundle/
+/vendor/bundle/
 /pkg/
 /spec/reports/
 /tmp/
