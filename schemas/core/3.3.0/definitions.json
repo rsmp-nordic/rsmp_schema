@@ -1,0 +1,35 @@
+{
+  "number_as_string" : {
+    "description" : "Number as string",
+    "type": "string",
+    "$comment" : "Example: 123, -123, 0.5, -2.4",
+    "pattern": "^-?[0-9]+(\.[0-9]+)?$"
+  },
+  "component_id": {
+    "description" : "Component id - supports both format A (AA+BBCDD=EEEFFGGG) and format B (/component/path)",
+    "anyOf": [
+      {
+        "$comment": "Format A: Traditional component id like KK+AG0503=001DL001",
+        "type": "string",
+        "pattern": "^[A-Za-z0-9]+\\+[A-Za-z0-9]+=.+$"
+      },
+      {
+        "$comment": "Format B: Hierarchical component id like /sg/1 or /dl/radar/1",
+        "type": "string",
+        "pattern": "^(/[^/]+)+$",
+        "not": {
+          "pattern": "/$"
+        }
+      },
+      {
+        "$comment": "Empty string refers to main component",
+        "type": "string",
+        "enum": [""]
+      },
+      {
+        "$comment": "Null refers to main component",
+        "type": "null"
+      }
+    ]
+  }
+}
