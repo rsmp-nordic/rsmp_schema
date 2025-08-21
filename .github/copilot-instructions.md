@@ -8,15 +8,12 @@ Always reference these instructions first and fallback to search or bash command
 
 Bootstrap, build, and test the repository using mise:
 
-### Using mise
 - Install mise: https://mise.jdx.dev/
 - Install Ruby version from .tool-versions: `mise install`
 - Install dependencies: `bundle install` -- takes 10-15 seconds. NEVER CANCEL. Set timeout to 60+ seconds.
 - Run tests: `bundle exec rspec` -- takes 2 seconds. NEVER CANCEL. Set timeout to 30+ seconds.
 
 ## Environment Setup Commands
-
-### Using mise
 
 ```bash
 # Install mise (if not already installed)
@@ -25,7 +22,8 @@ Bootstrap, build, and test the repository using mise:
 # Install Ruby version specified in .tool-versions
 mise install
 
-# Install all dependencies
+# Install all dependencies.
+# The bundler gem is included by default in the Ruby installation and does not have to be installed explicitly.
 bundle install
 ```
 
@@ -40,8 +38,6 @@ bundle exec rspec
 The test suite includes comprehensive RSpec examples covering:
 - Core RSMP message validation
 - Traffic Light Controller SXL validation  
-- Command request/response validation
-- Status and alarm message validation
 
 All tests should pass on a clean repository.
 
@@ -69,11 +65,10 @@ Regenerate all TLC JSON schemas from their YAML sources:
 bundle exec rake regenerate
 ```
 
-**WARNING**: This destructively overwrites all generated JSON schema files. Core schemas are not affected as they are hand-maintained.
+**WARNING**: This destructively overwrites all JSON schema files in schemas/tlc/. Core schemas are not affected as they are hand-maintained.
 
-## Validation
-
-Always manually validate changes by running message validation scenarios:
+## Example code
+In addition to running test, always validate that the example code by running message validation scenarios:
 
 ```bash
 # Test validation with corrected example script
@@ -119,24 +114,26 @@ Key directories and files:
 
 The repository uses GitHub Actions with the following requirements:
 - Runs on Ubuntu, macOS, and Windows
-- Tests Ruby versions 3.1, 3.2, and 3.3
+- Test with different Ruby versions
 - 5-minute timeout for all tests
 - Must pass `bundle exec rspec -f d`
 
 Before committing changes, ensure:
+- Schemas are regenerated if the YAML sources where modified
 - All tests pass: `bundle exec rspec`
+- Example code in examples/ works
 - Ruby syntax is valid for modified files
-- Schema regeneration works if you modified YAML files
 
 ## Validation Scenarios
 
 After making changes, always test these scenarios:
 
-1. **Basic validation**: Ensure the validation example works correctly
-2. **Schema regeneration**: Run `bundle exec rake regenerate` and verify no unexpected changes
+1. **Schema regeneration**: Run `bundle exec rake regenerate` and verify no unexpected changes
+2. **Basic validation**: Ensure the validation example code works correctly
 3. **Test suite**: Run `bundle exec rspec` and ensure all tests pass
 4. **CLI functionality**: Test the convert command with actual files
-
+5. **No unrelated changes**: Check that no unrelated files are changes are included in the commit.
+ 
 Example validation workflow:
 ```bash
 # Run tests
