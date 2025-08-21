@@ -3,7 +3,7 @@
   "description" :  "Alarm messsage",
   "properties" : {
     "mId" : { "$ref": "../3.1.2/definitions.json#/message_id" },
-    "cId" : { "$ref": "../3.1.2/definitions.json#/component_id" },
+    "cId" : { "$ref": "definitions.json#/component_id" },
     "aCId" : { "$ref": "../3.1.2/definitions.json#/alarm_code" },
     "xACId" : { "description" : "External alarm code id", "type" : "string" },
     "aSp" : {
