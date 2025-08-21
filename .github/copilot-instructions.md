@@ -8,7 +8,7 @@ Always reference these instructions first and fallback to search or bash command
 
 Bootstrap, build, and test the repository (assumes Ruby is already installed per .tool-versions):
 - Add bundler to user gems: `gem install --user-install bundler`
-- Add user gems to PATH: `export PATH="$HOME/.local/share/gem/ruby/3.2.0/bin:$PATH"`
+- Add user gems to PATH: `export PATH="$HOME/.local/share/gem/ruby/$(ruby -e 'puts RUBY_VERSION.split(".")[0,2].join(".")').0/bin:$PATH"`
 - Configure bundle to install locally: `bundle config set --local path vendor/bundle`
 - Install dependencies: `bundle install` -- takes 10-15 seconds. NEVER CANCEL. Set timeout to 60+ seconds.
 - Run tests: `bundle exec rspec` -- takes 2 seconds. NEVER CANCEL. Set timeout to 30+ seconds.
@@ -22,7 +22,7 @@ Execute these commands in sequence for a fresh clone:
 gem install --user-install bundler
 
 # Add user gems to PATH
-export PATH="$HOME/.local/share/gem/ruby/3.2.0/bin:$PATH"
+export PATH="$HOME/.local/share/gem/ruby/$(ruby -e 'puts RUBY_VERSION.split(".")[0,2].join(".")').0/bin:$PATH"
 
 # Configure bundle to install gems locally
 bundle config set --local path vendor/bundle
@@ -158,13 +158,13 @@ sed 's|schema/tlc/1.2.1/rsmp.json|schemas/tlc/1.2.1/rsmp.json|' examples/validat
 
 See `rsmp_schema.gemspec` for current runtime and development dependencies.
 
-Requires Ruby >= 3.0.0.
+Requires Ruby version as specified in .tool-versions.
 
 ## Common Issues and Solutions
 
 **Permission errors during bundle install**:
 - Use `gem install --user-install bundler`
-- Add user gems to PATH: `export PATH="$HOME/.local/share/gem/ruby/3.2.0/bin:$PATH"`
+- Add user gems to PATH: `export PATH="$HOME/.local/share/gem/ruby/$(ruby -e 'puts RUBY_VERSION.split(".")[0,2].join(".")').0/bin:$PATH"`
 - Configure local bundle path: `bundle config set --local path vendor/bundle`
 
 **Missing bundler command**:
@@ -178,7 +178,7 @@ Requires Ruby >= 3.0.0.
 **Test failures**:
 - Run `bundle exec rspec` not just `rspec`
 - Ensure you've run `bundle install` first
-- Check Ruby version compatibility (>= 3.0.0)
+- Check Ruby version compatibility (see .tool-versions)
 
 ## Timing Expectations
 
