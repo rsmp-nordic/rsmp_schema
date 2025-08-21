@@ -6,13 +6,12 @@ Always reference these instructions first and fallback to search or bash command
 
 ## Working Effectively
 
-Bootstrap, build, and test the repository:
+Bootstrap, build, and test the repository (assumes Ruby is already installed per .tool-versions):
 - Add bundler to user gems: `gem install --user-install bundler`
 - Add user gems to PATH: `export PATH="$HOME/.local/share/gem/ruby/3.2.0/bin:$PATH"`
 - Configure bundle to install locally: `bundle config set --local path vendor/bundle`
 - Install dependencies: `bundle install` -- takes 10-15 seconds. NEVER CANCEL. Set timeout to 60+ seconds.
-- Run tests: `bundle exec rspec` -- takes 2 seconds, 239 tests. NEVER CANCEL. Set timeout to 30+ seconds.
-- Run schema regeneration: `bundle exec rake regenerate` -- takes 0.75 seconds.
+- Run tests: `bundle exec rspec` -- takes 2 seconds. NEVER CANCEL. Set timeout to 30+ seconds.
 
 ## Environment Setup Commands
 
@@ -40,7 +39,7 @@ Run the complete test suite:
 bundle exec rspec
 ```
 
-The test suite includes 239 RSpec examples covering:
+The test suite includes comprehensive RSpec examples covering:
 - Core RSMP message validation
 - Traffic Light Controller SXL validation  
 - Command request/response validation
@@ -137,7 +136,7 @@ After making changes, always test these scenarios:
 
 1. **Basic validation**: Ensure the validation example works correctly
 2. **Schema regeneration**: Run `bundle exec rake regenerate` and verify no unexpected changes
-3. **Test suite**: Run `bundle exec rspec` and ensure all 239 tests pass
+3. **Test suite**: Run `bundle exec rspec` and ensure all tests pass
 4. **CLI functionality**: Test the convert command with actual files
 
 Example validation workflow:
@@ -157,14 +156,7 @@ sed 's|schema/tlc/1.2.1/rsmp.json|schemas/tlc/1.2.1/rsmp.json|' examples/validat
 
 ## Dependencies and Versions
 
-Runtime dependencies:
-- `json_schemer ~> 2.3.0` - JSON Schema validation
-- `thor ~> 1.3.1` - CLI framework
-
-Development dependencies:  
-- `rake ~> 13.2.1` - Build tool
-- `rspec ~> 3.13.0` - Testing framework
-- `rspec-expectations ~> 3.13.0` - Testing assertions
+See `rsmp_schema.gemspec` for current runtime and development dependencies.
 
 Requires Ruby >= 3.0.0.
 
@@ -191,7 +183,7 @@ Requires Ruby >= 3.0.0.
 ## Timing Expectations
 
 - **NEVER CANCEL**: Bundle install takes 10-15 seconds normally - wait for completion
-- **NEVER CANCEL**: Test suite takes 2 seconds (239 tests) - use 30+ second timeout  
+- **NEVER CANCEL**: Test suite takes 2 seconds - use 30+ second timeout  
 - **NEVER CANCEL**: Schema regeneration takes 0.75 seconds - very fast but allow buffer
 - Initial gem setup may take up to 60 seconds total including bundler installation
 
