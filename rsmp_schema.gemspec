@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Emil Tin"]
   spec.email         = ["zf0f@kk.dk"]
 
-  spec.summary       = "Validate RSMP message against RSMP JSON Schema."
-  spec.description   = "Validate RSMP message against RSMP JSON Schema. Support validating against core and different SXL's, in different versions."
+  spec.summary       = "Validate RSMP message using RSMP JSON Schema."
+  spec.description   = "Validate RSMP message using RSMP JSON Schema. Support validating against core and different SXL's, in different versions."
   spec.homepage      = "https://github.com/rsmp-nordic/rsmp_schema"
   spec.licenses      = ['MIT']
   spec.required_ruby_version = '>= 3.0.0'

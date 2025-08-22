@@ -2,42 +2,36 @@
 
 RSMP Schema is a Ruby gem that provides JSON Schema validation for RSMP (Road Side Message Protocol) messages. The schema covers both the core RSMP specification and SXL (Signal Exchange List) for Traffic Light Controllers.
 
-Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
+Always reference these instructions first, and fall back to search or bash commands only when you encounter unexpected information that does not match the info here.
 
-## Working Effectively
+## Environment Setup
 
 Bootstrap, build, and test the repository using mise:
-
-- Install mise: https://mise.jdx.dev/
-- Install Ruby version from .tool-versions: `mise install`
-- Install dependencies: `bundle install` -- takes 10-15 seconds. NEVER CANCEL. Set timeout to 60+ seconds.
-- Run tests: `bundle exec rspec` -- takes 2 seconds. NEVER CANCEL. Set timeout to 30+ seconds.
-
-## Environment Setup Commands
 
 ```bash
 # Install mise (if not already installed)
 # Follow instructions at https://mise.jdx.dev/
 
-# Install Ruby version specified in .tool-versions
+# Install the Ruby version specified in .tool-versions
 mise install
 
 # Install all dependencies.
-# The bundler gem is included by default in the Ruby installation and does not have to be installed explicitly.
+# The bundler gem is included by default in the Ruby installation and does not have to be installed first.
 bundle install
 ```
 
 ## Running Tests
+
+The test suite includes comprehensive RSpec tests covering:
+- Core RSMP message validation
+- Traffic Light Controller SXL validation
+
 
 Run the complete test suite:
 ```bash
 # Test command takes approximately 2 seconds
 bundle exec rspec
 ```
-
-The test suite includes comprehensive RSpec examples covering:
-- Core RSMP message validation
-- Traffic Light Controller SXL validation  
 
 All tests should pass on a clean repository.
 
@@ -53,7 +47,7 @@ bundle exec exe/rsmp_schema --help
 bundle exec exe/rsmp_schema convert -i <input.yaml> -o <output_directory>
 
 # Example: Convert TLC SXL
-bundle exec exe/rsmp_schema convert -i schemas/tlc/1.2.1/sxl.yaml -o /tmp/output
+bundle exec exe/rsmp_schema convert -i schemas/tlc/1.2.1/sxl.yaml -o tmp/sxl_1.2.1_schema
 ```
 
 ## Schema Regeneration
@@ -67,13 +61,17 @@ bundle exec rake regenerate
 
 **WARNING**: This destructively overwrites all JSON schema files in schemas/tlc/. Core schemas are not affected as they are hand-maintained.
 
+This rake task and the 'convert' CLI command use the same Ruby code to convert YAML to JSON schema files.
+
+
 ## Example code
-In addition to running test, always validate that the example code by running message validation scenarios:
+The file examples/validate.rb shows how to use the gem to validate RSMP messages.
+
+Before committing changes, in addition to checking that all RSpec tests pass, also check that the examples/validate.rb script works and outputs the expected result:
 
 ```bash
 # Test validation with corrected example script
-cd /path/to/repo
-sed 's|schema/tlc/1.2.1/rsmp.json|schemas/tlc/1.2.1/rsmp.json|' examples/validate.rb | bundle exec ruby
+bundle exec ruby examples/validate.rb
 ```
 
 Expected output: `ok` (indicates successful validation)
@@ -88,7 +86,7 @@ Key directories and files:
 - `spec/` - RSpec test files
 - `schemas/core/` - Hand-maintained core RSMP schemas
 - `schemas/tlc/` - Generated Traffic Light Controller schemas
-- `examples/validate.rb` - Example validation script
+- `examples/validate.rb` - Example validation code
 - `Rakefile` - Contains regenerate task
 - `.github/workflows/rspec.yaml` - CI pipeline
 
@@ -96,14 +94,12 @@ Key directories and files:
 
 ### Schema Files
 - Core schemas: `schemas/core/<version>/rsmp.json`
-- TLC schemas: `schemas/tlc/<version>/rsmp.json`
-- YAML sources: `schemas/tlc/<version>/sxl.yaml`
+- TLC SXL schemas: `schemas/tlc/<version>/rsmp.json`
+- TLC SXL YAML sources: `schemas/tlc/<version>/sxl.yaml`
 
 ### Code Files
 - Main entry: `lib/rsmp_schema.rb`
 - CLI: `lib/rsmp_schema/cli.rb`
-- YAML import: `lib/rsmp_schema/convert/import/yaml.rb`
-- JSON export: `lib/rsmp_schema/convert/export/json_schema.rb`
 
 ### Test Files
 - Core tests: `spec/core/`
@@ -114,46 +110,58 @@ Key directories and files:
 
 The repository uses GitHub Actions with the following requirements:
 - Runs on Ubuntu, macOS, and Windows
-- Test with different Ruby versions
+- Tests with different Ruby versions
 - 5-minute timeout for all tests
 - Must pass `bundle exec rspec -f d`
 
 Before committing changes, ensure:
-- Schemas are regenerated if the YAML sources where modified
+- Schemas are regenerated if any SXL YAML sources were modified
 - All tests pass: `bundle exec rspec`
-- Example code in examples/ works
 - Ruby syntax is valid for modified files
 
 ## Validation Scenarios
 
 After making changes, always test these scenarios:
 
-1. **Schema regeneration**: Run `bundle exec rake regenerate` and verify no unexpected changes
-2. **Basic validation**: Ensure the validation example code works correctly
-3. **Test suite**: Run `bundle exec rspec` and ensure all tests pass
-4. **CLI functionality**: Test the convert command with actual files
-5. **No unrelated changes**: Check that no unrelated files are changes are included in the commit.
+1. **Schema regeneration**: Run `bundle exec rake regenerate` and verify no unexpected changes.
+2. **Test suite**: Run `bundle exec rspec` and ensure all tests pass.
+3. **Example code**: Ensure the examples in examples/ work correctly.
+4. **CLI functionality**: Test the convert command with actual files.
+5. **No unrelated changes**: No unrelated changes or files should be included in the commit.
  
 Example validation workflow:
+
 ```bash
-# Run tests
+# Ensure we're in root of the repo folder
+cd /path/to/repo
+
+# Regenerate schema files if SXL YAML sources were modified
+# And check that no unexpected changes were introduced
+bundle exec rake regenerate
+git status -- schemas/
+
+# Run test suite
 bundle exec rspec
 
-# Test CLI conversion  
-bundle exec exe/rsmp_schema convert -i schemas/tlc/1.2.1/sxl.yaml -o /tmp/test_output
+# Check example code
+bundle exec ruby examples/validate.rb
 
-# Verify output contains expected files
-ls -la /tmp/test_output  # Should show rsmp.json, alarms/, commands/, statuses/
+# Check CLI functionality
+# And check that output contains expected files
+bundle exec exe/rsmp_schema convert -i schemas/tlc/1.2.1/sxl.yaml -o tmp/sxl_1.2.1_schema
+ls -la tmp/sxl_1.2.1_schema  # Should show rsmp.json, alarms/, commands/, statuses/
 
-# Test validation
-sed 's|schema/tlc/1.2.1/rsmp.json|schemas/tlc/1.2.1/rsmp.json|' examples/validate.rb | bundle exec ruby
+# Check that no unrelated changes or files were introduced
+git status
 ```
+
+
 
 ## Dependencies and Versions
 
 See `rsmp_schema.gemspec` for current runtime and development dependencies.
 
-Requires Ruby version as specified in .tool-versions.
+Requires the Ruby version specified in .tool-versions.
 
 ## Common Issues and Solutions
 

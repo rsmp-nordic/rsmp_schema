@@ -1,4 +1,4 @@
-require 'json_schemer'
+require 'rsmp_schema'
 
 message = {
   "mType" => "rSMsg",
@@ -18,15 +18,13 @@ message = {
   ]
 }
 
-# try validating a message against our schema
-schema = Pathname.new('schema/tlc/1.2.1/rsmp.json')
-schemer = JSONSchemer.schema(schema)
-if schemer.valid? message
+# load schemas
+RSMP::Schema.setup
+
+# validating a message against core and tlc schemas 
+result = RSMP::Schema.validate( message, core: "3.2.1", tlc: "1.2.1" )
+if result == nil
   puts 'ok'
 else
-  schemer.validate(message).each do |item|
-    puts [item['data_pointer'],item['type'],item['details']].compact.join(' ')
-  end
+  puts "failed: #{result.inspect}"
 end
-
-
