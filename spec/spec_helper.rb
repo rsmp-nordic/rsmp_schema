@@ -1,4 +1,5 @@
-require "bundler/setup"
+# require "bundler/setup"  # Comment out for now due to bundler issues
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require "rsmp_schema"
 require_relative 'schemer_helper'
 
