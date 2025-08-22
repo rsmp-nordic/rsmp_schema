@@ -186,6 +186,23 @@ Only allowed if the type is `integer`.
 A regular expression (regex) pattern used to validate the raw argument string, specified as a string, e.g. "^[01]*$".
 Allowed regardless of the argument type.
 
+#### optional
+Whether the argument is optional. If not specified, defaults to false (argument is required).
+Only applicable to command arguments.
+
+Example:
+```yaml
+arguments:
+  timeout:
+    description: Timeout in seconds
+    type: integer
+    optional: true
+  mode:
+    description: Operation mode
+    type: string
+    # optional not specified, defaults to false (required)
+```
+
 ## Example Structure
 Here is an example structure of an SXL YAML file:
 
