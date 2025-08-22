@@ -1,7 +1,20 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Sets manual activation of detector logic.\nSet given detector logic (1-255) to either true or false.\nCan e.g. be used to connect RSMP compatible detection equipment to the traffic light controller. Can also be used for prioritization.\nRequires security code 2",
-  "allOf" : [
-    {
+  "properties" : {
+    "n" : {
+      "enum" : [
+        "mode",
+        "securityCode",
+        "status"
+      ]
+    },
+    "cO" : {
+      "const" : "setForceDetectorLogic"
+    }
+  },
+  "dependentSchemas" : {
+    "n" : {
       "properties" : {
         "n" : {
           "enum" : [
@@ -9,104 +22,91 @@
             "securityCode",
             "status"
           ]
+        }
+      },
+      "allOf" : [
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "status"
+              }
+            },
+            "not" : {
+              "properties" : {
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
+                  ]
+                }
+              }
+            }
+          },
+          "then" : {
+            "properties" : {
+              "v" : {
+                "description" : "False: Deactivate manual control of detector logic\nTrue: Activate manual control of detector logic",
+                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
+              }
+            }
+          }
         },
-        "cO" : {
-          "const" : "setForceDetectorLogic"
-        }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "q"
-        ],
-        "properties" : {
-          "q" : {
-            "enum" : [
-              "undefined",
-              "unknown"
-            ]
-          }
-        }
-      },
-      "then" : {
-      },
-      "else" : {
-        "allOf" : [
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "status"
-                }
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "securityCode"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "False: Deactivate manual control of detector logic\nTrue: Activate manual control of detector logic"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-                    }
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
                   ]
                 }
               }
             }
           },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "securityCode"
-                }
-              }
-            },
-            "then" : {
-              "properties" : {
-                "v" : {
-                  "description" : "Security code 2",
-                  "type" : "string"
-                }
+          "then" : {
+            "properties" : {
+              "v" : {
+                "description" : "Security code 2",
+                "type" : "string"
               }
             }
-          },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "mode"
-                }
+          }
+        },
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "mode"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "False: Deactivate detector logic\nTrue: Activate detector logic"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-                    }
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
                   ]
                 }
               }
             }
+          },
+          "then" : {
+            "properties" : {
+              "v" : {
+                "description" : "False: Deactivate detector logic\nTrue: Activate detector logic",
+                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
+              }
+            }
           }
-        ]
-      }
+        }
+      ]
     }
-  ]
+  }
 }
