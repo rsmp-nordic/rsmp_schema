@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Sets functional position.\nSets the controller to yellow flash, dark mode or normal control.\nRequires security code 2.",
   "allOf" : [
     {

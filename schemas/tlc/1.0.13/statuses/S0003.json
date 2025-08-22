@@ -1,7 +1,16 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Input status.\nInput (1-255) of the controllers general purpose I/O.\nInput is used where the traffic light controller must react to external control. It could be external detectors, bus priority, and much more.",
-  "allOf" : [
-    {
+  "properties" : {
+    "n" : {
+      "enum" : [
+        "extendedinputstatus",
+        "inputstatus"
+      ]
+    }
+  },
+  "dependentSchemas" : {
+    "n" : {
       "properties" : {
         "n" : {
           "enum" : [
@@ -9,68 +18,63 @@
             "inputstatus"
           ]
         }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "q"
-        ],
-        "properties" : {
-          "q" : {
-            "enum" : [
-              "undefined",
-              "unknown"
-            ]
-          }
-        }
       },
-      "then" : {
-      },
-      "else" : {
-        "allOf" : [
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "inputstatus"
-                }
+      "allOf" : [
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "inputstatus"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "s" : {
-                  "description" : "Input status as text field",
-                  "type" : "string"
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
+                  ]
                 }
               }
             }
           },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "extendedinputstatus"
-                }
-              }
-            },
-            "then" : {
-              "properties" : {
-                "s" : {
-                  "description" : "Extended input status as text field",
-                  "type" : "string"
-                }
+          "then" : {
+            "properties" : {
+              "s" : {
+                "description" : "Input status as text field",
+                "type" : "string"
               }
             }
           }
-        ]
-      }
+        },
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "extendedinputstatus"
+              }
+            },
+            "not" : {
+              "properties" : {
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
+                  ]
+                }
+              }
+            }
+          },
+          "then" : {
+            "properties" : {
+              "s" : {
+                "description" : "Extended input status as text field",
+                "type" : "string"
+              }
+            }
+          }
+        }
+      ]
     }
-  ]
+  }
 }

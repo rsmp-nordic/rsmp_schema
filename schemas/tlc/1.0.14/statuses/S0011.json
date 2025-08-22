@@ -1,7 +1,16 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Yellow flash.\nThe controller shows yellow flash.\nYellow flash may be used during a serious fault (depending on configuration) or maintenance work. It can also be manually set using M0001.",
-  "allOf" : [
-    {
+  "properties" : {
+    "n" : {
+      "enum" : [
+        "intersection",
+        "status"
+      ]
+    }
+  },
+  "dependentSchemas" : {
+    "n" : {
       "properties" : {
         "n" : {
           "enum" : [
@@ -9,68 +18,63 @@
             "status"
           ]
         }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "q"
-        ],
-        "properties" : {
-          "q" : {
-            "enum" : [
-              "undefined",
-              "unknown"
-            ]
-          }
-        }
       },
-      "then" : {
-      },
-      "else" : {
-        "allOf" : [
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "intersection"
-                }
+      "allOf" : [
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "intersection"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "s" : {
-                  "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
-                  "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
+                  ]
                 }
               }
             }
           },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "status"
-                }
-              }
-            },
-            "then" : {
-              "properties" : {
-                "s" : {
-                  "description" : "False: Yellow flash disabled\nTrue: Yellow flash enabled",
-                  "$ref" : "../../../core/3.1.2/definitions.json#/boolean_list"
-                }
+          "then" : {
+            "properties" : {
+              "s" : {
+                "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
               }
             }
           }
-        ]
-      }
+        },
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "status"
+              }
+            },
+            "not" : {
+              "properties" : {
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
+                  ]
+                }
+              }
+            }
+          },
+          "then" : {
+            "properties" : {
+              "s" : {
+                "description" : "False: Yellow flash disabled\nTrue: Yellow flash enabled",
+                "$ref" : "../../../core/3.1.2/definitions.json#/boolean_list"
+              }
+            }
+          }
+        }
+      ]
     }
-  ]
+  }
 }

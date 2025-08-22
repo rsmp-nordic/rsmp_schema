@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Set clock.\nCan be used to manually set the clock of the traffic light controller if automatic  time synchronization (NTP or watchdog sync) is not available. For instance, during maintenance work.\nRequires security code 1",
   "allOf" : [
     {

@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Traffic Counting: Number of vehicles of given classification.\nThis status was introduced to improve performance in case traffic counting is done on all all detectors.",
   "allOf" : [
     {

@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Force input.\nForce a given input (1-255) of the controllers general purpose I/O to either True or False. Can be used for all types of input where the traffic light controller must react to external control.\nCan be used for bus priority, coordination between traffic controllers, external control systems, and much more.\nRequires security code 2.",
   "allOf" : [
     {

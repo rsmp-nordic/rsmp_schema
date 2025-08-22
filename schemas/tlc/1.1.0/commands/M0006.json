@@ -1,7 +1,20 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Activate input.\nSet given input (1-255) of the controllers general purpose I/O to either true or false.\nThe function can provide an input to the traffic light controller on which a predefined action can be taken.\nCan be used for all types of input where the traffic light controller must react to external control.\nTypical usages are bus priority, coordination between traffic controllers, external control systems, and much more.\nRequires security code 2.",
-  "allOf" : [
-    {
+  "properties" : {
+    "n" : {
+      "enum" : [
+        "input",
+        "securityCode",
+        "status"
+      ]
+    },
+    "cO" : {
+      "const" : "setInput"
+    }
+  },
+  "dependentSchemas" : {
+    "n" : {
       "properties" : {
         "n" : {
           "enum" : [
@@ -9,92 +22,91 @@
             "securityCode",
             "status"
           ]
+        }
+      },
+      "allOf" : [
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "status"
+              }
+            },
+            "not" : {
+              "properties" : {
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
+                  ]
+                }
+              }
+            }
+          },
+          "then" : {
+            "properties" : {
+              "v" : {
+                "description" : "False: Deactivate input\nTrue: Activate input",
+                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
+              }
+            }
+          }
         },
-        "cO" : {
-          "const" : "setInput"
-        }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "q"
-        ],
-        "properties" : {
-          "q" : {
-            "enum" : [
-              "undefined",
-              "unknown"
-            ]
-          }
-        }
-      },
-      "then" : {
-      },
-      "else" : {
-        "allOf" : [
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "status"
-                }
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "securityCode"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "v" : {
-                  "description" : "False: Deactivate input\nTrue: Activate input",
-                  "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
+                  ]
                 }
               }
             }
           },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "securityCode"
-                }
+          "then" : {
+            "properties" : {
+              "v" : {
+                "description" : "Security code 2",
+                "type" : "string"
+              }
+            }
+          }
+        },
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "input"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "v" : {
-                  "description" : "Security code 2",
-                  "type" : "string"
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
+                  ]
                 }
               }
             }
           },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "input"
-                }
-              }
-            },
-            "then" : {
-              "properties" : {
-                "v" : {
-                  "description" : "Number of Input",
-                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                }
+          "then" : {
+            "properties" : {
+              "v" : {
+                "description" : "Number of Input",
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
               }
             }
           }
-        ]
-      }
+        }
+      ]
     }
-  ]
+  }
 }
