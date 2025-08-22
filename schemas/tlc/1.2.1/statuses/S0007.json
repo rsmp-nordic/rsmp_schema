@@ -44,14 +44,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "Comma separated list of intersections which the status relates to, e.g. \"1,2\".\nUse \"0\" for all intersections of the TLC."
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
-                    }
-                  ]
+                  "description" : "Comma separated list of intersections which the status relates to, e.g. \"1,2\".\nUse \"0\" for all intersections of the TLC.",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
                 }
               }
             }
@@ -70,14 +64,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "False: Traffic Light Controller in dark mode\nTrue: Traffic Light Controller not in dark mode"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean_list"
-                    }
-                  ]
+                  "description" : "False: Traffic Light Controller in dark mode\nTrue: Traffic Light Controller not in dark mode",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/boolean_list"
                 }
               }
             }
@@ -96,15 +84,9 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "Source of the status change",
-                      "pattern" : "(?-mix:^(operator_panel|calendar_clock|control_block|forced|startup|other)(?:,(operator_panel|calendar_clock|control_block|forced|startup|other))*$)"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
-                    }
-                  ]
+                  "description" : "Source of the status change",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/string_list",
+                  "pattern" : "(?-mix:^(operator_panel|calendar_clock|control_block|forced|startup|other)(?:,(operator_panel|calendar_clock|control_block|forced|startup|other))*$)"
                 }
               }
             }

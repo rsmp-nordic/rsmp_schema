@@ -46,14 +46,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Timeout, in minutes"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Timeout, in minutes",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }

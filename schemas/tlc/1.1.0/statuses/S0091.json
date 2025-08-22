@@ -42,17 +42,11 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "enum" : [
-                        "0",
-                        "1",
-                        "2"
-                      ]
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer",
+                  "enum" : [
+                    "0",
+                    "1",
+                    "2"
                   ]
                 }
               }

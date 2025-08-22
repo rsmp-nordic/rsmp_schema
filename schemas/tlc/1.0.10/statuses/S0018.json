@@ -42,14 +42,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "Number of time plans (depreciated)"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Number of time plans (depreciated)",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }

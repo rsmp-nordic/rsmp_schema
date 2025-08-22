@@ -46,14 +46,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "False: No command (default)\nTrue: Order a signal group to green"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-                    }
-                  ]
+                  "description" : "False: No command (default)\nTrue: Order a signal group to green",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
                 }
               }
             }

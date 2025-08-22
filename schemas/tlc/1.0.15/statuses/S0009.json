@@ -43,14 +43,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
-                    }
-                  ]
+                  "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
                 }
               }
             }
@@ -69,14 +63,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "False: Fixed time control inactive\nTrue: Fixed time control active"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean_list"
-                    }
-                  ]
+                  "description" : "False: Fixed time control inactive\nTrue: Fixed time control active",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/boolean_list"
                 }
               }
             }

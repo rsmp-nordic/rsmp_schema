@@ -43,14 +43,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "False: Controller is not in start up mode\nTrue: Controller is currently in start up mode"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-                    }
-                  ]
+                  "description" : "False: Controller is not in start up mode\nTrue: Controller is currently in start up mode",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
                 }
               }
             }
@@ -80,24 +74,12 @@
                     "additionalProperties" : false,
                     "properties" : {
                       "intersection" : {
-                        "allOf" : [
-                          {
-                            "description" : "Intersection id"
-                          },
-                          {
-                            "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                          }
-                        ]
+                        "description" : "Intersection id",
+                        "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                       },
                       "startup" : {
-                        "allOf" : [
-                          {
-                            "description" : "Start up mode"
-                          },
-                          {
-                            "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-                          }
-                        ]
+                        "description" : "Start up mode",
+                        "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
                       }
                     }
                   }

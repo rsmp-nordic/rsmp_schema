@@ -93,14 +93,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }
@@ -119,14 +113,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Intersection number.\nCommand only applies to specified intersection. Other intersections remains in their respective operating mode(s).\n0: All intersections"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Intersection number.\nCommand only applies to specified intersection. Other intersections remains in their respective operating mode(s).\n0: All intersections",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }
