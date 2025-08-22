@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Force output.\nForce a given output (1-255) of the controllers general purpose I/O to either True of False. Can be used for all types of output where the traffic light controller needs to control other equipment.\nCan be used for bus priority, coordination between traffic controllers, external control systems, and much more.\nRequires security code 2.",
   "allOf" : [
     {

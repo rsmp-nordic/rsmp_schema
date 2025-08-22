@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Current date and time.\nNote: UTC is used.\nProvides diagnostic information about the current date and time set in the controller.",
   "allOf" : [
     {
