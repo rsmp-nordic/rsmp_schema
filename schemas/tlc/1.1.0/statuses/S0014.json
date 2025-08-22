@@ -1,7 +1,16 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Current time plan.\nThe current time plan (signal program) used in the controller. There may be 1-255 predefined time plans.\nThe time plan (signal program) may change signal timings, cycle time, control strategy and much more. Typical usage is is scenario based control where change of program is used to change priority etc.",
-  "allOf" : [
-    {
+  "properties" : {
+    "n" : {
+      "enum" : [
+        "source",
+        "status"
+      ]
+    }
+  },
+  "dependentSchemas" : {
+    "n" : {
       "properties" : {
         "n" : {
           "enum" : [
@@ -9,82 +18,71 @@
             "status"
           ]
         }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "q"
-        ],
-        "properties" : {
-          "q" : {
-            "enum" : [
-              "undefined",
-              "unknown"
-            ]
-          }
-        }
       },
-      "then" : {
-      },
-      "else" : {
-        "allOf" : [
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "status"
-                }
+      "allOf" : [
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "status"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "Current time plan"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
                   ]
                 }
               }
             }
           },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "source"
-                }
+          "then" : {
+            "properties" : {
+              "s" : {
+                "description" : "Current time plan",
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+              }
+            }
+          }
+        },
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "source"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "s" : {
-                  "description" : "Source of the status change",
-                  "type" : "string",
+                "q" : {
                   "enum" : [
-                    "calendar_clock",
-                    "control_block",
-                    "forced",
-                    "operator_panel",
-                    "other",
-                    "startup"
+                    "undefined",
+                    "unknown"
                   ]
                 }
               }
             }
+          },
+          "then" : {
+            "properties" : {
+              "s" : {
+                "description" : "Source of the status change",
+                "type" : "string",
+                "enum" : [
+                  "calendar_clock",
+                  "control_block",
+                  "forced",
+                  "operator_panel",
+                  "other",
+                  "startup"
+                ]
+              }
+            }
           }
-        ]
-      }
+        }
+      ]
     }
-  ]
+  }
 }

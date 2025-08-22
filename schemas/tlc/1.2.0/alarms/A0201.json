@@ -1,60 +1,56 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Serious lamp error.\nUsed for lamp errors.\nIs a \"major fault\" defined according to 3.8 in EN12675 which causes the controller to switch to a \"failure mode\" according to 3.6 in EN12675.",
-  "allOf" : [
-    {
+  "properties" : {
+    "n" : {
+      "enum" : [
+        "color"
+      ]
+    }
+  },
+  "dependentSchemas" : {
+    "n" : {
       "properties" : {
         "n" : {
           "enum" : [
             "color"
           ]
         }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "q"
-        ],
-        "properties" : {
-          "q" : {
-            "enum" : [
-              "undefined",
-              "unknown"
-            ]
-          }
-        }
       },
-      "then" : {
-      },
-      "else" : {
-        "allOf" : [
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "color"
-                }
+      "allOf" : [
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "color"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "v" : {
-                  "description" : "Color of lamp",
-                  "type" : "string",
+                "q" : {
                   "enum" : [
-                    "green",
-                    "red",
-                    "yellow"
+                    "undefined",
+                    "unknown"
                   ]
                 }
               }
             }
+          },
+          "then" : {
+            "properties" : {
+              "v" : {
+                "description" : "Color of lamp",
+                "type" : "string",
+                "enum" : [
+                  "green",
+                  "red",
+                  "yellow"
+                ]
+              }
+            }
           }
-        ]
-      }
+        }
+      ]
     }
-  ]
+  }
 }

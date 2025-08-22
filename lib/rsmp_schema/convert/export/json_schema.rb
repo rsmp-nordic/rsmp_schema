@@ -61,7 +61,7 @@ module RSMP
             "items" => {
               "type" => "object",
               "required" => required,
-              "additionalProperties": false
+              "unevaluatedProperties" => false  # Modern alternative to additionalProperties
             }
           })
           out["items"]["properties"] = {}
@@ -71,16 +71,10 @@ module RSMP
           out
         end
 
-        # with draft-07 and older, using a $ref mean all other properties are ignored.
-        # to avoid this we need to use an allOf.
-        # this is changed from draft-08, but unfortunately, there is still no Ruby validator for that
+        # JSON Schema 2020-12 allows combining $ref with other properties directly
         def self.wrap_refs out
-          if out.keys.include? '$ref'
-            ref = out.delete '$ref'
-            { "allOf" => [out,{"$ref"=>ref}]}
-          else
-            out
-          end
+          # No wrapping needed with modern JSON Schema
+          out
         end
 
         # convert a yaml item with list: true to json schema
@@ -138,35 +132,81 @@ module RSMP
         def self.build_item item, property_key: 'v'
           unless item['arguments']
             json = {
+              "$schema" => "https://json-schema.org/draft/2020-12/schema",
               "description" => item['description'],
             }
             return json
           end
 
-          json = {
-            "description" => item['description'],
-            "allOf" => [
-              {
-               "properties" => { "n" => { "enum" => item['arguments'].keys.sort }},
+          # Use dependentSchemas for cleaner conditional logic when possible
+          # If we have many arguments, use the traditional if/then approach
+          # If fewer arguments, consider dependentSchemas
+          arguments = item['arguments']
+          
+          if arguments.size <= 3
+            # Use dependentSchemas for simpler cases
+            dependent_schemas = {}
+            arguments.each do |key, argument|
+              dependent_schemas[key] = {
+                "properties" => { property_key => build_value(argument) }
+              }
+            end
+
+            json = {
+              "$schema" => "https://json-schema.org/draft/2020-12/schema",
+              "description" => item['description'],
+              "properties" => { 
+                "n" => { "enum" => arguments.keys.sort }
               },
-              {
-                "if" =>
-                {
-                  "required" => ["q"],
-                  "properties" => { "q"=> { "enum" => ["undefined","unknown"] }},
-                },
-                "then" => {},
-                "else" => {
-                  "allOf" => item['arguments'].map do |key,argument|
+              "dependentSchemas" => {
+                "n" => {
+                  "properties" => {
+                    "n" => { "enum" => arguments.keys.sort }
+                  },
+                  "allOf" => arguments.map do |key, argument|
                     {
-                      "if" => { "required" => ["n"], "properties" => { "n" => { "const" => key }}},
+                      "if" => { 
+                        "properties" => { "n" => { "const" => key }},
+                        "not" => {
+                          "properties" => { "q" => { "enum" => ["undefined", "unknown"] }}
+                        }
+                      },
                       "then" => { "properties" => { property_key => build_value(argument) }}
                     }
                   end
                 }
               }
-            ]
-          }
+            }
+          else
+            # Use traditional approach for complex cases
+            json = {
+              "$schema" => "https://json-schema.org/draft/2020-12/schema",
+              "description" => item['description'],
+              "allOf" => [
+                {
+                 "properties" => { 
+                   "n" => { "enum" => arguments.keys.sort }
+                 },
+                },
+                {
+                  "if" =>
+                  {
+                    "required" => ["q"],
+                    "properties" => { "q"=> { "enum" => ["undefined","unknown"] }},
+                  },
+                  "then" => {},
+                  "else" => {
+                    "allOf" => arguments.map do |key,argument|
+                      {
+                        "if" => { "required" => ["n"], "properties" => { "n" => { "const" => key }}},
+                        "then" => { "properties" => { property_key => build_value(argument) }}
+                      }
+                    end
+                  }
+                }
+              ]
+            }
+          end
 
           json
         end
@@ -180,6 +220,7 @@ module RSMP
             }
           end
           json = {
+            "$schema" => "https://json-schema.org/draft/2020-12/schema",
             "properties" => {
               "aCId" => { "enum" => items.keys.sort },
               "rvs" => { "items" => { "allOf" => list } }
@@ -204,7 +245,10 @@ module RSMP
               "then" => { "$ref" => "#{key}.json" }
             }
           end
-          json = { "properties" => { "sS" => { "items" => { "allOf" => list }}}}
+          json = { 
+            "$schema" => "https://json-schema.org/draft/2020-12/schema",
+            "properties" => { "sS" => { "items" => { "allOf" => list }}}
+          }
           out['statuses/statuses.json'] = output_json json
           items.each_pair { |key,item| output_status out, key, item }
         end
@@ -224,13 +268,22 @@ module RSMP
               "then" => { "$ref" => "#{key}.json" }
             }
           end
-          json = { "items" => { "allOf" => list }}
+          json = { 
+            "$schema" => "https://json-schema.org/draft/2020-12/schema",
+            "items" => { "allOf" => list }
+          }
           out['commands/commands.json'] = output_json json
 
-          json = { "properties" => { "arg" => { "$ref" => "commands.json" }}}
+          json = { 
+            "$schema" => "https://json-schema.org/draft/2020-12/schema",
+            "properties" => { "arg" => { "$ref" => "commands.json" }}
+          }
           out['commands/command_requests.json'] = output_json json
 
-          json = { "properties" => { "rvs" => { "$ref" => "commands.json" }}}
+          json = { 
+            "$schema" => "https://json-schema.org/draft/2020-12/schema",
+            "properties" => { "rvs" => { "$ref" => "commands.json" }}
+          }
           out['commands/command_responses.json'] = output_json json
 
           items.each_pair { |key,item| output_command out, key, item }
@@ -239,13 +292,26 @@ module RSMP
         # convert a command to json schema
         def self.output_command out, key, item
           json = build_item item
-          json["allOf"].first["properties"]['cO'] = { "const" => item['command'] }
+          
+          # Add the command operation (cO) constraint based on the new structure
+          if json["allOf"]
+            # Traditional allOf structure
+            json["allOf"].first["properties"]['cO'] = { "const" => item['command'] }
+          elsif json["properties"]
+            # dependentSchemas structure
+            json["properties"]['cO'] = { "const" => item['command'] }
+          elsif json["dependentSchemas"] && json["dependentSchemas"]["n"]
+            # Add cO to the base properties for dependentSchemas
+            json["properties"]['cO'] = { "const" => item['command'] }
+          end
+          
           out["commands/#{key}.json"] = output_json json
         end
 
         # output the json schema root
         def self.output_root out, meta
           json = {
+            "$schema" => "https://json-schema.org/draft/2020-12/schema",
             "name"=> meta['name'],
             "description"=> meta['description'],
             "version"=> meta['version'],
