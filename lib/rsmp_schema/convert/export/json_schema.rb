@@ -71,16 +71,10 @@ module RSMP
           out
         end
 
-        # with draft-07 and older, using a $ref mean all other properties are ignored.
-        # to avoid this we need to use an allOf.
-        # this is changed from draft-08, but unfortunately, there is still no Ruby validator for that
+        # JSON Schema 2020-12 allows combining $ref with other properties directly
         def self.wrap_refs out
-          if out.keys.include? '$ref'
-            ref = out.delete '$ref'
-            { "allOf" => [out,{"$ref"=>ref}]}
-          else
-            out
-          end
+          # No wrapping needed with modern JSON Schema
+          out
         end
 
         # convert a yaml item with list: true to json schema
@@ -246,6 +240,7 @@ module RSMP
         # output the json schema root
         def self.output_root out, meta
           json = {
+            "$schema" => "https://json-schema.org/draft/2020-12/schema",
             "name"=> meta['name'],
             "description"=> meta['description'],
             "version"=> meta['version'],

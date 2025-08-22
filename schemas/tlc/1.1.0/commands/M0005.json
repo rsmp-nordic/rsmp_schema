@@ -47,14 +47,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "False: Deactivate emergency route\nTrue: Activate emergency route"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-                    }
-                  ]
+                  "description" : "False: Deactivate emergency route\nTrue: Activate emergency route",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
                 }
               }
             }
@@ -93,14 +87,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Number of emergency route"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Number of emergency route",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }

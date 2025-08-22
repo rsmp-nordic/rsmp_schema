@@ -58,14 +58,8 @@
                         "type" : "string"
                       },
                       "t" : {
-                        "allOf" : [
-                          {
-                            "description" : "Timestamp, indicating when the priority last changed state.\nFormat according to W3C XML dateTime with a resolution of 3 decimal places.\nAll time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z"
-                          },
-                          {
-                            "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
-                          }
-                        ]
+                        "description" : "Timestamp, indicating when the priority last changed state.\nFormat according to W3C XML dateTime with a resolution of 3 decimal places.\nAll time stamps in UTC. E.g. 2009-10-02T14:34:34.341Z",
+                        "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
                       },
                       "s" : {
                         "description" : "Current status of the priority request",
@@ -82,24 +76,12 @@
                         ]
                       },
                       "e" : {
-                        "allOf" : [
-                          {
-                            "description" : "Estimated green extension provided by the priority, in seconds\nOnly used when state is 'completed'."
-                          },
-                          {
-                            "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                          }
-                        ]
+                        "description" : "Estimated green extension provided by the priority, in seconds\nOnly used when state is 'completed'.",
+                        "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                       },
                       "d" : {
-                        "allOf" : [
-                          {
-                            "description" : "Estimated red reduction provided by the priority, in seconds\nOnly used when state is 'completed'."
-                          },
-                          {
-                            "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                          }
-                        ]
+                        "description" : "Estimated red reduction provided by the priority, in seconds\nOnly used when state is 'completed'.",
+                        "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                       }
                     }
                   }

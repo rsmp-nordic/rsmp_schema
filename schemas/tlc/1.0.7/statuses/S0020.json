@@ -43,14 +43,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
-                    }
-                  ]
+                  "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
                 }
               }
             }
@@ -69,14 +63,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "pattern" : "(?-mix:^(startup|control|standby|failure|test)(?:,(startup|control|standby|failure|test))*$)"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
-                    }
-                  ]
+                  "$ref" : "../../../core/3.1.2/definitions.json#/string_list",
+                  "pattern" : "(?-mix:^(startup|control|standby|failure|test)(?:,(startup|control|standby|failure|test))*$)"
                 }
               }
             }

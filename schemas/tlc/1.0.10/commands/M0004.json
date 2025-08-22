@@ -46,14 +46,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "True: Restart controller"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-                    }
-                  ]
+                  "description" : "True: Restart controller",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
                 }
               }
             }

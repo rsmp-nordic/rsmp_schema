@@ -73,14 +73,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Security code 2"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
-                    }
-                  ]
+                  "description" : "Security code 2",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
                 }
               }
             }
@@ -99,14 +93,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
-                    }
-                  ]
+                  "description" : "Time in minutes until controller automatically reverts to previous functional position.\n0=no automatic return",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
                 }
               }
             }
@@ -125,14 +113,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Intersection number"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
-                    }
-                  ]
+                  "description" : "Intersection number",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
                 }
               }
             }

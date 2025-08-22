@@ -42,14 +42,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "Current traffic situation"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Current traffic situation",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }

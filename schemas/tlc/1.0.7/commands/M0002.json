@@ -47,14 +47,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "False: Controller uses time plan according to programming\nTrue: Controller uses time plan according to command"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-                    }
-                  ]
+                  "description" : "False: Controller uses time plan according to programming\nTrue: Controller uses time plan according to command",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
                 }
               }
             }
@@ -93,14 +87,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "designation of time plan"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "designation of time plan",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }

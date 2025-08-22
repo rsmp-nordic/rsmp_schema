@@ -71,14 +71,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Year"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Year",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }
@@ -97,14 +91,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Month"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Month",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }
@@ -123,14 +111,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Day of month"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Day of month",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }
@@ -149,14 +131,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Hour"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Hour",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }
@@ -175,14 +151,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Minute"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Minute",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }
@@ -201,14 +171,8 @@
             "then" : {
               "properties" : {
                 "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "Second"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Second",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }
