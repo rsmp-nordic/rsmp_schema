@@ -17,7 +17,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
   it 'rejects lowercase suspend/resume from core 3.1.4' do
     message['aSp'] = "suspend"
     expect( validate(message, 'core') ).to eq(
-      ["3.1.4", "3.1.5", "3.2.0", "3.2.1", "3.2.2"] => [["/aSp", "enum"]]
+      ["3.1.4", "3.1.5", "3.2.0", "3.2.1", "3.2.2", "3.3.0"] => [["/aSp", "enum"]]
     )
   end
 

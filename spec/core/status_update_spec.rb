@@ -23,7 +23,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
       message["sS"].first["s"] = nil
       expect(validate message, 'core').to eq(
         ["3.1.2", "3.1.3", "3.1.4", "3.1.5"] => [["/sS/0/s", "string"]],
-        ["3.2.0", "3.2.1", "3.2.2"] => [["/sS/0/s", "type"]],
+        ["3.2.0", "3.2.1", "3.2.2", "3.3.0"] => [["/sS/0/s", "type"]],
       )
     end
   end
@@ -34,7 +34,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
       message["sS"].first["s"] = nil
       expect(validate message, 'core').to eq(
         ["3.1.2", "3.1.3", "3.1.4", "3.1.5"] => [["/sS/0/s", "string"]],
-        ["3.2.0", "3.2.1", "3.2.2"] => [["/sS/0/s", "type"]],
+        ["3.2.0", "3.2.1", "3.2.2", "3.3.0"] => [["/sS/0/s", "type"]],
       )
     end
   end
