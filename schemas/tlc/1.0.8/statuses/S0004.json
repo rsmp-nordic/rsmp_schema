@@ -1,7 +1,16 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Output status.\nOutput (1-255) of the controllers general purpose I/O.\nCan be used for all types of output where the traffic light controller needs to control other equipment. Can be used for bus priority, coordination between traffic controllers, external control systems, and much more.",
-  "allOf" : [
-    {
+  "properties" : {
+    "n" : {
+      "enum" : [
+        "extendedoutputstatus",
+        "outputstatus"
+      ]
+    }
+  },
+  "dependentSchemas" : {
+    "n" : {
       "properties" : {
         "n" : {
           "enum" : [
@@ -9,68 +18,63 @@
             "outputstatus"
           ]
         }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "q"
-        ],
-        "properties" : {
-          "q" : {
-            "enum" : [
-              "undefined",
-              "unknown"
-            ]
-          }
-        }
       },
-      "then" : {
-      },
-      "else" : {
-        "allOf" : [
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "outputstatus"
-                }
+      "allOf" : [
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "outputstatus"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "s" : {
-                  "description" : "Output status as text field",
-                  "type" : "string"
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
+                  ]
                 }
               }
             }
           },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "extendedoutputstatus"
-                }
-              }
-            },
-            "then" : {
-              "properties" : {
-                "s" : {
-                  "description" : "Extended output status as text field",
-                  "type" : "string"
-                }
+          "then" : {
+            "properties" : {
+              "s" : {
+                "description" : "Output status as text field",
+                "type" : "string"
               }
             }
           }
-        ]
-      }
+        },
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "extendedoutputstatus"
+              }
+            },
+            "not" : {
+              "properties" : {
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
+                  ]
+                }
+              }
+            }
+          },
+          "then" : {
+            "properties" : {
+              "s" : {
+                "description" : "Extended output status as text field",
+                "type" : "string"
+              }
+            }
+          }
+        }
+      ]
     }
-  ]
+  }
 }
