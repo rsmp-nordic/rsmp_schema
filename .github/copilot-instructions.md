@@ -9,8 +9,8 @@ Always reference these instructions first, and fall back to search or bash comma
 Bootstrap, build, and test the repository using mise:
 
 ```bash
-# Install mise (if not already installed)
-# Follow instructions at https://mise.jdx.dev/
+# Install mise (if not already installed), follow instructions at https://mise.jdx.dev/
+curl https://mise.run | sh
 
 # Install the Ruby version specified in .tool-versions
 mise install
