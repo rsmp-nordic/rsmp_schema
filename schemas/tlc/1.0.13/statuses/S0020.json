@@ -1,7 +1,16 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Control mode.\nCan be used for the management system to check the current control mode (startup, normal, standby, failure, test).",
-  "allOf" : [
-    {
+  "properties" : {
+    "n" : {
+      "enum" : [
+        "controlmode",
+        "intersection"
+      ]
+    }
+  },
+  "dependentSchemas" : {
+    "n" : {
       "properties" : {
         "n" : {
           "enum" : [
@@ -9,80 +18,63 @@
             "intersection"
           ]
         }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "q"
-        ],
-        "properties" : {
-          "q" : {
-            "enum" : [
-              "undefined",
-              "unknown"
-            ]
-          }
-        }
       },
-      "then" : {
-      },
-      "else" : {
-        "allOf" : [
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "intersection"
-                }
+      "allOf" : [
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "intersection"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
-                    }
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
                   ]
                 }
               }
             }
           },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "controlmode"
-                }
+          "then" : {
+            "properties" : {
+              "s" : {
+                "description" : "0: Not applicable (only one intersection exists or applicable for all intersection of the traffic light controller)\nOther value: Intersection number",
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
+              }
+            }
+          }
+        },
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "controlmode"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "s" : {
-                  "allOf" : [
-                    {
-                      "pattern" : "(?-mix:^(startup|control|standby|failure|test)(?:,(startup|control|standby|failure|test))*$)"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/string_list"
-                    }
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
                   ]
                 }
               }
             }
+          },
+          "then" : {
+            "properties" : {
+              "s" : {
+                "$ref" : "../../../core/3.1.2/definitions.json#/string_list",
+                "pattern" : "(?-mix:^(startup|control|standby|failure|test)(?:,(startup|control|standby|failure|test))*$)"
+              }
+            }
           }
-        ]
-      }
+        }
+      ]
     }
-  ]
+  }
 }

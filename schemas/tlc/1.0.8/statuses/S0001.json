@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Signal group status.\nProvides the status of each signal group, including basic information such as green, yellow and red. But also detailed technical information.\nCan be used to draw a live signal group diagram as well provide diagnostic information about the performance of the controller.",
   "allOf" : [
     {
@@ -66,14 +67,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "Cycle counter"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Cycle counter",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }
@@ -92,14 +87,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "Base cycle counter"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Base cycle counter",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }
@@ -118,14 +107,8 @@
             "then" : {
               "properties" : {
                 "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "Current stage (isolated)"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
-                  ]
+                  "description" : "Current stage (isolated)",
+                  "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                 }
               }
             }
