@@ -1,85 +1,83 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Restarts Traffic Light Controller.\nUsed in the event of serious faults in the device where a restart is considered to be able to remedy a problem.\nRequires security code 2",
-  "allOf" : [
-    {
+  "properties" : {
+    "n" : {
+      "enum" : [
+        "securityCode",
+        "status"
+      ]
+    },
+    "cO" : {
+      "const" : "setRestart"
+    }
+  },
+  "dependentSchemas" : {
+    "n" : {
       "properties" : {
         "n" : {
           "enum" : [
             "securityCode",
             "status"
           ]
-        },
-        "cO" : {
-          "const" : "setRestart"
-        }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "q"
-        ],
-        "properties" : {
-          "q" : {
-            "enum" : [
-              "undefined",
-              "unknown"
-            ]
-          }
         }
       },
-      "then" : {
-      },
-      "else" : {
-        "allOf" : [
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "status"
-                }
+      "allOf" : [
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "status"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "v" : {
-                  "allOf" : [
-                    {
-                      "description" : "True: Restart controller"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-                    }
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
                   ]
                 }
               }
             }
           },
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "securityCode"
-                }
-              }
-            },
-            "then" : {
-              "properties" : {
-                "v" : {
-                  "description" : "Security code 2",
-                  "type" : "string"
-                }
+          "then" : {
+            "properties" : {
+              "v" : {
+                "description" : "True: Restart controller",
+                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
               }
             }
           }
-        ]
-      }
+        },
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "securityCode"
+              }
+            },
+            "not" : {
+              "properties" : {
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
+                  ]
+                }
+              }
+            }
+          },
+          "then" : {
+            "properties" : {
+              "v" : {
+                "description" : "Security code 2",
+                "type" : "string"
+              }
+            }
+          }
+        }
+      ]
     }
-  ]
+  }
 }

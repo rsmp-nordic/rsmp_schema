@@ -1,61 +1,51 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "description" : "Number of detector logics.\nCan be used by the management system to check the number of detector logics configured in the controller.",
-  "allOf" : [
-    {
+  "properties" : {
+    "n" : {
+      "enum" : [
+        "number"
+      ]
+    }
+  },
+  "dependentSchemas" : {
+    "n" : {
       "properties" : {
         "n" : {
           "enum" : [
             "number"
           ]
         }
-      }
-    },
-    {
-      "if" : {
-        "required" : [
-          "q"
-        ],
-        "properties" : {
-          "q" : {
-            "enum" : [
-              "undefined",
-              "unknown"
-            ]
-          }
-        }
       },
-      "then" : {
-      },
-      "else" : {
-        "allOf" : [
-          {
-            "if" : {
-              "required" : [
-                "n"
-              ],
-              "properties" : {
-                "n" : {
-                  "const" : "number"
-                }
+      "allOf" : [
+        {
+          "if" : {
+            "properties" : {
+              "n" : {
+                "const" : "number"
               }
             },
-            "then" : {
+            "not" : {
               "properties" : {
-                "s" : {
-                  "allOf" : [
-                    {
-                      "description" : "Number of detector logics"
-                    },
-                    {
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
+                "q" : {
+                  "enum" : [
+                    "undefined",
+                    "unknown"
                   ]
                 }
               }
             }
+          },
+          "then" : {
+            "properties" : {
+              "s" : {
+                "description" : "Number of detector logics",
+                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+              }
+            }
           }
-        ]
-      }
+        }
+      ]
     }
-  ]
+  }
 }
