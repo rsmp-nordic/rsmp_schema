@@ -1,0 +1,26 @@
+{
+  "title" :  "CommandRequest",
+  "description" :  "Command request",
+  "properties" : {
+    "mId" : { "$ref": "../3.1.2/definitions.json#/message_id" },
+    "cId" : { "$ref": "definitions.json#/component_id" },
+    "arg" : {
+      "description" : "Command arguments",
+      "type" : "array",
+  "minItems": 1,
+  "maxItems": 1,
+      "items" : {
+        "type" : "object",
+        "properties": {
+          "cCI" : { "$ref": "../3.1.2/definitions.json#/command_code" },
+          "n" : { "description" : "Unique reference of the value", "type" : "string" },
+          "cO" : { "description" : "Command", "type" : "string" },
+          "v" : { "description" : "Value" }
+        },
+        "required" : [ "cCI", "n", "cO", "v" ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required" : [ "mId", "cId", "arg"]
+}

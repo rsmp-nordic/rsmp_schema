@@ -35,7 +35,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     [ "active","inactive", "InActive" ].each do |status|
       valid["aS"] = status
       expect( validate(valid, 'core') ).to eq({
-        ['3.2.0','3.2.1','3.2.2'] => [["/aS", "enum"]]
+        ['3.2.0','3.2.1','3.2.2','3.3.0'] => [["/aS", "enum"]]
       })
     end
   end
