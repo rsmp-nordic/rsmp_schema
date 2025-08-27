@@ -6,14 +6,20 @@ Always reference these instructions first, and fall back to search or bash comma
 
 ## Environment Setup
 Copilot Agent runs in a minimal Docker container, NOT the devcontainer specified in .devcontainer.
-Ruby will be available, but bundler must be used to install gems.
+Ruby will be available, but gems must be installed with bundler.
+
 The Ruby version migh not match what's specified in .tool-versions, but it should still be possible to work in the repo
 The bundler gem itself is included by default as part of the Ruby installation and does not have to be installed first.
 
-# Install all dependencies.
-```bash
+## Installing Gems
+Always bundler’s `path` config to install gems in the user’s local directory:
+```sh
+bundle config set --local path ~/.local/share/gem
 bundle install
 ```
+
+## Using Gem Executables
+Always use 'bundle exec' to run executable from gems, instead of updating PATH.
 
 ## Running Tests
 The test suite includes comprehensive RSpec tests covering:
