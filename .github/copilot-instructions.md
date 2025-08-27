@@ -5,7 +5,15 @@ RSMP Schema is a Ruby gem that provides JSON Schema validation for RSMP (Road Si
 Always reference these instructions first, and fall back to search or bash commands only when you encounter unexpected information that does not match the info here.
 
 ## Environment Setup
-The repo contains a .devcontainer configuration, using a Docker image with Ruby. The devcontainer also runs 'bundle install' to install gems, so the environment should be ready when the repo is opened in a GitHub Codespace.
+Copilot Agent runs in a minimal Docker container, NOT the devcontainer specified in .devcontainer.
+Ruby will be available, but bundler must be used to install gems.
+The Ruby version migh not match what's specified in .tool-versions, but it should still be possible to work in the repo
+The bundler gem itself is included by default as part of the Ruby installation and does not have to be installed first.
+
+# Install all dependencies.
+```bash
+bundle install
+```
 
 ## Running Tests
 The test suite includes comprehensive RSpec tests covering:
