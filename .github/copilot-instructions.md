@@ -5,23 +5,9 @@ RSMP Schema is a Ruby gem that provides JSON Schema validation for RSMP (Road Si
 Always reference these instructions first, and fall back to search or bash commands only when you encounter unexpected information that does not match the info here.
 
 ## Environment Setup
-
-Bootstrap, build, and test the repository using mise:
-
-```bash
-# Install mise (if not already installed), follow instructions at https://mise.jdx.dev/
-curl https://mise.run | sh
-
-# Install the Ruby version specified in .tool-versions
-mise install
-
-# Install all dependencies.
-# The bundler gem is included by default in the Ruby installation and does not have to be installed first.
-bundle install
-```
+The repo contains a .devcontainer configuration, using a Docker image with Ruby. The devcontainer also runs 'bundle install' to install gems, so the environment should be ready when the repo is opened in a GitHub Codespace.
 
 ## Running Tests
-
 The test suite includes comprehensive RSpec tests covering:
 - Core RSMP message validation
 - Traffic Light Controller SXL validation
@@ -36,7 +22,6 @@ bundle exec rspec
 All tests should pass on a clean repository.
 
 ## CLI Tool Usage
-
 The gem provides a CLI tool for converting YAML SXL files to JSON Schema:
 
 ```bash
@@ -51,7 +36,6 @@ bundle exec exe/rsmp_schema convert -i schemas/tlc/1.2.1/sxl.yaml -o tmp/sxl_1.2
 ```
 
 ## Schema Regeneration
-
 Regenerate all TLC JSON schemas from their YAML sources:
 
 ```bash
@@ -77,7 +61,6 @@ bundle exec ruby examples/validate.rb
 Expected output: `ok` (indicates successful validation)
 
 ## Repository Structure
-
 Key directories and files:
 - `lib/rsmp_schema/` - Main gem code
 - `lib/rsmp_schema/cli.rb` - CLI tool implementation  
@@ -107,7 +90,6 @@ Key directories and files:
 - Helper: `spec/schemer_helper.rb`
 
 ## CI Pipeline Validation
-
 The repository uses GitHub Actions with the following requirements:
 - Runs on Ubuntu, macOS, and Windows
 - Tests with different Ruby versions
@@ -120,7 +102,6 @@ Before committing changes, ensure:
 - Ruby syntax is valid for modified files
 
 ## Validation Scenarios
-
 After making changes, always test these scenarios:
 
 1. **Schema regeneration**: Run `bundle exec rake regenerate` and verify no unexpected changes.
@@ -156,15 +137,12 @@ git status
 ```
 
 
-
 ## Dependencies and Versions
-
 See `rsmp_schema.gemspec` for current runtime and development dependencies.
 
 Requires the Ruby version specified in .tool-versions.
 
 ## Common Issues and Solutions
-
 **Ruby version or environment issues**:
 - Use mise for automatic Ruby management: `mise install`
 
@@ -184,7 +162,6 @@ Requires the Ruby version specified in .tool-versions.
 - Check Ruby version compatibility (see .tool-versions)
 
 ## Timing Expectations
-
 - **NEVER CANCEL**: Bundle install takes 10-15 seconds normally - wait for completion
 - **NEVER CANCEL**: Test suite takes 2 seconds - use 30+ second timeout  
 - **NEVER CANCEL**: Schema regeneration takes 0.75 seconds - very fast but allow buffer
