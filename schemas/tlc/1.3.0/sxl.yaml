@@ -131,10 +131,10 @@ objects:
 
           c = (b + o) modulo t
 
-          where:
-          c = cycle counter
-          b = base cycle counter
-          o = offset
+          where: \
+          c = cycle counter \
+          b = base cycle counter \
+          o = offset \
           t = cycle time
 
           See the coordination section for more information about cycle
