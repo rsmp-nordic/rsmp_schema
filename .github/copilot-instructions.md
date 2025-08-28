@@ -6,26 +6,36 @@ Always reference these instructions first, and fall back to search or bash comma
 
 ## Environment Setup
 Copilot Agent runs in a minimal Docker container, NOT the devcontainer specified in .devcontainer.
-Ruby will be available, but gems must be installed with bundler.
 
+Ruby will be available, but bundler and gems must be installed.
 The Ruby version migh not match what's specified in .tool-versions, but it should still be possible to work in the repo
-The bundler gem itself is included by default as part of the Ruby installation and does not have to be installed first.
+
+## Installing bundler
+The bundler gem itself is usually included in modern Ruby distributions, but it's NOT included in the copilot agent container, so always install with:
+
+```sh
+gem install bundler --install-dir ~/.local/share/gem
+```
+
+Add gem executables to the PATH so they can be found:
+```sh
+export PATH="$HOME/.local/share/gem/bin:$PATH"
+```
 
 ## Installing Gems
-Always bundler’s `path` config to install gems in the user’s local directory:
+Always use the bundler `path` config to install gems in the user’s local directory:
 ```sh
 bundle config set --local path ~/.local/share/gem
 bundle install
 ```
 
 ## Using Gem Executables
-Always use 'bundle exec' to run executable from gems, instead of updating PATH.
+Always use 'bundle exec' to run executable from gems.
 
 ## Running Tests
 The test suite includes comprehensive RSpec tests covering:
 - Core RSMP message validation
 - Traffic Light Controller SXL validation
-
 
 Run the complete test suite:
 ```bash
