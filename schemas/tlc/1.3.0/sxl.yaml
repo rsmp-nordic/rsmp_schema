@@ -1787,9 +1787,11 @@ objects:
             description: New security code
         command: setSecurityCode
       M0104:
-        description: |-
-          Set clock.
-          
+        deprecated: true
+        description: |-       
+          This command Will be removed in an upcoming version.
+          You should instead use automatic time synchronization using e.g. using NTP or GPS.
+         
           Can be used to manually set the clock of the traffic light controller in case
           automatic time synchronization is not available, e.g. during maintenance work.
 
@@ -1797,7 +1799,7 @@ objects:
           command returns a normal response, but is otherwise ignored and does not set
           the clock.
 
-          UTC is used. Requiressecurity code 1.  
+          UTC is used. Requires security code 1.  
         from_version: 1.0.1
         arguments:
           securityCode:
