@@ -141,7 +141,8 @@ objects:
           counters.
 
           The millisecond attributes updates only when the
-          signal group state changes, and indicates when the last
+          signal group state changes, and indicates the cycle counter
+          (not base cycle counter) when the last
           signal group state change occurred. It's safe to subscribe to it
           using **sendOnChange** - you will not be flooded with state updates
           every millisecond.
@@ -175,8 +176,8 @@ objects:
             min: 0
             max: 999999
             description: |-
-              Provides the cycle counter in milliseconds of when the last signal
-              group state changed occured.
+              Provides the cycle counter (not base cycle counter) in milliseconds
+              of when the last signal group state changed occured.
               Updates only when the signal group state changes.
           stage:
             type: integer_as_string
