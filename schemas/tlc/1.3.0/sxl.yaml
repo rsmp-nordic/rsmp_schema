@@ -1789,7 +1789,8 @@ objects:
       M0104:
         deprecated: true
         description: |-       
-          This command Will be removed in an upcoming version.
+          Set clock.
+          This command will be removed in an upcoming version.
           You should instead use automatic time synchronization using e.g. using NTP or GPS.
          
           Can be used to manually set the clock of the traffic light controller in case
