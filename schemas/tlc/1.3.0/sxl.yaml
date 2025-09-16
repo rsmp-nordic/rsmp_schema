@@ -137,15 +137,21 @@ objects:
           o = offset \
           t = cycle time
 
+          THe cycle counter and base cycle counter are both specified using whole seconds.
+          
           See the coordination section for more information about cycle
           counters.
 
-          The millisecond attributes updates only when the
-          signal group state changes, and indicates the cycle counter
-          (not base cycle counter) when the last
-          signal group state change occurred. It's safe to subscribe to it
-          using **sendOnChange** - you will not be flooded with state updates
-          every millisecond.
+          The millisecond attributes provides the high resolution cycle counter
+          (not base cycle counter) of the the last signal group change.
+          If the controller internally works with discrete ticks, the value must
+          be quantized to the tick where the signal groups changed.
+          E.g. if the controller uses 100ms ticks, the value must be
+          quantized to 0, 100, 200, 300...
+          
+          The millisecond attribute updates only when one or more signal group states changes,
+          NOT every millisecond. Subscribing with **sendOnChange** will therefore not result in
+          updates every millisecond.
         from_version: 1.0.0
         arguments:
           signalgroupstatus:
