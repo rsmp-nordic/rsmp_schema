@@ -143,6 +143,17 @@ module RSMP
             return json
           end
 
+          # Build allOf conditions for all arguments - they all require "v" when present
+          all_conditions = item['arguments'].map do |key, argument|
+            {
+              "if" => { "required" => ["n"], "properties" => { "n" => { "const" => key }}},
+              "then" => { 
+                "required" => [property_key],
+                "properties" => { property_key => build_value(argument) }
+              }
+            }
+          end
+
           json = {
             "description" => item['description'],
             "allOf" => [
@@ -157,12 +168,7 @@ module RSMP
                 },
                 "then" => {},
                 "else" => {
-                  "allOf" => item['arguments'].map do |key,argument|
-                    {
-                      "if" => { "required" => ["n"], "properties" => { "n" => { "const" => key }}},
-                      "then" => { "properties" => { property_key => build_value(argument) }}
-                    }
-                  end
+                  "allOf" => all_conditions
                 }
               }
             ]
