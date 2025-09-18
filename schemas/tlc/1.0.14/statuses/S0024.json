@@ -8,45 +8,30 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "status"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "status"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "status"
             }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Offset table\nEach offset time is written as pp-tt where:\npp=time plan\ntt=offset time in seconds\n\nEach offset time is separated with a comma\n\nE.g.\npp-tt,pp-tt",
-                "type" : "string",
-                "pattern" : "^(\\d{1,2}\\-\\d{1,2})(?:,(\\d{1,2}\\-\\d{1,2}))*$"
-              }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Offset table\nEach offset time is written as pp-tt where:\npp=time plan\ntt=offset time in seconds\n\nEach offset time is separated with a comma\n\nE.g.\npp-tt,pp-tt",
+              "type" : "string",
+              "pattern" : "^(\\d{1,2}\\-\\d{1,2})(?:,(\\d{1,2}\\-\\d{1,2}))*$"
             }
           }
         }
-      ]
-    }
+      }
+    ]
   }
 }

@@ -8,44 +8,29 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "number"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "number"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "number"
             }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Number of detector logics",
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-              }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Number of detector logics",
+              "$ref" : "../../../core/3.1.2/definitions.json#/integer"
             }
           }
         }
-      ]
-    }
+      }
+    ]
   }
 }

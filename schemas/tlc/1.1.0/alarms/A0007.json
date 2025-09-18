@@ -8,48 +8,27 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "protocol"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "protocol"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "Type of communication error, e.g. NTP or RSMP",
-                "type" : "string",
-                "enum" : [
-                  "ntp",
-                  "rsmp"
-                ]
-              }
-            }
+  "allOf" : [
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "protocol"
           }
         }
-      ]
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Type of communication error, e.g. NTP or RSMP",
+            "type" : "string",
+            "enum" : [
+              "ntp",
+              "rsmp"
+            ]
+          }
+        }
+      }
     }
-  }
+  ]
 }

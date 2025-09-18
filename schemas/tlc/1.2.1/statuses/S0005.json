@@ -9,90 +9,64 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "status",
-            "statusByIntersection"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "status"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "False: Controller is not in start up mode\nTrue: Controller is currently in start up mode",
-                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "status"
             }
           }
         },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "statusByIntersection"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "False: Controller is not in start up mode\nTrue: Controller is currently in start up mode",
+              "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
             }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "False: Intersection is not in start up mode\nTrue: Intersection is currently in start up mode",
-                "type" : "array",
-                "items" : {
-                  "type" : "object",
-                  "required" : [
-                    "intersection",
-                    "startup"
-                  ],
-                  "unevaluatedProperties" : false,
-                  "properties" : {
-                    "intersection" : {
-                      "description" : "Intersection id",
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    },
-                    "startup" : {
-                      "description" : "Start up mode",
-                      "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-                    }
+          }
+        }
+      },
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "statusByIntersection"
+            }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "False: Intersection is not in start up mode\nTrue: Intersection is currently in start up mode",
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "required" : [
+                  "intersection",
+                  "startup"
+                ],
+                "unevaluatedProperties" : false,
+                "properties" : {
+                  "intersection" : {
+                    "description" : "Intersection id",
+                    "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                  },
+                  "startup" : {
+                    "description" : "Start up mode",
+                    "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
                   }
                 }
               }
             }
           }
         }
-      ]
-    }
+      }
+    ]
   }
 }
