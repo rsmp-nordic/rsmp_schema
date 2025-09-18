@@ -8,57 +8,42 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "emergencyroutes"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "emergencyroutes"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "emergencyroutes"
             }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Active emergency routes",
-                "type" : "array",
-                "items" : {
-                  "type" : "object",
-                  "required" : [
-                    "id"
-                  ],
-                  "unevaluatedProperties" : false,
-                  "properties" : {
-                    "id" : {
-                      "description" : "ID of active emergency route",
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Active emergency routes",
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "required" : [
+                  "id"
+                ],
+                "unevaluatedProperties" : false,
+                "properties" : {
+                  "id" : {
+                    "description" : "ID of active emergency route",
+                    "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                   }
                 }
               }
             }
           }
         }
-      ]
-    }
+      }
+    ]
   }
 }

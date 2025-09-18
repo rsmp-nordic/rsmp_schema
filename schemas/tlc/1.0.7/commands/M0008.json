@@ -13,100 +13,57 @@
       "const" : "setForceDetectorLogic"
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "mode",
-            "securityCode",
-            "status"
-          ]
+  "allOf" : [
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
         }
       },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "status"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "False: Deactivate manual control of detector logic\nTrue: Activate manual control of detector logic",
-                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-              }
-            }
-          }
-        },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "securityCode"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "Security code 2",
-                "type" : "string"
-              }
-            }
-          }
-        },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "mode"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "False: Deactivate detector logic\nTrue: Activate detector logic",
-                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-              }
-            }
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "False: Deactivate manual control of detector logic\nTrue: Activate manual control of detector logic",
+            "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
           }
         }
-      ]
+      }
+    },
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "mode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "False: Deactivate detector logic\nTrue: Activate detector logic",
+            "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
+          }
+        }
+      }
     }
-  }
+  ]
 }

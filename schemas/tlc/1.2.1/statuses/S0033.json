@@ -8,85 +8,70 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "status"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "status"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "status"
             }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "JSON array of priority status items",
-                "type" : "array",
-                "items" : {
-                  "type" : "object",
-                  "required" : [
-                    "r",
-                    "s",
-                    "t"
-                  ],
-                  "unevaluatedProperties" : false,
-                  "properties" : {
-                    "r" : {
-                      "description" : "ID of the priority request",
-                      "type" : "string"
-                    },
-                    "t" : {
-                      "description" : "Timestamp, indicating when the priority last changed state.",
-                      "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
-                    },
-                    "s" : {
-                      "description" : "Current status of the priority request",
-                      "type" : "string",
-                      "enum" : [
-                        "activated",
-                        "completed",
-                        "cooldown",
-                        "queued",
-                        "received",
-                        "rejected",
-                        "stale",
-                        "timeout"
-                      ]
-                    },
-                    "e" : {
-                      "description" : "Estimated green extension provided by the priority, in seconds\nOnly used when state is 'completed'.",
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    },
-                    "d" : {
-                      "description" : "Estimated red reduction provided by the priority, in seconds\nOnly used when state is 'completed'.",
-                      "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-                    }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "JSON array of priority status items",
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "required" : [
+                  "r",
+                  "s",
+                  "t"
+                ],
+                "unevaluatedProperties" : false,
+                "properties" : {
+                  "r" : {
+                    "description" : "ID of the priority request",
+                    "type" : "string"
+                  },
+                  "t" : {
+                    "description" : "Timestamp, indicating when the priority last changed state.",
+                    "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
+                  },
+                  "s" : {
+                    "description" : "Current status of the priority request",
+                    "type" : "string",
+                    "enum" : [
+                      "activated",
+                      "completed",
+                      "cooldown",
+                      "queued",
+                      "received",
+                      "rejected",
+                      "stale",
+                      "timeout"
+                    ]
+                  },
+                  "e" : {
+                    "description" : "Estimated green extension provided by the priority, in seconds\nOnly used when state is 'completed'.",
+                    "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+                  },
+                  "d" : {
+                    "description" : "Estimated red reduction provided by the priority, in seconds\nOnly used when state is 'completed'.",
+                    "$ref" : "../../../core/3.1.2/definitions.json#/integer"
                   }
                 }
               }
             }
           }
         }
-      ]
-    }
+      }
+    ]
   }
 }

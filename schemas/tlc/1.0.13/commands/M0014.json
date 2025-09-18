@@ -13,100 +13,57 @@
       "const" : "setCommands"
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "plan",
-            "securityCode",
-            "status"
-          ]
+  "allOf" : [
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "plan"
+          }
         }
       },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "plan"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "Plan to be changed",
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-              }
-            }
-          }
-        },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "status"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "Dynamic bands.\nEach dynamic band are written as dd-ee where:\ndd=Dynamic band number (from 1-10)\nee=Extension in seconds in this band\n\nEach dynamic band is separated with a comma.\n\nE.g.\ndd-ee,dd-ee",
-                "type" : "string"
-              }
-            }
-          }
-        },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "securityCode"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "Security code 2",
-                "type" : "string"
-              }
-            }
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Plan to be changed",
+            "$ref" : "../../../core/3.1.2/definitions.json#/integer"
           }
         }
-      ]
+      }
+    },
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Dynamic bands.\nEach dynamic band are written as dd-ee where:\ndd=Dynamic band number (from 1-10)\nee=Extension in seconds in this band\n\nEach dynamic band is separated with a comma.\n\nE.g.\ndd-ee,dd-ee",
+            "type" : "string"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
     }
-  }
+  ]
 }

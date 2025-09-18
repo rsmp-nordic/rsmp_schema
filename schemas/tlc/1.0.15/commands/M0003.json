@@ -13,100 +13,57 @@
       "const" : "setTrafficSituation"
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "securityCode",
-            "status",
-            "traficsituation"
-          ]
+  "allOf" : [
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
         }
       },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "status"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "False: Controller uses traffic situation according to own programming\nTrue: Controller uses traffic situation according to command",
-                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-              }
-            }
-          }
-        },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "securityCode"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "Security code 2",
-                "type" : "string"
-              }
-            }
-          }
-        },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "traficsituation"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "designation of traficsituation",
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-              }
-            }
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "False: Controller uses traffic situation according to own programming\nTrue: Controller uses traffic situation according to command",
+            "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
           }
         }
-      ]
+      }
+    },
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "traficsituation"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "designation of traficsituation",
+            "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+          }
+        }
+      }
     }
-  }
+  ]
 }

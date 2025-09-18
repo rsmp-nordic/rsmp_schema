@@ -13,100 +13,57 @@
       "const" : "setPlan"
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "securityCode",
-            "status",
-            "timeplan"
-          ]
+  "allOf" : [
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
         }
       },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "status"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "False: Controller uses time plan according to programming\nTrue: Controller uses time plan according to command",
-                "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
-              }
-            }
-          }
-        },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "securityCode"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "Security code 2",
-                "type" : "string"
-              }
-            }
-          }
-        },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "timeplan"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "designation of time plan",
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-              }
-            }
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "False: Controller uses time plan according to programming\nTrue: Controller uses time plan according to command",
+            "$ref" : "../../../core/3.1.2/definitions.json#/boolean"
           }
         }
-      ]
+      }
+    },
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "securityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Security code 2",
+            "type" : "string"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "timeplan"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "designation of time plan",
+            "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+          }
+        }
+      }
     }
-  }
+  ]
 }

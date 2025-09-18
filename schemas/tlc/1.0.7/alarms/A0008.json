@@ -8,44 +8,23 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "timeplan"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "timeplan"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "Current time plan",
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-              }
-            }
+  "allOf" : [
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "timeplan"
           }
         }
-      ]
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Current time plan",
+            "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+          }
+        }
+      }
     }
-  }
+  ]
 }

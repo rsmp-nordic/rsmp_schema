@@ -8,44 +8,29 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "status"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "status"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "status"
             }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Week time table. Defines time table to use for each week day\nEach day is written as d-t where:\nd=day of week\nt=time table nr\n\nDay of week legend:\n0=Monday\n1=Tuesday\n2=Wednesday\n3=Thursday\n4=Friday\n5=Saturday\n6=Sunday\n\nEach segment is separated with a comma\nE.g.\nd-t,d-t",
-                "type" : "string"
-              }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Week time table. Defines time table to use for each week day\nEach day is written as d-t where:\nd=day of week\nt=time table nr\n\nDay of week legend:\n0=Monday\n1=Tuesday\n2=Wednesday\n3=Thursday\n4=Friday\n5=Saturday\n6=Sunday\n\nEach segment is separated with a comma\nE.g.\nd-t,d-t",
+              "type" : "string"
             }
           }
         }
-      ]
-    }
+      }
+    ]
   }
 }
