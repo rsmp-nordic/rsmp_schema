@@ -8,45 +8,30 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "status"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "status"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "status"
             }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Dynamic bands.\nEach dynamic band are written as pp-dd-ee where:\npp=Time plan\ndd=Dynamic band number (from 1-10)\nee=Extension in seconds in this band\n\nEach dynamic band is separated with a comma.\n\nE.g.\npp-dd-ee,pp-dd-ee",
-                "type" : "string",
-                "pattern" : "(^$)|(^(?<item>(\\d{1,2})\\-\\d{1,2}-\\d{1,2})(,\\g<item>)*$)"
-              }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Dynamic bands.\nEach dynamic band are written as pp-dd-ee where:\npp=Time plan\ndd=Dynamic band number (from 1-10)\nee=Extension in seconds in this band\n\nEach dynamic band is separated with a comma.\n\nE.g.\npp-dd-ee,pp-dd-ee",
+              "type" : "string",
+              "pattern" : "(^$)|(^(?<item>(\\d{1,2})\\-\\d{1,2}-\\d{1,2})(,\\g<item>)*$)"
             }
           }
         }
-      ]
-    }
+      }
+    ]
   }
 }

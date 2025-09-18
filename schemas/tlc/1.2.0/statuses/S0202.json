@@ -9,72 +9,46 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "speed",
-            "starttime"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "starttime"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Time stamp for start of measuring",
-                "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "starttime"
             }
           }
         },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "speed"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Average speed in km/h",
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer"
-              }
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Time stamp for start of measuring",
+              "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
             }
           }
         }
-      ]
-    }
+      },
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "speed"
+            }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Average speed in km/h",
+              "$ref" : "../../../core/3.1.2/definitions.json#/integer"
+            }
+          }
+        }
+      }
+    ]
   }
 }

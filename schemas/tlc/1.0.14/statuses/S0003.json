@@ -9,72 +9,46 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "extendedinputstatus",
-            "inputstatus"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "inputstatus"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Input status as text field",
-                "type" : "string"
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "inputstatus"
             }
           }
         },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "extendedinputstatus"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Extended input status as text field",
-                "type" : "string"
-              }
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Input status as text field",
+              "type" : "string"
             }
           }
         }
-      ]
-    }
+      },
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "extendedinputstatus"
+            }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Extended input status as text field",
+              "type" : "string"
+            }
+          }
+        }
+      }
+    ]
   }
 }

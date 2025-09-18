@@ -8,48 +8,33 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "user"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "user"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "user"
             }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer",
-                "enum" : [
-                  "0",
-                  "1",
-                  "2"
-                ]
-              }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "$ref" : "../../../core/3.1.2/definitions.json#/integer",
+              "enum" : [
+                "0",
+                "1",
+                "2"
+              ]
             }
           }
         }
-      ]
-    }
+      }
+    ]
   }
 }

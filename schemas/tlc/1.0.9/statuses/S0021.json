@@ -8,45 +8,30 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "detectorlogics"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "detectorlogics"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "detectorlogics"
             }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Manually set detector logics (1/0) as text field",
-                "type" : "string",
-                "pattern" : "^[01]*$"
-              }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Manually set detector logics (1/0) as text field",
+              "type" : "string",
+              "pattern" : "^[01]*$"
             }
           }
         }
-      ]
-    }
+      }
+    ]
   }
 }

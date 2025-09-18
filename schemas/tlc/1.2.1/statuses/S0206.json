@@ -9,72 +9,46 @@
       ]
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "speed",
-            "start"
-          ]
-        }
-      },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "start"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Time stamp for start of measuring",
-                "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
-              }
+  "if" : {
+    "$ref" : "../../defs/guards.json#/$defs/q_unknown_or_undefined"
+  },
+  "then" : {},
+  "else" : {
+    "allOf" : [
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "start"
             }
           }
         },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "speed"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "s" : {
-                "description" : "Average speed in km/h (integer).\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to \"-1\" if no data could be measured (e.g. detector fault)",
-                "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
-              }
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Time stamp for start of measuring",
+              "$ref" : "../../../core/3.1.2/definitions.json#/timestamp"
             }
           }
         }
-      ]
-    }
+      },
+      {
+        "if" : {
+          "properties" : {
+            "n" : {
+              "const" : "speed"
+            }
+          }
+        },
+        "then" : {
+          "properties" : {
+            "s" : {
+              "description" : "Average speed in km/h (integer).\n- Value expressed as an integer with a range of 0-65535.\n- Contains data from all detector logics. Each detector logic is separated with a comma.\n- The value is set to \"-1\" if no data could be measured (e.g. detector fault)",
+              "$ref" : "../../../core/3.1.2/definitions.json#/integer_list"
+            }
+          }
+        }
+      }
+    ]
   }
 }

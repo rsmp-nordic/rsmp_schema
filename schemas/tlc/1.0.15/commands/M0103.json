@@ -13,103 +13,60 @@
       "const" : "setSecurityCode"
     }
   },
-  "dependentSchemas" : {
-    "n" : {
-      "properties" : {
-        "n" : {
-          "enum" : [
-            "newSecurityCode",
-            "oldSecurityCode",
-            "status"
-          ]
+  "allOf" : [
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "status"
+          }
         }
       },
-      "allOf" : [
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "status"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "type" : "string",
-                "enum" : [
-                  "Level1",
-                  "Level2"
-                ]
-              }
-            }
-          }
-        },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "oldSecurityCode"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "Previous security code",
-                "type" : "string"
-              }
-            }
-          }
-        },
-        {
-          "if" : {
-            "properties" : {
-              "n" : {
-                "const" : "newSecurityCode"
-              }
-            },
-            "not" : {
-              "properties" : {
-                "q" : {
-                  "enum" : [
-                    "undefined",
-                    "unknown"
-                  ]
-                }
-              }
-            }
-          },
-          "then" : {
-            "properties" : {
-              "v" : {
-                "description" : "New security code",
-                "type" : "string"
-              }
-            }
+      "then" : {
+        "properties" : {
+          "v" : {
+            "type" : "string",
+            "enum" : [
+              "Level1",
+              "Level2"
+            ]
           }
         }
-      ]
+      }
+    },
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "oldSecurityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "Previous security code",
+            "type" : "string"
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "properties" : {
+          "n" : {
+            "const" : "newSecurityCode"
+          }
+        }
+      },
+      "then" : {
+        "properties" : {
+          "v" : {
+            "description" : "New security code",
+            "type" : "string"
+          }
+        }
+      }
     }
-  }
+  ]
 }

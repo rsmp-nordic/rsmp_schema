@@ -138,77 +138,47 @@ module RSMP
             return json
           end
 
-          # Use dependentSchemas for cleaner conditional logic when possible
-          # If we have many arguments, use the traditional if/then approach
-          # If fewer arguments, consider dependentSchemas
           arguments = item['arguments']
-          
-          if arguments.size <= 3
-            # Use dependentSchemas for simpler cases
-            dependent_schemas = {}
-            arguments.each do |key, argument|
-              dependent_schemas[key] = {
-                "properties" => { property_key => build_value(argument) }
+
+          # For statuses (property_key == 's'), generate a single top-level gate:
+          # if q is undefined/unknown -> no constraints; else -> per-n branches.
+          if property_key == 's'
+            branches = arguments.map do |key, argument|
+              {
+                "if" => { "properties" => { "n" => { "const" => key } } },
+                "then" => { "properties" => { property_key => build_value(argument) } }
               }
             end
 
-            json = {
+            return {
               "$schema" => "https://json-schema.org/draft/2020-12/schema",
               "description" => item['description'],
-              "properties" => { 
+              "properties" => {
                 "n" => { "enum" => arguments.keys.sort }
               },
-              "dependentSchemas" => {
-                "n" => {
-                  "properties" => {
-                    "n" => { "enum" => arguments.keys.sort }
-                  },
-                  "allOf" => arguments.map do |key, argument|
-                    {
-                      "if" => { 
-                        "properties" => { "n" => { "const" => key }},
-                        "not" => {
-                          "properties" => { "q" => { "enum" => ["undefined", "unknown"] }}
-                        }
-                      },
-                      "then" => { "properties" => { property_key => build_value(argument) }}
-                    }
-                  end
-                }
-              }
-            }
-          else
-            # Use traditional approach for complex cases
-            json = {
-              "$schema" => "https://json-schema.org/draft/2020-12/schema",
-              "description" => item['description'],
-              "allOf" => [
-                {
-                 "properties" => { 
-                   "n" => { "enum" => arguments.keys.sort }
-                 },
-                },
-                {
-                  "if" =>
-                  {
-                    "required" => ["q"],
-                    "properties" => { "q"=> { "enum" => ["undefined","unknown"] }},
-                  },
-                  "then" => {},
-                  "else" => {
-                    "allOf" => arguments.map do |key,argument|
-                      {
-                        "if" => { "required" => ["n"], "properties" => { "n" => { "const" => key }}},
-                        "then" => { "properties" => { property_key => build_value(argument) }}
-                      }
-                    end
-                  }
-                }
-              ]
+              # reference shared guard (relative from statuses folder to tlc/defs)
+              "if" => { "$ref" => "../../defs/guards.json#/$defs/q_unknown_or_undefined" },
+              "then" => {},
+              "else" => { "allOf" => branches }
             }
           end
 
-          json
+          # Default behavior (alarms/commands): keep simple per-n if/then rules without q gating
+          rules = arguments.map do |key, argument|
+            {
+              "if" => { "properties" => { "n" => { "const" => key } } },
+              "then" => { "properties" => { property_key => build_value(argument) } }
+            }
+          end
+
+          {
+            "$schema" => "https://json-schema.org/draft/2020-12/schema",
+            "description" => item['description'],
+            "properties" => {
+              "n" => { "enum" => arguments.keys.sort }
+            },
+            "allOf" => rules
+          }
         end
 
         # convert alarms to json schema
@@ -238,6 +208,19 @@ module RSMP
 
         # convert statuses to json schema
         def self.output_statuses out, items
+          # ensure shared guard is written (relative to version folder)
+          out['../defs/guards.json'] ||= output_json({
+            "$schema" => "https://json-schema.org/draft/2020-12/schema",
+            "$defs" => {
+              "q_unknown_or_undefined" => {
+                "allOf" => [
+                  { "required" => ["q"] },
+                  { "properties" => { "q" => { "enum" => ["undefined", "unknown"] } } }
+                ]
+              }
+            }
+          })
+
           list = [ { "properties" => { "sCI" => { "enum"=> items.keys.sort }}} ]
           items.keys.sort.each do |key|
             list << {
@@ -292,18 +275,9 @@ module RSMP
         # convert a command to json schema
         def self.output_command out, key, item
           json = build_item item
-          
-          # Add the command operation (cO) constraint based on the new structure
-          if json["allOf"]
-            # Traditional allOf structure
-            json["allOf"].first["properties"]['cO'] = { "const" => item['command'] }
-          elsif json["properties"]
-            # dependentSchemas structure
-            json["properties"]['cO'] = { "const" => item['command'] }
-          elsif json["dependentSchemas"] && json["dependentSchemas"]["n"]
-            # Add cO to the base properties for dependentSchemas
-            json["properties"]['cO'] = { "const" => item['command'] }
-          end
+          # Always add the command operation (cO) constraint at the top-level properties
+          json["properties"] ||= {}
+          json["properties"]["cO"] = { "const" => item['command'] }
           
           out["commands/#{key}.json"] = output_json json
         end
