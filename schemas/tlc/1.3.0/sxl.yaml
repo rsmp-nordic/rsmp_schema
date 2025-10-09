@@ -184,7 +184,7 @@ objects:
             description: |-
               Provides the cycle counter (not base cycle counter) in milliseconds
               of when the last signal group state changed occured.
-              Updates only when the signal group state changes.
+              Updates only when the signalgroupstatus attribute changes.
           stage:
             type: integer_as_string
             description: Current stage (isolated)
