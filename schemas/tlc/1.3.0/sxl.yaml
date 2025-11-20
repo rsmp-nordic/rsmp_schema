@@ -1271,9 +1271,23 @@ objects:
         command: setTrafficSituation
       M0004:
         description: |-
-          Restarts Traffic Light Controller.
-          Used in the event of serious faults in the device where a restart is considered to be able to remedy a problem.
-          Requires security code 2
+          Reset Traffic Light Controller.
+
+          This command is used as a last resort to attempt to remotely fix serious faults.
+          If unsuccessful, manual intervention on site is probably required.
+
+          The controller must attempt all available safe action to reset to a functional state.
+          Depending on regulations and controller capabilities, examples actions could be:
+
+          - resetting parameters to defaults
+          - restarting applications
+          - restarting peripheral hardware
+          - going through a shutdown/startup sequence and cycling power
+
+          The controller must also clear all alarms.
+
+          Requires security code 2.
+          The attribute 'status' is deprecated and must be set to true.
         from_version: 1.0.1
         arguments:
           status:
@@ -1282,7 +1296,6 @@ objects:
             description: 'True: Restart controller'
           securityCode:
             type: string
-            deprecated: true
             description: Security code 2
         command: setRestart
       M0005:
@@ -1798,6 +1811,13 @@ objects:
             type: string
             description: Security code 2
         command: setTimeout
+      M0024:
+        description: |-
+          Clear all alarms.
+          Clear all active alarms in the traffic light controller.
+          If the cause of an alarm is still present, the alarm will be reactivated again.  
+        from_version: 1.3.0
+
       M0103:
         description: |-
           Set security code.
