@@ -1296,8 +1296,7 @@ objects:
         arguments:
           status:
             type: boolean_as_string
-            deprecated: true
-            description: 'True: Restart controller'
+            description: 'True: Reset controller'
           securityCode:
             type: string
             description: Security code 2
