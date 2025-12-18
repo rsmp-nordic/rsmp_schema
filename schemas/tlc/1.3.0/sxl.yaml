@@ -1816,7 +1816,11 @@ objects:
           Clear all active alarms in the traffic light controller.
           If the cause of an alarm is still present, the alarm will be reactivated again.  
         from_version: 1.3.0
-
+        command: clearAlarms
+        arguments:
+          status:
+            type: boolean
+            description: 'True: Clear all alarms'
       M0103:
         description: |-
           Set security code.
