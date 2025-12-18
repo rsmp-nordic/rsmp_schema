@@ -26,7 +26,8 @@ RSpec.describe RSMP::Schema do
     expect(RSMP::Schema.has_schema?(:tlc,'1.1.0')).to be(true)
     expect(RSMP::Schema.has_schema?(:tlc,'1.2.0')).to be(true)
     expect(RSMP::Schema.has_schema?(:tlc,'1.2.1')).to be(true)
-    expect(RSMP::Schema.has_schema?(:tlc,'1.2.2')).to be(false)
+    expect(RSMP::Schema.has_schema?(:tlc,'1.3.0')).to be(true)
+    expect(RSMP::Schema.has_schema?(:tlc,'1.3.1')).to be(false)
   end
 
   it 'provides schema versions' do
@@ -34,9 +35,9 @@ RSpec.describe RSMP::Schema do
     expect(RSMP::Schema.earliest_core_version).to eq("3.1.2")
     expect(RSMP::Schema.latest_core_version).to eq("3.2.2")
 
-    expect(RSMP::Schema.versions(:tlc)).to eq(["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15", "1.1.0", "1.2.0", "1.2.1"])
+    expect(RSMP::Schema.versions(:tlc)).to eq(["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15", "1.1.0", "1.2.0", "1.2.1",  "1.3.0"])
     expect(RSMP::Schema.earliest_version(:tlc)).to eq("1.0.7")
-    expect(RSMP::Schema.latest_version(:tlc)).to eq("1.2.1")
+    expect(RSMP::Schema.latest_version(:tlc)).to eq("1.3.0")
 
   end
 
@@ -93,7 +94,7 @@ RSpec.describe RSMP::Schema do
     path = File.expand_path( File.join(__dir__,'..','schemas','tlc') )
     RSMP::Schema.load_schema_type type, path
     expect(RSMP::Schema.schema_types).to eq([:core,:tlc,:custom])
-    expect(RSMP::Schema.versions(type)).to eq(["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15", "1.1.0", "1.2.0", "1.2.1"])
+    expect(RSMP::Schema.versions(type)).to eq(["1.0.7", "1.0.8", "1.0.9", "1.0.10", "1.0.13", "1.0.14", "1.0.15", "1.1.0", "1.2.0", "1.2.1", "1.3.0"])
 
     expect {
       RSMP::Schema.load_schema_type type, path                # should complain that type is already loaded
@@ -111,7 +112,7 @@ RSpec.describe RSMP::Schema do
 
   describe "#sanitize" do
     it 'works' do
-      expect(RSMP::Schema.sanitize_version('1.2.1')).to eq('1.2.1')
+      expect(RSMP::Schema.sanitize_version('1.3.0')).to eq('1.3.0')
     end
   end
 end
