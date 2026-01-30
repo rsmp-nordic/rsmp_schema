@@ -104,23 +104,40 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
 
     # 3.1.3 or later
     message['se'] = 123
-    expect( validate(message, 'core', '>=3.1.3') ).to eq(
+    # For versions before 3.3.0 we only get the type error
+  expect( validate(message, 'core', ['3.1.3','3.1.4','3.1.5','3.2.0','3.2.1','3.2.2']) ).to eq(
       [["/se", "array"]]
+    )
+    # For 3.3.0 we also get enum error due to full array enumeration
+    expect( validate(message, 'core', '3.3.0') ).to eq(
+      [["/se", "array"], ["/se", "enum"]]
     )
 
     message['se'] = [true,false,false,false,false,false,false]
-    expect( validate(message, 'core', '>=3.1.3') ).to eq(
+    expect( validate(message, 'core', ['3.1.3','3.1.4','3.1.5','3.2.0','3.2.1','3.2.2']) ).to eq(
       [["/se", "minItems"]]
+    )
+    expect( validate(message, 'core', '3.3.0') ).to eq(
+      [["/se", "enum"],["/se", "minItems"]]
     )
 
     message['se'] = [true,false,false,false,false,false,false,true,true]
-    expect( validate(message, 'core', '>=3.1.3') ).to eq(
+    expect( validate(message, 'core', ['3.1.3','3.1.4','3.1.5','3.2.0','3.2.1','3.2.2']) ).to eq(
       [["/se", "maxItems"]]
+    )
+    expect( validate(message, 'core', '3.3.0') ).to eq(
+      [["/se", "enum"],["/se", "maxItems"]]
     )
 
     message['se'] = [false,false,false,1,nil,"",false,false]
-    expect( validate(message, 'core', '>=3.1.3') ).to eq(
+    expect( validate(message, 'core', ['3.1.3','3.1.4','3.1.5','3.2.0','3.2.1','3.2.2']) ).to eq(
       [["/se/3", "boolean"],
+      ["/se/4", "boolean"],
+      ["/se/5", "boolean"]]
+    )
+    expect( validate(message, 'core', '3.3.0') ).to eq(
+      [["/se", "enum"],
+      ["/se/3", "boolean"],
       ["/se/4", "boolean"],
       ["/se/5", "boolean"]]
     )
