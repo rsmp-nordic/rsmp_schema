@@ -1,5 +1,5 @@
 RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
-  let(:message_3_1_2) do
+  let(:message_v3_1_2) do
     {
       'mType' => 'rSMsg',
       'type' => 'AggregatedStatus',
@@ -30,13 +30,13 @@ RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
   end
 
   it 'accepts valid message' do
-    expect(validate(message_3_1_2, 'core', '<=3.1.2')).to be_nil
+    expect(validate(message_v3_1_2, 'core', '<=3.1.2')).to be_nil
     expect(validate(message, 'core', '>=3.1.3')).to be_nil
   end
 
   it 'catches missing mId' do
-    message_3_1_2.delete 'mId'
-    expect(validate(message_3_1_2, 'core', '<=3.1.2')).to eq(
+    message_v3_1_2.delete 'mId'
+    expect(validate(message_v3_1_2, 'core', '<=3.1.2')).to eq(
       [['', 'required', { 'missing_keys' => ['mId'] }]]
     )
 
@@ -47,8 +47,8 @@ RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
   end
 
   it 'catches missing aSTS' do
-    message_3_1_2.delete 'aSTS'
-    expect(validate(message_3_1_2, 'core', '<=3.1.2')).to eq(
+    message_v3_1_2.delete 'aSTS'
+    expect(validate(message_v3_1_2, 'core', '<=3.1.2')).to eq(
       [['', 'required', { 'missing_keys' => ['aSTS'] }]]
     )
 
@@ -59,8 +59,8 @@ RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
   end
 
   it 'catches bad aSTS' do
-    message_3_1_2['aSTS'] = '2015-06-08T08:05:06.5843Z'
-    expect(validate(message_3_1_2, 'core', '<=3.1.2')).to eq(
+    message_v3_1_2['aSTS'] = '2015-06-08T08:05:06.5843Z'
+    expect(validate(message_v3_1_2, 'core', '<=3.1.2')).to eq(
       [['/aSTS', 'pattern']]
     )
 
@@ -71,8 +71,8 @@ RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
   end
 
   it 'catches missing se' do
-    message_3_1_2.delete 'se'
-    expect(validate(message_3_1_2, 'core', '<=3.1.2')).to eq(
+    message_v3_1_2.delete 'se'
+    expect(validate(message_v3_1_2, 'core', '<=3.1.2')).to eq(
       [['', 'required', { 'missing_keys' => ['se'] }]]
     )
 
@@ -84,23 +84,23 @@ RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
 
   it 'catches bad se' do
     # 3.1.2
-    message_3_1_2['se'] = 123
-    expect(validate(message_3_1_2, 'core', '<=3.1.2')).to eq(
+    message_v3_1_2['se'] = 123
+    expect(validate(message_v3_1_2, 'core', '<=3.1.2')).to eq(
       [['/se', 'array']]
     )
 
-    message_3_1_2['se'] = %w[true false false false false false false]
-    expect(validate(message_3_1_2, 'core', '<=3.1.2')).to eq(
+    message_v3_1_2['se'] = %w[true false false false false false false]
+    expect(validate(message_v3_1_2, 'core', '<=3.1.2')).to eq(
       [['/se', 'minItems']]
     )
 
-    message_3_1_2['se'] = %w[true false false false false false false false true]
-    expect(validate(message_3_1_2, 'core', '<=3.1.2')).to eq(
+    message_v3_1_2['se'] = %w[true false false false false false false false true]
+    expect(validate(message_v3_1_2, 'core', '<=3.1.2')).to eq(
       [['/se', 'maxItems']]
     )
 
-    message_3_1_2['se'] = ['true', 'false', 'false', 1, nil, true, 'false', 'false']
-    expect(validate(message_3_1_2, 'core', '<=3.1.2')).to eq(
+    message_v3_1_2['se'] = ['true', 'false', 'false', 1, nil, true, 'false', 'false']
+    expect(validate(message_v3_1_2, 'core', '<=3.1.2')).to eq(
       [['/se/3', 'string'],
        ['/se/4', 'string'],
        ['/se/5', 'string']]

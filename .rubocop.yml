@@ -9,7 +9,6 @@ AllCops:
 
 # Allow longer line lengths for tests with long JSON strings
 Layout/LineLength:
-  Max: 120
   Exclude:
     - 'spec/**/*'
 
@@ -32,17 +31,12 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Max: 10
 
-
-# These files contain empty blocks required by the YARD documentation generation.
-RSpec/EmptyExampleGroup:
-  Enabled: false
-
 # These specs often have multiple expectations to verify the behavior of a feature end-to-end.
 RSpec/MultipleExpectations:
   Enabled: false
 
 RSpec/ExampleLength:
-  Enabled: false
+  Max: 40
 
 # Integration/schema specs describe features, not a specific class
 RSpec/DescribeClass:
@@ -52,12 +46,9 @@ RSpec/DescribeClass:
 Naming/FileName:
   Enabled: false
 
-# Version strings in let names are meaningful (message_3_1_2 etc.)
+# Version strings in let names are meaningful (message_v3_1_2 etc.)
 Naming/VariableNumber:
-  Enabled: false
-
-RSpec/IndexedLet:
-  Enabled: false
+  EnforcedStyle: snake_case
 
 # frozen string literals is on by default from Ruby 3.4
 Style/FrozenStringLiteralComment:
