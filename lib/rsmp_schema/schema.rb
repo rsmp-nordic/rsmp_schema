@@ -167,6 +167,20 @@ module RSMP::Schema
     find_schema(type,version, options) != nil
   end
 
+  # return a catalogue of statuses for a particular schema type and version
+  # returns a hash of { status_code_id_sym => [arg_name_sym, ...] }
+  # raises an error if the schema type/version is not found, or has no sxl.yaml
+  def self.status_catalogue type, version
+    find_schema! type, version
+    schemas_path = File.expand_path( File.join(__dir__,'..','..','schemas') )
+    yaml_path = File.join(schemas_path, type.to_s, version, 'sxl.yaml')
+    raise RuntimeError.new("No sxl.yaml for #{type} #{version}") unless File.exist?(yaml_path)
+    sxl = RSMP::Convert::Import::YAML.read(yaml_path)
+    sxl[:statuses].transform_keys(&:to_sym).transform_values do |status|
+      (status['arguments'] || {}).keys.map(&:to_sym)
+    end
+  end
+
   # validate using a particular schema and version
   # raises error if schema is not found
   # return nil if validation succeds, otherwise returns an array of errors
