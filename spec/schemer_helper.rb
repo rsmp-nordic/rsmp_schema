@@ -77,9 +77,7 @@ def validate_variations(json_variations, schema, versions = :all)
   return nil unless errors
 
   # if all versions has the same errors, then simplify and just return a value
-  if errors && errors.any? && errors.size == schemers.size && errors.values.uniq.size == 1
-    return errors.values.first.sort
-  end
+  return errors.values.first.sort if errors&.any? && errors.size == schemers.size && errors.values.uniq.size == 1
 
   # return errors, grouped by versions with the same error
   # e.g. {'1.1.0' => 'A', '1.2.0' => 'A', '1.3.0' => 'B' }
