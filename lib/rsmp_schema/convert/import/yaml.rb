@@ -20,21 +20,18 @@ module RSMP
         end
 
         def self.convert(yaml)
-          sxl = {
-            meta: {},
-            alarms: {},
-            statuses: {},
-            commands: {}
-          }
-
+          sxl = { meta: {}, alarms: {}, statuses: {}, commands: {} }
           sxl[:meta] = yaml['meta']
+          collect_objects yaml['objects'], sxl
+          sxl
+        end
 
-          yaml['objects'].each_pair do |_type, object|
+        def self.collect_objects(objects, sxl)
+          objects.each_pair do |_type, object|
             object['alarms']&.each { |id, item| sxl[:alarms][id] = item }
             object['statuses']&.each { |id, item| sxl[:statuses][id] = item }
             object['commands']&.each { |id, item| sxl[:commands][id] = item }
           end
-          sxl
         end
       end
     end

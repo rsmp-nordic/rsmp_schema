@@ -40,27 +40,35 @@ end
 def validate_variations(json_variations, schema, versions = :all)
   raise "Unknown schema: #{schema}" unless SCHEMERS[schema.to_s]
 
+  version_list = build_version_list(schema, versions)
+  schemers = build_schemers(schema, version_list)
+  errors = collect_schema_errors(json_variations, schemers)
+  simplify_errors(errors, schemers)
+end
+
+def build_version_list(schema, versions)
   if versions == :all
-    version_list = SCHEMERS[schema.to_s].keys
+    SCHEMERS[schema.to_s].keys
   elsif versions.is_a? String
     # convert a string like '>=3.1.3' to an array of matching version strings,
     # by using the Gem::Requirement class.
-    # This this has nothing to do with gems, we just use the version matching helper.
+    # This has nothing to do with gems, we just use the version matching helper.
     requirement = Gem::Requirement.new(versions)
-    version_list = SCHEMERS[schema.to_s].keys.select do |version|
-      requirement.satisfied_by?(Gem::Version.new(version))
-    end
+    SCHEMERS[schema.to_s].keys.select { |v| requirement.satisfied_by?(Gem::Version.new(v)) }
   else
-    version_list = versions
+    versions
   end
+end
 
-  schemers = {}
-  version_list.each do |version|
+def build_schemers(schema, version_list)
+  version_list.each_with_object({}) do |version, schemers|
     raise "Unknown schema version: #{schema} #{version}" unless SCHEMERS[schema.to_s][version.to_s]
 
     schemers[version] = SCHEMERS[schema][version]
   end
+end
 
+def collect_schema_errors(json_variations, schemers)
   errors = nil
   schemers.each_pair do |version, schemer|
     json_variation = json_variations[:all] || json_variations[version]
@@ -73,12 +81,21 @@ def validate_variations(json_variations, schema, versions = :all)
       errors[version] << [item['data_pointer'], item['type'], item['details']].compact
     end
   end
-  # done if no errors
+  errors
+end
+
+def simplify_errors(errors, schemers)
   return nil unless errors
+  return errors.values.first.sort if all_same_errors?(errors, schemers)
 
-  # if all versions has the same errors, then simplify and just return a value
-  return errors.values.first.sort if errors&.any? && errors.size == schemers.size && errors.values.uniq.size == 1
+  group_errors_by_version(errors)
+end
 
+def all_same_errors?(errors, schemers)
+  errors.any? && errors.size == schemers.size && errors.values.uniq.size == 1
+end
+
+def group_errors_by_version(errors)
   # return errors, grouped by versions with the same error
   # e.g. {'1.1.0' => 'A', '1.2.0' => 'A', '1.3.0' => 'B' }
   # is transformed to { ['1.1.0','1.2.0'] => 'A', '1.3.0' => 'B'}

@@ -7,35 +7,41 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
 
-Metrics/AbcSize:
-  Enabled: false
+# Allow longer line lengths for tests with long JSON strings
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - 'spec/**/*'
 
-Metrics/CyclomaticComplexity:
-  Enabled: false
-
+# Allow some reasonable flexibility for domain-specific code
 Metrics/MethodLength:
-  Enabled: false
+  Max: 25
+
+Metrics/ClassLength:
+  Max: 200
 
 Metrics/ModuleLength:
-  Max: 350
+  Max: 300
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 10
 
 Metrics/PerceivedComplexity:
-  Enabled: false
+  Max: 10
+
 
 # These files contain empty blocks required by the YARD documentation generation.
 RSpec/EmptyExampleGroup:
   Enabled: false
 
-RSpec/NoExpectationExample:
-  Enabled: false
-
+# These specs often have multiple expectations to verify the behavior of a feature end-to-end.
 RSpec/MultipleExpectations:
   Enabled: false
 
 RSpec/ExampleLength:
-  Enabled: false
-
-RSpec/Output:
   Enabled: false
 
 # Integration/schema specs describe features, not a specific class

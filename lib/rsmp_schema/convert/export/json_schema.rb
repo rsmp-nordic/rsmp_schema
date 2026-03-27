@@ -101,27 +101,33 @@ module RSMP
         def self.handle_enum(item, out)
           return unless item['values']
 
-          out['enum'] = case item['values']
-                        when Hash
-                          item['values'].each_pair do |k, v|
-                            if ['', nil].include?(v)
-                              raise "Error: '#{k}' has empty value in #{item}. " \
-                                    '(When using a hash to specify \'values\', the hash values cannot be empty.)'
-                            end
-                          end
-                          item['values'].keys.sort
-                        when Array
-                          item['values'].sort
-                        else
-                          raise 'Error: Values must be specified as either a Hash or an Array, ' \
-                                "got #{item['values'].class}"
-                        end.map do |v|
-            if v.is_a?(Integer) || v.is_a?(Float)
-              v.to_s
-            else
-              v
-            end
+          out['enum'] = stringify_values(enum_keys(item))
+        end
+
+        def self.enum_keys(item)
+          case item['values']
+          when Hash
+            validate_hash_values! item
+            item['values'].keys.sort
+          when Array
+            item['values'].sort
+          else
+            raise 'Error: Values must be specified as either a Hash or an Array, ' \
+                  "got #{item['values'].class}"
           end
+        end
+
+        def self.validate_hash_values!(item)
+          item['values'].each_pair do |k, v|
+            next unless ['', nil].include?(v)
+
+            raise "Error: '#{k}' has empty value in #{item}. " \
+                  '(When using a hash to specify \'values\', the hash values cannot be empty.)'
+          end
+        end
+
+        def self.stringify_values(values)
+          values.map { |v| v.is_a?(Integer) || v.is_a?(Float) ? v.to_s : v }
         end
 
         # convert yaml pattern to jsons schema
@@ -131,53 +137,47 @@ module RSMP
 
         # convert yaml alarm/status/command item to corresponding jsons schema
         def self.build_item(item, property_key: 'v')
-          unless item['arguments']
-            json = {
-              '$schema' => 'https://json-schema.org/draft/2020-12/schema',
-              'description' => item['description']
-            }
-            return json
-          end
-
           arguments = item['arguments']
+          return simple_item(item) unless arguments
 
-          # For statuses (property_key == 's'), generate a single top-level gate:
-          # if q is undefined/unknown -> no constraints; else -> per-n branches.
-          if property_key == 's'
-            branches = arguments.map do |key, argument|
-              {
-                'if' => { 'properties' => { 'n' => { 'const' => key } } },
-                'then' => { 'properties' => { property_key => build_value(argument) } }
-              }
-            end
+          property_key == 's' ? build_status_item(item, arguments) : build_default_item(item, arguments, property_key)
+        end
 
-            return {
-              '$schema' => 'https://json-schema.org/draft/2020-12/schema',
-              'description' => item['description'],
-              'properties' => {
-                'n' => { 'enum' => arguments.keys.sort }
-              },
-              # reference shared guard (relative from statuses folder to tlc/defs)
-              'if' => { '$ref' => '../../defs/guards.json#/$defs/q_unknown_or_undefined' },
-              'then' => {},
-              'else' => { 'allOf' => branches }
+        def self.simple_item(item)
+          {
+            '$schema' => 'https://json-schema.org/draft/2020-12/schema',
+            'description' => item['description']
+          }
+        end
+
+        def self.build_status_item(item, arguments)
+          branches = arguments.map do |key, argument|
+            {
+              'if' => { 'properties' => { 'n' => { 'const' => key } } },
+              'then' => { 'properties' => { 's' => build_value(argument) } }
             }
           end
+          {
+            '$schema' => 'https://json-schema.org/draft/2020-12/schema',
+            'description' => item['description'],
+            'properties' => { 'n' => { 'enum' => arguments.keys.sort } },
+            'if' => { '$ref' => '../../defs/guards.json#/$defs/q_unknown_or_undefined' },
+            'then' => {},
+            'else' => { 'allOf' => branches }
+          }
+        end
 
-          # Default behavior (alarms/commands): keep simple per-n if/then rules without q gating
+        def self.build_default_item(item, arguments, property_key)
           rules = arguments.map do |key, argument|
             {
               'if' => { 'properties' => { 'n' => { 'const' => key } } },
               'then' => { 'properties' => { property_key => build_value(argument) } }
             }
           end
-
           {
             '$schema' => 'https://json-schema.org/draft/2020-12/schema',
             'description' => item['description'],
-            'properties' => {
-              'n' => { 'enum' => arguments.keys.sort }
-            },
+            'properties' => { 'n' => { 'enum' => arguments.keys.sort } },
             'allOf' => rules
           }
         end
@@ -291,32 +291,36 @@ module RSMP
             'name' => meta['name'],
             'description' => meta['description'],
             'version' => meta['version'],
-            'allOf' => [
-              {
-                'if' => { 'required' => ['type'], 'properties' => { 'type' => { 'const' => 'CommandRequest' } } },
-                'then' => { '$ref' => 'commands/command_requests.json' }
-              },
-              {
-                'if' => { 'required' => ['type'], 'properties' => { 'type' => { 'const' => 'CommandResponse' } } },
-                'then' => { '$ref' => 'commands/command_responses.json' }
-              },
-              {
-                'if' => {
-                  'required' => ['type'],
-                  'properties' => {
-                    'type' => { 'enum' => %w[StatusRequest StatusResponse StatusSubscribe StatusUnsubscribe
-                                             StatusUpdate] }
-                  }
-                },
-                'then' => { '$ref' => 'statuses/statuses.json' }
-              },
-              {
-                'if' => { 'required' => ['type'], 'properties' => { 'type' => { 'const' => 'Alarm' } } },
-                'then' => { '$ref' => 'alarms/alarms.json' }
-              }
-            ]
+            'allOf' => root_type_rules
           }
           out['rsmp.json'] = output_json json
+        end
+
+        def self.root_type_rules
+          [
+            {
+              'if' => { 'required' => ['type'], 'properties' => { 'type' => { 'const' => 'CommandRequest' } } },
+              'then' => { '$ref' => 'commands/command_requests.json' }
+            },
+            {
+              'if' => { 'required' => ['type'], 'properties' => { 'type' => { 'const' => 'CommandResponse' } } },
+              'then' => { '$ref' => 'commands/command_responses.json' }
+            },
+            {
+              'if' => {
+                'required' => ['type'],
+                'properties' => {
+                  'type' => { 'enum' => %w[StatusRequest StatusResponse StatusSubscribe StatusUnsubscribe
+                                           StatusUpdate] }
+                }
+              },
+              'then' => { '$ref' => 'statuses/statuses.json' }
+            },
+            {
+              'if' => { 'required' => ['type'], 'properties' => { 'type' => { 'const' => 'Alarm' } } },
+              'then' => { '$ref' => 'alarms/alarms.json' }
+            }
+          ]
         end
 
         # generate the json schema from a string containing yaml
