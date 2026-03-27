@@ -8,8 +8,8 @@ module RSMP::Schema
 
   def self.setup
     @@schemas = {}
-    schemas_path = File.expand_path( File.join(__dir__,'..','..','schemas') )
-    Dir.glob("#{schemas_path}/*").select {|f| File.directory? f}.each do |type_path|
+    schemas_path = File.expand_path(File.join(__dir__, '..', '..', 'schemas'))
+    Dir.glob("#{schemas_path}/*").select { |f| File.directory? f }.each do |type_path|
       type = File.basename(type_path).to_sym
       load_schema_type type, type_path
     end
@@ -25,22 +25,23 @@ module RSMP::Schema
   #   ...
   #
   #  an error is raised if the schema type already exists, and force is not set to true
-  def self.load_schema_type type, type_path, force:false
-    raise RuntimeError.new("Schema type #{type} already loaded") if @@schemas[type] && force!=true
+  def self.load_schema_type(type, type_path, force: false)
+    raise "Schema type #{type} already loaded" if @@schemas[type] && force != true
+
     @@schemas[type] = {}
-    Dir.glob("#{type_path}/*").select {|f| File.directory? f}.each do |schema_path|
+    Dir.glob("#{type_path}/*").select { |f| File.directory? f }.each do |schema_path|
       version = File.basename(schema_path)
-      file_path = File.join(schema_path,'rsmp.json')
-      if File.exist? file_path
-        @@schemas[type][version] = JSONSchemer.schema(
-          Pathname.new(File.join(schema_path,'rsmp.json'))
-        )
-      end
+      file_path = File.join(schema_path, 'rsmp.json')
+      next unless File.exist? file_path
+
+      @@schemas[type][version] = JSONSchemer.schema(
+        Pathname.new(File.join(schema_path, 'rsmp.json'))
+      )
     end
   end
 
   # remove a schema type
-  def self.remove_schema_type type
+  def self.remove_schema_type(type)
     schemas.delete type
   end
 
@@ -51,7 +52,8 @@ module RSMP::Schema
 
   # get all schemas, oganized by type and version
   def self.schemas
-    raise RuntimeError.new("No schemas available, perhaps Schema.setup was never called?") unless @@schemas
+    raise 'No schemas available, perhaps Schema.setup was never called?' unless @@schemas
+
     @@schemas
   end
 
@@ -71,60 +73,64 @@ module RSMP::Schema
   end
 
   # get array of  schema versions for a particular schema type
-  def self.versions type
+  def self.versions(type)
     schemas = find_schemas!(type).keys
     sort_versions(schemas)
   end
 
   # get earliest schema version for a particular schema type
-  def self.earliest_version type
+  def self.earliest_version(type)
     schemas = find_schemas!(type).keys
     sort_versions(schemas).first
   end
 
   # get latest schema version for a particular schema type
-  def self.latest_version type
+  def self.latest_version(type)
     schemas = find_schemas!(type).keys
     sort_versions(schemas).last
   end
 
   # validate an rsmp messages using a schema object
-  def self.validate_using_schema message, schema
-    raise ArgumentError.new("message missing") unless message
-    raise ArgumentError.new("schema missing") unless schema
-    unless schema.valid? message
-      schema.validate(message).map do |item|
-        [item['data_pointer'],item['type'],item['details']]
-      end
-    else
+  def self.validate_using_schema(message, schema)
+    raise ArgumentError.new('message missing') unless message
+    raise ArgumentError.new('schema missing') unless schema
+
+    if schema.valid? message
       []
+    else
+      schema.validate(message).map do |item|
+        [item['data_pointer'], item['type'], item['details']]
+      end
     end
   end
 
   # sort version strings
-  def self.sort_versions versions
+  def self.sort_versions(versions)
     versions.sort_by { |k| Gem::Version.new(k) }
   end
 
   # find schemas versions for particular schema type
   # return nil if type not found
-  def self.find_schemas type
-    raise ArgumentError.new("type missing") unless type
-    schemas = @@schemas[type.to_sym]
+  def self.find_schemas(type)
+    raise ArgumentError.new('type missing') unless type
+
+    @@schemas[type.to_sym]
   end
 
   # find schemas versions for particular schema type
   # raise error if not found
-  def self.find_schemas! type
+  def self.find_schemas!(type)
     schemas = find_schemas type
     raise UnknownSchemaTypeError.new("Unknown schema type #{type}") unless schemas
+
     schemas
   end
 
   # find schema for a particular schema and version
   # return nil if not found
-  def self.find_schema type, version, options={}
-    raise ArgumentError.new("version missing") unless version
+  def self.find_schema(type, version, options = {})
+    raise ArgumentError.new('version missing') unless version
+
     version = sanitize_version version if options[:lenient]
     if version
       schemas = find_schemas type
@@ -138,21 +144,22 @@ module RSMP::Schema
   #   3.1.3.32A => 3.1.3
   #   3.1A3r3 >= 3.1
   # return nil if string doesn't match
-  def self.sanitize_version version
+  def self.sanitize_version(version)
     # match normal semver z.y.z format
     if matched = /^\d+\.\d+\.\d+/.match(version)
       matched.to_s
     # match x.y format, and add patch version zero to get z.y.0
     elsif matched = /^\d+\.\d+/.match(version)
-      "#{matched.to_s}.0"
+      "#{matched}.0"
     end
   end
 
   # find schema for a particular schema and version
   # raise error if not found
-  def self.find_schema! type, version, options={}
+  def self.find_schema!(type, version, options = {})
     schema = find_schema type, version, options
-    raise ArgumentError.new("version missing") unless version
+    raise ArgumentError.new('version missing') unless version
+
     version = sanitize_version version if options[:lenient]
     if version
       schemas = find_schemas! type
@@ -163,18 +170,19 @@ module RSMP::Schema
   end
 
   # true if a particular schema type and version found
-  def self.has_schema? type, version, options={}
-    find_schema(type,version, options) != nil
+  def self.has_schema?(type, version, options = {})
+    find_schema(type, version, options) != nil
   end
 
   # return a catalogue of statuses for a particular schema type and version
   # returns a hash of { status_code_id_sym => [arg_name_sym, ...] }
   # raises an error if the schema type/version is not found, or has no sxl.yaml
-  def self.status_catalogue type, version
+  def self.status_catalogue(type, version)
     find_schema! type, version
-    schemas_path = File.expand_path( File.join(__dir__,'..','..','schemas') )
+    schemas_path = File.expand_path(File.join(__dir__, '..', '..', 'schemas'))
     yaml_path = File.join(schemas_path, type.to_s, version, 'sxl.yaml')
-    raise RuntimeError.new("No sxl.yaml for #{type} #{version}") unless File.exist?(yaml_path)
+    raise "No sxl.yaml for #{type} #{version}" unless File.exist?(yaml_path)
+
     sxl = RSMP::Convert::Import::YAML.read(yaml_path)
     sxl[:statuses].transform_keys(&:to_sym).transform_values do |status|
       (status['arguments'] || {}).keys.map(&:to_sym)
@@ -184,17 +192,18 @@ module RSMP::Schema
   # validate using a particular schema and version
   # raises error if schema is not found
   # return nil if validation succeds, otherwise returns an array of errors
-  def self.validate message, schemas, options={}
-    raise ArgumentError.new("message missing") unless message
-    raise ArgumentError.new("schemas missing") unless schemas
-    raise ArgumentError.new("schemas must be a Hash") unless schemas.is_a?(Hash)
-    raise ArgumentError.new("schemas cannot be empty") unless schemas.any?
+  def self.validate(message, schemas, options = {})
+    raise ArgumentError.new('message missing') unless message
+    raise ArgumentError.new('schemas missing') unless schemas
+    raise ArgumentError.new('schemas must be a Hash') unless schemas.is_a?(Hash)
+    raise ArgumentError.new('schemas cannot be empty') unless schemas.any?
+
     errors = schemas.flat_map do |type, version|
       schema = find_schema! type, version, options
       validate_using_schema(message, schema)
     end
     return nil if errors.empty?
+
     errors
   end
-
 end

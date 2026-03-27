@@ -3,17 +3,17 @@ require 'rsmp_schema'
 
 module RSMP::Schema
   class CLI < Thor
-    desc "convert", "Convert SXL from YAML to JSON Schema"
-    method_option :in, :type => :string, :aliases => "-i", banner: 'Path to YAML input file'
-    method_option :out, :type => :string, :aliases => "-o", banner: 'Path to JSON Schema output file'
+    desc 'convert', 'Convert SXL from YAML to JSON Schema'
+    method_option :in, type: :string, aliases: '-i', banner: 'Path to YAML input file'
+    method_option :out, type: :string, aliases: '-o', banner: 'Path to JSON Schema output file'
     def convert
       unless options[:in]
-        puts "Error: Input option missing"
+        puts 'Error: Input option missing'
         exit
       end
 
       unless options[:out]
-        puts "Error: Output option missing"
+        puts 'Error: Output option missing'
         exit
       end
 

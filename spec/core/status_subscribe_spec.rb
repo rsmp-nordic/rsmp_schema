@@ -1,22 +1,26 @@
-RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
-  let(:message_3_1_1) {{
-    "mType" => "rSMsg",
-    "mId" => "4173c2c8-a933-43cb-9425-66d4613731ed",
-    "type" => "StatusSubscribe",
-    "cId" => "O+14439=481WA001",
-     "sS" => [
-       { "sCI" => "S0003", "n" => "inputstatus", "uRt" => "0" }
-     ]
-  }}
-  let(:message_3_1_5) {{
-    "mType" => "rSMsg",
-    "mId" => "4173c2c8-a933-43cb-9425-66d4613731ed",
-    "type" => "StatusSubscribe",
-    "cId" => "O+14439=481WA001",
-     "sS" => [
-       { "sCI" => "S0003", "n" => "inputstatus", "uRt" => "0", "sOc" => true }
-     ]
-  }}
+RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
+  let(:message_3_1_1) do
+    {
+      'mType' => 'rSMsg',
+      'mId' => '4173c2c8-a933-43cb-9425-66d4613731ed',
+      'type' => 'StatusSubscribe',
+      'cId' => 'O+14439=481WA001',
+      'sS' => [
+        { 'sCI' => 'S0003', 'n' => 'inputstatus', 'uRt' => '0' }
+      ]
+    }
+  end
+  let(:message_3_1_5) do
+    {
+      'mType' => 'rSMsg',
+      'mId' => '4173c2c8-a933-43cb-9425-66d4613731ed',
+      'type' => 'StatusSubscribe',
+      'cId' => 'O+14439=481WA001',
+      'sS' => [
+        { 'sCI' => 'S0003', 'n' => 'inputstatus', 'uRt' => '0', 'sOc' => true }
+      ]
+    }
+  end
 
   def make_variations
     {
@@ -25,9 +29,9 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
       '3.1.3' => message_3_1_1,
       '3.1.4' => message_3_1_1,
       '3.1.5' => message_3_1_5,
-      '3.2.0'   => message_3_1_5,
+      '3.2.0' => message_3_1_5,
       '3.2.1' => message_3_1_5,
-      '3.2.2' => message_3_1_5,
+      '3.2.2' => message_3_1_5
     }
   end
 
@@ -43,7 +47,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message_3_1_1.delete 'cId'
     message_3_1_5.delete 'cId'
     expect(validate_core).to eq(
-      [["", "required", {"missing_keys"=>["cId"]}]]
+      [['', 'required', { 'missing_keys' => ['cId'] }]]
     )
   end
 
@@ -51,7 +55,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message_3_1_1['sS'].first['sCI'] = '99'
     message_3_1_5['sS'].first['sCI'] = '99'
     expect(validate_core).to eq(
-      [["/sS/0/sCI", "pattern"]]
+      [['/sS/0/sCI', 'pattern']]
     )
   end
 
@@ -59,7 +63,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message_3_1_1.delete 'sS'
     message_3_1_5.delete 'sS'
     expect(validate_core).to eq(
-      [["", "required", {"missing_keys"=>['sS']}]]
+      [['', 'required', { 'missing_keys' => ['sS'] }]]
     )
   end
 
@@ -67,7 +71,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message_3_1_1['sS'].clear
     message_3_1_5['sS'].clear
     expect(validate_core).to eq(
-      [["/sS", "minItems"]]
+      [['/sS', 'minItems']]
     )
   end
 
@@ -75,7 +79,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message_3_1_1['sS'] = {}
     message_3_1_5['sS'] = {}
     expect(validate_core).to eq(
-      [["/sS", "array"]]
+      [['/sS', 'array']]
     )
   end
 
@@ -83,7 +87,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message_3_1_1['sS'].first.delete 'sCI'
     message_3_1_5['sS'].first.delete 'sCI'
     expect(validate_core).to eq(
-      [["/sS/0", "required", {"missing_keys"=>["sCI"]}]]
+      [['/sS/0', 'required', { 'missing_keys' => ['sCI'] }]]
     )
   end
 
@@ -91,13 +95,13 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message_3_1_1['sS'].first['sCI'] = 3
     message_3_1_5['sS'].first['sCI'] = 3
     expect(validate_core).to eq(
-      [["/sS/0/sCI", "string"]]
+      [['/sS/0/sCI', 'string']]
     )
 
     message_3_1_1['sS'].first['sCI'] = '3'
     message_3_1_5['sS'].first['sCI'] = '3'
     expect(validate_core).to eq(
-      [["/sS/0/sCI", "pattern"]]
+      [['/sS/0/sCI', 'pattern']]
     )
   end
 
@@ -105,7 +109,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message_3_1_1['sS'].first.delete 'n'
     message_3_1_5['sS'].first.delete 'n'
     expect(validate_core).to eq(
-      [["/sS/0", "required", {"missing_keys"=>["n"]}]]
+      [['/sS/0', 'required', { 'missing_keys' => ['n'] }]]
     )
   end
 
@@ -113,7 +117,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message_3_1_1['sS'].first['n'] = 3
     message_3_1_5['sS'].first['n'] = 3
     expect(validate_core).to eq(
-      [["/sS/0/n", "string"]]
+      [['/sS/0/n', 'string']]
     )
   end
 
@@ -121,7 +125,7 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message_3_1_1['sS'].first.delete 'uRt'
     message_3_1_5['sS'].first.delete 'uRt'
     expect(validate_core).to eq(
-      [["/sS/0", "required", {"missing_keys"=>["uRt"]}]]
+      [['/sS/0', 'required', { 'missing_keys' => ['uRt'] }]]
     )
   end
 
@@ -129,36 +133,36 @@ RSpec.describe "Traffic Light Controller RSMP SXL Schema validation" do
     message_3_1_1['sS'].first['uRt'] = 3
     message_3_1_5['sS'].first['uRt'] = 3
     expect(validate_core).to eq(
-      [["/sS/0/uRt", "string"]]
+      [['/sS/0/uRt', 'string']]
     )
 
-    message_3_1_1['sS'].first['uRt'] = "fast"
-    message_3_1_5['sS'].first['uRt'] = "fast"
+    message_3_1_1['sS'].first['uRt'] = 'fast'
+    message_3_1_5['sS'].first['uRt'] = 'fast'
     expect(validate_core).to eq(
-      [["/sS/0/uRt", "pattern"]]
+      [['/sS/0/uRt', 'pattern']]
     )
   end
 
   it 'catches sOc wrongly typed as string' do
-    message_3_1_5['sS'].first['sOc'] = "True"
+    message_3_1_5['sS'].first['sOc'] = 'True'
     expect(validate_core).to eq({
-      ['3.1.5','3.2.0','3.2.1','3.2.2'] => [["/sS/0/sOc", "boolean"]]
-    })
+                                  ['3.1.5', '3.2.0', '3.2.1', '3.2.2'] => [['/sS/0/sOc', 'boolean']]
+                                })
   end
 
   it 'catches missing sOc' do
     message_3_1_5['sS'].first.delete 'sOc'
     expect(validate_core).to eq({
-      ['3.1.5','3.2.0','3.2.1','3.2.2'] => [["/sS/0", "required", {"missing_keys"=>["sOc"]}]]
-    })
+                                  ['3.1.5', '3.2.0', '3.2.1',
+                                   '3.2.2'] => [['/sS/0', 'required', { 'missing_keys' => ['sOc'] }]]
+                                })
   end
 
   it 'catches extra attributes' do
-    message_3_1_1['sS'].first['bad'] = "Foo"
-    message_3_1_5['sS'].first['bad'] = "Foo"
+    message_3_1_1['sS'].first['bad'] = 'Foo'
+    message_3_1_5['sS'].first['bad'] = 'Foo'
     expect(validate_core).to eq(
-      [["/sS/0/bad", "schema"]]
+      [['/sS/0/bad', 'schema']]
     )
   end
-
 end
