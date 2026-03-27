@@ -8,34 +8,50 @@ AllCops:
     - 'vendor/**/*'
 
 Metrics/AbcSize:
-  Exclude:
+  Enabled: false
 
 Metrics/CyclomaticComplexity:
-  Exclude:
+  Enabled: false
 
 Metrics/MethodLength:
-  Max: 25
-  Exclude:
+  Enabled: false
 
 Metrics/ModuleLength:
   Max: 350
-  Exclude:
+
+Metrics/PerceivedComplexity:
+  Enabled: false
 
 # These files contain empty blocks required by the YARD documentation generation.
 RSpec/EmptyExampleGroup:
-  Exclude:
+  Enabled: false
 
 RSpec/NoExpectationExample:
-  Exclude:
+  Enabled: false
 
 RSpec/MultipleExpectations:
-  Exclude:
+  Enabled: false
 
 RSpec/ExampleLength:
-  Exclude:
+  Enabled: false
 
 RSpec/Output:
-  Exclude:
+  Enabled: false
+
+# Integration/schema specs describe features, not a specific class
+RSpec/DescribeClass:
+  Enabled: false
+
+# RSMP signal IDs use uppercase (M0001, A0303, S0007, etc.)
+Naming/FileName:
+  Enabled: false
+
+# Version strings in let names are meaningful (message_3_1_2 etc.)
+Naming/VariableNumber:
+  Enabled: false
+
+RSpec/IndexedLet:
+  Enabled: false
 
 # frozen string literals is on by default from Ruby 3.4
 Style/FrozenStringLiteralComment:

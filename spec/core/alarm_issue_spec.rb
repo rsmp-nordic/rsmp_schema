@@ -121,21 +121,21 @@ RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
     )
   end
 
-  it 'catches missing alarm code id' do
+  it 'catches missing alarm status' do
     message.delete 'aS'
     expect(validate(message, 'core')).to eq(
       [['', 'required', { 'missing_keys' => ['aS'] }]]
     )
   end
 
-  it 'catches bad alarm code id' do
+  it 'catches bad alarm status' do
     message['aS'] = 'Bad'
     expect(validate(message, 'core')).to eq(
       [['/aS', 'enum']]
     )
   end
 
-  it 'catches wrong alarm code id type' do
+  it 'catches wrong alarm status type' do
     message['aS'] = 123
     expect(validate(message, 'core')).to eq(
       [['/aS', 'enum'],
@@ -143,21 +143,21 @@ RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
     )
   end
 
-  it 'catches missing alarm code id' do
+  it 'catches missing suspend status' do
     message.delete 'sS'
     expect(validate(message, 'core')).to eq(
       [['', 'required', { 'missing_keys' => ['sS'] }]]
     )
   end
 
-  it 'catches bad alarm code id' do
+  it 'catches bad suspend status' do
     message['sS'] = 'Bad'
     expect(validate(message, 'core')).to eq(
       [['/sS', 'enum']]
     )
   end
 
-  it 'catches wrong alarm code id type' do
+  it 'catches wrong suspend status type' do
     message['sS'] = 123
     expect(validate(message, 'core')).to eq(
       [['/sS', 'enum'],
@@ -165,21 +165,21 @@ RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
     )
   end
 
-  it 'catches missing alarm code id' do
+  it 'catches missing acknowledgement' do
     message.delete 'ack'
     expect(validate(message, 'core')).to eq(
       [['', 'required', { 'missing_keys' => ['ack'] }]]
     )
   end
 
-  it 'catches bad alarm code id' do
+  it 'catches bad acknowledgement' do
     message['ack'] = 'Bad'
     expect(validate(message, 'core')).to eq(
       [['/ack', 'enum']]
     )
   end
 
-  it 'catches wrong alarm code id type' do
+  it 'catches wrong acknowledgement type' do
     message['ack'] = 123
     expect(validate(message, 'core')).to eq(
       [['/ack', 'enum'],

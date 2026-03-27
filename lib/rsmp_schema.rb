@@ -1,7 +1,7 @@
 require 'yaml'
 require 'json_schemer'
 
-# Define module hierarchy first
+# RSMP (Road Side Message Protocol) schema validation library.
 module RSMP
 end
 

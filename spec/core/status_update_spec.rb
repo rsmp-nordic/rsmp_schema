@@ -110,7 +110,7 @@ RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
       )
     end
 
-    it 'rejects bad status code' do
+    it 'rejects bad status code type and pattern' do
       message['sS'].first['sCI'] = 3
       expect(validate(message, 'core')).to eq(
         [['/sS/0/sCI', 'string']]

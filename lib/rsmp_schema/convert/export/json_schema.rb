@@ -6,18 +6,20 @@ require 'fileutils'
 
 module RSMP
   module Convert
+    # Handles exporting SXL definitions.
     module Export
+      # Converts SXL definitions to JSON Schema files.
       module JSONSchema
-        @@json_options = {
+        JSON_OPTIONS = {
           array_nl: "\n",
           object_nl: "\n",
           indent: '  ',
           space_before: ' ',
           space: ' '
-        }
+        }.freeze
 
         def self.output_json(item)
-          JSON.generate(item, @@json_options)
+          JSON.generate(item, JSON_OPTIONS)
         end
 
         # convert a yaml item to json schema
@@ -37,8 +39,6 @@ module RSMP
         # convert an item which is not a string-list, to json schema
         def self.handle_types(item, out)
           case item['type']
-          when 'string', 'base64'
-            out['type'] = 'string'
           when 'boolean'
             out['$ref'] = '../../../core/3.1.2/definitions.json#/boolean'
           when 'timestamp'
@@ -47,7 +47,7 @@ module RSMP
             out['$ref'] = '../../../core/3.1.2/definitions.json#/integer'
           when 'array' # a json array
             build_json_array item['items'], out
-          else
+          else # string, base64, and any unknown types
             out['type'] = 'string'
           end
         end
@@ -105,14 +105,16 @@ module RSMP
                         when Hash
                           item['values'].each_pair do |k, v|
                             if ['', nil].include?(v)
-                              raise "Error: '#{k}' has empty value in #{item}. (When using a hash to specify 'values', the hash values cannot be empty.)"
+                              raise "Error: '#{k}' has empty value in #{item}. " \
+                                    '(When using a hash to specify \'values\', the hash values cannot be empty.)'
                             end
                           end
                           item['values'].keys.sort
                         when Array
                           item['values'].sort
                         else
-                          raise "Error: Values must be specified as either a Hash or an Array, got #{item['values'].class}"
+                          raise 'Error: Values must be specified as either a Hash or an Array, ' \
+                                "got #{item['values'].class}"
                         end.map do |v|
             if v.is_a?(Integer) || v.is_a?(Float)
               v.to_s
@@ -299,9 +301,13 @@ module RSMP
                 'then' => { '$ref' => 'commands/command_responses.json' }
               },
               {
-                'if' => { 'required' => ['type'],
-                          'properties' => { 'type' => { 'enum' => %w[StatusRequest StatusResponse StatusSubscribe StatusUnsubscribe
-                                                                     StatusUpdate] } } },
+                'if' => {
+                  'required' => ['type'],
+                  'properties' => {
+                    'type' => { 'enum' => %w[StatusRequest StatusResponse StatusSubscribe StatusUnsubscribe
+                                             StatusUpdate] }
+                  }
+                },
                 'then' => { '$ref' => 'statuses/statuses.json' }
               },
               {
@@ -328,9 +334,8 @@ module RSMP
           out = generate sxl
           out.each_pair do |relative_path, str|
             path = File.join(folder, relative_path)
-            FileUtils.mkdir_p File.dirname(path) # create folders if needed
-            file = File.open(path, 'w+') # w+ means truncate or create new file
-            file.puts str
+            FileUtils.mkdir_p File.dirname(path)
+            File.open(path, 'w+') { |file| file.puts str }
           end
         end
       end

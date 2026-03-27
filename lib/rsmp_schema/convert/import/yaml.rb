@@ -5,8 +5,11 @@ require 'json'
 require 'fileutils'
 
 module RSMP
+  # Namespace for SXL format conversion tools.
   module Convert
+    # Handles importing SXL definitions.
     module Import
+      # Reads SXL definitions from YAML files.
       module YAML
         def self.read(path)
           convert ::YAML.load_file(path)

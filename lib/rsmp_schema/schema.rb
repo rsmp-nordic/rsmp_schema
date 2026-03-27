@@ -1,14 +1,13 @@
 require 'json_schemer'
 
+# RSMP (Road Side Message Protocol) schema validation library.
 module RSMP
-end
-
-module RSMP
+  # Provides JSON Schema validation for RSMP messages across core and SXL versions.
   module Schema
-    @@schemas = nil
+    @schemas = nil
 
     def self.setup
-      @@schemas = {}
+      @schemas = {}
       schemas_path = File.expand_path(File.join(__dir__, '..', '..', 'schemas'))
       Dir.glob("#{schemas_path}/*").select { |f| File.directory? f }.each do |type_path|
         type = File.basename(type_path).to_sym
@@ -27,15 +26,15 @@ module RSMP
     #
     #  an error is raised if the schema type already exists, and force is not set to true
     def self.load_schema_type(type, type_path, force: false)
-      raise "Schema type #{type} already loaded" if @@schemas[type] && force != true
+      raise "Schema type #{type} already loaded" if @schemas[type] && force != true
 
-      @@schemas[type] = {}
+      @schemas[type] = {}
       Dir.glob("#{type_path}/*").select { |f| File.directory? f }.each do |schema_path|
         version = File.basename(schema_path)
         file_path = File.join(schema_path, 'rsmp.json')
         next unless File.exist? file_path
 
-        @@schemas[type][version] = JSONSchemer.schema(
+        @schemas[type][version] = JSONSchemer.schema(
           Pathname.new(File.join(schema_path, 'rsmp.json'))
         )
       end
@@ -53,9 +52,9 @@ module RSMP
 
     # get all schemas, oganized by type and version
     def self.schemas
-      raise 'No schemas available, perhaps Schema.setup was never called?' unless @@schemas
+      raise 'No schemas available, perhaps Schema.setup was never called?' unless @schemas
 
-      @@schemas
+      @schemas
     end
 
     # get array of core schema versions
@@ -115,7 +114,7 @@ module RSMP
     def self.find_schemas(type)
       raise ArgumentError, 'type missing' unless type
 
-      @@schemas[type.to_sym]
+      @schemas[type.to_sym]
     end
 
     # find schemas versions for particular schema type
@@ -171,7 +170,7 @@ module RSMP
     end
 
     # true if a particular schema type and version found
-    def self.has_schema?(type, version, options = {})
+    def self.schema?(type, version, options = {})
       find_schema(type, version, options) != nil
     end
 

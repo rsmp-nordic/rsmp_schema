@@ -1,10 +1,10 @@
 require 'json_schemer'
 require 'pp'
 
-$schemers = {
+SCHEMERS = {
   'core' => {},
   'tlc' => {}
-}
+}.freeze
 
 [
   '3.1.2',
@@ -15,7 +15,7 @@ $schemers = {
   '3.2.1',
   '3.2.2'
 ].each do |version|
-  $schemers['core'][version] = JSONSchemer.schema(Pathname.new("schemas/core/#{version}/rsmp.json"))
+  SCHEMERS['core'][version] = JSONSchemer.schema(Pathname.new("schemas/core/#{version}/rsmp.json"))
 end
 
 [
@@ -30,7 +30,7 @@ end
   '1.2.0',
   '1.2.1'
 ].each do |version|
-  $schemers['tlc'][version] = JSONSchemer.schema(Pathname.new("schemas/tlc/#{version}/rsmp.json"))
+  SCHEMERS['tlc'][version] = JSONSchemer.schema(Pathname.new("schemas/tlc/#{version}/rsmp.json"))
 end
 
 def validate(json, schema, versions = :all)
@@ -38,16 +38,16 @@ def validate(json, schema, versions = :all)
 end
 
 def validate_variations(json_variations, schema, versions = :all)
-  raise "Unknown schema: #{schema}" unless $schemers[schema.to_s]
+  raise "Unknown schema: #{schema}" unless SCHEMERS[schema.to_s]
 
   if versions == :all
-    version_list = $schemers[schema.to_s].keys
+    version_list = SCHEMERS[schema.to_s].keys
   elsif versions.is_a? String
     # convert a string like '>=3.1.3' to an array of matching version strings,
     # by using the Gem::Requirement class.
     # This this has nothing to do with gems, we just use the version matching helper.
     requirement = Gem::Requirement.new(versions)
-    version_list = $schemers[schema.to_s].keys.select do |version|
+    version_list = SCHEMERS[schema.to_s].keys.select do |version|
       requirement.satisfied_by?(Gem::Version.new(version))
     end
   else
@@ -56,9 +56,9 @@ def validate_variations(json_variations, schema, versions = :all)
 
   schemers = {}
   version_list.each do |version|
-    raise "Unknown schema version: #{schema} #{version}" unless $schemers[schema.to_s][version.to_s]
+    raise "Unknown schema version: #{schema} #{version}" unless SCHEMERS[schema.to_s][version.to_s]
 
-    schemers[version] = $schemers[schema][version]
+    schemers[version] = SCHEMERS[schema][version]
   end
 
   errors = nil

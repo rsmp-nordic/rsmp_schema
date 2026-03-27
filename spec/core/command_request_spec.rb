@@ -62,7 +62,7 @@ RSpec.describe 'Traffic Light Controller RSMP SXL Schema validation' do
     )
   end
 
-  it 'catches bad command code' do
+  it 'catches bad command code type and pattern' do
     message['arg'].first['cCI'] = 3
     expect(validate(message, 'core')).to eq(
       [['/arg/0/cCI', 'string']]
